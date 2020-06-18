@@ -70,11 +70,13 @@ namespace GU {
         CameraCoordinate();
         CameraCoordinate(pixels_u, pixels_u, pixels_u, pixels_u);
         CameraCoordinate(const CameraCoordinate& other);
+        CameraCoordinate(const gu_camera_coordinate& other);
 #if __cplusplus >= 199711L
         CameraCoordinate(CameraCoordinate&& other);
 #endif
         ~CameraCoordinate();
         CameraCoordinate& operator=(const CameraCoordinate& other);
+        CameraCoordinate& operator=(const gu_camera_coordinate& other);
 #if __cplusplus >= 199711L
         CameraCoordinate& operator=(CameraCoordinate&& other);
 #endif
@@ -93,6 +95,8 @@ namespace GU {
 
         bool operator ==(const CameraCoordinate &other) const;
         bool operator !=(const CameraCoordinate &other) const;
+        bool operator ==(const gu_camera_coordinate &other) const;
+        bool operator !=(const gu_camera_coordinate &other) const;
 
     };
 

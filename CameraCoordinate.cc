@@ -64,6 +64,8 @@ GU::CameraCoordinate::CameraCoordinate(pixels_u t_x, pixels_u t_y, pixels_u t_re
 
 GU::CameraCoordinate::CameraCoordinate(const CameraCoordinate& other): gu_camera_coordinate { other.x(), other.y(), other.resWidth(), other.resHeight() } {}
 
+GU::CameraCoordinate::CameraCoordinate(const gu_camera_coordinate& other): gu_camera_coordinate { other.x, other.y, other.res_width, other.res_height } {}
+
 #if __cplusplus >= 199711L
 GU::CameraCoordinate::CameraCoordinate(CameraCoordinate&& other)
 {
@@ -90,6 +92,19 @@ GU::CameraCoordinate& GU::CameraCoordinate::operator=(const CameraCoordinate& ot
     set_y(other.y());
     set_resWidth(other.resWidth());
     set_resHeight(other.resHeight());
+    return *this;
+}
+
+GU::CameraCoordinate& GU::CameraCoordinate::operator=(const gu_camera_coordinate& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_x(other.x);
+    set_y(other.y);
+    set_resWidth(other.res_width);
+    set_resHeight(other.res_height);
     return *this;
 }
 
@@ -157,6 +172,16 @@ bool GU::CameraCoordinate::operator==(const CameraCoordinate &other) const
 }
 
 bool GU::CameraCoordinate::operator!=(const CameraCoordinate &other) const
+{
+    return !(*this == other);
+}
+
+bool GU::CameraCoordinate::operator==(const gu_camera_coordinate &other) const
+{
+    return gu_camera_coordinate_equals(*this, other);
+}
+
+bool GU::CameraCoordinate::operator!=(const gu_camera_coordinate &other) const
 {
     return !(*this == other);
 }
