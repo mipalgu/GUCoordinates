@@ -61,6 +61,17 @@
 #include <guvision_utils/guvision_utils.h>
 #include <math.h>
 
+
+gu_pixel_coordinate cam_coord_to_px_coord(gu_camera_coordinate coord)
+{
+    const pixels_u maxX = coord.res_width - 1;
+    const pixels_t x = px_u_to_px_t(coord.x) - f_to_px_t(floorf(px_u_to_f(maxX) / 2.0f));
+    const pixels_u maxY = coord.res_height - 1;
+    const pixels_t y = px_u_to_px_t(maxY - coord.y) - f_to_px_t(floorf(px_u_to_f(maxY) / 2.0f));
+    const gu_pixel_coordinate out = { x, y, coord.res_width, coord.res_height };
+    return out;
+}
+
 gu_percent_coordinate px_coord_to_pct_coord(const gu_pixel_coordinate coord)
 {
     const pixels_t maxX = px_u_to_px_t(coord.res_width) - 1;

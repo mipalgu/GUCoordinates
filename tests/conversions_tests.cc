@@ -131,6 +131,25 @@ namespace CGTEST {
         pixel_equal({ 1, 1, 1920, 1080 }, pct_coord_to_px_coord(middle, 1920, 1080));
     }
 
+    TEST_F(ConversionsTests, ConvertsFromCameraToPixelCoordinate) {
+        const gu_camera_coordinate topLeftEdge = { 0, 0, 1920, 1080 };
+        const gu_camera_coordinate topRightEdge = { 1919, 0, 1920, 1080 };
+        const gu_camera_coordinate bottomLeftEdge = { 0, 1079, 1920, 1080 };
+        const gu_camera_coordinate bottomRightEdge = { 1919, 1079, 1920, 1080 };
+        const gu_pixel_coordinate ptopLeftEdge = { -959, 540, 1920, 1080 };
+        const gu_pixel_coordinate ptopRightEdge = { 960, 540, 1920, 1080 };
+        const gu_pixel_coordinate pbottomLeftEdge = { -959, -539, 1920, 1080 };
+        const gu_pixel_coordinate pbottomRightEdge = { 960, -539, 1920, 1080 };
+        const gu_pixel_coordinate otopLeftEdge = cam_coord_to_px_coord(topLeftEdge);
+        const gu_pixel_coordinate otopRightEdge = cam_coord_to_px_coord(topRightEdge);
+        const gu_pixel_coordinate obottomLeftEdge = cam_coord_to_px_coord(bottomLeftEdge);
+        const gu_pixel_coordinate obottomRightEdge = cam_coord_to_px_coord(bottomRightEdge);
+        pixel_equal(ptopLeftEdge, otopLeftEdge);
+        pixel_equal(ptopRightEdge, otopRightEdge);
+        pixel_equal(pbottomLeftEdge, obottomLeftEdge);
+        pixel_equal(pbottomRightEdge, obottomRightEdge);
+    }
+
 }  // namespace
 
 #pragma clang diagnostic pop
