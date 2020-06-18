@@ -60,6 +60,7 @@
 #define CAMERACOORDINATE_HPP
 
 #include "camera_coordinate.h"
+#include "PixelCoordinate.hpp"
 
 #include <cstdlib>
 
@@ -80,6 +81,8 @@ namespace GU {
 #if __cplusplus >= 199711L
         CameraCoordinate& operator=(CameraCoordinate&& other);
 #endif
+
+        GU::PixelCoordinate pixelCoordinate() const;
 
         pixels_u x() const;
         void set_x(const pixels_u);

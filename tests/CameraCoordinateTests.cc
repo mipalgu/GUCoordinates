@@ -154,6 +154,22 @@ namespace CGTEST {
         ASSERT_FALSE(bottomRightEdge == middle);
     }
 
+    TEST_F(CameraCoordinateCPPTests, PixelCoordinate) {
+        const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
+        const GU::CameraCoordinate topRightEdge = GU::CameraCoordinate(1919, 0, 1920, 1080);
+        const GU::CameraCoordinate bottomLeftEdge = GU::CameraCoordinate(0, 1079, 1920, 1080);
+        const GU::CameraCoordinate bottomRightEdge = GU::CameraCoordinate(1919, 1079, 1920, 1080);
+        const GU::CameraCoordinate middle = GU::CameraCoordinate(960, 540, 1920, 1080);
+        const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
+        const GU::PixelCoordinate ptopRightEdge = GU::PixelCoordinate(960, 540, 1920, 1080);
+        const GU::PixelCoordinate pbottomLeftEdge = GU::PixelCoordinate(-959, -539, 1920, 1080);
+        const GU::PixelCoordinate pbottomRightEdge = GU::PixelCoordinate(960, -539, 1920, 1080);
+        ASSERT_EQ(topLeftEdge.pixelCoordinate(), ptopLeftEdge);
+        ASSERT_EQ(topRightEdge.pixelCoordinate(), ptopRightEdge);
+        ASSERT_EQ(bottomLeftEdge.pixelCoordinate(), pbottomLeftEdge);
+        ASSERT_EQ(bottomRightEdge.pixelCoordinate(), pbottomRightEdge);
+    }
+
 }  // namespace
 
 #pragma clang diagnostic pop

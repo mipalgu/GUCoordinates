@@ -57,6 +57,8 @@
  */
 
 #include "CameraCoordinate.hpp"
+#include "conversions.h"
+
 
 GU::CameraCoordinate::CameraCoordinate(): gu_camera_coordinate() {}
 
@@ -125,6 +127,11 @@ GU::CameraCoordinate& GU::CameraCoordinate::operator=(CameraCoordinate&& other)
     return *this;
 }
 #endif
+
+GU::PixelCoordinate GU::CameraCoordinate::pixelCoordinate() const
+{
+    return cam_coord_to_px_coord(*this);
+}
 
 pixels_u GU::CameraCoordinate::x() const
 {

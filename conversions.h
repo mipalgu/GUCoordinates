@@ -59,16 +59,16 @@
 #ifndef CONVERSIONS_H
 #define CONVERSIONS_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <guunits/guunits.h>
 #include "camera_coordinate.h"
 #include "pixel_coordinate.h"
 #include "percent_coordinate.h"
 #include "relative_coordinate.h"
 #include "robot.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // Converting between image coordinate systems.
 gu_pixel_coordinate cam_coord_to_px_coord(gu_camera_coordinate);

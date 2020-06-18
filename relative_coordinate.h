@@ -61,6 +61,14 @@
 
 #include <guunits/Coordinate.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef gu_coordinate relative_coordinate;
+
+#ifdef __cplusplus
+};
+#endif
 
 #endif  /* RELATIVE_COORDINATE_H */

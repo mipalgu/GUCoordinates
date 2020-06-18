@@ -59,11 +59,11 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
+#include "camera.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include "camera.h"
 
 #ifndef GU_ROBOT_NUM_CAMERAS
 #define GU_ROBOT_NUM_CAMERAS 2
