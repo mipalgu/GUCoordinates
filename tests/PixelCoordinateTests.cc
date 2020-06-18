@@ -73,7 +73,7 @@
 #include "../PixelCoordinate.hpp"
 
 namespace CGTEST {
-    
+
     class PixelCoordinateCPPTests: public ::testing::Test {
     protected:
         
@@ -152,6 +152,21 @@ namespace CGTEST {
         ASSERT_FALSE(topRightEdge == bottomLeftEdge);
         ASSERT_FALSE(bottomLeftEdge == bottomRightEdge);
         ASSERT_FALSE(bottomRightEdge == middle);
+    }
+
+    TEST_F(PixelCoordinateCPPTests, CameraCoordinate) {
+        const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
+        const GU::CameraCoordinate topRightEdge = GU::CameraCoordinate(1919, 0, 1920, 1080);
+        const GU::CameraCoordinate bottomLeftEdge = GU::CameraCoordinate(0, 1079, 1920, 1080);
+        const GU::CameraCoordinate bottomRightEdge = GU::CameraCoordinate(1919, 1079, 1920, 1080);
+        const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
+        const GU::PixelCoordinate ptopRightEdge = GU::PixelCoordinate(960, 540, 1920, 1080);
+        const GU::PixelCoordinate pbottomLeftEdge = GU::PixelCoordinate(-959, -539, 1920, 1080);
+        const GU::PixelCoordinate pbottomRightEdge = GU::PixelCoordinate(960, -539, 1920, 1080);
+        ASSERT_EQ(ptopLeftEdge.cameraCoordinate(), topLeftEdge);
+        ASSERT_EQ(ptopRightEdge.cameraCoordinate(), topRightEdge);
+        ASSERT_EQ(pbottomLeftEdge.cameraCoordinate(), bottomLeftEdge);
+        ASSERT_EQ(pbottomRightEdge.cameraCoordinate(), bottomRightEdge);
     }
 
 }  // namespace

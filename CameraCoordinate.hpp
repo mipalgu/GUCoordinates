@@ -66,6 +66,8 @@
 
 namespace GU {
 
+    struct PixelCoordinate; // Forward Declaration.
+
     struct CameraCoordinate: private gu_camera_coordinate {
 
         CameraCoordinate();

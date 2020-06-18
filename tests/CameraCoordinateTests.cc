@@ -73,7 +73,7 @@
 #include "../CameraCoordinate.hpp"
 
 namespace CGTEST {
-    
+
     class CameraCoordinateCPPTests: public ::testing::Test {
     protected:
         

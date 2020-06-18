@@ -60,10 +60,13 @@
 #define PIXELCOORDINATE_HPP
 
 #include "pixel_coordinate.h"
+#include "CameraCoordinate.hpp"
 
 #include <cstdlib>
 
 namespace GU {
+
+    struct CameraCoordinate; // Forward Declaration.
 
     struct PixelCoordinate: private gu_pixel_coordinate {
 
@@ -80,6 +83,8 @@ namespace GU {
 #if __cplusplus >= 199711L
         PixelCoordinate& operator=(PixelCoordinate&& other);
 #endif
+
+        CameraCoordinate cameraCoordinate() const;
 
         pixels_t x() const;
         void set_x(const pixels_t);
