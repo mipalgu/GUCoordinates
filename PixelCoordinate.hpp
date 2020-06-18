@@ -70,11 +70,13 @@ namespace GU {
         PixelCoordinate();
         PixelCoordinate(pixels_t, pixels_t, pixels_u, pixels_u);
         PixelCoordinate(const PixelCoordinate& other);
+        PixelCoordinate(const gu_pixel_coordinate& other);
 #if __cplusplus >= 199711L
         PixelCoordinate(PixelCoordinate&& other);
 #endif
         ~PixelCoordinate();
         PixelCoordinate& operator=(const PixelCoordinate& other);
+        PixelCoordinate& operator=(const gu_pixel_coordinate& other);
 #if __cplusplus >= 199711L
         PixelCoordinate& operator=(PixelCoordinate&& other);
 #endif
@@ -93,6 +95,8 @@ namespace GU {
 
         bool operator ==(const PixelCoordinate &other) const;
         bool operator !=(const PixelCoordinate &other) const;
+        bool operator ==(const gu_pixel_coordinate &other) const;
+        bool operator !=(const gu_pixel_coordinate &other) const;
 
     };
 

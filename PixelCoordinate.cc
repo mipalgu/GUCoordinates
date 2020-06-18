@@ -64,6 +64,8 @@ GU::PixelCoordinate::PixelCoordinate(pixels_t t_x, pixels_t t_y, pixels_u t_resW
 
 GU::PixelCoordinate::PixelCoordinate(const PixelCoordinate& other): gu_pixel_coordinate { other.x(), other.y(), other.resWidth(), other.resHeight() } {}
 
+GU::PixelCoordinate::PixelCoordinate(const gu_pixel_coordinate& other): gu_pixel_coordinate { other.x, other.y, other.res_width, other.res_height } {}
+
 #if __cplusplus >= 199711L
 GU::PixelCoordinate::PixelCoordinate(PixelCoordinate&& other)
 {
@@ -90,6 +92,19 @@ GU::PixelCoordinate& GU::PixelCoordinate::operator=(const PixelCoordinate& other
     set_y(other.y());
     set_resWidth(other.resWidth());
     set_resHeight(other.resHeight());
+    return *this;
+}
+
+GU::PixelCoordinate& GU::PixelCoordinate::operator=(const gu_pixel_coordinate& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_x(other.x);
+    set_y(other.y);
+    set_resWidth(other.res_width);
+    set_resHeight(other.res_height);
     return *this;
 }
 
@@ -157,6 +172,16 @@ bool GU::PixelCoordinate::operator==(const PixelCoordinate &other) const
 }
 
 bool GU::PixelCoordinate::operator!=(const PixelCoordinate &other) const
+{
+    return !(*this == other);
+}
+
+bool GU::PixelCoordinate::operator==(const gu_pixel_coordinate &other) const
+{
+    return gu_pixel_coordinate_equals(*this, other);
+}
+
+bool GU::PixelCoordinate::operator!=(const gu_pixel_coordinate &other) const
 {
     return !(*this == other);
 }

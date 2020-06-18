@@ -112,6 +112,13 @@ namespace CGTEST {
         ASSERT_EQ(coord4.resWidth(), 0);
         ASSERT_EQ(coord4.resHeight(), 0);
 #endif
+        const gu_pixel_coordinate coord6 = {1, 2, 3, 4};
+        GU::PixelCoordinate coord7 = coord6;
+        GU::PixelCoordinate coord8;
+        coord8 = coord6;
+        ASSERT_EQ(coord7, coord6);
+        ASSERT_EQ(coord8, coord6);
+        ASSERT_EQ(coord7, coord8);
     }
 
     TEST_F(PixelCoordinateCPPTests, GettersSetters) {
