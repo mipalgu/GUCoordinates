@@ -108,6 +108,13 @@ namespace CGTEST {
         ASSERT_EQ(coord4.x(), 0.0f);
         ASSERT_EQ(coord4.y(), 0.0f);
 #endif
+        const gu_percent_coordinate coord6 = {1, 2};
+        GU::PercentCoordinate coord7 = coord6;
+        GU::PercentCoordinate coord8;
+        coord8 = coord6;
+        ASSERT_EQ(coord7, coord6);
+        ASSERT_EQ(coord8, coord6);
+        ASSERT_EQ(coord7, coord8);
     }
 
     TEST_F(PercentCoordinateCPPTests, GettersSetters) {

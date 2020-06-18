@@ -64,6 +64,8 @@ GU::PercentCoordinate::PercentCoordinate(percent_f t_x, percent_f t_y): gu_perce
 
 GU::PercentCoordinate::PercentCoordinate(const PercentCoordinate& other): gu_percent_coordinate { other.x(), other.y() } {}
 
+GU::PercentCoordinate::PercentCoordinate(const gu_percent_coordinate & other): gu_percent_coordinate { other.x, other.y } {}
+
 #if __cplusplus >= 199711L
 GU::PercentCoordinate::PercentCoordinate(PercentCoordinate&& other)
 {
@@ -84,6 +86,17 @@ GU::PercentCoordinate& GU::PercentCoordinate::operator=(const PercentCoordinate&
     }
     set_x(other.x());
     set_y(other.y());
+    return *this;
+}
+
+GU::PercentCoordinate& GU::PercentCoordinate::operator=(const gu_percent_coordinate& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_x(other.x);
+    set_y(other.y);
     return *this;
 }
 
@@ -127,6 +140,16 @@ bool GU::PercentCoordinate::operator==(const PercentCoordinate &other) const
 }
 
 bool GU::PercentCoordinate::operator!=(const PercentCoordinate &other) const
+{
+    return !(*this == other);
+}
+
+bool GU::PercentCoordinate::operator==(const gu_percent_coordinate &other) const
+{
+    return gu_percent_coordinate_equals(*this, other, 0.0001f);
+}
+
+bool GU::PercentCoordinate::operator!=(const gu_percent_coordinate &other) const
 {
     return !(*this == other);
 }

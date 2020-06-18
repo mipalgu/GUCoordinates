@@ -70,11 +70,13 @@ namespace GU {
         PercentCoordinate();
         PercentCoordinate(percent_f, percent_f);
         PercentCoordinate(const PercentCoordinate& other);
+        PercentCoordinate(const gu_percent_coordinate& other);
 #if __cplusplus >= 199711L
         PercentCoordinate(PercentCoordinate&& other);
 #endif
         ~PercentCoordinate();
         PercentCoordinate& operator=(const PercentCoordinate& other);
+        PercentCoordinate& operator=(const gu_percent_coordinate& other);
 #if __cplusplus >= 199711L
         PercentCoordinate& operator=(PercentCoordinate&& other);
 #endif
@@ -87,6 +89,8 @@ namespace GU {
 
         bool operator ==(const PercentCoordinate &other) const;
         bool operator !=(const PercentCoordinate &other) const;
+        bool operator ==(const gu_percent_coordinate &other) const;
+        bool operator !=(const gu_percent_coordinate &other) const;
 
     };
 
