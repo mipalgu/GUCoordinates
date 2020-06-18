@@ -56,14 +56,17 @@
  *
  */
 
-#ifndef PIXELCOORDINATE_HPP
-#define PIXELCOORDINATE_HPP
+#ifndef PERCENTCOORDINATE_HPP
+#define PERCENTCOORDINATE_HPP
 
 #include "percent_coordinate.h"
+#include "PixelCoordinate.hpp"
 
 #include <cstdlib>
 
 namespace GU {
+
+    struct PixelCoordinate; // Forward Declaration.
 
     struct PercentCoordinate: private gu_percent_coordinate {
 
@@ -81,6 +84,8 @@ namespace GU {
         PercentCoordinate& operator=(PercentCoordinate&& other);
 #endif
 
+        PixelCoordinate pixelCoordinate(const pixels_u, const pixels_u) const;
+
         percent_f x() const;
         void set_x(const percent_f);
 
@@ -96,4 +101,4 @@ namespace GU {
 
 };
 
-#endif  /* PIXELCOORDINATE_HPP */
+#endif  /* PERCENTCOORDINATE_HPP */

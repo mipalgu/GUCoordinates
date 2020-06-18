@@ -57,6 +57,7 @@
  */
 
 #include "PercentCoordinate.hpp"
+#include "conversions.h"
 
 GU::PercentCoordinate::PercentCoordinate(): gu_percent_coordinate() {}
 
@@ -113,6 +114,11 @@ GU::PercentCoordinate& GU::PercentCoordinate::operator=(PercentCoordinate&& othe
     return *this;
 }
 #endif
+
+GU::PixelCoordinate GU::PercentCoordinate::pixelCoordinate(const pixels_u resWidth, const pixels_u resHeight) const
+{
+    return pct_coord_to_px_coord(*this, resWidth, resHeight);
+}
 
 percent_f GU::PercentCoordinate::x() const
 {

@@ -144,6 +144,24 @@ namespace CGTEST {
         ASSERT_FALSE(bottomRightEdge == middle);
     }
 
+    TEST_F(PercentCoordinateCPPTests, PixelCoordinate) {
+        const GU::PercentCoordinate topLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
+        const GU::PercentCoordinate topRightEdge = GU::PercentCoordinate(1.0f, 1.0f);
+        const GU::PercentCoordinate bottomLeftEdge = GU::PercentCoordinate(-1.0f, -1.0f);
+        const GU::PercentCoordinate bottomRightEdge = GU::PercentCoordinate(1.0f, -1.0f);
+        const GU::PercentCoordinate middle = GU::PercentCoordinate(0, 0);
+        const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
+        const GU::PixelCoordinate ptopRightEdge = GU::PixelCoordinate(960, 540, 1920, 1080);
+        const GU::PixelCoordinate pbottomLeftEdge = GU::PixelCoordinate(-959, -539, 1920, 1080);
+        const GU::PixelCoordinate pbottomRightEdge = GU::PixelCoordinate(960, -539, 1920, 1080);
+        const GU::PixelCoordinate pmiddle = GU::PixelCoordinate(1, 1, 1920, 1080);
+        ASSERT_EQ(topLeftEdge.pixelCoordinate(1920, 1080), ptopLeftEdge);
+        ASSERT_EQ(topRightEdge.pixelCoordinate(1920, 1080), ptopRightEdge);
+        ASSERT_EQ(bottomLeftEdge.pixelCoordinate(1920, 1080), pbottomLeftEdge);
+        ASSERT_EQ(bottomRightEdge.pixelCoordinate(1920, 1080), pbottomRightEdge);
+        ASSERT_EQ(middle.pixelCoordinate(1920, 1080), pmiddle);
+    }
+
 }  // namespace
 
 #pragma clang diagnostic pop
