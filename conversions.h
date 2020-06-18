@@ -72,6 +72,7 @@ extern "C" {
 
 // Converting between image coordinate systems.
 gu_pixel_coordinate cam_coord_to_px_coord(gu_camera_coordinate);
+gu_camera_coordinate px_coord_to_cam_coord(gu_pixel_coordinate);
 gu_percent_coordinate px_coord_to_pct_coord(gu_pixel_coordinate);
 gu_pixel_coordinate pct_coord_to_px_coord(gu_percent_coordinate, pixels_u, pixels_u);
 
