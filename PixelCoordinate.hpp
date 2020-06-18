@@ -87,6 +87,7 @@ namespace GU {
 #endif
 
         CameraCoordinate cameraCoordinate() const;
+        PercentCoordinate percentCoordinate() const;
 
         pixels_t x() const;
         void set_x(const pixels_t);

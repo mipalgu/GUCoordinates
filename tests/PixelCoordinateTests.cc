@@ -169,6 +169,23 @@ namespace CGTEST {
         ASSERT_EQ(pbottomRightEdge.cameraCoordinate(), bottomRightEdge);
     }
 
+    TEST_F(PixelCoordinateCPPTests, PercentCoordinate) {
+        const GU::PercentCoordinate topLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
+        const GU::PercentCoordinate topRightEdge = GU::PercentCoordinate(1.0f, 1.0f);
+        const GU::PercentCoordinate bottomLeftEdge = GU::PercentCoordinate(-1.0f, -1.0f);
+        const GU::PercentCoordinate bottomRightEdge = GU::PercentCoordinate(1.0f, -1.0f);
+        const GU::PercentCoordinate middle = GU::PercentCoordinate(0, 0);
+        const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
+        const GU::PixelCoordinate ptopRightEdge = GU::PixelCoordinate(960, 540, 1920, 1080);
+        const GU::PixelCoordinate pbottomLeftEdge = GU::PixelCoordinate(-959, -539, 1920, 1080);
+        const GU::PixelCoordinate pbottomRightEdge = GU::PixelCoordinate(960, -539, 1920, 1080);
+        const GU::PixelCoordinate pmiddle = GU::PixelCoordinate(1, 1, 1920, 1080);
+        ASSERT_EQ(ptopLeftEdge.percentCoordinate(), topLeftEdge);
+        ASSERT_EQ(ptopRightEdge.percentCoordinate(), topRightEdge);
+        ASSERT_EQ(pbottomLeftEdge.percentCoordinate(), bottomLeftEdge);
+        ASSERT_EQ(pbottomRightEdge.percentCoordinate(), bottomRightEdge);
+    }
+
 }  // namespace
 
 #pragma clang diagnostic pop
