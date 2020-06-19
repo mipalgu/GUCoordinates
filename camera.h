@@ -67,10 +67,10 @@ extern "C" {
 #endif
 
 #define NAO_V5_TOP_CAMERA {52.323f, 58.71, 1.2f, 47.64f, 60.97f}
-#define NAO_V5_BOTTOM_CAMERA {47.733f, 50.71, -39.7f, 47.64f, 60.97f}
+#define NAO_V5_BOTTOM_CAMERA {47.733f, 50.71, 39.7f, 47.64f, 60.97f}
 
 #define PEPPER_TOP_CAMERA {115.3f, 8.68f, 0.0f, 44.3f, 55.2f}
-#define PEPPER_BOTTOM_CAMERA {105.15f, 9.36f, -40.0f, 44.3f, 55.2f}
+#define PEPPER_BOTTOM_CAMERA {105.15f, 9.36f, 40.0f, 44.3f, 55.2f}
 
 
 typedef struct gu_camera
@@ -95,8 +95,8 @@ typedef struct gu_camera
     /**
      * The degree in which the camera is facing in the vertical direction.
      *
-     * A positive value means that the camera is pointing more to the sky. A
-     * negative value means that the camera is pointing more to the ground.
+     * A positive value means that the camera is pointing more to the ground. A
+     * negative value means that the camera is pointing more to the sky.
      */
     degrees_f vDirection;
 
