@@ -75,6 +75,10 @@ bool gu_robot_equals(const gu_robot lhs, const gu_robot rhs, float tolerance)
         {
             return false;
         }
+        if (fabsf(cm_f_to_f(lhs.cameraHeightOffsets[i]) - cm_f_to_f(rhs.cameraHeightOffsets[i])) > 0.0001f)
+        {
+            return false;
+        }
     }
     return true;
 }
