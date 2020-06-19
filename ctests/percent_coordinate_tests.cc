@@ -69,8 +69,7 @@
 
 #include <gtest/gtest.h>
 
-#include <gu_util.h>
-#include "../percent_coordinate.h"
+#include "../gucoordinates.h"
 
 namespace CGTEST {
     

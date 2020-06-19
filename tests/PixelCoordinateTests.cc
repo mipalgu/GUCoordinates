@@ -69,8 +69,7 @@
 
 #include <gtest/gtest.h>
 
-#include <gu_util.h>
-#include "../PixelCoordinate.hpp"
+#include "../GUCoordinates.hpp"
 #include "conversion_fakes.h"
 
 namespace CGTEST {

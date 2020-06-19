@@ -1,8 +1,8 @@
 /*
- * camera_coordinate_tests.cc 
- * tests 
+ * gucoordinates.h 
+ * gucoordinates 
  *
- * Created by Callum McColl on 18/06/2020.
+ * Created by Callum McColl on 19/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,51 +56,15 @@
  *
  */
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wglobal-constructors"
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
-#pragma clang diagnostic ignored "-Wshift-sign-overflow"
-#pragma clang diagnostic ignored "-Wused-but-marked-unused"
-#pragma clang diagnostic ignored "-Wdeprecated"
-#pragma clang diagnostic ignored "-Wunused-parameter"
-#pragma clang diagnostic ignored "-Wsign-compare"
-#pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
-#pragma clang diagnostic ignored "-Wfloat-equal"
+#ifndef GUCOORDINATES_H
+#define GUCOORDINATES_H
 
-#include <gtest/gtest.h>
+#include "camera_coordinate.h"
+#include "pixel_coordinate.h"
+#include "percent_coordinate.h"
+#include "relative_coordinate.h"
+#include "camera.h"
+#include "robot.h"
+#include "conversions.h"
 
-#include "../gucoordinates.h"
-
-namespace CGTEST {
-    
-    class CameraCoordinateTests: public ::testing::Test {
-    protected:
-        
-        virtual void SetUp() {
-        }
-        
-        virtual void TearDown() {
-        }
-
-    };
-
-    TEST_F(CameraCoordinateTests, Equality) {
-        const gu_camera_coordinate topLeftEdge = { 0, 0, 1920, 1080 };
-        const gu_camera_coordinate topRightEdge = { 1919, 0, 1920, 1080 };
-        const gu_camera_coordinate bottomLeftEdge = { 0, 1079, 1920, 1080 };
-        const gu_camera_coordinate bottomRightEdge = { 1919, 1079, 1920, 1080 };
-        const gu_camera_coordinate middle = { 960, 540, 1920, 1080 };
-        ASSERT_TRUE(gu_camera_coordinate_equals(topLeftEdge, topLeftEdge));
-        ASSERT_TRUE(gu_camera_coordinate_equals(topRightEdge, topRightEdge));
-        ASSERT_TRUE(gu_camera_coordinate_equals(bottomLeftEdge, bottomLeftEdge));
-        ASSERT_TRUE(gu_camera_coordinate_equals(bottomRightEdge, bottomRightEdge));
-        ASSERT_TRUE(gu_camera_coordinate_equals(middle, middle));
-        ASSERT_FALSE(gu_camera_coordinate_equals(topLeftEdge, topRightEdge));
-        ASSERT_FALSE(gu_camera_coordinate_equals(topRightEdge, bottomLeftEdge));
-        ASSERT_FALSE(gu_camera_coordinate_equals(bottomLeftEdge, bottomRightEdge));
-        ASSERT_FALSE(gu_camera_coordinate_equals(bottomRightEdge, middle));
-    }
-
-}  // namespace
-
-#pragma clang diagnostic pop
+#endif  /* GUCOORDINATES_H */

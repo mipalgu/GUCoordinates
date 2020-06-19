@@ -69,8 +69,7 @@
 
 #include <gtest/gtest.h>
 
-#include <gu_util.h>
-#include "../camera.h"
+#include "../gucoordinates.h"
 
 namespace CGTEST {
     

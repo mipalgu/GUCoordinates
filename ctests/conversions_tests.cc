@@ -68,7 +68,7 @@
 #pragma clang diagnostic ignored "-Wfloat-equal"
 
 #include <gtest/gtest.h>
-#include "../conversions.h"
+#include "../gucoordinates.h"
 
 namespace CGTEST {
     

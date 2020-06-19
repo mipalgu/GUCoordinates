@@ -70,8 +70,7 @@
 #include <gtest/gtest.h>
 #include "fff.h"
 
-#include <gu_util.h>
-#include "../CameraCoordinate.hpp"
+#include "../GUCoordinates.hpp"
 #include "conversion_fakes.h"
 
 namespace CGTEST {
