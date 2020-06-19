@@ -187,7 +187,7 @@ namespace CGTEST {
 
     TEST_F(ConversionsTests, ConvertsFromPercentToRelativeCoordinate) {
         const gu_percent_coordinate centrePoint = { 0.0f, 0.0f};
-        const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 0.0f);
+        const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 0.0f);
         relative_coordinate coord;
         ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, robot, &coord, 0));
         std::cout << coord.distance() << ", " << coord.direction() << std::endl;
@@ -196,7 +196,7 @@ namespace CGTEST {
         struct wb_vision_control_status vs = {};
         struct wb_sensors_torsojointsensors joints = {};
         joints.set_HeadYaw(0.0f);
-        joints.set_HeadPitch(rad_f_to_f(deg_f_to_rad_f(15.0f)));
+        joints.set_HeadPitch(rad_f_to_f(deg_f_to_rad_f(5.0f)));
         pixel_to_rr_coord(0, 0, Top, &vs, &joints, &distance, &angle);
         std::cout << "distance: " << distance << ", angle: " << angle << std::endl;
     }
