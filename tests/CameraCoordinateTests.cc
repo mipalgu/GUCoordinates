@@ -68,9 +68,11 @@
 #pragma clang diagnostic ignored "-Wfloat-equal"
 
 #include <gtest/gtest.h>
+#include "fff.h"
 
 #include <gu_util.h>
 #include "../CameraCoordinate.hpp"
+#include "conversion_fakes.h"
 
 namespace CGTEST {
 
@@ -78,9 +80,13 @@ namespace CGTEST {
     protected:
         
         virtual void SetUp() {
+            CONVERSION_FAKES(RESET_FAKE);
+            FFF_RESET_HISTORY();
         }
         
         virtual void TearDown() {
+            CONVERSION_FAKES(RESET_FAKE);
+            FFF_RESET_HISTORY();
         }
 
     };
@@ -155,36 +161,23 @@ namespace CGTEST {
     }
 
     TEST_F(CameraCoordinateCPPTests, PixelCoordinate) {
+        cam_coord_to_px_coord_fake.return_val = { -959, 540, 1920, 1080 };
         const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
-        const GU::CameraCoordinate topRightEdge = GU::CameraCoordinate(1919, 0, 1920, 1080);
-        const GU::CameraCoordinate bottomLeftEdge = GU::CameraCoordinate(0, 1079, 1920, 1080);
-        const GU::CameraCoordinate bottomRightEdge = GU::CameraCoordinate(1919, 1079, 1920, 1080);
-        const GU::CameraCoordinate middle = GU::CameraCoordinate(960, 540, 1920, 1080);
         const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
-        const GU::PixelCoordinate ptopRightEdge = GU::PixelCoordinate(960, 540, 1920, 1080);
-        const GU::PixelCoordinate pbottomLeftEdge = GU::PixelCoordinate(-959, -539, 1920, 1080);
-        const GU::PixelCoordinate pbottomRightEdge = GU::PixelCoordinate(960, -539, 1920, 1080);
-        ASSERT_EQ(topLeftEdge.pixelCoordinate(), ptopLeftEdge);
-        ASSERT_EQ(topRightEdge.pixelCoordinate(), ptopRightEdge);
-        ASSERT_EQ(bottomLeftEdge.pixelCoordinate(), pbottomLeftEdge);
-        ASSERT_EQ(bottomRightEdge.pixelCoordinate(), pbottomRightEdge);
+        const GU::PixelCoordinate out = topLeftEdge.pixelCoordinate();
+        ASSERT_EQ(cam_coord_to_px_coord_fake.call_count, 1);
+        ASSERT_EQ(out, ptopLeftEdge);
     }
 
     TEST_F(CameraCoordinateCPPTests, PercentCoordinate) {
+        cam_coord_to_px_coord_fake.return_val = { -959, 540, 1920, 1080 };
+        px_coord_to_pct_coord_fake.return_val = { -1.0f, 1.0f };
         const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
-        const GU::CameraCoordinate topRightEdge = GU::CameraCoordinate(1919, 0, 1920, 1080);
-        const GU::CameraCoordinate bottomLeftEdge = GU::CameraCoordinate(0, 1079, 1920, 1080);
-        const GU::CameraCoordinate bottomRightEdge = GU::CameraCoordinate(1919, 1079, 1920, 1080);
-        const GU::CameraCoordinate middle = GU::CameraCoordinate(959, 539, 1920, 1080);
         const GU::PercentCoordinate ptopLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
-        const GU::PercentCoordinate ptopRightEdge = GU::PercentCoordinate(1.0f, 1.0f);
-        const GU::PercentCoordinate pbottomLeftEdge = GU::PercentCoordinate(-1.0f, -1.0f);
-        const GU::PercentCoordinate pbottomRightEdge = GU::PercentCoordinate(1.0f, -1.0f);
-        const GU::PercentCoordinate pmiddle = GU::PercentCoordinate(0, 0);
-        ASSERT_EQ(topLeftEdge.percentCoordinate(), ptopLeftEdge);
-        ASSERT_EQ(topRightEdge.percentCoordinate(), ptopRightEdge);
-        ASSERT_EQ(bottomLeftEdge.percentCoordinate(), pbottomLeftEdge);
-        ASSERT_EQ(bottomRightEdge.percentCoordinate(), pbottomRightEdge);
+        const GU::PercentCoordinate out = topLeftEdge.percentCoordinate();
+        ASSERT_EQ(cam_coord_to_px_coord_fake.call_count, 1);
+        ASSERT_EQ(px_coord_to_pct_coord_fake.call_count, 1);
+        ASSERT_EQ(out, ptopLeftEdge);
     }
 
 }  // namespace

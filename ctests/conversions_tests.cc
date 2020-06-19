@@ -68,8 +68,6 @@
 #pragma clang diagnostic ignored "-Wfloat-equal"
 
 #include <gtest/gtest.h>
-
-#include <gu_util.h>
 #include "../conversions.h"
 
 namespace CGTEST {
