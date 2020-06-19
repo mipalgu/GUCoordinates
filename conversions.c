@@ -62,7 +62,7 @@
 #include <math.h>
 
 
-gu_pixel_coordinate cam_coord_to_px_coord(gu_camera_coordinate coord)
+gu_pixel_coordinate cam_coord_to_px_coord(const gu_camera_coordinate coord)
 {
     const pixels_u maxX = coord.res_width - 1;
     const pixels_t x = px_u_to_px_t(coord.x) - f_to_px_t(floorf(px_u_to_f(maxX) / 2.0f));
@@ -72,7 +72,7 @@ gu_pixel_coordinate cam_coord_to_px_coord(gu_camera_coordinate coord)
     return out;
 }
 
-gu_camera_coordinate px_coord_to_cam_coord(gu_pixel_coordinate coord)
+gu_camera_coordinate px_coord_to_cam_coord(const gu_pixel_coordinate coord)
 {
     const pixels_u maxX = coord.res_width - 1;
     const pixels_u x = px_t_to_px_u(coord.x + f_to_px_t(floorf(px_u_to_f(maxX) / 2.0f)));
@@ -92,7 +92,7 @@ gu_percent_coordinate px_coord_to_pct_coord(const gu_pixel_coordinate coord)
     return newCoord;
 }
 
-gu_pixel_coordinate pct_coord_to_px_coord(gu_percent_coordinate coord, pixels_u res_width, pixels_u res_height)
+gu_pixel_coordinate pct_coord_to_px_coord(const gu_percent_coordinate coord, const pixels_u res_width, const pixels_u res_height)
 {
     const pixels_t maxX = px_u_to_px_t(res_width) - 1;
     const pixels_t maxY = px_u_to_px_t(res_height) - 1;

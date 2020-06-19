@@ -60,10 +60,10 @@
 
 DEFINE_FFF_GLOBALS;
 
-DEFINE_FAKE_VALUE_FUNC(gu_pixel_coordinate, cam_coord_to_px_coord, gu_camera_coordinate);
-DEFINE_FAKE_VALUE_FUNC(gu_camera_coordinate, px_coord_to_cam_coord, gu_pixel_coordinate);
-DEFINE_FAKE_VALUE_FUNC(gu_percent_coordinate, px_coord_to_pct_coord, gu_pixel_coordinate);
-DEFINE_FAKE_VALUE_FUNC(gu_pixel_coordinate, pct_coord_to_px_coord, gu_percent_coordinate, pixels_u, pixels_u);
+DEFINE_FAKE_VALUE_FUNC(gu_pixel_coordinate, cam_coord_to_px_coord, const gu_camera_coordinate);
+DEFINE_FAKE_VALUE_FUNC(gu_camera_coordinate, px_coord_to_cam_coord, const gu_pixel_coordinate);
+DEFINE_FAKE_VALUE_FUNC(gu_percent_coordinate, px_coord_to_pct_coord, const gu_pixel_coordinate);
+DEFINE_FAKE_VALUE_FUNC(gu_pixel_coordinate, pct_coord_to_px_coord, const gu_percent_coordinate, const pixels_u, const pixels_u);
 
 DEFINE_FAKE_VALUE_FUNC(bool, px_coord_to_rr_coord, const gu_pixel_coordinate, const gu_robot, relative_coordinate *);
 DEFINE_FAKE_VALUE_FUNC(bool, px_coord_to_rr_coord_cam, const gu_pixel_coordinate, const gu_robot, relative_coordinate *, const int);
