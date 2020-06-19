@@ -133,6 +133,11 @@ GU::PixelCoordinate GU::CameraCoordinate::pixelCoordinate() const
     return cam_coord_to_px_coord(*this);
 }
 
+GU::PercentCoordinate GU::CameraCoordinate::percentCoordinate() const
+{
+    return pixelCoordinate().percentCoordinate();
+}
+
 pixels_u GU::CameraCoordinate::x() const
 {
     return gu_camera_coordinate::x;
