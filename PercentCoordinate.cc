@@ -120,6 +120,11 @@ GU::PixelCoordinate GU::PercentCoordinate::pixelCoordinate(const pixels_u resWid
     return pct_coord_to_px_coord(*this, resWidth, resHeight);
 }
 
+GU::CameraCoordinate GU::PercentCoordinate::cameraCoordinate(const pixels_u resWidth, const pixels_u resHeight) const
+{
+    return pixelCoordinate(resWidth, resHeight).cameraCoordinate();
+}
+
 percent_f GU::PercentCoordinate::x() const
 {
     return gu_percent_coordinate::x;

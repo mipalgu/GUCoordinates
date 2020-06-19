@@ -86,6 +86,7 @@ namespace GU {
         PercentCoordinate& operator=(PercentCoordinate&& other);
 #endif
 
+        CameraCoordinate cameraCoordinate(const pixels_u, const pixels_u) const;
         PixelCoordinate pixelCoordinate(const pixels_u, const pixels_u) const;
 
         percent_f x() const;
