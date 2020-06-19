@@ -196,7 +196,7 @@ namespace CGTEST {
         struct wb_vision_control_status vs = {};
         struct wb_sensors_torsojointsensors joints = {};
         joints.set_HeadYaw(0.0f);
-        joints.set_HeadPitch(0.0f);
+        joints.set_HeadPitch(rad_f_to_f(deg_f_to_rad_f(15.0f)));
         pixel_to_rr_coord(0, 0, Top, &vs, &joints, &distance, &angle);
         std::cout << "distance: " << distance << ", angle: " << angle << std::endl;
     }
