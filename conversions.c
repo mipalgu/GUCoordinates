@@ -101,28 +101,13 @@ gu_pixel_coordinate pct_coord_to_px_coord(const gu_percent_coordinate coord, con
     return newCoord;
 }
 
-bool px_coord_to_rr_coord(const gu_pixel_coordinate coord, const gu_robot robot, relative_coordinate * out)
+
+bool px_coord_to_rr_coord(const gu_pixel_coordinate coord, const gu_robot robot, relative_coordinate * out, const int cameraOffset)
 {
-    return pct_coord_to_rr_coord(px_coord_to_pct_coord(coord), robot, out);
+    return pct_coord_to_rr_coord(px_coord_to_pct_coord(coord), robot, out, cameraOffset);
 }
 
-bool px_coord_to_rr_coord_cam(const gu_pixel_coordinate coord, const gu_robot robot, relative_coordinate * out, const int cameraOffset)
-{
-    return pct_coord_to_rr_coord_cam(px_coord_to_pct_coord(coord), robot, out, cameraOffset);
-}
-
-bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot robot, relative_coordinate * out)
-{
-    for (int i = 0; i < robot.numCameras; i++) {
-        if (pct_coord_to_rr_coord_cam(coord, robot, out, i))
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool pct_coord_to_rr_coord_cam(const gu_percent_coordinate coord, const gu_robot robot, relative_coordinate * out, const int cameraOffset)
+bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot robot, relative_coordinate * out, const int cameraOffset)
 {
     const gu_camera camera = robot.cameras[cameraOffset];
     const degrees_f pitch = robot.headPitch + camera.vDirection + f_to_deg_f(pct_f_to_f(coord.y)) * (camera.vFov / 2.0f);

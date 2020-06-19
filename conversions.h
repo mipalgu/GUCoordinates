@@ -77,10 +77,8 @@ gu_percent_coordinate px_coord_to_pct_coord(const gu_pixel_coordinate);
 gu_pixel_coordinate pct_coord_to_px_coord(const gu_percent_coordinate, const pixels_u, const pixels_u);
 
 // Converting from image coordinate systems to the robot relative coordiante system.
-bool px_coord_to_rr_coord(const gu_pixel_coordinate, const gu_robot, relative_coordinate *);
-bool px_coord_to_rr_coord_cam(const gu_pixel_coordinate, const gu_robot, relative_coordinate *, const int);
-bool pct_coord_to_rr_coord(const gu_percent_coordinate, const gu_robot, relative_coordinate *);
-bool pct_coord_to_rr_coord_cam(const gu_percent_coordinate, const gu_robot, relative_coordinate *, const int);
+bool px_coord_to_rr_coord(const gu_pixel_coordinate, const gu_robot, relative_coordinate *, const int);
+bool pct_coord_to_rr_coord(const gu_percent_coordinate, const gu_robot, relative_coordinate *, const int);
 
 // Converting from the robot relative coordinate system to the image coordinate systems.
 bool rr_coord_to_pct_coord(const relative_coordinate, const gu_robot, const int, gu_percent_coordinate *);
