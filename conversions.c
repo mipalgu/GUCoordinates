@@ -59,6 +59,7 @@
 #include "conversions.h"
 
 #include <math.h>
+#include <stdio.h>
 
 
 gu_pixel_coordinate cam_coord_to_px_coord(const gu_camera_coordinate coord)
@@ -118,7 +119,8 @@ bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot rob
     const degrees_f yaw = robot.headYaw - f_to_deg_f(pct_f_to_f(coord.x)) * (camera.hFov / 2.0f);
     const radians_f pitchRad = deg_f_to_rad_f(pitch);
     const radians_f yawRad = deg_f_to_rad_f(yaw);
-    const float distance = cm_f_to_f(camera.height) * tanf(rad_f_to_f(pitchRad)) / cosf(rad_f_to_f(yawRad));
+    const float distance = cm_f_to_f(camera.height) * tanf(rad_f_to_f(d_to_rad_f(M_PI_2)) - rad_f_to_f(pitchRad)) / cosf(rad_f_to_f(yawRad));
+    printf("R: %0.6f\n", cm_f_to_d(f_to_cm_f(distance)));
     out->distance = f_to_cm_u(fabsf(distance));
     out->direction = deg_f_to_deg_t(yaw);
     return true;
