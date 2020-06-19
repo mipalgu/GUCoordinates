@@ -58,7 +58,6 @@
 
 #include "conversions.h"
 
-#include <guvision_utils/guvision_utils.h>
 #include <math.h>
 
 
