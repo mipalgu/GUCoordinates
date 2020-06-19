@@ -59,13 +59,38 @@
 #ifndef RELATIVE_COORDINATE_H
 #define RELATIVE_COORDINATE_H
 
-#include <guunits/Coordinate.h>
+#include <guunits/guunits.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-typedef gu_coordinate relative_coordinate;
+/**
+ * A coordinate that is relative to some other coordinate.
+ *
+ * This coordinate describes the distance and direction that one coordinate
+ * is from another. This means that the relative_coordinate is a polar
+ * coordinate in the form of phi, r where phi is the direction and r 
+ * is the distance to the coordinate.
+ */
+typedef struct gu_relative_coordinate
+{
+    /**
+     * The heading towards the coordinate.
+     *
+     * A positive value for direction indicates that the coordinate is on
+     * the left. A negative value indicates that the coordinate is on the
+     * right. A value of zero indicates that the coordinate is pointing
+     * straight ahead.
+     */
+    degrees_t direction;
+
+    /**
+     * The distance to the coordinate.
+     */
+    centimetres_u distance;
+
+} gu_relative_coordinate;
 
 #ifdef __cplusplus
 };

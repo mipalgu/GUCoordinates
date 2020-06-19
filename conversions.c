@@ -103,12 +103,12 @@ gu_pixel_coordinate pct_coord_to_px_coord(const gu_percent_coordinate coord, con
 }
 
 
-bool px_coord_to_rr_coord(const gu_pixel_coordinate coord, const gu_robot robot, relative_coordinate * out, const int cameraOffset)
+bool px_coord_to_rr_coord(const gu_pixel_coordinate coord, const gu_robot robot, gu_relative_coordinate * out, const int cameraOffset)
 {
     return pct_coord_to_rr_coord(px_coord_to_pct_coord(coord), robot, out, cameraOffset);
 }
 
-bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot robot, relative_coordinate * out, const int cameraOffset)
+bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot robot, gu_relative_coordinate * out, const int cameraOffset)
 {
     const gu_camera camera = robot.cameras[cameraOffset];
     const degrees_f pitch = robot.headPitch + camera.vDirection - f_to_deg_f(pct_f_to_f(coord.y)) * (camera.vFov / 2.0f);
@@ -135,7 +135,7 @@ bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot rob
     return true;
 }
 
-bool rr_coord_to_pct_coord(const relative_coordinate coord, const gu_robot robot, const int cameraOffset, gu_percent_coordinate * out)
+bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_robot robot, const int cameraOffset, gu_percent_coordinate * out)
 {
     const gu_camera camera = robot.cameras[cameraOffset];
     const degrees_f yaw = deg_t_to_deg_f(coord.direction) - robot.headYaw;
@@ -157,7 +157,7 @@ bool rr_coord_to_pct_coord(const relative_coordinate coord, const gu_robot robot
     return true;
 }
 
-bool rr_coord_to_px_coord(const relative_coordinate coord, const gu_robot robot, const int cameraOffset, gu_pixel_coordinate * out, pixels_u res_width, pixels_u res_height)
+bool rr_coord_to_px_coord(const gu_relative_coordinate coord, const gu_robot robot, const int cameraOffset, gu_pixel_coordinate * out, pixels_u res_width, pixels_u res_height)
 {
     gu_percent_coordinate temp = {};
     if (!rr_coord_to_pct_coord(coord, robot, cameraOffset, &temp))
