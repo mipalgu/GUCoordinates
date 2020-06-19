@@ -70,6 +70,7 @@
 #include <gtest/gtest.h>
 #include "../gucoordinates.h"
 #include <iostream>
+#include <gusimplewhiteboard/typeClassDefs/wb_pixel_to_robot_relative_coord.h>
 
 namespace CGTEST {
     
@@ -190,7 +191,14 @@ namespace CGTEST {
         relative_coordinate coord;
         ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, robot, &coord, 0));
         std::cout << coord.distance() << ", " << coord.direction() << std::endl;
-
+        double distance = 0;
+        double angle = 0;
+        struct wb_vision_control_status vs = {};
+        struct wb_sensors_torsojointsensors joints = {};
+        joints.set_HeadYaw(0.0f);
+        joints.set_HeadPitch(0.0f);
+        pixel_to_rr_coord(0, 0, Top, &vs, &joints, &distance, &angle);
+        std::cout << "distance: " << distance << ", angle: " << angle << std::endl;
     }
 
 }  // namespace
