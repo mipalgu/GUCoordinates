@@ -66,8 +66,8 @@
 extern "C" {
 #endif
 
-#define NAO_V5_TOP_CAMERA {6.364f, 5.871f, 1.2f, 47.64f, 60.97f}
-#define NAO_V5_BOTTOM_CAMERA {1.774f, 5.071f, 39.7f, 47.64f, 60.97f}
+#define NAO_V5_TOP_CAMERA {48.064f, 5.871f, 1.2f, 47.64f, 60.97f}
+#define NAO_V5_BOTTOM_CAMERA {43.474f, 5.071f, 39.7f, 47.64f, 60.97f}
 
 #define PEPPER_TOP_CAMERA {115.3f, 8.68f, 0.0f, 44.3f, 55.2f}
 #define PEPPER_BOTTOM_CAMERA {105.15f, 9.36f, 40.0f, 44.3f, 55.2f}
@@ -76,7 +76,7 @@ extern "C" {
 typedef struct gu_camera
 {
     /**
-     * The height from the robots camera offset to the middle of the camera.
+     * The height from the ground to the middle of the camera.
      */
     centimetres_f height;
 
