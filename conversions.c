@@ -112,7 +112,7 @@ bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot rob
 {
     const gu_camera camera = robot.cameras[cameraOffset];
     const degrees_f pitch = robot.headPitch + camera.vDirection - f_to_deg_f(pct_f_to_f(coord.y)) * (camera.vFov / 2.0f);
-    if (pitch >= 90.0f)
+    if (pitch >= 90.0f || pitch <= 0.0f)
     {
         return false;
     }
@@ -123,6 +123,11 @@ bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot rob
     const float cosPitch = cosf(rad_f_to_f(pitchRad));
     const float sinPitch = sinf(rad_f_to_f(pitchRad));
     const float cosYaw = cosf(rad_f_to_f(yawRad));
+    // Avoid division by zero later on.
+    if (cosYaw == 0.0f)
+    {
+        return false;
+    }
     const centimetres_f actualCameraHeight = (camera.height - relativeHeightToCameraFromNeck * f_to_cm_f(1.0f - cosPitch)) - camera.centerOffset * f_to_cm_f(sinPitch); 
     const float distance = cm_f_to_f(actualCameraHeight) * tanf(((float) M_PI_2) - rad_f_to_f(pitchRad)) / cosYaw;
     out->distance = f_to_cm_u(fabsf(distance)) - cm_f_to_cm_u(camera.centerOffset);
