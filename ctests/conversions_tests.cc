@@ -69,6 +69,7 @@
 
 #include <gtest/gtest.h>
 #include "../gucoordinates.h"
+#include <iostream>
 
 namespace CGTEST {
     
@@ -173,6 +174,23 @@ namespace CGTEST {
         camera_equal(topRightEdge, otopRightEdge);
         camera_equal(bottomLeftEdge, obottomLeftEdge);
         camera_equal(bottomRightEdge, obottomRightEdge);
+    }
+
+    TEST_F(ConversionsTests, ConvertsFromPixelToRelativeCoordinate) {
+        const gu_pixel_coordinate centrePoint = { 0, 0, 1920, 1080 };
+        const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 5.0f);
+        relative_coordinate coord;
+        ASSERT_TRUE(px_coord_to_rr_coord(centrePoint, robot, &coord, 0));
+        std::cout << coord.distance() << ", " << coord.direction() << std::endl;
+    }
+
+    TEST_F(ConversionsTests, ConvertsFromPercentToRelativeCoordinate) {
+        const gu_percent_coordinate centrePoint = { 0.0f, 0.0f};
+        const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 0.0f);
+        relative_coordinate coord;
+        ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, robot, &coord, 0));
+        std::cout << coord.distance() << ", " << coord.direction() << std::endl;
+
     }
 
 }  // namespace
