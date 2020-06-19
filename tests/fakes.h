@@ -1,5 +1,5 @@
 /*
- * conversion_fakes.c 
+ * fakes.h 
  * tests 
  *
  * Created by Callum McColl on 19/06/2020.
@@ -56,17 +56,23 @@
  *
  */
 
+#ifndef FAKES_H
+#define FAKES_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "fff.h"
 #include "conversion_fakes.h"
+#include "camera_coordinate_fakes.h"
 
-DEFINE_FAKE_VALUE_FUNC(gu_pixel_coordinate, cam_coord_to_px_coord, const gu_camera_coordinate);
-DEFINE_FAKE_VALUE_FUNC(gu_camera_coordinate, px_coord_to_cam_coord, const gu_pixel_coordinate);
-DEFINE_FAKE_VALUE_FUNC(gu_percent_coordinate, px_coord_to_pct_coord, const gu_pixel_coordinate);
-DEFINE_FAKE_VALUE_FUNC(gu_pixel_coordinate, pct_coord_to_px_coord, const gu_percent_coordinate, const pixels_u, const pixels_u);
+#define ALL_FAKES(FAKE) \
+    CONVERSION_FAKES(FAKE) \
+    CAMERA_COORDINATE_FAKES(FAKE)
 
-DEFINE_FAKE_VALUE_FUNC(bool, px_coord_to_rr_coord, const gu_pixel_coordinate, const gu_robot, relative_coordinate *);
-DEFINE_FAKE_VALUE_FUNC(bool, px_coord_to_rr_coord_cam, const gu_pixel_coordinate, const gu_robot, relative_coordinate *, const int);
-DEFINE_FAKE_VALUE_FUNC(bool, pct_coord_to_rr_coord, const gu_percent_coordinate, const gu_robot, relative_coordinate *);
-DEFINE_FAKE_VALUE_FUNC(bool, pct_coord_to_rr_coord_cam, const gu_percent_coordinate, const gu_robot, relative_coordinate *, const int);
+#ifdef __cplusplus
+};
+#endif
 
-DEFINE_FAKE_VALUE_FUNC(bool, rr_coord_to_pct_coord, const relative_coordinate, const gu_robot, const int, gu_percent_coordinate *);
-DEFINE_FAKE_VALUE_FUNC(bool, rr_coord_to_px_coord, const relative_coordinate, const gu_robot, const int, gu_pixel_coordinate *, pixels_u, pixels_u);
+#endif  /* FAKES_H */

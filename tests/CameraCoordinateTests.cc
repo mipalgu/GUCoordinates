@@ -71,7 +71,7 @@
 #include "fff.h"
 
 #include "../GUCoordinates.hpp"
-#include "conversion_fakes.h"
+#include "fakes.h"
 
 namespace CGTEST {
 
@@ -79,12 +79,12 @@ namespace CGTEST {
     protected:
         
         virtual void SetUp() {
-            CONVERSION_FAKES(RESET_FAKE);
+            ALL_FAKES(RESET_FAKE);
             FFF_RESET_HISTORY();
         }
         
         virtual void TearDown() {
-            CONVERSION_FAKES(RESET_FAKE);
+            ALL_FAKES(RESET_FAKE);
             FFF_RESET_HISTORY();
         }
 
