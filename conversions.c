@@ -119,7 +119,9 @@ bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot rob
     const degrees_f yaw = robot.headYaw - f_to_deg_f(pct_f_to_f(coord.x)) * (camera.hFov / 2.0f);
     const radians_f pitchRad = deg_f_to_rad_f(pitch);
     const radians_f yawRad = deg_f_to_rad_f(yaw);
-    const float distance = cm_f_to_f(camera.height) * tanf(rad_f_to_f(d_to_rad_f(M_PI_2)) - rad_f_to_f(pitchRad)) / cosf(rad_f_to_f(yawRad));
+    const float relativeHeightToCameraFromNeck = cm_f_to_f(camera.height) - cm_f_to_f(robot.cameraHeightOffsets[cameraOffset]);
+    const float distance = (cm_f_to_f(camera.height) - relativeHeightToCameraFromNeck * (1.0f - cosf(rad_f_to_f(pitchRad))) - cm_f_to_f(camera.centerOffset) * sinf(rad_f_to_f(pitchRad)))
+        * tanf(rad_f_to_f(d_to_rad_f(M_PI_2)) - rad_f_to_f(pitchRad)) / cosf(rad_f_to_f(yawRad));
     printf("R: %0.6f\n", cm_f_to_d(f_to_cm_f(distance)));
     out->distance = f_to_cm_u(fabsf(distance)) - cm_f_to_cm_u(camera.centerOffset);
     out->direction = deg_f_to_deg_t(yaw);
