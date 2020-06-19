@@ -165,7 +165,10 @@ namespace CGTEST {
         const GU::CameraCoordinate out = topLeftEdge.cameraCoordinate(1920, 1080);
         ASSERT_EQ(pct_coord_to_px_coord_fake.call_count, 1);
         ASSERT_EQ(px_coord_to_cam_coord_fake.call_count, 1);
-        ASSERT_EQ(out, ctopLeftEdge);
+        ASSERT_EQ(out.x(), ctopLeftEdge.x());
+        ASSERT_EQ(out.y(), ctopLeftEdge.y());
+        ASSERT_EQ(out.resWidth(), ctopLeftEdge.resWidth());
+        ASSERT_EQ(out.resHeight(), ctopLeftEdge.resHeight());
     }
 
 }  // namespace

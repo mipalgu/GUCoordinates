@@ -164,7 +164,10 @@ namespace CGTEST {
         const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
         const GU::CameraCoordinate out = ptopLeftEdge.cameraCoordinate();
         ASSERT_EQ(px_coord_to_cam_coord_fake.call_count, 1);
-        ASSERT_EQ(out, topLeftEdge);
+        ASSERT_EQ(out.x(), topLeftEdge.x());
+        ASSERT_EQ(out.y(), topLeftEdge.y());
+        ASSERT_EQ(out.resWidth(), topLeftEdge.resWidth());
+        ASSERT_EQ(out.resHeight(), topLeftEdge.resHeight());
     }
 
     TEST_F(PixelCoordinateCPPTests, PercentCoordinate) {
@@ -173,7 +176,8 @@ namespace CGTEST {
         const GU::PercentCoordinate topLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
         const GU::PercentCoordinate out = ptopLeftEdge.percentCoordinate();
         ASSERT_EQ(px_coord_to_pct_coord_fake.call_count, 1);
-        ASSERT_EQ(out, topLeftEdge);
+        ASSERT_EQ(out.x(), topLeftEdge.x());
+        ASSERT_EQ(out.y(), topLeftEdge.y());
     }
 
 }  // namespace
