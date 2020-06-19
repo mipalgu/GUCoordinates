@@ -70,11 +70,11 @@ extern "C" {
 #endif
 
 #ifndef GU_NAO_V5_ROBOT
-#define GU_NAO_V5_ROBOT(p, y) {p, y, {NAO_V5_TOP_CAMERA, NAO_V5_BOTTOM_CAMERA}, 2}
+#define GU_NAO_V5_ROBOT(p, y) {p, y, {NAO_V5_TOP_CAMERA, NAO_V5_BOTTOM_CAMERA}, {41.7f, 41.7f}, 2}
 #endif
 
 #ifndef GU_PEPPER_ROBOT
-#define GU_PEPPER_ROBOT(p, y) {p, y, {PEPPER_TOP_CAMERA, PEPPER_BOTTOM_CAMERA}, 2}
+#define GU_PEPPER_ROBOT(p, y) {p, y, {PEPPER_TOP_CAMERA, PEPPER_BOTTOM_CAMERA}, {0.0f, 0.0f}, 2}
 #endif
 
 typedef struct gu_robot
@@ -83,6 +83,7 @@ typedef struct gu_robot
     degrees_f headPitch;
     degrees_f headYaw;
     gu_camera cameras[GU_ROBOT_NUM_CAMERAS];
+    centimetres_f cameraHeightOffsets[GU_ROBOT_NUM_CAMERAS];
     int numCameras;
 
 } gu_robot;
