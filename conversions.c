@@ -110,7 +110,7 @@ bool px_coord_to_rr_coord(const gu_pixel_coordinate coord, const gu_robot robot,
 bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot robot, relative_coordinate * out, const int cameraOffset)
 {
     const gu_camera camera = robot.cameras[cameraOffset];
-    const degrees_f pitch = robot.headPitch + camera.vDirection + f_to_deg_f(pct_f_to_f(coord.y)) * (camera.vFov / 2.0f);
+    const degrees_f pitch = robot.headPitch + camera.vDirection - f_to_deg_f(pct_f_to_f(coord.y)) * (camera.vFov / 2.0f);
     if (pitch >= 90.0f)
     {
         return false;
