@@ -90,28 +90,45 @@ namespace CGTEST {
 
     };
 
+    void camera_equals(const GU::CameraCoordinate lhs, const GU::CameraCoordinate rhs)
+    {
+        ASSERT_EQ(lhs.x(), rhs.x());
+        ASSERT_EQ(lhs.y(), rhs.y());
+        ASSERT_EQ(lhs.resWidth(), rhs.resWidth());
+        ASSERT_EQ(lhs.resHeight(), rhs.resHeight());
+    }
+
+    void camera_nequals(const GU::CameraCoordinate lhs, const GU::CameraCoordinate rhs)
+    {
+        ASSERT_FALSE(lhs.x() == rhs.x()
+                && lhs.y() == rhs.y()
+                && lhs.resWidth() == rhs.resWidth()
+                && lhs.resHeight() == rhs.resHeight()
+                );
+    }
+
     TEST_F(CameraCoordinateCPPTests, RO5)
     {
         GU::CameraCoordinate coord = GU::CameraCoordinate(1, 2, 3, 4);
         GU::CameraCoordinate coord2 = GU::CameraCoordinate(coord);
-        ASSERT_EQ(coord, coord2);
+        camera_equals(coord, coord2);
         GU::CameraCoordinate coord3 = coord2;
-        ASSERT_EQ(coord, coord3);
+        camera_equals(coord, coord3);
         coord.set_x(0);
-        ASSERT_NE(coord, coord3);
-        ASSERT_EQ(coord2, coord3);
+        camera_nequals(coord, coord3);
+        camera_equals(coord2, coord3);
 #if __cplusplus >= 199711L
         GU::CameraCoordinate coord4 = std::move(coord2);
-        ASSERT_NE(coord4, coord2);
-        ASSERT_EQ(coord4, coord3);
+        camera_nequals(coord4, coord2);
+        camera_equals(coord4, coord3);
         ASSERT_EQ(coord2.x(), 0);
         ASSERT_EQ(coord2.y(), 0);
         ASSERT_EQ(coord2.resWidth(), 0);
         ASSERT_EQ(coord2.resHeight(), 0);
         GU::CameraCoordinate coord5;
         coord5 = std::move(coord4);
-        ASSERT_NE(coord5, coord2);
-        ASSERT_EQ(coord5, coord3);
+        camera_nequals(coord5, coord2);
+        camera_equals(coord5, coord3);
         ASSERT_EQ(coord4.x(), 0);
         ASSERT_EQ(coord4.y(), 0);
         ASSERT_EQ(coord4.resWidth(), 0);
@@ -121,9 +138,9 @@ namespace CGTEST {
         GU::CameraCoordinate coord7 = coord6;
         GU::CameraCoordinate coord8;
         coord8 = coord6;
-        ASSERT_EQ(coord7, coord6);
-        ASSERT_EQ(coord8, coord6);
-        ASSERT_EQ(coord7, coord8);
+        camera_equals(coord7, coord6);
+        camera_equals(coord8, coord6);
+        camera_equals(coord7, coord8);
     }
 
     TEST_F(CameraCoordinateCPPTests, GettersSetters) {
@@ -143,20 +160,15 @@ namespace CGTEST {
     }
 
     TEST_F(CameraCoordinateCPPTests, Equality) {
+        gu_camera_coordinate_equals_fake.return_val = true;
         const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
         const GU::CameraCoordinate topRightEdge = GU::CameraCoordinate(1919, 0, 1920, 1080);
-        const GU::CameraCoordinate bottomLeftEdge = GU::CameraCoordinate(0, 1079, 1920, 1080);
-        const GU::CameraCoordinate bottomRightEdge = GU::CameraCoordinate(1919, 1079, 1920, 1080);
-        const GU::CameraCoordinate middle = GU::CameraCoordinate(960, 540, 1920, 1080);
-        ASSERT_TRUE(topLeftEdge == topLeftEdge);
-        ASSERT_TRUE(topRightEdge == topRightEdge);
-        ASSERT_TRUE(bottomLeftEdge == bottomLeftEdge);
-        ASSERT_TRUE(bottomRightEdge == bottomRightEdge);
-        ASSERT_TRUE(middle == middle);
-        ASSERT_FALSE(topLeftEdge == topRightEdge);
-        ASSERT_FALSE(topRightEdge == bottomLeftEdge);
-        ASSERT_FALSE(bottomLeftEdge == bottomRightEdge);
-        ASSERT_FALSE(bottomRightEdge == middle);
+        ASSERT_EQ(topLeftEdge, topLeftEdge);
+        ASSERT_EQ(gu_camera_coordinate_equals_fake.call_count, 1);
+        RESET_FAKE(gu_camera_coordinate_equals)
+        gu_camera_coordinate_equals_fake.return_val = false;
+        ASSERT_NE(topLeftEdge, topRightEdge);
+        ASSERT_EQ(gu_camera_coordinate_equals_fake.call_count, 1);
     }
 
     TEST_F(CameraCoordinateCPPTests, PixelCoordinate) {
