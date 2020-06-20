@@ -69,45 +69,25 @@
 
 #include "GUCoordinatesTests.hpp"
 
+#define PixelCoordinateCPPTests_PREAMBLE do { } while (0);
+
+#define PixelCoordinateCPPTests_CLASS GU::PixelCoordinate
+
+#define PixelCoordinateCPPTests_STRCT gu_pixel_coordinate
+
+#define PixelCoordinateCPPTests_INITIAL GU::PixelCoordinate(1, 2, 3, 4)
+
+#define PixelCoordinateCPPTests_EMPTY { 0, 0, 0, 0 }
+
+#define PixelCoordinateCPPTests_CHANGE obj.set_x(0);
+
+#define PixelCoordinateCPPTests_CCHANGE obj6 = {1, 2, 3, 4};
+
 namespace CGTEST {
 
     class PixelCoordinateCPPTests: public GUCoordinatesTests {};
 
-    TEST_F(PixelCoordinateCPPTests, RO5)
-    {
-        GU::PixelCoordinate coord = GU::PixelCoordinate(1, 2, 3, 4);
-        GU::PixelCoordinate coord2 = GU::PixelCoordinate(coord);
-        ASSERT_EQ(coord, coord2);
-        GU::PixelCoordinate coord3 = coord2;
-        ASSERT_EQ(coord, coord3);
-        coord.set_x(0);
-        ASSERT_NE(coord, coord3);
-        ASSERT_EQ(coord2, coord3);
-#if __cplusplus >= 199711L
-        GU::PixelCoordinate coord4 = std::move(coord2);
-        ASSERT_NE(coord4, coord2);
-        ASSERT_EQ(coord4, coord3);
-        ASSERT_EQ(coord2.x(), 0);
-        ASSERT_EQ(coord2.y(), 0);
-        ASSERT_EQ(coord2.resWidth(), 0);
-        ASSERT_EQ(coord2.resHeight(), 0);
-        GU::PixelCoordinate coord5;
-        coord5 = std::move(coord4);
-        ASSERT_NE(coord5, coord2);
-        ASSERT_EQ(coord5, coord3);
-        ASSERT_EQ(coord4.x(), 0);
-        ASSERT_EQ(coord4.y(), 0);
-        ASSERT_EQ(coord4.resWidth(), 0);
-        ASSERT_EQ(coord4.resHeight(), 0);
-#endif
-        const gu_pixel_coordinate coord6 = {1, 2, 3, 4};
-        GU::PixelCoordinate coord7 = coord6;
-        GU::PixelCoordinate coord8;
-        coord8 = coord6;
-        ASSERT_EQ(coord7, coord6);
-        ASSERT_EQ(coord8, coord6);
-        ASSERT_EQ(coord7, coord8);
-    }
+    RO5_TEST_F(PixelCoordinateCPPTests)
 
     TEST_F(PixelCoordinateCPPTests, GettersSetters) {
         GU::PixelCoordinate coord = GU::PixelCoordinate(-959, 540, 1920, 1080);

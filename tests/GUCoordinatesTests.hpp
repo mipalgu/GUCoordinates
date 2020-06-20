@@ -155,6 +155,38 @@ namespace CGTEST {
                         );
             }
 
+            void equals(const GU::PixelCoordinate lhs, const GU::PixelCoordinate rhs)
+            {
+                ASSERT_EQ(lhs.x(), rhs.x());
+                ASSERT_EQ(lhs.y(), rhs.y());
+                ASSERT_EQ(lhs.resWidth(), rhs.resWidth());
+                ASSERT_EQ(lhs.resHeight(), rhs.resHeight());
+            }
+
+            void nequals(const GU::PixelCoordinate lhs, const GU::PixelCoordinate rhs)
+            {
+                ASSERT_FALSE(
+                        lhs.x() == rhs.x()
+                        && lhs.y() == rhs.y()
+                        && lhs.resWidth() == rhs.resWidth()
+                        && lhs.resHeight() == rhs.resHeight()
+                    );
+            }
+
+            void equals(const GU::PercentCoordinate lhs, const GU::PercentCoordinate rhs)
+            {
+                ASSERT_EQ(lhs.x(), rhs.x());
+                ASSERT_EQ(lhs.y(), rhs.y());
+            }
+
+            void nequals(const GU::PercentCoordinate lhs, const GU::PercentCoordinate rhs)
+            {
+                ASSERT_FALSE(
+                        lhs.x() == rhs.x()
+                        && lhs.y() == rhs.y()
+                    );
+            }
+
             void equals(const GU::RelativeCoordinate lhs, const GU::RelativeCoordinate rhs)
             {
                 ASSERT_EQ(lhs.direction(), rhs.direction());

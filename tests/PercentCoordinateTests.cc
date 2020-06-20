@@ -69,41 +69,26 @@
 
 #include "GUCoordinatesTests.hpp"
 
+#define PercentCoordinateCPPTests_PREAMBLE do { } while (0);
+
+#define PercentCoordinateCPPTests_CLASS GU::PercentCoordinate
+
+#define PercentCoordinateCPPTests_STRCT gu_percent_coordinate
+
+#define PercentCoordinateCPPTests_INITIAL GU::PercentCoordinate(-1.0f, -1.0f)
+
+#define PercentCoordinateCPPTests_EMPTY { 0.0f, 0.0f }
+
+#define PercentCoordinateCPPTests_CHANGE obj.set_x(0.0f);
+
+#define PercentCoordinateCPPTests_CCHANGE obj6 = {1.0f, 2.0f};
+
+
 namespace CGTEST {
     
     class PercentCoordinateCPPTests: public GUCoordinatesTests {};
 
-    TEST_F(PercentCoordinateCPPTests, RO5)
-    {
-        GU::PercentCoordinate coord = GU::PercentCoordinate(-1.0f, -1.0f);
-        GU::PercentCoordinate coord2 = GU::PercentCoordinate(coord);
-        ASSERT_EQ(coord, coord2);
-        GU::PercentCoordinate coord3 = coord2;
-        ASSERT_EQ(coord, coord3);
-        coord.set_x(0.0f);
-        ASSERT_NE(coord, coord3);
-        ASSERT_EQ(coord2, coord3);
-#if __cplusplus >= 199711L
-        GU::PercentCoordinate coord4 = std::move(coord2);
-        ASSERT_NE(coord4, coord2);
-        ASSERT_EQ(coord4, coord3);
-        ASSERT_EQ(coord2.x(), 0.0f);
-        ASSERT_EQ(coord2.y(), 0.0f);
-        GU::PercentCoordinate coord5;
-        coord5 = std::move(coord4);
-        ASSERT_NE(coord5, coord2);
-        ASSERT_EQ(coord5, coord3);
-        ASSERT_EQ(coord4.x(), 0.0f);
-        ASSERT_EQ(coord4.y(), 0.0f);
-#endif
-        const gu_percent_coordinate coord6 = {1, 2};
-        GU::PercentCoordinate coord7 = coord6;
-        GU::PercentCoordinate coord8;
-        coord8 = coord6;
-        ASSERT_EQ(coord7, coord6);
-        ASSERT_EQ(coord8, coord6);
-        ASSERT_EQ(coord7, coord8);
-    }
+    RO5_TEST_F(PercentCoordinateCPPTests)
 
     TEST_F(PercentCoordinateCPPTests, GettersSetters) {
         GU::PercentCoordinate coord = GU::PercentCoordinate(-1.0f, -1.0f);
