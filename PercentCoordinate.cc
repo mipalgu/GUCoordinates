@@ -115,6 +115,11 @@ GU::PercentCoordinate& GU::PercentCoordinate::operator=(PercentCoordinate&& othe
 }
 #endif
 
+gu_percent_coordinate GU::PercentCoordinate::_c() const
+{
+    return *this;
+}
+
 GU::PixelCoordinate GU::PercentCoordinate::pixelCoordinate(const pixels_u resWidth, const pixels_u resHeight) const
 {
     return pct_coord_to_px_coord(*this, resWidth, resHeight);

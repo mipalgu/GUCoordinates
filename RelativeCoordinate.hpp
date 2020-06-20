@@ -63,8 +63,20 @@
 
 #include <cstdlib>
 #include <guunits/guunits.h>
+#include "CameraCoordinate.hpp"
+#include "PixelCoordinate.hpp"
+#include "PercentCoordinate.hpp"
+#include "Robot.hpp"
+
+#if __cplusplus >= 199711L
+#include <optional>
+#endif
 
 namespace GU {
+
+    struct CameraCoordinate; // Forward Declaration.
+    struct PixelCoordinate; // Forward Declaration.
+    struct PercentCoordinate; // Forward Declaration.
 
     struct RelativeCoordinate: private gu_relative_coordinate {
 
@@ -82,8 +94,17 @@ namespace GU {
         RelativeCoordinate& operator=(RelativeCoordinate&& other);
 #endif
 
-        //CameraCoordinate cameraCoordinate(const pixels_u, const pixels_u) const;
-        //PixelCoordinate pixelCoordinate(const pixels_u, const pixels_u) const;
+        gu_relative_coordinate _c() const;
+
+        bool cameraCoordinate(const Robot, const int, const pixels_u, const pixels_u, CameraCoordinate &) const;
+        bool pixelCoordinate(const Robot robot, const int, const pixels_u, const pixels_u, PixelCoordinate &) const;
+        bool percentCoordinate(Robot, const int, PercentCoordinate & other) const;
+
+#ifdef __cpp_lib_optional
+        std::optional<CameraCoordinate> cameraCoordinate(const Robot, const int, const pixels_u, const pixels_u) const;
+        std::optional<PixelCoordinate> pixelCoordinate(const Robot, const int, const pixels_u, const pixels_u) const;
+        std::optional<PercentCoordinate> percentCoordinate() const;
+#endif
 
         degrees_t direction() const;
         void set_direction(const degrees_t);

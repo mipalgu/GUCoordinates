@@ -128,6 +128,11 @@ GU::CameraCoordinate& GU::CameraCoordinate::operator=(CameraCoordinate&& other)
 }
 #endif
 
+gu_camera_coordinate GU::CameraCoordinate::_c() const
+{
+    return *this;
+}
+
 GU::PixelCoordinate GU::CameraCoordinate::pixelCoordinate() const
 {
     return cam_coord_to_px_coord(*this);

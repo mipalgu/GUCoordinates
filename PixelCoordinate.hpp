@@ -62,6 +62,7 @@
 #include "pixel_coordinate.h"
 #include "CameraCoordinate.hpp"
 #include "PercentCoordinate.hpp"
+#include "RelativeCoordinate.hpp"
 
 #include <cstdlib>
 
@@ -69,6 +70,7 @@ namespace GU {
 
     struct CameraCoordinate; // Forward Declaration.
     struct PercentCoordinate; // Forward Declaration.
+    struct RelativeCoordinate; // Forward Declaration.
 
     struct PixelCoordinate: private gu_pixel_coordinate {
 
@@ -85,6 +87,8 @@ namespace GU {
 #if __cplusplus >= 199711L
         PixelCoordinate& operator=(PixelCoordinate&& other);
 #endif
+
+        gu_pixel_coordinate _c() const;
 
         CameraCoordinate cameraCoordinate() const;
         PercentCoordinate percentCoordinate() const;
