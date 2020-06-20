@@ -219,8 +219,8 @@ namespace CGTEST {
         const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 0.0f);
         gu_percent_coordinate output;
         ASSERT_TRUE(rr_coord_to_pct_coord(coord, robot, 0, &output));
-        ASSERT_EQ(output.x, 0.0f);
-        ASSERT_EQ(output.y, 0.0f);
+        ASSERT_TRUE(abs(output.x - 0.0f) < 0.01f);
+        ASSERT_TRUE(abs(output.y - 0.0f) < 0.01f);
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercent2) {
@@ -228,8 +228,8 @@ namespace CGTEST {
         const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 0.0f);
         gu_percent_coordinate output;
         ASSERT_TRUE(rr_coord_to_pct_coord(coord, robot, 0, &output));
-        ASSERT_EQ(output.x, 0.0f);
-        ASSERT_EQ(output.y, 0.0f);
+        ASSERT_TRUE(abs(output.x - 0.0f) < 0.01f);
+        ASSERT_TRUE(abs(output.y - 0.0f) < 0.01f);
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercent3) {
@@ -237,8 +237,8 @@ namespace CGTEST {
         const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 0.0f);
         gu_percent_coordinate output;
         ASSERT_TRUE(rr_coord_to_pct_coord(coord, robot, 0, &output));
-        ASSERT_EQ(output.x, 0.0f);
-        ASSERT_EQ(output.y, 0.5f);
+        ASSERT_TRUE(abs(output.x - 0.0f) < 0.01f);
+        ASSERT_TRUE(abs(output.y - 0.5f) < 0.01f);
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPixelUsingPreviousCalculation) {
