@@ -1,5 +1,5 @@
 /*
- * field_coordinate.h 
+ * cartesian_coordinate.h 
  * gucoordinates 
  *
  * Created by Callum McColl on 20/06/2020.
@@ -56,64 +56,43 @@
  *
  */
 
-#ifndef FIELD_COORDINATE_H
-#define FIELD_COORDINATE_H
+#ifndef CARTESIAN_COORDINATE_H
+#define CARTESIAN_COORDINATE_H
 
 #include <guunits/guunits.h>
-#include "cartesian_coordinate.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
- * A field_coordinate is a coordinate for an object that faces a certain
- * direction (such as a robot) on the field. 
+ * A cartesian_coordinate is a general coordinate for representing positions
+ * on a tow dimensional plane. 
  * 
- * The coordinate describes the location of the object on the field
- * (with position) as well as the direction that the object is facing
- * (with heading).
+ * This coordinate describes the position through the x and y axes. The
+ * gu_cartesian_coordinate is generally used for the coordinate system of the
+ * soccer field. This describes the world (or more specifically the field)
+ * in terms of the location of each side of the soccer field. The home side
+ * is in the west, whereas the away side is in the east. Because of this,it may
+ * not be a good idea to repurpose this coordinate for use in other applications
+ * since the x and y coordinates of this coordinate must be in centimetres.
+ *
+ * When describing objects that face in certain directions it is important
+ * to disregard this coordinate and instead use gu_field_coordinate.
  */
-typedef struct gu_field_coordinate
+typedef struct gu_cartesian_coordinate
 {
+    /**
+     * The x coordinate of the position in centimetres.
+     */
+    centimetres_t x;
 
     /**
-     * The position of the object on the field.
-     *
-     * If the field is viewed where the home side is in the west and the
-     * away side is in the east, then the x asix runs north to south. The
-     * y axis runs west to east. A negative x value indicates a position
-     * in the northern half of the field while a positive x value indicates
-     * a position in the southern half of the field. A negative y value
-     * indicates a position in the western side of the field whereas a positive
-     * y value indicates a position in the eastern side of the field. A value
-     * of zero for both x and y indicate that the object is in the middle of
-     * the field.
-     *
-     * As an example, if we take an actual full sized 100 meter field, then
-     * the middle of the goal line on the home side of the field would be at
-     * the coordinates (0, -50). The middle of the away goal line would be
-     * (0, 50). The middle line which separates the two sides of a field which 
-     * is 60 meters wide runs from the points (-30, 0) to (30, 0). 
+     * The y coordinate of the position in centimetres.
      */
-    gu_cartesian_coordinate position;
-
-    /**
-     * The direction where the object is facing.
-     *
-     * If the field is viewed where the home side is in the west and the away
-     * side is in the ast, then the direction runs counter clockwise where the
-     * zero direction faces directly south. Therefore, 90 degrees points
-     * directly east, 180 degrees points directly north and 270 degrees points
-     * directly west.
-     */
-    degrees_t heading;
+    centimetres_t y;
 
 
-} gu_field_coordinate;
+} gu_cartesian_coordinate;
 
 #ifdef __cplusplus
 };
 #endif
 
-#endif  /* FIELD_COORDINATE_H */
+#endif  /* CARTESIAN_COORDINATE_H */
