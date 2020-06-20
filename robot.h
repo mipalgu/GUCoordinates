@@ -60,6 +60,7 @@
 #define ROBOT_H
 
 #include "camera.h"
+#include <stdbool.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -88,8 +89,7 @@ typedef struct gu_robot
 
 } gu_robot;
 
-bool gu_robot_equals(gu_robot, gu_robot, float);
-
+bool gu_robot_equals(const gu_robot, const gu_robot, const float);
 
 #ifdef __cplusplus
 };

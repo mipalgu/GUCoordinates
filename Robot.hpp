@@ -87,13 +87,13 @@ namespace GU {
         degrees_f headYaw() const;
         void set_headYaw(const degrees_f);
 
-        gu_camera * cameras() const;
+        const gu_camera * cameras() const;
         void set_cameras(const gu_camera[GU_ROBOT_NUM_CAMERAS]);
 
         gu_camera get_camera(const int) const;
         void set_camera(const int, const gu_camera);
 
-        centimetres_f * cameraHeightOffsets() const;
+        const centimetres_f * cameraHeightOffsets() const;
         void set_cameraHeightOffsets(const centimetres_f[GU_ROBOT_NUM_CAMERAS]);
 
         centimetres_f cameraHeightOffset(const int) const;

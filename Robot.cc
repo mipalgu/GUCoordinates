@@ -59,6 +59,8 @@
 #include "Robot.hpp"
 #include "conversions.h"
 
+#include <string.h>
+
 GU::Robot::Robot(): gu_robot() {}
 
 GU::Robot::Robot(degrees_f t_headPitch, degrees_f t_headYaw, gu_camera t_cameras[GU_ROBOT_NUM_CAMERAS], centimetres_f t_cameraHeightOffsets[GU_ROBOT_NUM_CAMERAS], int t_numCameras)
@@ -79,7 +81,14 @@ GU::Robot::Robot(const Robot& other)
     set_numCameras(other.numCameras());
 } 
 
-GU::Robot::Robot(const gu_robot& other): gu_robot { other.headPitch, other.headYaw, other.cameras, other.cameraHeightOffsets, other.numCameras } {}
+GU::Robot::Robot(const gu_robot& other)
+{
+    set_headPitch(other.headPitch);
+    set_headYaw(other.headYaw);
+    set_cameras(other.cameras);
+    set_cameraHeightOffsets(other.cameraHeightOffsets);
+    set_numCameras(other.numCameras);
+}
 
 #if __cplusplus >= 199711L
 GU::Robot::Robot(Robot&& other)
@@ -171,14 +180,14 @@ void GU::Robot::set_headYaw(const degrees_f newValue)
     gu_robot::headYaw = newValue;
 }
 
-gu_camera * GU::Robot::cameras() const
+const gu_camera * GU::Robot::cameras() const
 {
-    return &gu_robot::cameras;
+    return &gu_robot::cameras[0];
 }
 
-void GU::Robot::set_cameras(const gu_camera[GU_ROBOT_NUM_CAMERAS] newValue)
+void GU::Robot::set_cameras(const gu_camera newValue[GU_ROBOT_NUM_CAMERAS])
 {
-    memcpy(gu_robot::cameras, newValue, sizeof(newValue));
+    memcpy(gu_robot::cameras, newValue, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera));
 }
 
 gu_camera GU::Robot::get_camera(const int index) const
@@ -191,14 +200,14 @@ void GU::Robot::set_camera(const int index, const gu_camera newValue)
     gu_robot::cameras[index] = newValue;
 }
 
-centimetres_f * GU::Robot::cameraHeightOffsets() const
+const centimetres_f * GU::Robot::cameraHeightOffsets() const
 {
-    return &gu_robot::cameraHeightOffsets;
+    return gu_robot::cameraHeightOffsets;
 }
 
-void GU::Robot::set_cameraHeightOffsets(const centimetres_f[GU_ROBOT_NUM_CAMERAS] newValue)
+void GU::Robot::set_cameraHeightOffsets(const centimetres_f newValue[GU_ROBOT_NUM_CAMERAS])
 {
-    memcpy(gu_robot::cameraHeightOffsets, newValue, sizeof(newValue));
+    memcpy(gu_robot::cameraHeightOffsets, newValue, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f));
 }
 
 centimetres_f GU::Robot::cameraHeightOffset(const int index) const
@@ -223,7 +232,7 @@ void GU::Robot::set_numCameras(const int newValue)
 
 bool GU::Robot::operator==(const Robot &other) const
 {
-    return gu_robot_equals(*this, other, 0.0001);
+    return gu_robot_equals(*this, other, 0.0001f);
 }
 
 bool GU::Robot::operator!=(const Robot &other) const
@@ -233,7 +242,7 @@ bool GU::Robot::operator!=(const Robot &other) const
 
 bool GU::Robot::operator==(const gu_robot &other) const
 {
-    return gu_robot_equals(*this, other, 0.0001);
+    return gu_robot_equals(*this, other, 0.0001f);
 }
 
 bool GU::Robot::operator!=(const gu_robot &other) const

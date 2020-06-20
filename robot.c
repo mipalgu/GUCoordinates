@@ -61,7 +61,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-bool gu_robot_equals(const gu_robot lhs, const gu_robot rhs, float tolerance)
+bool gu_robot_equals(const gu_robot lhs, const gu_robot rhs, const float tolerance)
 {
     const bool headEqual = fabsf(deg_f_to_f(lhs.headPitch) - deg_f_to_f(rhs.headPitch)) <= tolerance
         && fabsf(deg_f_to_f(lhs.headYaw) - deg_f_to_f(rhs.headYaw)) <= tolerance;
@@ -75,7 +75,7 @@ bool gu_robot_equals(const gu_robot lhs, const gu_robot rhs, float tolerance)
         {
             return false;
         }
-        if (fabsf(cm_f_to_f(lhs.cameraHeightOffsets[i]) - cm_f_to_f(rhs.cameraHeightOffsets[i])) > 0.0001f)
+        if (fabsf(cm_f_to_f(lhs.cameraHeightOffsets[i]) - cm_f_to_f(rhs.cameraHeightOffsets[i])) > tolerance)
         {
             return false;
         }
