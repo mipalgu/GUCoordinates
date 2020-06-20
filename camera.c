@@ -61,7 +61,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-bool gu_camera_equals(const gu_camera lhs, const gu_camera rhs, float tolerance)
+bool gu_camera_equals(const gu_camera lhs, const gu_camera rhs, const float tolerance)
 {
     return fabsf(cm_f_to_f(lhs.height) - cm_f_to_f(rhs.height)) <= tolerance
         && fabsf(cm_f_to_f(lhs.centerOffset) - cm_f_to_f(rhs.centerOffset)) <= tolerance

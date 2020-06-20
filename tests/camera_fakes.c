@@ -1,8 +1,8 @@
 /*
- * camera.h 
- * gunavigation 
+ * camera_fakes.c 
+ * tests 
  *
- * Created by Callum McColl on 18/06/2020.
+ * Created by Callum McColl on 20/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,67 +56,6 @@
  *
  */
 
-#ifndef CAMERA_H
-#define CAMERA_H
+#include "camera_fakes.h"
 
-#include <guunits/guunits.h>
-#include <stdbool.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#define NAO_V5_TOP_CAMERA {48.064f, 5.871f, 1.2f, 47.64f, 60.97f}
-#define NAO_V5_BOTTOM_CAMERA {43.474f, 5.071f, 39.7f, 47.64f, 60.97f}
-
-#define PEPPER_TOP_CAMERA {115.3f, 8.68f, 0.0f, 44.3f, 55.2f}
-#define PEPPER_BOTTOM_CAMERA {105.15f, 9.36f, 40.0f, 44.3f, 55.2f}
-
-
-typedef struct gu_camera
-{
-    /**
-     * The height from the ground to the middle of the camera.
-     */
-    centimetres_f height;
-
-    /**
-     * The distance the camera is from the center point. A positive value
-     * indicates that the camera is in front of the center point while a
-     * negative value indicates that the camera is behind the center
-     * point.
-     *
-     * This property is useful for when the robot is mounted on a robot
-     * and distance calculations need to be calculated from the torso,
-     * not the camera.
-     */
-    centimetres_f centerOffset;
-
-    /**
-     * The degree in which the camera is facing in the vertical direction.
-     *
-     * A positive value means that the camera is pointing more to the ground. A
-     * negative value means that the camera is pointing more to the sky.
-     */
-    degrees_f vDirection;
-
-    /**
-     * The vertical field of view.
-     */
-    degrees_f vFov;
-
-    /**
-     * The horizontal field of view.
-     */
-    degrees_f hFov;
-
-} gu_camera;
-
-bool gu_camera_equals(const gu_camera, const gu_camera, const float);
-
-
-#ifdef __cplusplus
-};
-#endif
-
-#endif  /* CAMERA_H */
+DEFINE_FAKE_VALUE_FUNC(bool, gu_camera_equals, const gu_camera, const gu_camera, const float);
