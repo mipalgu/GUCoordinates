@@ -248,8 +248,8 @@ namespace CGTEST {
         ASSERT_TRUE(px_coord_to_rr_coord(point, robot, &coord, 0));
         gu_pixel_coordinate output;
         ASSERT_TRUE(rr_coord_to_px_coord(coord, robot, 0, &output, 1920, 1080));
-        ASSERT_EQ(output.x, 450);
         ASSERT_EQ(output.y, -330);
+        ASSERT_EQ(output.x, 450);
     }
 
 }  // namespace
