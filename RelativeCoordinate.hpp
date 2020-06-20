@@ -103,7 +103,7 @@ namespace GU {
 #ifdef __cpp_lib_optional
         std::optional<CameraCoordinate> cameraCoordinate(const Robot, const int, const pixels_u, const pixels_u) const;
         std::optional<PixelCoordinate> pixelCoordinate(const Robot, const int, const pixels_u, const pixels_u) const;
-        std::optional<PercentCoordinate> percentCoordinate() const;
+        std::optional<PercentCoordinate> percentCoordinate(const Robot, const int) const;
 #endif
 
         degrees_t direction() const;
