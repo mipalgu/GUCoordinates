@@ -98,6 +98,20 @@ GU::Camera& GU::Camera::operator=(const Camera& other)
     return *this;
 }
 
+GU::Camera& GU::Camera::operator=(const gu_camera& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_height(other.height);
+    set_centerOffset(other.centerOffset);
+    set_vDirection(other.vDirection);
+    set_vFov(other.vFov);
+    set_hFov(other.hFov);
+    return *this;
+}
+
 #if __cplusplus >= 199711L
 GU::Camera& GU::Camera::operator=(Camera&& other)
 {
@@ -114,6 +128,24 @@ GU::Camera& GU::Camera::operator=(Camera&& other)
     other.set_vDirection(0.0f);
     other.set_vFov(0.0f);
     other.set_hFov(0.0f);
+    return *this;
+}
+
+GU::Camera& GU::Camera::operator=(gu_camera&& other)
+{
+    if (&other == this) {
+        return *this;
+    }
+    set_height(other.height);
+    set_centerOffset(other.centerOffset);
+    set_vDirection(other.vDirection);
+    set_vFov(other.vFov);
+    set_hFov(other.hFov);
+    other.height = 0.0f;
+    other.centerOffset = 0.0f;
+    other.vDirection = 0.0f;
+    other.vFov = 0.0f;
+    other.hFov = 0.0f;
     return *this;
 }
 #endif
@@ -179,6 +211,16 @@ bool GU::Camera::operator==(const Camera &other) const
 }
 
 bool GU::Camera::operator!=(const Camera &other) const
+{
+    return !(*this == other);
+}
+
+bool GU::Camera::operator==(const gu_camera &other) const
+{
+    return gu_camera_equals(*this, other, 0.0001f);
+}
+
+bool GU::Camera::operator!=(const gu_camera &other) const
 {
     return !(*this == other);
 }

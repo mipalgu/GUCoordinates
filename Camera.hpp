@@ -101,6 +101,8 @@ namespace GU {
 
         bool operator ==(const Camera &other) const;
         bool operator !=(const Camera &other) const;
+        bool operator ==(const gu_camera &other) const;
+        bool operator !=(const gu_camera &other) const;
 
     };
 
