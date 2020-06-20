@@ -67,9 +67,9 @@
 #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
 #pragma clang diagnostic ignored "-Wfloat-equal"
 
-#include "GUCoordinatesTests.hpp"
+#include "GUCoordinatesTests.hpp" 
 
-#define RO5_PREAMBLE \
+#define RobotCPPTests_PREAMBLE \
     gu_camera cameras[GU_ROBOT_NUM_CAMERAS]; \
     cameras[0] = NAO_V5_TOP_CAMERA; \
     cameras[1] = NAO_V5_BOTTOM_CAMERA; \
@@ -88,27 +88,29 @@
     memcpy(empty.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f)); \
     empty.numCameras = 0;
 
-#define RO5_CCHANGE \
+#define RobotCPPTests_CLASS GU::Robot
+
+#define RobotCPPTests_STRCT gu_robot
+
+#define RobotCPPTests_INITIAL GU::Robot(2.0f, 3.0f, cameras, offsets, 2)
+
+#define RobotCPPTests_EMPTY empty
+
+#define RobotCPPTests_CHANGE obj.set_headPitch(1.0f);
+
+#define RobotCPPTests_CCHANGE \
     obj6.headPitch = 1.0f; \
     obj6.headYaw = 2.0f; \
     memcpy(obj6.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera)); \
     memcpy(obj6.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f)); \
     obj6.numCameras = 2;
 
-#define RO5_EMPTY empty
-
-#define RobotCPPTests_CLASS GU::Robot
-
-#define RobotCPPTests_INITIAL GU::Robot(2.0f, 3.0f, cameras, offsets, 2)
-
-#define RobotCPPTests_CHANGE obj.set_headPitch(1.0f);
-
 
 namespace CGTEST {
 
     class RobotCPPTests: public GUCoordinatesTests {};
 
-    RO5_TEST_F(RobotCPPTests, RO5, gu_robot, RobotCPPTests_CLASS, RO5_PREAMBLE, RobotCPPTests_INITIAL, RobotCPPTests_CHANGE, RO5_CCHANGE, RO5_EMPTY)
+    RO5_TEST_F(RobotCPPTests)
 
     TEST_F(RobotCPPTests, GettersSetters) {
         gu_robot nao_c = GU_NAO_V5_ROBOT(0.0f, 0.0f);

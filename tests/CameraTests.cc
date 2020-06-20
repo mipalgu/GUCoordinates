@@ -69,47 +69,26 @@
 
 #include "GUCoordinatesTests.hpp"
 
+#define CameraCPPTests_PREAMBLE do { } while (0);
+
+#define CameraCPPTests_CLASS GU::Camera
+
+#define CameraCPPTests_STRCT gu_camera
+
+#define CameraCPPTests_INITIAL GU::Camera(1.0f, 1.5f, 2.0f, 3.0f, 4.0f)
+
+#define CameraCPPTests_EMPTY { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f }
+
+#define CameraCPPTests_CHANGE obj.set_height(0.0f);
+
+#define CameraCPPTests_CCHANGE obj6 = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
+
+
 namespace CGTEST {
     
     class CameraCPPTests: public GUCoordinatesTests {};
 
-    TEST_F(CameraCPPTests, RO5)
-    {
-        GU::Camera camera = GU::Camera(1.0f, 1.5f, 2.0f, 3.0f, 4.0f);
-        GU::Camera camera2 = GU::Camera(camera);
-        equals(camera, camera2);
-        GU::Camera camera3 = camera2;
-        equals(camera, camera3);
-        camera.set_height(0.0f);
-        nequals(camera, camera3);
-        equals(camera2, camera3);
-#if __cplusplus >= 199711L
-        GU::Camera camera4 = std::move(camera2);
-        nequals(camera4, camera2);
-        equals(camera4, camera3);
-        ASSERT_EQ(camera2.height(), 0.0f);
-        ASSERT_EQ(camera2.centerOffset(), 0.0f);
-        ASSERT_EQ(camera2.vDirection(), 0.0f);
-        ASSERT_EQ(camera2.vFov(), 0.0f);
-        ASSERT_EQ(camera2.hFov(), 0.0f);
-        GU::Camera camera5;
-        camera5 = std::move(camera4);
-        nequals(camera5, camera2);
-        equals(camera5, camera3);
-        ASSERT_EQ(camera4.height(), 0.0f);
-        ASSERT_EQ(camera4.centerOffset(), 0.0f);
-        ASSERT_EQ(camera4.vDirection(), 0.0f);
-        ASSERT_EQ(camera4.vFov(), 0.0f);
-        ASSERT_EQ(camera4.hFov(), 0.0f);
-#endif
-        const gu_camera camera6 = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
-        GU::Camera camera7 = camera6;
-        GU::Camera camera8;
-        camera8 = camera6;
-        equals(camera7, camera6);
-        equals(camera8, camera6);
-        equals(camera7, camera8);
-    }
+    RO5_TEST_F(CameraCPPTests)
 
     TEST_F(CameraCPPTests, GettersSetters) {
         GU::Camera camera = GU::Camera(1.0f, 1.5f, 2.0f, 3.0f, 4.0f);

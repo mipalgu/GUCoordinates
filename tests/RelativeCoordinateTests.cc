@@ -69,41 +69,26 @@
 
 #include "GUCoordinatesTests.hpp"
 
+
+#define RelativeCoordinateCPPTests_PREAMBLE do { } while (0);
+
+#define RelativeCoordinateCPPTests_CLASS GU::RelativeCoordinate
+
+#define RelativeCoordinateCPPTests_STRCT gu_relative_coordinate
+
+#define RelativeCoordinateCPPTests_INITIAL GU::RelativeCoordinate(90, 100)
+
+#define RelativeCoordinateCPPTests_EMPTY { 0, 0 }
+
+#define RelativeCoordinateCPPTests_CHANGE obj.set_direction(-90);
+
+#define RelativeCoordinateCPPTests_CCHANGE obj6 = {40, 15};
+
 namespace CGTEST {
     
     class RelativeCoordinateCPPTests: public GUCoordinatesTests {};
 
-    TEST_F(RelativeCoordinateCPPTests, RO5)
-    {
-        GU::RelativeCoordinate coord = GU::RelativeCoordinate(90, 100);
-        GU::RelativeCoordinate coord2 = GU::RelativeCoordinate(coord);
-        equals(coord, coord2);
-        GU::RelativeCoordinate coord3 = coord2;
-        equals(coord, coord3);
-        coord.set_direction(-90);
-        nequals(coord, coord3);
-        equals(coord2, coord3);
-#if __cplusplus >= 199711L
-        GU::RelativeCoordinate coord4 = std::move(coord2);
-        nequals(coord4, coord2);
-        equals(coord4, coord3);
-        ASSERT_EQ(coord2.direction(), 0);
-        ASSERT_EQ(coord2.distance(), 0);
-        GU::RelativeCoordinate coord5;
-        coord5 = std::move(coord4);
-        nequals(coord5, coord2);
-        equals(coord5, coord3);
-        ASSERT_EQ(coord4.direction(), 0);
-        ASSERT_EQ(coord4.distance(), 0);
-#endif
-        const gu_relative_coordinate coord6 = {40, 15};
-        GU::RelativeCoordinate coord7 = coord6;
-        GU::RelativeCoordinate coord8;
-        coord8 = coord6;
-        equals(coord7, coord6);
-        equals(coord8, coord6);
-        equals(coord7, coord8);
-    }
+    RO5_TEST_F(RelativeCoordinateCPPTests)
 
     TEST_F(RelativeCoordinateCPPTests, GettersSetters) {
         GU::RelativeCoordinate coord = GU::RelativeCoordinate(90, 100);

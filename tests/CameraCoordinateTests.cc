@@ -69,45 +69,25 @@
 
 #include "GUCoordinatesTests.hpp"
 
+#define CameraCoordinateCPPTests_PREAMBLE do { } while (0);
+
+#define CameraCoordinateCPPTests_CLASS GU::CameraCoordinate
+
+#define CameraCoordinateCPPTests_STRCT gu_camera_coordinate
+
+#define CameraCoordinateCPPTests_INITIAL GU::CameraCoordinate(1, 2, 3, 4)
+
+#define CameraCoordinateCPPTests_EMPTY { 0, 0, 0, 0 }
+
+#define CameraCoordinateCPPTests_CHANGE obj.set_x(0);
+
+#define CameraCoordinateCPPTests_CCHANGE obj6 = {1, 2, 3, 4};
+
 namespace CGTEST {
 
     class CameraCoordinateCPPTests: public GUCoordinatesTests {};
 
-    TEST_F(CameraCoordinateCPPTests, RO5)
-    {
-        GU::CameraCoordinate coord = GU::CameraCoordinate(1, 2, 3, 4);
-        GU::CameraCoordinate coord2 = GU::CameraCoordinate(coord);
-        equals(coord, coord2);
-        GU::CameraCoordinate coord3 = coord2;
-        equals(coord, coord3);
-        coord.set_x(0);
-        nequals(coord, coord3);
-        equals(coord2, coord3);
-#if __cplusplus >= 199711L
-        GU::CameraCoordinate coord4 = std::move(coord2);
-        nequals(coord4, coord2);
-        equals(coord4, coord3);
-        ASSERT_EQ(coord2.x(), 0);
-        ASSERT_EQ(coord2.y(), 0);
-        ASSERT_EQ(coord2.resWidth(), 0);
-        ASSERT_EQ(coord2.resHeight(), 0);
-        GU::CameraCoordinate coord5;
-        coord5 = std::move(coord4);
-        nequals(coord5, coord2);
-        equals(coord5, coord3);
-        ASSERT_EQ(coord4.x(), 0);
-        ASSERT_EQ(coord4.y(), 0);
-        ASSERT_EQ(coord4.resWidth(), 0);
-        ASSERT_EQ(coord4.resHeight(), 0);
-#endif
-        const gu_camera_coordinate coord6 = {1, 2, 3, 4};
-        GU::CameraCoordinate coord7 = coord6;
-        GU::CameraCoordinate coord8;
-        coord8 = coord6;
-        equals(coord7, coord6);
-        equals(coord8, coord6);
-        equals(coord7, coord8);
-    }
+    RO5_TEST_F(CameraCoordinateCPPTests)
 
     TEST_F(CameraCoordinateCPPTests, GettersSetters) {
         GU::CameraCoordinate coord = GU::CameraCoordinate(1, 2, 3, 4);

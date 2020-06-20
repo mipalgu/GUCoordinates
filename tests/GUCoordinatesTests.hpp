@@ -66,38 +66,38 @@
 #include "fakes.h"
 
 #if __cplusplus >= 199711L
-#define RO5_TEST_CPP17(class, empty) \
-    class obj4 = std::move(obj2); \
+#define RO5_TEST_CPP17(testclass) \
+    testclass##_CLASS obj4 = std::move(obj2); \
     nequals(obj4, obj2); \
     equals(obj4, obj3); \
-    equals(obj2, empty); \
-    class obj5; \
+    equals(obj2, testclass##_EMPTY); \
+    testclass##_CLASS obj5; \
     obj5 = std::move(obj4); \
     nequals(obj5, obj2); \
     equals(obj5, obj3); \
-    equals(obj4, empty);
+    equals(obj4, testclass##_EMPTY);
 #else
 #define RO5_TEST_CPP17(class, empty) do { } while(0);
 #endif
 
 
-#define RO5_TEST_F(testclass, testname, strct, class, preamble, initial, change, cchange, empty) \
-    TEST_F(testclass, testname) \
+#define RO5_TEST_F(testclass) \
+    TEST_F(testclass, testclass##_RO5) \
     { \
-        preamble \
-        class obj = initial; \
-        class obj2 = class(obj); \
+        testclass##_PREAMBLE \
+        testclass##_CLASS obj = testclass##_INITIAL; \
+        testclass##_CLASS obj2 = testclass##_CLASS(obj); \
         equals(obj, obj2); \
-        class obj3 = obj2; \
+        testclass##_CLASS obj3 = obj2; \
         equals(obj, obj3); \
-        change \
+        testclass##_CHANGE \
         nequals(obj, obj3); \
         equals(obj2, obj3); \
-        RO5_TEST_CPP17(class, empty) \
-        strct obj6 = {}; \
-        cchange \
-        class obj7 = obj6; \
-        class obj8; \
+        RO5_TEST_CPP17(testclass) \
+        testclass##_STRCT obj6 = {}; \
+        testclass##_CCHANGE \
+        testclass##_CLASS obj7 = obj6; \
+        testclass##_CLASS obj8; \
         obj8 = obj6; \
         equals(obj7, obj6); \
         equals(obj8, obj6); \
