@@ -179,9 +179,11 @@ namespace CGTEST {
 
     TEST_F(ConversionsTests, ConvertsFromPixelToRelativeCoordinate) {
         const gu_pixel_coordinate centrePoint = { 0, 0, 1920, 1080 };
-        const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 5.0f);
+        const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 0.0f);
         gu_relative_coordinate coord;
         ASSERT_TRUE(px_coord_to_rr_coord(centrePoint, robot, &coord, 0));
+        ASSERT_EQ(coord.distance, 429);
+        ASSERT_EQ(coord.direction, 0);
         //std::cout << coord.distance() << ", " << coord.direction() << std::endl;
     }
 
@@ -201,6 +203,53 @@ namespace CGTEST {
         joints.set_HeadPitch(rad_f_to_f(deg_f_to_rad_f(5.0f)));
         pixel_to_rr_coord(0, 0, Top, &vs, &joints, &distance, &angle);
         std::cout << "distance: " << distance << ", angle: " << angle << std::endl;*/
+    }
+
+    TEST_F(ConversionsTests, ConvertsFromPercentToRelativeCoordinate3) {
+        const gu_percent_coordinate centrePoint = {0.0f, 0.5f};
+        const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 0.0f);
+        gu_relative_coordinate coord;
+        ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, robot, &coord, 0));
+        ASSERT_EQ(coord.distance, 629);
+        ASSERT_EQ(coord.direction, 0);
+    }
+
+    TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercent) {
+        const gu_relative_coordinate coord = { 0, 430 };
+        const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 0.0f);
+        gu_percent_coordinate output;
+        ASSERT_TRUE(rr_coord_to_pct_coord(coord, robot, 0, &output));
+        ASSERT_EQ(output.x, 0.0f);
+        ASSERT_EQ(output.y, 0.0f);
+    }
+
+    TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercent2) {
+        const gu_relative_coordinate coord = { 0, 153 };
+        const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 0.0f);
+        gu_percent_coordinate output;
+        ASSERT_TRUE(rr_coord_to_pct_coord(coord, robot, 0, &output));
+        ASSERT_EQ(output.x, 0.0f);
+        ASSERT_EQ(output.y, 0.0f);
+    }
+
+    TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercent3) {
+        const gu_relative_coordinate coord = { 0, 629};
+        const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 0.0f);
+        gu_percent_coordinate output;
+        ASSERT_TRUE(rr_coord_to_pct_coord(coord, robot, 0, &output));
+        ASSERT_EQ(output.x, 0.0f);
+        ASSERT_EQ(output.y, 0.5f);
+    }
+
+    TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPixelUsingPreviousCalculation) {
+        const gu_pixel_coordinate point = { 450, -330, 1920, 1080 };
+        const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 2.0f);
+        gu_relative_coordinate coord;
+        ASSERT_TRUE(px_coord_to_rr_coord(point, robot, &coord, 0));
+        gu_pixel_coordinate output;
+        ASSERT_TRUE(rr_coord_to_px_coord(coord, robot, 0, &output, 1920, 1080));
+        ASSERT_EQ(output.x, 450);
+        ASSERT_EQ(output.y, -330);
     }
 
 }  // namespace
