@@ -145,9 +145,18 @@ bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_robot ro
         return false;
     }
     const radians_f yawRad = deg_f_to_rad_f(yaw);
-    const float frontDistance = cm_u_to_f(coord.distance) * cosf(rad_f_to_f(yawRad));
-    const degrees_f pitch = rad_f_to_deg_f(f_to_rad_f(atan2f(frontDistance, cm_f_to_f(camera.height)))) - camera.vDirection;
-    const percent_f y = f_to_pct_f(deg_f_to_f(pitch / (camera.vFov / 2.0f)));
+    const float frontDistance = cm_u_to_f(coord.distance) * cosf(rad_f_to_f(yawRad)) ;//+ cm_f_to_f(camera.centerOffset);
+    const centimetres_f relativeHeightToCameraFromNeck = camera.height - robot.cameraHeightOffsets[cameraOffset];
+    const float cosPitch = cosf(deg_f_to_rad_f(robot.headPitch));
+    const float sinPitch = sinf(deg_f_to_rad_f(robot.headPitch));
+    // Avoid division by 0 later
+    if (cosPitch == 0.0f) {
+        return false;
+    }
+    const centimetres_f actualCameraHeight = (camera.height - relativeHeightToCameraFromNeck * f_to_cm_f(1.0f - cosPitch)) - camera.centerOffset * f_to_cm_f(sinPitch); 
+    const degrees_f totalPitch = rad_f_to_deg_f(f_to_rad_f(atan2f(cm_f_to_f(actualCameraHeight), frontDistance)));
+    const degrees_f pitch = totalPitch - camera.vDirection - robot.headPitch;
+    const percent_f y = f_to_pct_f(deg_f_to_f(-pitch / (camera.vFov / 2.0f)));
     if (y < -1.0f || y > 1.0f)
     {
         return false;
