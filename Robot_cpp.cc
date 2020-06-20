@@ -190,7 +190,7 @@ void GU::Robot::set_cameras(const gu_camera newValue[GU_ROBOT_NUM_CAMERAS])
     memcpy(gu_robot::cameras, newValue, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera));
 }
 
-gu_camera GU::Robot::get_camera(const int index) const
+gu_camera GU::Robot::camera(const int index) const
 {
     return gu_robot::cameras[index];
 }

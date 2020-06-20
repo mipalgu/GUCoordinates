@@ -65,5 +65,6 @@
 #include "PercentCoordinate.hpp"
 #include "RelativeCoordinate.hpp"
 #include "Camera.hpp"
+#include "Robot.hpp"
 
 #endif  /* GUCOORDINATES_HPP */
