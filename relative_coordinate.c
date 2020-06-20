@@ -1,8 +1,8 @@
 /*
- * relative_coordinate.h 
- * gunavigation 
+ * relative_coordinate.c 
+ * gucoordinates 
  *
- * Created by Callum McColl on 18/06/2020.
+ * Created by Callum McColl on 20/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,47 +56,9 @@
  *
  */
 
-#ifndef RELATIVE_COORDINATE_H
-#define RELATIVE_COORDINATE_H
+#include "relative_coordinate.h"
 
-#include <guunits/guunits.h>
-#include <stdbool.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * A coordinate that is relative to some other coordinate.
- *
- * This coordinate describes the distance and direction that one coordinate
- * is from another. This means that the relative_coordinate is a polar
- * coordinate in the form of phi, r where phi is the direction and r 
- * is the distance to the coordinate.
- */
-typedef struct gu_relative_coordinate
+bool gu_relative_coordinate_equals(const gu_relative_coordinate lhs, const gu_relative_coordinate rhs)
 {
-    /**
-     * The heading towards the coordinate.
-     *
-     * A positive value for direction indicates that the coordinate is on
-     * the left. A negative value indicates that the coordinate is on the
-     * right. A value of zero indicates that the coordinate is pointing
-     * straight ahead.
-     */
-    degrees_t direction;
-
-    /**
-     * The distance to the coordinate.
-     */
-    centimetres_u distance;
-
-} gu_relative_coordinate;
-
-bool gu_relative_coordinate_equals(const gu_relative_coordinate, const gu_relative_coordinate);
-
-#ifdef __cplusplus
-};
-#endif
-
-#endif  /* RELATIVE_COORDINATE_H */
+    return lhs.direction == rhs.direction && lhs.distance == rhs.distance;
+}

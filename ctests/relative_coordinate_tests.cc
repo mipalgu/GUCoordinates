@@ -1,8 +1,8 @@
 /*
- * relative_coordinate.h 
- * gunavigation 
+ * relative_coordinate_tests.cc 
+ * ctests 
  *
- * Created by Callum McColl on 18/06/2020.
+ * Created by Callum McColl on 20/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,47 +56,47 @@
  *
  */
 
-#ifndef RELATIVE_COORDINATE_H
-#define RELATIVE_COORDINATE_H
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wglobal-constructors"
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
+#pragma clang diagnostic ignored "-Wshift-sign-overflow"
+#pragma clang diagnostic ignored "-Wused-but-marked-unused"
+#pragma clang diagnostic ignored "-Wdeprecated"
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
+#pragma clang diagnostic ignored "-Wfloat-equal"
 
-#include <guunits/guunits.h>
-#include <stdbool.h>
+#include <gtest/gtest.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "../gucoordinates.h"
 
-/**
- * A coordinate that is relative to some other coordinate.
- *
- * This coordinate describes the distance and direction that one coordinate
- * is from another. This means that the relative_coordinate is a polar
- * coordinate in the form of phi, r where phi is the direction and r 
- * is the distance to the coordinate.
- */
-typedef struct gu_relative_coordinate
-{
-    /**
-     * The heading towards the coordinate.
-     *
-     * A positive value for direction indicates that the coordinate is on
-     * the left. A negative value indicates that the coordinate is on the
-     * right. A value of zero indicates that the coordinate is pointing
-     * straight ahead.
-     */
-    degrees_t direction;
+namespace CGTEST {
+    
+    class RelativeCoordinateTests: public ::testing::Test {
+    protected:
+        
+        virtual void SetUp() {
+        }
+        
+        virtual void TearDown() {
+        }
 
-    /**
-     * The distance to the coordinate.
-     */
-    centimetres_u distance;
+    };
 
-} gu_relative_coordinate;
+    TEST_F(RelativeCoordinateTests, Equality) {
+        const gu_relative_coordinate leftNear = { 90, 10 };
+        const gu_relative_coordinate leftFar = { 90, 100};
+        const gu_relative_coordinate rightNear = { -90, 10  };
+        const gu_relative_coordinate rightFar = { -90, 100 };
+        const gu_relative_coordinate inFront = { 0, 50 };
+        ASSERT_TRUE(gu_relative_coordinate_equals(leftNear, leftNear));
+        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, leftFar));
+        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, rightNear));
+        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, rightFar));
+        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, inFront));
+    }
 
-bool gu_relative_coordinate_equals(const gu_relative_coordinate, const gu_relative_coordinate);
+}  // namespace
 
-#ifdef __cplusplus
-};
-#endif
-
-#endif  /* RELATIVE_COORDINATE_H */
+#pragma clang diagnostic pop
