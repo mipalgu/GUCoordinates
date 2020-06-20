@@ -1,8 +1,8 @@
 /*
- * fakes.h 
+ * relative_coordinate_fakes.c 
  * tests 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 20/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,25 +56,6 @@
  *
  */
 
-#ifndef FAKES_H
-#define FAKES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "fff.h"
-#include "conversion_fakes.h"
-#include "camera_coordinate_fakes.h"
 #include "relative_coordinate_fakes.h"
 
-#define ALL_FAKES(FAKE)             \
-    CONVERSION_FAKES(FAKE)          \
-    CAMERA_COORDINATE_FAKES(FAKE)   \
-    RELATIVE_COORDINATE_FAKES(FAKE)
-
-#ifdef __cplusplus
-};
-#endif
-
-#endif  /* FAKES_H */
+DEFINE_FAKE_VALUE_FUNC(bool, gu_relative_coordinate_equals, const gu_relative_coordinate, const gu_relative_coordinate);

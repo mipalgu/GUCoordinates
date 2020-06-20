@@ -1,8 +1,8 @@
 /*
- * fakes.h 
- * tests 
+ * RelativeCoordinate.hpp 
+ * gucoordinates 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 20/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,25 +56,48 @@
  *
  */
 
-#ifndef FAKES_H
-#define FAKES_H
+#ifndef RELATIVECOORDINATE_HPP
+#define RELATIVECOORDINATE_HPP
 
-#ifdef __cplusplus
-extern "C" {
+#include "relative_coordinate.h"
+
+#include <cstdlib>
+#include <guunits/guunits.h>
+
+namespace GU {
+
+    struct RelativeCoordinate: private gu_relative_coordinate {
+
+        RelativeCoordinate();
+        RelativeCoordinate(degrees_t, centimetres_u);
+        RelativeCoordinate(const RelativeCoordinate& other);
+        RelativeCoordinate(const gu_relative_coordinate& other);
+#if __cplusplus >= 199711L
+        RelativeCoordinate(RelativeCoordinate&& other);
+#endif
+        ~RelativeCoordinate();
+        RelativeCoordinate& operator=(const RelativeCoordinate& other);
+        RelativeCoordinate& operator=(const gu_relative_coordinate& other);
+#if __cplusplus >= 199711L
+        RelativeCoordinate& operator=(RelativeCoordinate&& other);
 #endif
 
-#include "fff.h"
-#include "conversion_fakes.h"
-#include "camera_coordinate_fakes.h"
-#include "relative_coordinate_fakes.h"
+        //CameraCoordinate cameraCoordinate(const pixels_u, const pixels_u) const;
+        //PixelCoordinate pixelCoordinate(const pixels_u, const pixels_u) const;
 
-#define ALL_FAKES(FAKE)             \
-    CONVERSION_FAKES(FAKE)          \
-    CAMERA_COORDINATE_FAKES(FAKE)   \
-    RELATIVE_COORDINATE_FAKES(FAKE)
+        degrees_t direction() const;
+        void set_direction(const degrees_t);
 
-#ifdef __cplusplus
+        centimetres_u distance() const;
+        void set_distance(const centimetres_u);
+
+        bool operator ==(const RelativeCoordinate &other) const;
+        bool operator !=(const RelativeCoordinate &other) const;
+        bool operator ==(const gu_relative_coordinate &other) const;
+        bool operator !=(const gu_relative_coordinate &other) const;
+
+    };
+
 };
-#endif
 
-#endif  /* FAKES_H */
+#endif  /* RELATIVECOORDINATE_HPP */

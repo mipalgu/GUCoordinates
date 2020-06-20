@@ -63,6 +63,7 @@
 #include "CameraCoordinate.hpp"
 #include "PixelCoordinate.hpp"
 #include "PercentCoordinate.hpp"
+#include "RelativeCoordinate.hpp"
 #include "Camera.hpp"
 
 #endif  /* GUCOORDINATES_HPP */
