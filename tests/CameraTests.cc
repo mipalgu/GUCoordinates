@@ -67,62 +67,26 @@
 #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
 #pragma clang diagnostic ignored "-Wfloat-equal"
 
-#include <gtest/gtest.h>
-#include "fff.h"
-
-#include "../GUCoordinates.hpp"
-#include "fakes.h"
+#include "GUCoordinatesTests.hpp"
 
 namespace CGTEST {
     
-    class CameraCPPTests: public ::testing::Test {
-    protected:
-        
-        virtual void SetUp() {
-            ALL_FAKES(RESET_FAKE);
-            FFF_RESET_HISTORY();
-        }
-        
-        virtual void TearDown() {
-            ALL_FAKES(RESET_FAKE);
-            FFF_RESET_HISTORY();
-        }
-
-    };
-
-    void camera_equals(const GU::Camera lhs, const GU::Camera rhs)
-    {
-        ASSERT_EQ(lhs.height(), rhs.height());
-        ASSERT_EQ(lhs.centerOffset(), rhs.centerOffset());
-        ASSERT_EQ(lhs.vDirection(), rhs.vDirection());
-        ASSERT_EQ(lhs.vFov(), rhs.vFov());
-        ASSERT_EQ(lhs.hFov(), rhs.hFov());
-    }
-
-    void camera_nequals(const GU::Camera lhs, const GU::Camera rhs)
-    {
-        ASSERT_FALSE(lhs.height() == rhs.height()
-                && lhs.centerOffset() == rhs.centerOffset()
-                && lhs.vDirection() == rhs.vDirection()
-                && lhs.vFov() == rhs.vFov()
-                && lhs.hFov() == rhs.hFov()
-                );
-    }
+    class CameraCPPTests: public GUCoordinatesTests {};
 
     TEST_F(CameraCPPTests, RO5)
     {
         GU::Camera camera = GU::Camera(1.0f, 1.5f, 2.0f, 3.0f, 4.0f);
         GU::Camera camera2 = GU::Camera(camera);
-        camera_equals(camera, camera2);
+        equals(camera, camera2);
         GU::Camera camera3 = camera2;
-        camera_equals(camera, camera3);
+        equals(camera, camera3);
         camera.set_height(0.0f);
-        camera_nequals(camera, camera3);
-        camera_equals(camera2, camera3);
+        nequals(camera, camera3);
+        equals(camera2, camera3);
 #if __cplusplus >= 199711L
         GU::Camera camera4 = std::move(camera2);
-        camera_nequals(camera4, camera2);
-        camera_equals(camera4, camera3);
+        nequals(camera4, camera2);
+        equals(camera4, camera3);
         ASSERT_EQ(camera2.height(), 0.0f);
         ASSERT_EQ(camera2.centerOffset(), 0.0f);
         ASSERT_EQ(camera2.vDirection(), 0.0f);
@@ -130,8 +94,8 @@ namespace CGTEST {
         ASSERT_EQ(camera2.hFov(), 0.0f);
         GU::Camera camera5;
         camera5 = std::move(camera4);
-        camera_nequals(camera5, camera2);
-        camera_equals(camera5, camera3);
+        nequals(camera5, camera2);
+        equals(camera5, camera3);
         ASSERT_EQ(camera4.height(), 0.0f);
         ASSERT_EQ(camera4.centerOffset(), 0.0f);
         ASSERT_EQ(camera4.vDirection(), 0.0f);
@@ -142,9 +106,9 @@ namespace CGTEST {
         GU::Camera camera7 = camera6;
         GU::Camera camera8;
         camera8 = camera6;
-        camera_equals(camera7, camera6);
-        camera_equals(camera8, camera6);
-        camera_equals(camera7, camera8);
+        equals(camera7, camera6);
+        equals(camera8, camera6);
+        equals(camera7, camera8);
     }
 
     TEST_F(CameraCPPTests, GettersSetters) {

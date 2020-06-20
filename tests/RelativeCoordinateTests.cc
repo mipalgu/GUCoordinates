@@ -67,62 +67,32 @@
 #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
 #pragma clang diagnostic ignored "-Wfloat-equal"
 
-#include <gtest/gtest.h>
-
-#include "../GUCoordinates.hpp"
-#include "fakes.h"
+#include "GUCoordinatesTests.hpp"
 
 namespace CGTEST {
     
-    class RelativeCoordinateCPPTests: public ::testing::Test {
-    protected:
-        
-        virtual void SetUp() {
-            ALL_FAKES(RESET_FAKE);
-            FFF_RESET_HISTORY();
-        }
-        
-        virtual void TearDown() {
-            ALL_FAKES(RESET_FAKE);
-            FFF_RESET_HISTORY();
-        }
-
-    };
-
-    void relative_equals(const GU::RelativeCoordinate lhs, const GU::RelativeCoordinate rhs)
-    {
-        ASSERT_EQ(lhs.direction(), rhs.direction());
-        ASSERT_EQ(lhs.distance(), rhs.distance());
-    }
-
-    void relative_nequals(const GU::RelativeCoordinate lhs, const GU::RelativeCoordinate rhs)
-    {
-        ASSERT_FALSE(
-                lhs.direction() == rhs.direction()
-                && lhs.distance() == rhs.distance()
-            );
-    }
+    class RelativeCoordinateCPPTests: public GUCoordinatesTests {};
 
     TEST_F(RelativeCoordinateCPPTests, RO5)
     {
         GU::RelativeCoordinate coord = GU::RelativeCoordinate(90, 100);
         GU::RelativeCoordinate coord2 = GU::RelativeCoordinate(coord);
-        relative_equals(coord, coord2);
+        equals(coord, coord2);
         GU::RelativeCoordinate coord3 = coord2;
-        relative_equals(coord, coord3);
+        equals(coord, coord3);
         coord.set_direction(-90);
-        relative_nequals(coord, coord3);
-        relative_equals(coord2, coord3);
+        nequals(coord, coord3);
+        equals(coord2, coord3);
 #if __cplusplus >= 199711L
         GU::RelativeCoordinate coord4 = std::move(coord2);
-        relative_nequals(coord4, coord2);
-        relative_equals(coord4, coord3);
+        nequals(coord4, coord2);
+        equals(coord4, coord3);
         ASSERT_EQ(coord2.direction(), 0);
         ASSERT_EQ(coord2.distance(), 0);
         GU::RelativeCoordinate coord5;
         coord5 = std::move(coord4);
-        relative_nequals(coord5, coord2);
-        relative_equals(coord5, coord3);
+        nequals(coord5, coord2);
+        equals(coord5, coord3);
         ASSERT_EQ(coord4.direction(), 0);
         ASSERT_EQ(coord4.distance(), 0);
 #endif
@@ -130,9 +100,9 @@ namespace CGTEST {
         GU::RelativeCoordinate coord7 = coord6;
         GU::RelativeCoordinate coord8;
         coord8 = coord6;
-        relative_equals(coord7, coord6);
-        relative_equals(coord8, coord6);
-        relative_equals(coord7, coord8);
+        equals(coord7, coord6);
+        equals(coord8, coord6);
+        equals(coord7, coord8);
     }
 
     TEST_F(RelativeCoordinateCPPTests, GettersSetters) {

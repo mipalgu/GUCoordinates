@@ -67,85 +67,11 @@
 #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
 #pragma clang diagnostic ignored "-Wfloat-equal"
 
-#include <gtest/gtest.h>
-#include "fff.h"
-
-#include "../GUCoordinates.hpp"
-#include "fakes.h"
-
-#include <iostream>
+#include "GUCoordinatesTests.hpp"
 
 namespace CGTEST {
 
-    class RobotCPPTests: public ::testing::Test {
-    protected:
-        
-        virtual void SetUp() {
-            ALL_FAKES(RESET_FAKE);
-            FFF_RESET_HISTORY();
-        }
-        
-        virtual void TearDown() {
-            ALL_FAKES(RESET_FAKE);
-            FFF_RESET_HISTORY();
-        }
-
-    };
-
-    void camera_equals2(const GU::Camera lhs, const GU::Camera rhs)
-    {
-        ASSERT_EQ(lhs.height(), rhs.height());
-        ASSERT_EQ(lhs.centerOffset(), rhs.centerOffset());
-        ASSERT_EQ(lhs.vDirection(), rhs.vDirection());
-        ASSERT_EQ(lhs.vFov(), rhs.vFov());
-        ASSERT_EQ(lhs.hFov(), rhs.hFov());
-    }
-
-    void robot_equals(const GU::Robot lhs, const GU::Robot rhs)
-    {
-        ASSERT_EQ(lhs.headPitch(), rhs.headPitch());
-        ASSERT_EQ(lhs.headYaw(), rhs.headYaw());
-        ASSERT_EQ(lhs.numCameras(), rhs.numCameras());
-        for (int i = 0; i < lhs.numCameras(); i++)
-        {
-            const GU::Camera lcamera = lhs.camera(i);
-            const GU::Camera rcamera = rhs.camera(i);
-            ASSERT_EQ(lcamera.height(), rcamera.height());
-            ASSERT_EQ(lcamera.centerOffset(), rcamera.centerOffset());
-            ASSERT_EQ(lcamera.vDirection(), rcamera.vDirection());
-            ASSERT_EQ(lcamera.vFov(), rcamera.vFov());
-            ASSERT_EQ(lcamera.hFov(), rcamera.hFov());
-            ASSERT_EQ(lhs.cameraHeightOffset(i), rhs.cameraHeightOffset(i));
-        }
-    }
-
-    void robot_nequals(const GU::Robot lhs, const GU::Robot rhs)
-    {
-        if (!(lhs.headPitch() == rhs.headPitch()
-                && lhs.headYaw() == rhs.headYaw()
-                && lhs.numCameras() == rhs.numCameras()
-           ))
-        {
-            ASSERT_FALSE(lhs.headPitch() == rhs.headPitch()
-                && lhs.headYaw() == rhs.headYaw()
-                && lhs.numCameras() == rhs.numCameras()
-                );
-            return;
-        }
-        for (int i = 0; i < lhs.numCameras(); i++)
-        {
-            const GU::Camera lcamera = lhs.camera(i);
-            const GU::Camera rcamera = rhs.camera(i);
-            ASSERT_FALSE(
-                    lcamera.height() == rcamera.height()
-                    && lcamera.centerOffset() == rcamera.centerOffset()
-                    && lcamera.vDirection() == rcamera.vDirection()
-                    && lcamera.vFov() == rcamera.vFov()
-                    && lcamera.hFov() == rcamera.hFov()
-                    && lhs.cameraHeightOffset(i) == rhs.cameraHeightOffset(i)
-                    );
-        }
-    }
+    class RobotCPPTests: public GUCoordinatesTests {};
 
     TEST_F(RobotCPPTests, RO5)
     {
@@ -162,22 +88,22 @@ namespace CGTEST {
         }
         GU::Robot coord = GU::Robot(2.0f, 3.0f, cameras, offsets, 2);
         GU::Robot coord2 = GU::Robot(coord);
-        robot_equals(coord, coord2);
+        equals(coord, coord2);
         GU::Robot coord3 = coord2;
-        robot_equals(coord, coord3);
+        equals(coord, coord3);
         coord.set_headPitch(1.0f);
-        robot_nequals(coord, coord3);
-        robot_equals(coord2, coord3);
+        nequals(coord, coord3);
+        equals(coord2, coord3);
 #if __cplusplus >= 199711L
         GU::Robot coord4 = std::move(coord2);
-        robot_nequals(coord4, coord2);
-        robot_equals(coord4, coord3);
-        robot_equals(coord2, {0.0f, 0.0f, cameras, offsets, 0});
+        nequals(coord4, coord2);
+        equals(coord4, coord3);
+        equals(coord2, {0.0f, 0.0f, cameras, offsets, 0});
         GU::Robot coord5;
         coord5 = std::move(coord4);
-        robot_nequals(coord5, coord2);
-        robot_equals(coord5, coord3);
-        robot_equals(coord4, {0.0f, 0.0f, cameras, offsets, 0});
+        nequals(coord5, coord2);
+        equals(coord5, coord3);
+        equals(coord4, {0.0f, 0.0f, cameras, offsets, 0});
 #endif
         gu_robot coord6 = {};
         coord6.headPitch = 1.0f;
@@ -188,9 +114,9 @@ namespace CGTEST {
         GU::Robot coord7 = coord6;
         GU::Robot coord8;
         coord8 = coord6;
-        robot_equals(coord7, coord6);
-        robot_equals(coord8, coord6);
-        robot_equals(coord7, coord8);
+        equals(coord7, coord6);
+        equals(coord8, coord6);
+        equals(coord7, coord8);
     }
 
     TEST_F(RobotCPPTests, GettersSetters) {
@@ -202,9 +128,9 @@ namespace CGTEST {
         ASSERT_EQ(nao.headYaw(), 0.0f);
         nao.set_headYaw(6.0f);
         ASSERT_EQ(nao.headYaw(), 6.0f);
-        camera_equals2(nao.camera(0), nao_c.cameras[0]);
+        equals(nao.camera(0), nao_c.cameras[0]);
         nao.set_camera(0, nao_c.cameras[1]);
-        camera_equals2(nao.camera(1), nao_c.cameras[1]);
+        equals(nao.camera(1), nao_c.cameras[1]);
         ASSERT_EQ(nao.cameraHeightOffset(0), nao_c.cameraHeightOffsets[0]);
         nao.set_cameraHeightOffset(0, nao_c.cameraHeightOffsets[1]);
         ASSERT_EQ(nao.cameraHeightOffset(1), nao_c.cameraHeightOffsets[1]);

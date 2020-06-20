@@ -67,27 +67,11 @@
 #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
 #pragma clang diagnostic ignored "-Wfloat-equal"
 
-#include <gtest/gtest.h>
-
-#include "../GUCoordinates.hpp"
-#include "fakes.h"
+#include "GUCoordinatesTests.hpp"
 
 namespace CGTEST {
     
-    class PercentCoordinateCPPTests: public ::testing::Test {
-    protected:
-        
-        virtual void SetUp() {
-            ALL_FAKES(RESET_FAKE);
-            FFF_RESET_HISTORY();
-        }
-        
-        virtual void TearDown() {
-            ALL_FAKES(RESET_FAKE);
-            FFF_RESET_HISTORY();
-        }
-
-    };
+    class PercentCoordinateCPPTests: public GUCoordinatesTests {};
 
     TEST_F(PercentCoordinateCPPTests, RO5)
     {

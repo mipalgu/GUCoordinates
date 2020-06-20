@@ -67,68 +67,34 @@
 #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
 #pragma clang diagnostic ignored "-Wfloat-equal"
 
-#include <gtest/gtest.h>
-#include "fff.h"
-
-#include "../GUCoordinates.hpp"
-#include "fakes.h"
+#include "GUCoordinatesTests.hpp"
 
 namespace CGTEST {
 
-    class CameraCoordinateCPPTests: public ::testing::Test {
-    protected:
-        
-        virtual void SetUp() {
-            ALL_FAKES(RESET_FAKE);
-            FFF_RESET_HISTORY();
-        }
-        
-        virtual void TearDown() {
-            ALL_FAKES(RESET_FAKE);
-            FFF_RESET_HISTORY();
-        }
-
-    };
-
-    void camera_equals(const GU::CameraCoordinate lhs, const GU::CameraCoordinate rhs)
-    {
-        ASSERT_EQ(lhs.x(), rhs.x());
-        ASSERT_EQ(lhs.y(), rhs.y());
-        ASSERT_EQ(lhs.resWidth(), rhs.resWidth());
-        ASSERT_EQ(lhs.resHeight(), rhs.resHeight());
-    }
-
-    void camera_nequals(const GU::CameraCoordinate lhs, const GU::CameraCoordinate rhs)
-    {
-        ASSERT_FALSE(lhs.x() == rhs.x()
-                && lhs.y() == rhs.y()
-                && lhs.resWidth() == rhs.resWidth()
-                && lhs.resHeight() == rhs.resHeight()
-                );
-    }
+    class CameraCoordinateCPPTests: public GUCoordinatesTests {};
 
     TEST_F(CameraCoordinateCPPTests, RO5)
     {
         GU::CameraCoordinate coord = GU::CameraCoordinate(1, 2, 3, 4);
         GU::CameraCoordinate coord2 = GU::CameraCoordinate(coord);
-        camera_equals(coord, coord2);
+        equals(coord, coord2);
         GU::CameraCoordinate coord3 = coord2;
-        camera_equals(coord, coord3);
+        equals(coord, coord3);
         coord.set_x(0);
-        camera_nequals(coord, coord3);
-        camera_equals(coord2, coord3);
+        nequals(coord, coord3);
+        equals(coord2, coord3);
 #if __cplusplus >= 199711L
         GU::CameraCoordinate coord4 = std::move(coord2);
-        camera_nequals(coord4, coord2);
-        camera_equals(coord4, coord3);
+        nequals(coord4, coord2);
+        equals(coord4, coord3);
         ASSERT_EQ(coord2.x(), 0);
         ASSERT_EQ(coord2.y(), 0);
         ASSERT_EQ(coord2.resWidth(), 0);
         ASSERT_EQ(coord2.resHeight(), 0);
         GU::CameraCoordinate coord5;
         coord5 = std::move(coord4);
-        camera_nequals(coord5, coord2);
-        camera_equals(coord5, coord3);
+        nequals(coord5, coord2);
+        equals(coord5, coord3);
         ASSERT_EQ(coord4.x(), 0);
         ASSERT_EQ(coord4.y(), 0);
         ASSERT_EQ(coord4.resWidth(), 0);
@@ -138,9 +104,9 @@ namespace CGTEST {
         GU::CameraCoordinate coord7 = coord6;
         GU::CameraCoordinate coord8;
         coord8 = coord6;
-        camera_equals(coord7, coord6);
-        camera_equals(coord8, coord6);
-        camera_equals(coord7, coord8);
+        equals(coord7, coord6);
+        equals(coord8, coord6);
+        equals(coord7, coord8);
     }
 
     TEST_F(CameraCoordinateCPPTests, GettersSetters) {
