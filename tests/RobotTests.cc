@@ -98,7 +98,7 @@ namespace CGTEST {
         for (int i = 0; i < lhs.numCameras(); i++)
         {
             const GU::Camera lcamera = lhs.camera(i);
-            const GU::Camera rcamers = rhs.camera(i);
+            const GU::Camera rcamera = rhs.camera(i);
             ASSERT_EQ(lcamera.height(), rcamera.height());
             ASSERT_EQ(lcamera.centerOffset(), rcamera.centerOffset());
             ASSERT_EQ(lcamera.vDirection(), rcamera.vDirection());
@@ -131,16 +131,25 @@ namespace CGTEST {
                     && lcamera.vDirection() == rcamera.vDirection()
                     && lcamera.vFov() == rcamera.vFov()
                     && lcamera.hFov() == rcamera.hFov()
-                    && lhs.cameraHeightOffsets(i) == rhs.cameraHeightOffsets(i)
+                    && lhs.cameraHeightOffset(i) == rhs.cameraHeightOffset(i)
                     );
         }
     }
 
     TEST_F(RobotCPPTests, RO5)
     {
-        const gu_camera cameras[GU_ROBOT_NUM_CAMERAS] = {};
-        const centimetres_f offsets[GU_ROBOT_NUM_CAMERAS] = {};
-        GU::Robot coord = GU::Robot(2.0f, 3.0f, cameras, offsets, 0);
+        gu_camera cameras[GU_ROBOT_NUM_CAMERAS];
+        cameras[0] = NAO_V5_TOP_CAMERA;
+        cameras[1] = NAO_V5_BOTTOM_CAMERA;
+        centimetres_f offsets[GU_ROBOT_NUM_CAMERAS];
+        offsets[0] = 0.0f;
+        offsets[1] = 0.0f;
+        for (int i = 2; i < GU_ROBOT_NUM_CAMERAS; i++)
+        {
+            cameras[i] = {};
+            offsets[i] = 0.0f;
+        }
+        GU::Robot coord = GU::Robot(2.0f, 3.0f, cameras, offsets, 2);
         GU::Robot coord2 = GU::Robot(coord);
         robot_equals(coord, coord2);
         GU::Robot coord3 = coord2;
@@ -152,14 +161,19 @@ namespace CGTEST {
         GU::Robot coord4 = std::move(coord2);
         robot_nequals(coord4, coord2);
         robot_equals(coord4, coord3);
-        robot_equals(coord2, {0.0f, 0.0f, cameras, offsets, 0});
+        robot_equals(coord2, {0.0f, 0.0f, cameras, offsets, 2});
         GU::Robot coord5;
         coord5 = std::move(coord4);
         robot_nequals(coord5, coord2);
         robot_equals(coord5, coord3);
-        robot_equals(coord4, {0.0f, 0.0f, cameras, offsets, 0});
+        robot_equals(coord4, {0.0f, 0.0f, cameras, offsets, 2});
 #endif
-        const gu_robot coord6 = {1.0f, 2.0f cameras, offsets, 1};
+        gu_robot coord6 = {};
+        coord6.headPitch = 1.0f;
+        coord6.headYaw = 2.0f;
+        memcpy(coord6.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera));
+        memcpy(coord6.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f));
+        coord6.numCameras = 2;
         GU::Robot coord7 = coord6;
         GU::Robot coord8;
         coord8 = coord6;
@@ -170,9 +184,9 @@ namespace CGTEST {
 
     TEST_F(RobotCPPTests, GettersSetters) {
         gu_robot nao_c = GU_NAO_V5_ROBOT(0.0f, 0.0f);
-        GU::Robot nao = GU_NAO_V5_Robot(0.0f, 0.0f); 
+        GU::Robot nao = nao_c;
         ASSERT_EQ(nao.headPitch(), 0.0f);
-        coord.set_headPitch(5.0f);
+        nao.set_headPitch(5.0f);
         ASSERT_EQ(nao.headPitch(), 5.0f);
         ASSERT_EQ(nao.headYaw(), 0.0f);
         nao.set_headYaw(6.0f);
@@ -180,15 +194,15 @@ namespace CGTEST {
         ASSERT_EQ(nao.camera(0), nao_c.cameras[0]);
         nao.set_camera(0, nao_c.cameras[1]);
         ASSERT_EQ(nao.camera(1), nao_c.cameras[1]);
-        ASSERT_EQ(nao.cameraHeightOffsets(0), nao_c.cameraHeightOffsets[0]);
+        ASSERT_EQ(nao.cameraHeightOffset(0), nao_c.cameraHeightOffsets[0]);
         nao.set_cameraHeightOffset(0, nao_c.cameraHeightOffsets[1]);
-        ASSERT_EQ(nao.cameraHeightOffset(1), nao_c.cameraHeightOffset[1]);
+        ASSERT_EQ(nao.cameraHeightOffset(1), nao_c.cameraHeightOffsets[1]);
     }
 
     TEST_F(RobotCPPTests, Equality) {
         gu_robot_equals_fake.return_val = true;
-        const GU::Robot nao = GU_NAO_V5_ROBOT(0.0f, 0.0f);
-        const GU::Robot nao2 = GU_NAO_V5_ROBOT(5.0f, 0.0f);
+        const GU::Robot nao = GU::Robot(GU_NAO_V5_ROBOT(0.0f, 0.0f));
+        const GU::Robot nao2 = GU::Robot(GU_NAO_V5_ROBOT(5.0f, 0.0f));
         ASSERT_EQ(nao, nao);
         ASSERT_EQ(gu_robot_equals_fake.call_count, 1);
         RESET_FAKE(gu_robot_equals)

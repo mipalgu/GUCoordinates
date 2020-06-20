@@ -1,8 +1,8 @@
 /*
- * Camera.hpp 
- * guvision_utils 
+ * robot_fakes.c 
+ * tests 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 20/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,54 +56,7 @@
  *
  */
 
-#ifndef CAMERA_HPP
-#define CAMERA_HPP
+#include "robot_fakes.h"
 
-#include "camera.h"
 
-#include <cstdlib>
-
-namespace GU {
-
-    struct Camera: private gu_camera {
-
-        Camera();
-        Camera(centimetres_f, centimetres_f, degrees_f, degrees_f, degrees_f);
-        Camera(const Camera& other);
-        Camera(const gu_camera& other);
-#if __cplusplus >= 199711L
-        Camera(Camera&& other);
-#endif
-        ~Camera();
-        Camera& operator=(const Camera& other);
-        Camera& operator=(const gu_camera& other);
-#if __cplusplus >= 199711L
-        Camera& operator=(Camera&& other);
-        Camera& operator=(gu_camera&& other);
-#endif
-
-        gu_camera _c() const;
-
-        centimetres_f height() const;
-        void set_height(const centimetres_f);
-
-        centimetres_f centerOffset() const;
-        void set_centerOffset(const centimetres_f);
-
-        degrees_f vDirection() const;
-        void set_vDirection(const degrees_f);
-
-        degrees_f vFov() const;
-        void set_vFov(const degrees_f);
-
-        degrees_f hFov() const;
-        void set_hFov(const degrees_f);
-
-        bool operator ==(const Camera &other) const;
-        bool operator !=(const Camera &other) const;
-
-    };
-
-};
-
-#endif  /* CAMERA_HPP */
+DEFINE_FAKE_VALUE_FUNC(bool, gu_robot_equals, const gu_robot, const gu_robot, const float);

@@ -64,6 +64,8 @@ GU::Camera::Camera(centimetres_f t_height, centimetres_f t_centerOffset, degrees
 
 GU::Camera::Camera(const Camera& other): gu_camera { other.height(), other.centerOffset(), other.vDirection(), other.vFov(), other.hFov() } {}
 
+GU::Camera::Camera(const gu_camera& other): gu_camera { other.height, other.centerOffset, other.vDirection, other.vFov, other.hFov } {}
+
 #if __cplusplus >= 199711L
 GU::Camera::Camera(Camera&& other)
 {
@@ -115,6 +117,11 @@ GU::Camera& GU::Camera::operator=(Camera&& other)
     return *this;
 }
 #endif
+
+gu_camera GU::Camera::_c() const
+{
+    return *this;
+}
 
 centimetres_f GU::Camera::height() const
 {

@@ -68,12 +68,14 @@ extern "C" {
 #include "camera_coordinate_fakes.h"
 #include "relative_coordinate_fakes.h"
 #include "camera_fakes.h"
+#include "robot_fakes.h"
 
 #define ALL_FAKES(FAKE)             \
     CONVERSION_FAKES(FAKE)          \
     CAMERA_COORDINATE_FAKES(FAKE)   \
     RELATIVE_COORDINATE_FAKES(FAKE) \
-    CAMERA_FAKES(FAKE)
+    CAMERA_FAKES(FAKE)              \
+    ROBOT_FAKES(FAKE)
 
 #ifdef __cplusplus
 };

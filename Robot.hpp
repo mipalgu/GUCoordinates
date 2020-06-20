@@ -60,6 +60,7 @@
 #define ROBOT_HPP
 
 #include "robot.h"
+#include "Camera.hpp"
 
 #include <cstdlib>
 
@@ -68,7 +69,7 @@ namespace GU {
     struct Robot: private gu_robot {
 
         Robot();
-        Robot(degrees_f, degrees_f, gu_camera[GU_ROBOT_NUM_CAMERAS], centimetres_f[GU_ROBOT_NUM_CAMERAS], int);
+        Robot(degrees_f, degrees_f, const gu_camera[GU_ROBOT_NUM_CAMERAS], const centimetres_f[GU_ROBOT_NUM_CAMERAS], int);
         Robot(const Robot& other);
         Robot(const gu_robot& other);
 #if __cplusplus >= 199711L
@@ -81,6 +82,8 @@ namespace GU {
         Robot& operator=(Robot&& other);
 #endif
 
+        gu_robot _c() const;
+
         degrees_f headPitch() const;
         void set_headPitch(const degrees_f);
 
@@ -90,8 +93,8 @@ namespace GU {
         const gu_camera * cameras() const;
         void set_cameras(const gu_camera[GU_ROBOT_NUM_CAMERAS]);
 
-        gu_camera camera(const int) const;
-        void set_camera(const int, const gu_camera);
+        Camera camera(const int) const;
+        void set_camera(const int, const Camera);
 
         const centimetres_f * cameraHeightOffsets() const;
         void set_cameraHeightOffsets(const centimetres_f[GU_ROBOT_NUM_CAMERAS]);
