@@ -69,55 +69,46 @@
 
 #include "GUCoordinatesTests.hpp"
 
+#define RO5_PREAMBLE \
+    gu_camera cameras[GU_ROBOT_NUM_CAMERAS]; \
+    cameras[0] = NAO_V5_TOP_CAMERA; \
+    cameras[1] = NAO_V5_BOTTOM_CAMERA; \
+    centimetres_f offsets[GU_ROBOT_NUM_CAMERAS]; \
+    offsets[0] = 0.0f; \
+    offsets[1] = 0.0f; \
+    for (int i = 2; i < GU_ROBOT_NUM_CAMERAS; i++) \
+    { \
+        cameras[i] = {}; \
+        offsets[i] = 0.0f; \
+    } \
+    gu_robot empty; \
+    empty.headPitch = 0.0f; \
+    empty.headYaw = 0.0f; \
+    memcpy(empty.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera)); \
+    memcpy(empty.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f)); \
+    empty.numCameras = 0;
+
+#define RO5_CCHANGE \
+    obj6.headPitch = 1.0f; \
+    obj6.headYaw = 2.0f; \
+    memcpy(obj6.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera)); \
+    memcpy(obj6.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f)); \
+    obj6.numCameras = 2;
+
+#define RO5_EMPTY empty
+
+#define RobotCPPTests_CLASS GU::Robot
+
+#define RobotCPPTests_INITIAL GU::Robot(2.0f, 3.0f, cameras, offsets, 2)
+
+#define RobotCPPTests_CHANGE obj.set_headPitch(1.0f);
+
+
 namespace CGTEST {
 
     class RobotCPPTests: public GUCoordinatesTests {};
 
-    TEST_F(RobotCPPTests, RO5)
-    {
-        gu_camera cameras[GU_ROBOT_NUM_CAMERAS];
-        cameras[0] = NAO_V5_TOP_CAMERA;
-        cameras[1] = NAO_V5_BOTTOM_CAMERA;
-        centimetres_f offsets[GU_ROBOT_NUM_CAMERAS];
-        offsets[0] = 0.0f;
-        offsets[1] = 0.0f;
-        for (int i = 2; i < GU_ROBOT_NUM_CAMERAS; i++)
-        {
-            cameras[i] = {};
-            offsets[i] = 0.0f;
-        }
-        GU::Robot coord = GU::Robot(2.0f, 3.0f, cameras, offsets, 2);
-        GU::Robot coord2 = GU::Robot(coord);
-        equals(coord, coord2);
-        GU::Robot coord3 = coord2;
-        equals(coord, coord3);
-        coord.set_headPitch(1.0f);
-        nequals(coord, coord3);
-        equals(coord2, coord3);
-#if __cplusplus >= 199711L
-        GU::Robot coord4 = std::move(coord2);
-        nequals(coord4, coord2);
-        equals(coord4, coord3);
-        equals(coord2, {0.0f, 0.0f, cameras, offsets, 0});
-        GU::Robot coord5;
-        coord5 = std::move(coord4);
-        nequals(coord5, coord2);
-        equals(coord5, coord3);
-        equals(coord4, {0.0f, 0.0f, cameras, offsets, 0});
-#endif
-        gu_robot coord6 = {};
-        coord6.headPitch = 1.0f;
-        coord6.headYaw = 2.0f;
-        memcpy(coord6.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera));
-        memcpy(coord6.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f));
-        coord6.numCameras = 2;
-        GU::Robot coord7 = coord6;
-        GU::Robot coord8;
-        coord8 = coord6;
-        equals(coord7, coord6);
-        equals(coord8, coord6);
-        equals(coord7, coord8);
-    }
+    RO5_TEST_F(RobotCPPTests, RO5, gu_robot, RobotCPPTests_CLASS, RO5_PREAMBLE, RobotCPPTests_INITIAL, RobotCPPTests_CHANGE, RO5_CCHANGE, RO5_EMPTY)
 
     TEST_F(RobotCPPTests, GettersSetters) {
         gu_robot nao_c = GU_NAO_V5_ROBOT(0.0f, 0.0f);

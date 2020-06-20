@@ -65,6 +65,45 @@
 #include "../GUCoordinates.hpp"
 #include "fakes.h"
 
+#if __cplusplus >= 199711L
+#define RO5_TEST_CPP17(class, empty) \
+    class obj4 = std::move(obj2); \
+    nequals(obj4, obj2); \
+    equals(obj4, obj3); \
+    equals(obj2, empty); \
+    class obj5; \
+    obj5 = std::move(obj4); \
+    nequals(obj5, obj2); \
+    equals(obj5, obj3); \
+    equals(obj4, empty);
+#else
+#define RO5_TEST_CPP17(class, empty) do { } while(0);
+#endif
+
+
+#define RO5_TEST_F(testclass, testname, strct, class, preamble, initial, change, cchange, empty) \
+    TEST_F(testclass, testname) \
+    { \
+        preamble \
+        class obj = initial; \
+        class obj2 = class(obj); \
+        equals(obj, obj2); \
+        class obj3 = obj2; \
+        equals(obj, obj3); \
+        change \
+        nequals(obj, obj3); \
+        equals(obj2, obj3); \
+        RO5_TEST_CPP17(class, empty) \
+        strct obj6 = {}; \
+        cchange \
+        class obj7 = obj6; \
+        class obj8; \
+        obj8 = obj6; \
+        equals(obj7, obj6); \
+        equals(obj8, obj6); \
+        equals(obj7, obj8); \
+    }
+
 namespace CGTEST {
 
     class GUCoordinatesTests: public ::testing::Test {
