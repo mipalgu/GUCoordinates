@@ -56,17 +56,6 @@
  *
  */
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wglobal-constructors"
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
-#pragma clang diagnostic ignored "-Wshift-sign-overflow"
-#pragma clang diagnostic ignored "-Wused-but-marked-unused"
-#pragma clang diagnostic ignored "-Wdeprecated"
-#pragma clang diagnostic ignored "-Wunused-parameter"
-#pragma clang diagnostic ignored "-Wsign-compare"
-#pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
-#pragma clang diagnostic ignored "-Wfloat-equal"
-
 #include "GUCoordinatesTests.hpp"
 
 #define PixelCoordinateCPPTests_PREAMBLE do { } while (0);
@@ -145,5 +134,3 @@ namespace CGTEST {
     }
 
 }  // namespace
-
-#pragma clang diagnostic pop
