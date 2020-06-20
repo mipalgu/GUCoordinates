@@ -73,6 +73,8 @@
 #include "../GUCoordinates.hpp"
 #include "fakes.h"
 
+#include <iostream>
+
 namespace CGTEST {
 
     class RobotCPPTests: public ::testing::Test {
@@ -89,6 +91,15 @@ namespace CGTEST {
         }
 
     };
+
+    void camera_equals2(const GU::Camera lhs, const GU::Camera rhs)
+    {
+        ASSERT_EQ(lhs.height(), rhs.height());
+        ASSERT_EQ(lhs.centerOffset(), rhs.centerOffset());
+        ASSERT_EQ(lhs.vDirection(), rhs.vDirection());
+        ASSERT_EQ(lhs.vFov(), rhs.vFov());
+        ASSERT_EQ(lhs.hFov(), rhs.hFov());
+    }
 
     void robot_equals(const GU::Robot lhs, const GU::Robot rhs)
     {
@@ -161,12 +172,12 @@ namespace CGTEST {
         GU::Robot coord4 = std::move(coord2);
         robot_nequals(coord4, coord2);
         robot_equals(coord4, coord3);
-        robot_equals(coord2, {0.0f, 0.0f, cameras, offsets, 2});
+        robot_equals(coord2, {0.0f, 0.0f, cameras, offsets, 0});
         GU::Robot coord5;
         coord5 = std::move(coord4);
         robot_nequals(coord5, coord2);
         robot_equals(coord5, coord3);
-        robot_equals(coord4, {0.0f, 0.0f, cameras, offsets, 2});
+        robot_equals(coord4, {0.0f, 0.0f, cameras, offsets, 0});
 #endif
         gu_robot coord6 = {};
         coord6.headPitch = 1.0f;
@@ -191,9 +202,9 @@ namespace CGTEST {
         ASSERT_EQ(nao.headYaw(), 0.0f);
         nao.set_headYaw(6.0f);
         ASSERT_EQ(nao.headYaw(), 6.0f);
-        ASSERT_EQ(nao.camera(0), nao_c.cameras[0]);
+        camera_equals2(nao.camera(0), nao_c.cameras[0]);
         nao.set_camera(0, nao_c.cameras[1]);
-        ASSERT_EQ(nao.camera(1), nao_c.cameras[1]);
+        camera_equals2(nao.camera(1), nao_c.cameras[1]);
         ASSERT_EQ(nao.cameraHeightOffset(0), nao_c.cameraHeightOffsets[0]);
         nao.set_cameraHeightOffset(0, nao_c.cameraHeightOffsets[1]);
         ASSERT_EQ(nao.cameraHeightOffset(1), nao_c.cameraHeightOffsets[1]);

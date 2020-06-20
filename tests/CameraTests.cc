@@ -175,7 +175,7 @@ namespace CGTEST {
         RESET_FAKE(gu_camera_equals)
         gu_camera_equals_fake.return_val = false;
         ASSERT_NE(topCamera, bottomCamera);
-        ASSERT_EQ(gu_camera_coordinate_equals_fake.call_count, 1);
+        ASSERT_EQ(gu_camera_equals_fake.call_count, 1);
     }
 
 }  // namespace
