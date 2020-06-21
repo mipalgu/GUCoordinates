@@ -60,8 +60,6 @@
 #include "hidden_conversions.h"
 
 #include <math.h>
-#include <stdio.h>
-
 
 gu_pixel_coordinate cam_coord_to_px_coord(const gu_camera_coordinate coord)
 {
@@ -236,7 +234,7 @@ gu_relative_coordinate cartesian_coord_to_rr_coord_from_source(const gu_cartesia
 gu_relative_coordinate field_coord_to_rr_coord_to_target(const gu_field_coordinate source, const gu_cartesian_coordinate target)
 {
     gu_relative_coordinate out = cartesian_coord_to_rr_coord_from_source(source.position, target);
-    out.direction = out.direction - source.heading;
+    out.direction = normalise_deg_t(out.direction - source.heading);
     return out;
 }
 
@@ -267,6 +265,25 @@ centimetres_d distance_between_points(const gu_cartesian_coordinate point1, cons
     return d_to_cm_d(sqrt(cm_t_to_d(dpoint.x * dpoint.x) + cm_t_to_d(dpoint.y * dpoint.y)));
 }
 
+degrees_d normalise_deg_d(degrees_d angle) {
+    if (angle < 0) {
+        angle = fmod(angle, -360);
+    } else {
+        angle = fmod(angle, 360);
+    }
+    if (angle < -180) {
+        return angle + 360;
+    }
+    if (angle > 180) {
+        return angle - 360;
+    }
+    return angle;
+}
 
+degrees_t normalise_deg_t(degrees_t angle) {
+   return deg_d_to_deg_t(normalise_deg_d(deg_t_to_deg_d(angle))); 
+}
 
-
+radians_d normalise_rad_d(radians_d angle) {
+    return deg_d_to_rad_d(normalise_deg_d(rad_d_to_deg_d(angle)));
+}

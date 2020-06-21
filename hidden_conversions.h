@@ -61,5 +61,8 @@
 
 radians_d angle_between_points(const gu_cartesian_coordinate p1, const gu_cartesian_coordinate p2);
 centimetres_d distance_between_points(const gu_cartesian_coordinate point1, const gu_cartesian_coordinate point2);
+degrees_d normalise_deg_d(degrees_d angle);
+degrees_t normalise_deg_t(degrees_t angle);
+radians_d normalise_rad_d(radians_d angle);
 
 #endif  /* HIDDEN_CONVERSIONS_H */

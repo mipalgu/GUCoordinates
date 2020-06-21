@@ -252,6 +252,49 @@ namespace CGTEST {
         ASSERT_EQ(output.x, 450);
     }
 
+    TEST_F(ConversionsTests, ConvertsFromFieldCoordinateToRelativeCoordinate) {
+        const gu_field_coordinate source = { { 1, 1 }, 45 };
+        const gu_cartesian_coordinate target = { 2, 2 };
+        const gu_relative_coordinate coord = field_coord_to_rr_coord_to_target(source, target);
+        ASSERT_EQ(coord.direction, 0);
+        ASSERT_EQ(coord.distance, 1);
+        const gu_field_coordinate source2 = { {1, 1}, 90 };
+        const gu_cartesian_coordinate target2 =  { 2, 2 };
+        const gu_relative_coordinate result2 = field_coord_to_rr_coord_to_target(source2, target2);
+        ASSERT_EQ(result2.direction, -45);
+        ASSERT_EQ(result2.distance, 1);
+        const gu_field_coordinate source3 = { {-1, 1}, 90};
+        const gu_cartesian_coordinate target3 = { -2, 2 };
+        const gu_relative_coordinate result3 = field_coord_to_rr_coord_to_target(source3, target3);
+        ASSERT_EQ(result3.direction, 45);
+        ASSERT_EQ(result3.distance, 1);
+        const gu_field_coordinate source4 = { {-1, 1}, 180};
+        const gu_cartesian_coordinate target4 = { -2, 2 };
+        const gu_relative_coordinate result4 = field_coord_to_rr_coord_to_target(source4, target4);
+        ASSERT_EQ(result4.direction, -45);
+        ASSERT_EQ(result4.distance, 1);
+        const gu_field_coordinate source5 = { {-1, -1}, 0};
+        const gu_cartesian_coordinate target5 = { -2, -2 };
+        const gu_relative_coordinate result5 = field_coord_to_rr_coord_to_target(source5, target5);
+        ASSERT_EQ(result5.direction, -135);
+        ASSERT_EQ(result5.distance, 1);
+        const gu_field_coordinate source6 = { {-1, -1}, 90};
+        const gu_cartesian_coordinate target6 = { -2, -2 };
+        const gu_relative_coordinate result6 = field_coord_to_rr_coord_to_target(source6, target6);
+        ASSERT_EQ(result6.direction, 135);
+        ASSERT_EQ(result6.distance, 1);
+        const gu_field_coordinate source7 = { {-1, -1}, -90};
+        const gu_cartesian_coordinate target7 = { -2, -2 };
+        const gu_relative_coordinate result7 = field_coord_to_rr_coord_to_target(source7, target7);
+        ASSERT_EQ(result7.direction, -45);
+        ASSERT_EQ(result7.distance, 1);
+        const gu_field_coordinate source8 = { {-1, -1}, -120};
+        const gu_cartesian_coordinate target8 = { -2, -2 };
+        const gu_relative_coordinate result8 = field_coord_to_rr_coord_to_target(source8, target8);
+        ASSERT_EQ(result8.direction, -15);
+        ASSERT_EQ(result8.distance, 1);
+    }
+
 }  // namespace
 
 #pragma clang diagnostic pop
