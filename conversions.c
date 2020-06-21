@@ -57,6 +57,7 @@
  */
 
 #include "conversions.h"
+#include "hidden_conversions.h"
 
 #include <math.h>
 #include <stdio.h>
@@ -216,9 +217,55 @@ gu_field_coordinate rr_coord_to_field_coord_from_source(const gu_relative_coordi
     return out;
 }
 
+gu_relative_coordinate cartesian_coord_to_rr_coord(const gu_cartesian_coordinate target)
+{
+    const gu_cartesian_coordinate zero = { 0, 0 };
+    return cartesian_coord_to_rr_coord_from_source(zero, target);
+}
 
+gu_relative_coordinate cartesian_coord_to_rr_coord_from_source(const gu_cartesian_coordinate source, const gu_cartesian_coordinate target)
+{
+    radians_d angle = angle_between_points(source, target);
+    centimetres_d distance = distance_between_points(source, target);
+    gu_relative_coordinate out;
+    out.direction = rad_d_to_deg_t(angle);
+    out.distance = cm_d_to_cm_u(fabs(distance));
+    return out;
+}
 
+gu_relative_coordinate field_coord_to_rr_coord_to_target(const gu_field_coordinate source, const gu_cartesian_coordinate target)
+{
+    gu_relative_coordinate out = cartesian_coord_to_rr_coord_from_source(source.position, target);
+    out.direction = source.heading + out.direction;
+    return out;
+}
 
+radians_d angle_between_points(const gu_cartesian_coordinate p1, const gu_cartesian_coordinate p2)
+{
+    const centimetres_t dx = p2.x - p1.x;
+    const centimetres_t dy = p2.y - p1.y;
+    if (0 == dx) {
+        if (0 == dy) {
+            return 0.0;
+        }
+        return dy > 0 ? d_to_rad_d(90.0) : d_to_rad_d(-90.0);
+    }
+    return d_to_rad_d(atan2(cm_t_to_d(dy), cm_t_to_d(dx)));
+}
+
+centimetres_d distance_between_points(const gu_cartesian_coordinate point1, const gu_cartesian_coordinate point2)
+{
+    const gu_cartesian_coordinate dpoint = { point2.x - point1.x, point2.y - point1.y };
+    // Horizontal Lines
+    if (0 == dpoint.x) {
+        return fabs(cm_t_to_d(dpoint.y));
+    }
+    // Veritcal Lines
+    if (0 == dpoint.y) {
+        return fabs(cm_t_to_d(dpoint.x));
+    }
+    return d_to_cm_d(sqrt(cm_t_to_d(dpoint.x * dpoint.x) + cm_t_to_d(dpoint.y * dpoint.y)));
+}
 
 
 

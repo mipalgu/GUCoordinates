@@ -1,8 +1,8 @@
 /*
- * conversions.h 
- * gunavigation 
+ * hidden_conversions.h 
+ * gucoordinates 
  *
- * Created by Callum McColl on 18/06/2020.
+ * Created by Callum McColl on 21/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,49 +56,11 @@
  *
  */
 
-#ifndef CONVERSIONS_H
-#define CONVERSIONS_H
+#ifndef HIDDEN_CONVERSIONS_H
+#define HIDDEN_CONVERSIONS_H
 
-#include <guunits/guunits.h>
-#include "camera_coordinate.h"
-#include "pixel_coordinate.h"
-#include "percent_coordinate.h"
-#include "relative_coordinate.h"
-#include "cartesian_coordinate.h"
-#include "field_coordinate.h"
-#include "robot.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+radians_d angle_between_points(const gu_cartesian_coordinate p1, const gu_cartesian_coordinate p2);
+centimetres_d distance_between_points(const gu_cartesian_coordinate point1, const gu_cartesian_coordinate point2);
 
-// Converting between image coordinate systems.
-gu_pixel_coordinate cam_coord_to_px_coord(const gu_camera_coordinate);
-gu_camera_coordinate px_coord_to_cam_coord(const gu_pixel_coordinate);
-gu_percent_coordinate px_coord_to_pct_coord(const gu_pixel_coordinate);
-gu_pixel_coordinate pct_coord_to_px_coord(const gu_percent_coordinate, const pixels_u, const pixels_u);
-
-// Converting from image coordinate systems to the robot relative coordiante system.
-bool px_coord_to_rr_coord(const gu_pixel_coordinate, const gu_robot, gu_relative_coordinate *, const int);
-bool pct_coord_to_rr_coord(const gu_percent_coordinate, const gu_robot, gu_relative_coordinate *, const int);
-
-// Converting from the robot relative coordinate system to the image coordinate systems.
-bool rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_robot, const int, gu_percent_coordinate *);
-bool rr_coord_to_px_coord(const gu_relative_coordinate, const gu_robot, const int, gu_pixel_coordinate *, pixels_u, pixels_u);
-
-// Converting from the robot relative coordinate system to the field coordinate systems.
-gu_cartesian_coordinate rr_coord_to_cartesian_coord(const gu_relative_coordinate);
-gu_cartesian_coordinate rr_coord_to_cartesian_coord_from_source(const gu_relative_coordinate, const gu_cartesian_coordinate);
-gu_field_coordinate rr_coord_to_field_coord(const gu_relative_coordinate, const degrees_t);
-gu_field_coordinate rr_coord_to_field_coord_from_source(const gu_relative_coordinate, const gu_field_coordinate, const degrees_t);
-
-// Converting from field coordinates to relative coordinates.
-gu_relative_coordinate cartesian_coord_to_rr_coord(const gu_cartesian_coordinate);
-gu_relative_coordinate cartesian_coord_to_rr_coord_from_source(const gu_cartesian_coordinate, const gu_cartesian_coordinate);
-gu_relative_coordinate field_coord_to_rr_coord_to_target(const gu_field_coordinate, const gu_cartesian_coordinate);
-
-#ifdef __cplusplus
-};
-#endif
-
-#endif  /* CONVERSIONS_H */
+#endif  /* HIDDEN_CONVERSIONS_H */
