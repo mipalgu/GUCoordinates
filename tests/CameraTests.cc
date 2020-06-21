@@ -58,24 +58,31 @@
 
 #include "GUCoordinatesTests.hpp"
 
-#define CameraCPPTests_PREAMBLE do { } while (0);
-
-#define CameraCPPTests_CLASS GU::Camera
-
-#define CameraCPPTests_STRCT gu_camera
-
-#define CameraCPPTests_INITIAL GU::Camera(1.0f, 1.5f, 2.0f, 3.0f, 4.0f)
-
-#define CameraCPPTests_EMPTY { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f }
-
-#define CameraCPPTests_CHANGE obj.set_height(0.0f);
-
-#define CameraCPPTests_CCHANGE obj6 = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
-
-
 namespace CGTEST {
     
-    class CameraCPPTests: public GUCoordinatesTests {};
+    class CameraCPPTests: public GUCoordinatesTests<GU::Camera, gu_camera> {
+
+        GU::Camera initial()
+        {
+            return GU::Camera(1.0f, 1.5f, 2.0f, 3.0f, 4.0f);
+        }
+
+        gu_camera empty()
+        {
+            return { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
+        }
+
+        void change(GU::Camera &obj)
+        {
+            obj.set_height(0.0f);
+        }
+
+        void cchange(gu_camera &obj)
+        {
+            obj = { 1.0f, 2.0f, 3.0f, 4.0f, 5.0f };
+        }
+
+    };
 
     RO5_TEST_F(CameraCPPTests)
 

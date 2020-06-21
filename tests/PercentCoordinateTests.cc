@@ -58,24 +58,31 @@
 
 #include "GUCoordinatesTests.hpp"
 
-#define PercentCoordinateCPPTests_PREAMBLE do { } while (0);
-
-#define PercentCoordinateCPPTests_CLASS GU::PercentCoordinate
-
-#define PercentCoordinateCPPTests_STRCT gu_percent_coordinate
-
-#define PercentCoordinateCPPTests_INITIAL GU::PercentCoordinate(-1.0f, -1.0f)
-
-#define PercentCoordinateCPPTests_EMPTY { 0.0f, 0.0f }
-
-#define PercentCoordinateCPPTests_CHANGE obj.set_x(0.0f);
-
-#define PercentCoordinateCPPTests_CCHANGE obj6 = {1.0f, 2.0f};
-
-
 namespace CGTEST {
     
-    class PercentCoordinateCPPTests: public GUCoordinatesTests {};
+    class PercentCoordinateCPPTests: public GUCoordinatesTests<GU::PercentCoordinate, gu_percent_coordinate> {
+
+        GU::PercentCoordinate initial()
+        {
+            return GU::PercentCoordinate(-1.0f, -1.0f);
+        }
+
+        gu_percent_coordinate empty()
+        {
+            return { 0.0f, 0.0f };
+        }
+
+        void change(GU::PercentCoordinate &obj)
+        {
+            obj.set_x(0.0f);
+        }
+
+        void cchange(gu_percent_coordinate &obj)
+        {
+            obj = {1.0f, 2.0f};
+        }
+
+    };
 
     RO5_TEST_F(PercentCoordinateCPPTests)
 

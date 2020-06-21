@@ -58,23 +58,31 @@
 
 #include "GUCoordinatesTests.hpp"
 
-#define PixelCoordinateCPPTests_PREAMBLE do { } while (0);
-
-#define PixelCoordinateCPPTests_CLASS GU::PixelCoordinate
-
-#define PixelCoordinateCPPTests_STRCT gu_pixel_coordinate
-
-#define PixelCoordinateCPPTests_INITIAL GU::PixelCoordinate(1, 2, 3, 4)
-
-#define PixelCoordinateCPPTests_EMPTY { 0, 0, 0, 0 }
-
-#define PixelCoordinateCPPTests_CHANGE obj.set_x(0);
-
-#define PixelCoordinateCPPTests_CCHANGE obj6 = {1, 2, 3, 4};
-
 namespace CGTEST {
 
-    class PixelCoordinateCPPTests: public GUCoordinatesTests {};
+    class PixelCoordinateCPPTests: public GUCoordinatesTests<GU::PixelCoordinate, gu_pixel_coordinate> {
+
+        GU::PixelCoordinate initial()
+        {
+            return GU::PixelCoordinate(1, 2, 3, 4);
+        }
+
+        gu_pixel_coordinate empty()
+        {
+            return { 0, 0, 0, 0 };
+        }
+
+        void change(GU::PixelCoordinate &obj)
+        {
+            obj.set_x(0);
+        }
+
+        void cchange(gu_pixel_coordinate &obj)
+        {
+            obj = {1, 2, 3, 4};
+        }
+
+    };
 
     RO5_TEST_F(PixelCoordinateCPPTests)
 

@@ -65,48 +65,35 @@
 #include "../GUCoordinates.hpp"
 #include "fakes.h"
 
-#if __cplusplus >= 199711L
-#define RO5_TEST_CPP17(testclass) \
-    testclass##_CLASS obj4 = std::move(obj2); \
-    nequals(obj4, obj2); \
-    equals(obj4, obj3); \
-    equals(obj2, testclass##_EMPTY); \
-    testclass##_CLASS obj5; \
-    obj5 = std::move(obj4); \
-    nequals(obj5, obj2); \
-    equals(obj5, obj3); \
-    equals(obj4, testclass##_EMPTY);
-#else
-#define RO5_TEST_CPP17(class, empty) do { } while(0);
-#endif
-
-
-#define RO5_TEST_F(testclass) \
-    TEST_F(testclass, testclass##_RO5) \
-    { \
-        testclass##_PREAMBLE \
-        testclass##_CLASS obj = testclass##_INITIAL; \
-        testclass##_CLASS obj2 = testclass##_CLASS(obj); \
-        equals(obj, obj2); \
-        testclass##_CLASS obj3 = obj2; \
-        equals(obj, obj3); \
-        testclass##_CHANGE \
-        nequals(obj, obj3); \
-        equals(obj2, obj3); \
-        RO5_TEST_CPP17(testclass) \
-        testclass##_STRCT obj6 = {}; \
-        testclass##_CCHANGE \
-        testclass##_CLASS obj7 = obj6; \
-        testclass##_CLASS obj8; \
-        obj8 = obj6; \
-        equals(obj7, obj6); \
-        equals(obj8, obj6); \
-        equals(obj7, obj8); \
+#define RO5_TEST_F(classname) \
+    TEST_F(classname, RO5) { \
+        ro5_test(); \
     }
 
 namespace CGTEST {
 
+    template <typename Class, typename Strct>
     class GUCoordinatesTests: public ::testing::Test {
+        private:
+
+#if __cplusplus >= 199711L
+            void ro5_cpp11_test() {
+                Class obj = initial();
+                Class obj2 = initial();
+                Class obj3 = std::move(obj); \
+                nequals(obj3, obj); \
+                equals(obj3, obj2); \
+                equals(obj, empty()); \
+                Class obj4; \
+                obj4 = std::move(obj3); \
+                nequals(obj4, obj3); \
+                equals(obj4, obj2); \
+                equals(obj3, empty());
+            }
+#else
+            void ro5_cpp11_test({}
+#endif
+
         protected:
 
             virtual void SetUp() {
@@ -117,6 +104,37 @@ namespace CGTEST {
             virtual void TearDown() {
                 ALL_FAKES(RESET_FAKE);
                 FFF_RESET_HISTORY();
+            }
+
+            virtual void preamble() {}
+
+            virtual Class initial() = 0;
+
+            virtual Strct empty() = 0;
+
+            virtual void change(Class &) {}
+
+            virtual void cchange(Strct &) {}
+
+            void ro5_test() {
+                preamble(); \
+                Class obj = initial(); \
+                Class obj2 = Class(obj); \
+                equals(obj, obj2); \
+                Class obj3 = obj2; \
+                equals(obj, obj3); \
+                change(obj); \
+                nequals(obj, obj3); \
+                equals(obj2, obj3); \
+                ro5_cpp11_test(); \
+                Strct obj6 = {}; \
+                cchange(obj6); \
+                Class obj7 = obj6; \
+                Class obj8; \
+                obj8 = obj6; \
+                equals(obj7, obj6); \
+                equals(obj8, obj6); \
+                equals(obj7, obj8); \
             }
 
             void equals(const GU::CameraCoordinate lhs, const GU::CameraCoordinate rhs)

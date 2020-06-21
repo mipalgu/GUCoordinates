@@ -58,24 +58,31 @@
 
 #include "GUCoordinatesTests.hpp"
 
-
-#define RelativeCoordinateCPPTests_PREAMBLE do { } while (0);
-
-#define RelativeCoordinateCPPTests_CLASS GU::RelativeCoordinate
-
-#define RelativeCoordinateCPPTests_STRCT gu_relative_coordinate
-
-#define RelativeCoordinateCPPTests_INITIAL GU::RelativeCoordinate(90, 100)
-
-#define RelativeCoordinateCPPTests_EMPTY { 0, 0 }
-
-#define RelativeCoordinateCPPTests_CHANGE obj.set_direction(-90);
-
-#define RelativeCoordinateCPPTests_CCHANGE obj6 = {40, 15};
-
 namespace CGTEST {
     
-    class RelativeCoordinateCPPTests: public GUCoordinatesTests {};
+    class RelativeCoordinateCPPTests: public GUCoordinatesTests<GU::RelativeCoordinate, gu_relative_coordinate> {
+
+        GU::RelativeCoordinate initial()
+        {
+            return GU::RelativeCoordinate(90, 100);
+        }
+
+        gu_relative_coordinate empty()
+        {
+            return { 0, 0 };
+        }
+
+        void change(GU::RelativeCoordinate &obj)
+        {
+            obj.set_direction(-90);
+        }
+
+        void cchange(gu_relative_coordinate &obj)
+        {
+            obj = {40, 15};
+        }
+
+    };
 
     RO5_TEST_F(RelativeCoordinateCPPTests)
 

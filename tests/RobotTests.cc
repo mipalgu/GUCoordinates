@@ -58,46 +58,57 @@
 
 #include "GUCoordinatesTests.hpp" 
 
-#define RobotCPPTests_PREAMBLE \
-    gu_camera cameras[GU_ROBOT_NUM_CAMERAS]; \
-    cameras[0] = NAO_V5_TOP_CAMERA; \
-    cameras[1] = NAO_V5_BOTTOM_CAMERA; \
-    centimetres_f offsets[GU_ROBOT_NUM_CAMERAS]; \
-    offsets[0] = 0.0f; \
-    offsets[1] = 0.0f; \
-    for (int i = 2; i < GU_ROBOT_NUM_CAMERAS; i++) \
-    { \
-        cameras[i] = {}; \
-        offsets[i] = 0.0f; \
-    } \
-    gu_robot empty; \
-    empty.headPitch = 0.0f; \
-    empty.headYaw = 0.0f; \
-    memcpy(empty.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera)); \
-    memcpy(empty.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f)); \
-    empty.numCameras = 0;
-
-#define RobotCPPTests_CLASS GU::Robot
-
-#define RobotCPPTests_STRCT gu_robot
-
-#define RobotCPPTests_INITIAL GU::Robot(2.0f, 3.0f, cameras, offsets, 2)
-
-#define RobotCPPTests_EMPTY empty
-
-#define RobotCPPTests_CHANGE obj.set_headPitch(1.0f);
-
-#define RobotCPPTests_CCHANGE \
-    obj6.headPitch = 1.0f; \
-    obj6.headYaw = 2.0f; \
-    memcpy(obj6.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera)); \
-    memcpy(obj6.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f)); \
-    obj6.numCameras = 2;
-
-
 namespace CGTEST {
 
-    class RobotCPPTests: public GUCoordinatesTests {};
+    class RobotCPPTests: public GUCoordinatesTests<GU::Robot, gu_robot> {
+
+        gu_camera cameras[GU_ROBOT_NUM_CAMERAS];
+        centimetres_f offsets[GU_ROBOT_NUM_CAMERAS];
+        gu_robot empty_strct;
+    
+        void preamble()
+        {
+            cameras[0] = NAO_V5_TOP_CAMERA; \
+            cameras[1] = NAO_V5_BOTTOM_CAMERA; \
+            offsets[0] = 0.0f; \
+            offsets[1] = 0.0f; \
+            for (int i = 2; i < GU_ROBOT_NUM_CAMERAS; i++) \
+            { \
+                cameras[i] = {}; \
+                offsets[i] = 0.0f; \
+            } \
+            empty_strct.headPitch = 0.0f; \
+            empty_strct.headYaw = 0.0f; \
+            memcpy(empty_strct.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera)); \
+            memcpy(empty_strct.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f)); \
+            empty_strct.numCameras = 0;
+        }
+
+        GU::Robot initial()
+        {
+            return GU::Robot(2.0f, 3.0f, cameras, offsets, 2);
+        }
+
+        gu_robot empty()
+        {
+            return empty_strct;
+        }
+
+        void change(GU::Robot & obj)
+        {
+            obj.set_headPitch(1.0f);
+        }
+
+        void cchange(gu_robot & obj)
+        {
+            obj.headPitch = 1.0f; \
+            obj.headYaw = 2.0f; \
+            memcpy(obj.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera)); \
+            memcpy(obj.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f)); \
+            obj.numCameras = 2;
+        }
+
+    };
 
     RO5_TEST_F(RobotCPPTests)
 
