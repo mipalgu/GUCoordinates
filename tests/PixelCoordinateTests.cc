@@ -71,7 +71,12 @@ namespace CGTEST {
 
         gu_pixel_coordinate empty()
         {
-            return { 0, 0, 0, 0 };
+            gu_pixel_coordinate temp;
+            temp.x = 0;
+            temp.y = 0;
+            temp.res_width = 0;
+            temp.res_height = 0;
+            return temp;
         }
 
         void change(GU::PixelCoordinate &obj)
@@ -81,7 +86,10 @@ namespace CGTEST {
 
         void cchange(gu_pixel_coordinate &obj)
         {
-            obj = {1, 2, 3, 4};
+            obj.x = 1;
+            obj.y = 2;
+            obj.res_width = 3;
+            obj.res_height = 4;
         }
 
     };
@@ -105,7 +113,12 @@ namespace CGTEST {
     }
 
     TEST_F(PixelCoordinateCPPTests, CameraCoordinate) {
-        px_coord_to_cam_coord_fake.return_val = { 0, 0, 1920, 1080 };
+        gu_camera_coordinate cam;
+        cam.x = 0;
+        cam.y = 0;
+        cam.res_width = 1920;
+        cam.res_height = 1080;
+        px_coord_to_cam_coord_fake.return_val = cam;
         const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
         const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
         const GU::CameraCoordinate out = ptopLeftEdge.cameraCoordinate();
@@ -117,7 +130,10 @@ namespace CGTEST {
     }
 
     TEST_F(PixelCoordinateCPPTests, PercentCoordinate) {
-        px_coord_to_pct_coord_fake.return_val = { -1.0f, 1.0f };
+        gu_percent_coordinate pct;
+        pct.x = -1.0f;
+        pct.y = 1.0f;
+        px_coord_to_pct_coord_fake.return_val = pct;
         const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
         const GU::PercentCoordinate topLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
         const GU::PercentCoordinate out = ptopLeftEdge.percentCoordinate();

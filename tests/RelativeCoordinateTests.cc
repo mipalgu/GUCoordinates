@@ -71,7 +71,10 @@ namespace CGTEST {
 
         gu_relative_coordinate empty()
         {
-            return { 0, 0 };
+            gu_relative_coordinate temp;
+            temp.direction = 0;
+            temp.distance = 0;
+            return temp;
         }
 
         void change(GU::RelativeCoordinate &obj)
@@ -81,7 +84,8 @@ namespace CGTEST {
 
         void cchange(gu_relative_coordinate &obj)
         {
-            obj = {40, 15};
+            obj.direction = 40;
+            obj.distance = 15;
         }
 
     };

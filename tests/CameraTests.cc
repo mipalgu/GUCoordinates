@@ -71,7 +71,13 @@ namespace CGTEST {
 
         gu_camera empty()
         {
-            return { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
+            gu_camera temp;
+            temp.height = 0.0f;
+            temp.centerOffset = 0.0f;
+            temp.vDirection = 0.0f;
+            temp.vFov = 0.0f;
+            temp.hFov = 0.0f;
+            return temp;
         }
 
         void change(GU::Camera &obj)
@@ -81,7 +87,11 @@ namespace CGTEST {
 
         void cchange(gu_camera &obj)
         {
-            obj = { 1.0f, 2.0f, 3.0f, 4.0f, 5.0f };
+            obj.height = 1.0f;
+            obj.centerOffset = 2.0f;
+            obj.vDirection = 3.0f;
+            obj.vFov = 4.0f;
+            obj.hFov = 5.0f;
         }
 
     };

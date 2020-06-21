@@ -71,7 +71,10 @@ namespace CGTEST {
 
         gu_percent_coordinate empty()
         {
-            return { 0.0f, 0.0f };
+            gu_percent_coordinate temp;
+            temp.x = 0.0f;
+            temp.y = 0.0f;
+            return temp;
         }
 
         void change(GU::PercentCoordinate &obj)
@@ -81,7 +84,8 @@ namespace CGTEST {
 
         void cchange(gu_percent_coordinate &obj)
         {
-            obj = {1.0f, 2.0f};
+            obj.x = 1.0f;
+            obj.y = 2.0f;
         }
 
     };
@@ -99,7 +103,12 @@ namespace CGTEST {
     }
 
     TEST_F(PercentCoordinateCPPTests, PixelCoordinate) {
-        pct_coord_to_px_coord_fake.return_val = { -959, 540, 1920, 1080 };
+        gu_pixel_coordinate px;
+        px.x = -959;
+        px.y = 540;
+        px.res_width = 1920;
+        px.res_height = 1080;
+        pct_coord_to_px_coord_fake.return_val = px;
         const GU::PercentCoordinate topLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
         const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
         const GU::PixelCoordinate out = topLeftEdge.pixelCoordinate(1920, 1080);
@@ -108,8 +117,18 @@ namespace CGTEST {
     }
 
     TEST_F(PercentCoordinateCPPTests, CameraCoordinate) {
-        pct_coord_to_px_coord_fake.return_val = { -959, 540, 1920, 1080 };
-        px_coord_to_cam_coord_fake.return_val = { 0, 0, 1920, 1080 };
+        gu_pixel_coordinate px;
+        px.x = -959;
+        px.y = 540;
+        px.res_width = 1920;
+        px.res_height = 1080;
+        pct_coord_to_px_coord_fake.return_val = px;
+        gu_camera_coordinate cam;
+        cam.x = 0;
+        cam.y = 0;
+        cam.res_width = 1920;
+        cam.res_height = 1080;
+        px_coord_to_cam_coord_fake.return_val = cam;
         const GU::PercentCoordinate topLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
         const GU::CameraCoordinate ctopLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
         const GU::CameraCoordinate out = topLeftEdge.cameraCoordinate(1920, 1080);

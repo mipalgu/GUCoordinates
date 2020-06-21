@@ -14,14 +14,17 @@ WFLAGS=
 all:	all-real
 
 build-test: clean host
-	echo "DISABLE_CPP11: ${DISABLE_CPP11}, USE_CXX11: ${USE_CXX11}"
 
 test:
 
-.ifndef DISABLE_CPP11
-.include "../../../mk/c++11.mk"
+.ifdef STD
+.if ${STD} == 03
+CXXSTDFL=-std=c++03
 .else
-CXXSTDFL=
+.include "../../../mk/c++${STD}.mk"
+.endif
+.else
+CXXSTDFL=-std=c++98
 .endif
 
 .include "../../../mk/mipal.mk"

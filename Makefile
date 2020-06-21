@@ -11,7 +11,7 @@ ALL_HDRS!=ls *.h
 SPECIFIC_LIBS=-lguunits
 LOCAL=_LOCAL
 
-.include "../../mk/c++17.mk"
+.include "../../mk/c++11.mk"
 
 ${MODULE_BASE}_HDRS=${ALL_HDRS}
 PKGCONFIG_NAME=gucoordinates
@@ -31,12 +31,40 @@ robot-local:
 upload-robot:
 	$Ebmake upload-robot IGNORE_TESTS=yes
 
-test:
+test: ctest cpptest
+
+ctest:
 .ifndef TARGET
 	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
 	$Ecd ${SRCDIR}/ctests && ${MAKE} build-test BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./ctests/build.host/ctests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
+.endif
+
+cpp98test:
+.ifndef TARGET
 	$Ecd ${SRCDIR}/tests && ${MAKE} build-test BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
 .endif
+
+cpp03test:
+.ifndef TARGET
+	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=03 BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
+.endif
+
+cpp11test:
+.ifndef TARGET
+	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=11 BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
+.endif
+
+cpp14test:
+.ifndef TARGET
+	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=14 BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
+.endif
+
+cpp17test:
+.ifndef TARGET
+	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=17 BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
+.endif
+
+cpptest: cpp98test cpp03test cpp11test cpp14test cpp17test
 .endif
 
 .ifdef TESTING

@@ -71,7 +71,10 @@ namespace CGTEST {
 
         gu_cartesian_coordinate empty()
         {
-            return { 0, 0 };
+            gu_cartesian_coordinate temp;
+            temp.x = 0;
+            temp.y = 0;
+            return temp;
         }
 
         void change(GU::CartesianCoordinate &obj)
@@ -81,7 +84,8 @@ namespace CGTEST {
 
         void cchange(gu_cartesian_coordinate &obj)
         {
-            obj = {40, 15};
+            obj.x = 40;
+            obj.y = 15;
         }
 
     };

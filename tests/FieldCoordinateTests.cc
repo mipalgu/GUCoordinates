@@ -71,7 +71,13 @@ namespace CGTEST {
 
         gu_field_coordinate empty()
         {
-            return { { 0, 0 }, 0 };
+            gu_field_coordinate temp;
+            gu_cartesian_coordinate coord;
+            coord.x = 0;
+            coord.y = 0;
+            temp.position = coord;
+            temp.heading = 0;
+            return temp;
         }
 
         void change(GU::FieldCoordinate &obj)
@@ -81,7 +87,11 @@ namespace CGTEST {
 
         void cchange(gu_field_coordinate &obj)
         {
-            obj = { {40, 30}, 15};
+            gu_cartesian_coordinate coord;
+            coord.x = 40;
+            coord.y = 30;
+            obj.position = coord;
+            obj.heading = 15;
         }
 
     };
