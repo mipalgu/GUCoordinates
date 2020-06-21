@@ -72,13 +72,13 @@ namespace GU {
         Robot(degrees_f, degrees_f, const gu_camera[GU_ROBOT_NUM_CAMERAS], const centimetres_f[GU_ROBOT_NUM_CAMERAS], int);
         Robot(const Robot& other);
         Robot(const gu_robot& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         Robot(Robot&& other);
 #endif
         ~Robot();
         Robot& operator=(const Robot& other);
         Robot& operator=(const gu_robot& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         Robot& operator=(Robot&& other);
 #endif
 

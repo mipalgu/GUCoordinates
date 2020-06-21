@@ -69,10 +69,6 @@
 #include "CartesianCoordinate.hpp"
 #include "Robot.hpp"
 
-#if __cplusplus >= 199711L
-#include <optional>
-#endif
-
 namespace GU {
 
     struct FieldCoordinate: private gu_field_coordinate {
@@ -81,13 +77,13 @@ namespace GU {
         FieldCoordinate(CartesianCoordinate, degrees_t);
         FieldCoordinate(const FieldCoordinate& other);
         FieldCoordinate(const gu_field_coordinate& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         FieldCoordinate(FieldCoordinate&& other);
 #endif
         ~FieldCoordinate();
         FieldCoordinate& operator=(const FieldCoordinate& other);
         FieldCoordinate& operator=(const gu_field_coordinate& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         FieldCoordinate& operator=(FieldCoordinate&& other);
 #endif
 

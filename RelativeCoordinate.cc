@@ -59,7 +59,7 @@
 #include "RelativeCoordinate.hpp"
 #include "conversions.h"
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_lib_optional
 #include <optional>
 #endif
 
@@ -71,7 +71,7 @@ GU::RelativeCoordinate::RelativeCoordinate(const RelativeCoordinate& other): gu_
 
 GU::RelativeCoordinate::RelativeCoordinate(const gu_relative_coordinate & other): gu_relative_coordinate { other.direction, other.distance } {}
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::RelativeCoordinate::RelativeCoordinate(RelativeCoordinate&& other)
 {
     set_direction(other.direction());
@@ -105,7 +105,7 @@ GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(const gu_relative_coor
     return *this;
 }
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(RelativeCoordinate&& other)
 {
     if (&other == this) {

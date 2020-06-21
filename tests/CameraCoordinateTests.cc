@@ -71,7 +71,12 @@ namespace CGTEST {
 
         gu_camera_coordinate empty()
         {
-            return {0, 0, 0, 0};
+            gu_camera_coordinate temp;
+            temp.x = 0;
+            temp.y = 0;
+            temp.res_width = 0;
+            temp.res_height = 0;
+            return temp;
         }
 
         void change(GU::CameraCoordinate &obj)
@@ -79,9 +84,12 @@ namespace CGTEST {
             obj.set_x(0);
         }
 
-        void cchange(gu_camera &obj)
+        void cchange(gu_camera_coordinate &obj)
         {
-            obj = {1, 2, 3, 4};
+            obj.x = 1;
+            obj.y = 2;
+            obj.res_width = 3;
+            obj.res_height = 4;
         }
 
     };
@@ -105,7 +113,12 @@ namespace CGTEST {
     }
 
     TEST_F(CameraCoordinateCPPTests, PixelCoordinate) {
-        cam_coord_to_px_coord_fake.return_val = { -959, 540, 1920, 1080 };
+        gu_pixel_coordinate px_coord;
+        px_coord.x = -959;
+        px_coord.y = 540;
+        px_coord.res_width = 1920;
+        px_coord.res_height = 1080;
+        cam_coord_to_px_coord_fake.return_val = px_coord;
         const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
         const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
         const GU::PixelCoordinate out = topLeftEdge.pixelCoordinate();
@@ -114,8 +127,16 @@ namespace CGTEST {
     }
 
     TEST_F(CameraCoordinateCPPTests, PercentCoordinate) {
-        cam_coord_to_px_coord_fake.return_val = { -959, 540, 1920, 1080 };
-        px_coord_to_pct_coord_fake.return_val = { -1.0f, 1.0f };
+        gu_pixel_coordinate px_coord;
+        px_coord.x = -959;
+        px_coord.y = 540;
+        px_coord.res_width = 1920;
+        px_coord.res_height = 1080;
+        cam_coord_to_px_coord_fake.return_val = px_coord;
+        gu_percent_coordinate pct_coord;
+        pct_coord.x = -1.0f;
+        pct_coord.y = 1.0f;
+        px_coord_to_pct_coord_fake.return_val = pct_coord;
         const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
         const GU::PercentCoordinate ptopLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
         const GU::PercentCoordinate out = topLeftEdge.percentCoordinate();

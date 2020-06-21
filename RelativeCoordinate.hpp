@@ -68,7 +68,7 @@
 #include "PercentCoordinate.hpp"
 #include "Robot.hpp"
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_lib_optional
 #include <optional>
 #endif
 
@@ -84,13 +84,13 @@ namespace GU {
         RelativeCoordinate(degrees_t, centimetres_u);
         RelativeCoordinate(const RelativeCoordinate& other);
         RelativeCoordinate(const gu_relative_coordinate& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         RelativeCoordinate(RelativeCoordinate&& other);
 #endif
         ~RelativeCoordinate();
         RelativeCoordinate& operator=(const RelativeCoordinate& other);
         RelativeCoordinate& operator=(const gu_relative_coordinate& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         RelativeCoordinate& operator=(RelativeCoordinate&& other);
 #endif
 

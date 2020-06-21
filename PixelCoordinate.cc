@@ -67,7 +67,7 @@ GU::PixelCoordinate::PixelCoordinate(const PixelCoordinate& other): gu_pixel_coo
 
 GU::PixelCoordinate::PixelCoordinate(const gu_pixel_coordinate& other): gu_pixel_coordinate { other.x, other.y, other.res_width, other.res_height } {}
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::PixelCoordinate::PixelCoordinate(PixelCoordinate&& other)
 {
     set_x(other.x());
@@ -109,7 +109,7 @@ GU::PixelCoordinate& GU::PixelCoordinate::operator=(const gu_pixel_coordinate& o
     return *this;
 }
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::PixelCoordinate& GU::PixelCoordinate::operator=(PixelCoordinate&& other)
 {
     if (&other == this) {

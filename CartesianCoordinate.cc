@@ -59,10 +59,6 @@
 #include "CartesianCoordinate.hpp"
 #include "conversions.h"
 
-#if __cplusplus >= 199711L
-#include <optional>
-#endif
-
 GU::CartesianCoordinate::CartesianCoordinate(): gu_cartesian_coordinate() {}
 
 GU::CartesianCoordinate::CartesianCoordinate(centimetres_t t_x, centimetres_t t_y): gu_cartesian_coordinate { t_x, t_y } {} 
@@ -71,7 +67,7 @@ GU::CartesianCoordinate::CartesianCoordinate(const CartesianCoordinate& other): 
 
 GU::CartesianCoordinate::CartesianCoordinate(const gu_cartesian_coordinate & other): gu_cartesian_coordinate { other.x, other.y } {}
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::CartesianCoordinate::CartesianCoordinate(CartesianCoordinate&& other)
 {
     set_x(other.x());
@@ -105,7 +101,7 @@ GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(const gu_cartesian_c
     return *this;
 }
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&& other)
 {
     if (&other == this) {

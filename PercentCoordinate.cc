@@ -67,7 +67,7 @@ GU::PercentCoordinate::PercentCoordinate(const PercentCoordinate& other): gu_per
 
 GU::PercentCoordinate::PercentCoordinate(const gu_percent_coordinate & other): gu_percent_coordinate { other.x, other.y } {}
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::PercentCoordinate::PercentCoordinate(PercentCoordinate&& other)
 {
     set_x(other.x());
@@ -101,7 +101,7 @@ GU::PercentCoordinate& GU::PercentCoordinate::operator=(const gu_percent_coordin
     return *this;
 }
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::PercentCoordinate& GU::PercentCoordinate::operator=(PercentCoordinate&& other)
 {
     if (&other == this) {

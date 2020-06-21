@@ -59,10 +59,6 @@
 #include "FieldCoordinate.hpp"
 #include "conversions.h"
 
-#if __cplusplus >= 199711L
-#include <optional>
-#endif
-
 GU::FieldCoordinate::FieldCoordinate(): gu_field_coordinate() {}
 
 GU::FieldCoordinate::FieldCoordinate(GU::CartesianCoordinate t_position, degrees_t t_heading): gu_field_coordinate { t_position._c(), t_heading } {} 
@@ -71,7 +67,7 @@ GU::FieldCoordinate::FieldCoordinate(const FieldCoordinate& other): gu_field_coo
 
 GU::FieldCoordinate::FieldCoordinate(const gu_field_coordinate & other): gu_field_coordinate { other.position, other.heading } {}
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::FieldCoordinate::FieldCoordinate(FieldCoordinate&& other)
 {
     set_position(other.position());
@@ -105,7 +101,7 @@ GU::FieldCoordinate& GU::FieldCoordinate::operator=(const gu_field_coordinate& o
     return *this;
 }
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::FieldCoordinate& GU::FieldCoordinate::operator=(FieldCoordinate&& other)
 {
     if (&other == this) {

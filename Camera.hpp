@@ -71,13 +71,13 @@ namespace GU {
         Camera(centimetres_f, centimetres_f, degrees_f, degrees_f, degrees_f);
         Camera(const Camera& other);
         Camera(const gu_camera& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         Camera(Camera&& other);
 #endif
         ~Camera();
         Camera& operator=(const Camera& other);
         Camera& operator=(const gu_camera& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         Camera& operator=(Camera&& other);
         Camera& operator=(gu_camera&& other);
 #endif

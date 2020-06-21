@@ -68,10 +68,6 @@
 #include "PercentCoordinate.hpp"
 #include "Robot.hpp"
 
-#if __cplusplus >= 199711L
-#include <optional>
-#endif
-
 namespace GU {
 
     struct CartesianCoordinate: private gu_cartesian_coordinate {
@@ -80,13 +76,13 @@ namespace GU {
         CartesianCoordinate(centimetres_t, centimetres_t);
         CartesianCoordinate(const CartesianCoordinate& other);
         CartesianCoordinate(const gu_cartesian_coordinate& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         CartesianCoordinate(CartesianCoordinate&& other);
 #endif
         ~CartesianCoordinate();
         CartesianCoordinate& operator=(const CartesianCoordinate& other);
         CartesianCoordinate& operator=(const gu_cartesian_coordinate& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         CartesianCoordinate& operator=(CartesianCoordinate&& other);
 #endif
 

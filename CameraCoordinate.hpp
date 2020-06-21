@@ -78,13 +78,13 @@ namespace GU {
         CameraCoordinate(pixels_u, pixels_u, pixels_u, pixels_u);
         CameraCoordinate(const CameraCoordinate& other);
         CameraCoordinate(const gu_camera_coordinate& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         CameraCoordinate(CameraCoordinate&& other);
 #endif
         ~CameraCoordinate();
         CameraCoordinate& operator=(const CameraCoordinate& other);
         CameraCoordinate& operator=(const gu_camera_coordinate& other);
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
         CameraCoordinate& operator=(CameraCoordinate&& other);
 #endif
 

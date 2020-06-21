@@ -68,7 +68,7 @@ GU::CameraCoordinate::CameraCoordinate(const CameraCoordinate& other): gu_camera
 
 GU::CameraCoordinate::CameraCoordinate(const gu_camera_coordinate& other): gu_camera_coordinate { other.x, other.y, other.res_width, other.res_height } {}
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::CameraCoordinate::CameraCoordinate(CameraCoordinate&& other)
 {
     set_x(other.x());
@@ -110,7 +110,7 @@ GU::CameraCoordinate& GU::CameraCoordinate::operator=(const gu_camera_coordinate
     return *this;
 }
 
-#if __cplusplus >= 199711L
+#ifdef __cpp_rvalue_references
 GU::CameraCoordinate& GU::CameraCoordinate::operator=(CameraCoordinate&& other)
 {
     if (&other == this) {

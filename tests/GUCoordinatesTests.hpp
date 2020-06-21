@@ -67,10 +67,20 @@
 
 #include <typeinfo>
 
-#define RO5_TEST_F(className) \
+#define RO3_TEST_F(className) \
+    _TEST_F(testclassname(className), RO3) { \
+        ro3_test(); \
+    }
+
+#ifdef __cpp_rvalue_references
+#define RO5_TEST_Fs(className) \
+    RO3_TEST_F(className) \
     _TEST_F(testclassname(className), RO5) { \
         ro5_test(); \
     }
+#else
+#define RO5_TEST_Fs(className) RO3_TEST_F(className)
+#endif
 
 #define EQUALS_TEST_F(className, strctName) \
     _TEST_F(testclassname(className), Equality) { \
@@ -93,7 +103,7 @@
     }
 
 #define WRAPPER_TEST_Fs(className, strctName) \
-    RO5_TEST_F(className) \
+    RO5_TEST_Fs(className) \
     EQUALS_TEST_F(className, strctName) \
     TO_C_TEST_F(className, strctName)
 
@@ -109,24 +119,6 @@ namespace CGTEST {
     template <typename Class, typename Strct>
     class GUCoordinatesTests: public ::testing::Test {
         private:
-
-#if __cplusplus >= 199711L
-            void ro5_cpp11_test() {
-                Class obj = initial();
-                Class obj2 = initial();
-                Class obj3 = std::move(obj); \
-                nequals(obj3, obj); \
-                equals(obj3, obj2); \
-                equals(obj, empty()); \
-                Class obj4; \
-                obj4 = std::move(obj3); \
-                nequals(obj4, obj3); \
-                equals(obj4, obj2); \
-                equals(obj3, empty());
-            }
-#else
-            void ro5_cpp11_test({}
-#endif
 
         protected:
 
@@ -150,26 +142,41 @@ namespace CGTEST {
 
             virtual void cchange(Strct &) {}
 
-            void ro5_test() {
-                preamble(); \
-                Class obj = initial(); \
-                Class obj2 = Class(obj); \
-                equals(obj, obj2); \
-                Class obj3 = obj2; \
-                equals(obj, obj3); \
-                change(obj); \
-                nequals(obj, obj3); \
-                equals(obj2, obj3); \
-                ro5_cpp11_test(); \
-                Strct obj6 = {}; \
-                cchange(obj6); \
-                Class obj7 = obj6; \
-                Class obj8; \
-                obj8 = obj6; \
-                equals(obj7, obj6); \
-                equals(obj8, obj6); \
-                equals(obj7, obj8); \
+            void ro3_test() {
+                preamble();
+                Class obj = initial();
+                Class obj2 = Class(obj);
+                equals(obj, obj2);
+                Class obj3 = obj2;
+                equals(obj, obj3);
+                change(obj);
+                nequals(obj, obj3);
+                equals(obj2, obj3);
+                Strct obj6 = {};
+                cchange(obj6);
+                Class obj7 = obj6;
+                Class obj8;
+                obj8 = obj6;
+                equals(obj7, obj6);
+                equals(obj8, obj6);
+                equals(obj7, obj8);
             }
+
+#ifdef __cpp_rvalue_references
+            void ro5_test() {
+                Class obj = initial();
+                Class obj2 = initial();
+                Class obj3 = std::move(obj);
+                nequals(obj3, obj);
+                equals(obj3, obj2);
+                equals(obj, empty());
+                Class obj4;
+                obj4 = std::move(obj3);
+                nequals(obj4, obj3);
+                equals(obj4, obj2);
+                equals(obj3, empty());
+            }
+#endif
 
             void equals(const GU::CameraCoordinate lhs, const GU::CameraCoordinate rhs)
             {

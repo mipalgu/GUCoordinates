@@ -14,10 +14,16 @@ WFLAGS=
 all:	all-real
 
 build-test: clean host
+	echo "DISABLE_CPP11: ${DISABLE_CPP11}, USE_CXX11: ${USE_CXX11}"
 
 test:
 
-.include "../../../mk/c++17.mk"
+.ifndef DISABLE_CPP11
+.include "../../../mk/c++11.mk"
+.else
+CXXSTDFL=
+.endif
+
 .include "../../../mk/mipal.mk"
 
 LDFLAGS=
