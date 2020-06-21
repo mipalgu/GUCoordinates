@@ -1,8 +1,8 @@
 /*
- * GUCoordinates.hpp 
- * gucoordinates 
+ * cartesian_coordinate_fakes.h 
+ * tests 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 21/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,16 +56,23 @@
  *
  */
 
-#ifndef GUCOORDINATES_HPP
-#define GUCOORDINATES_HPP
+#ifndef CARTESIAN_COORDINATE_FAKES_H
+#define CARTESIAN_COORDINATE_FAKES_H
 
-#include "gucoordinates.h"
-#include "CameraCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "PercentCoordinate.hpp"
-#include "RelativeCoordinate.hpp"
-#include "CartesianCoordinate.hpp"
-#include "Camera.hpp"
-#include "Robot.hpp"
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#endif  /* GUCOORDINATES_HPP */
+#include "fff.h"
+#include "../cartesian_coordinate.h"
+
+#define CARTESIAN_COORDINATE_FAKES(FAKE) \
+    FAKE(gu_cartesian_coordinate_equals)
+
+DECLARE_FAKE_VALUE_FUNC(bool, gu_cartesian_coordinate_equals, const gu_cartesian_coordinate, const gu_cartesian_coordinate);
+
+#ifdef __cplusplus
+};
+#endif
+
+#endif  /* CARTESIAN_COORDINATE_FAKES_H */

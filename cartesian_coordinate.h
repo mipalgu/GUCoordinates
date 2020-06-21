@@ -60,6 +60,11 @@
 #define CARTESIAN_COORDINATE_H
 
 #include <guunits/guunits.h>
+#include <stdbool.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * A cartesian_coordinate is a general coordinate for representing positions
@@ -90,6 +95,8 @@ typedef struct gu_cartesian_coordinate
 
 
 } gu_cartesian_coordinate;
+
+bool gu_cartesian_coordinate_equals(const gu_cartesian_coordinate, const gu_cartesian_coordinate);
 
 #ifdef __cplusplus
 };

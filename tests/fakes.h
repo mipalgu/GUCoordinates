@@ -69,16 +69,18 @@ extern "C" {
 #include "pixel_coordinate_fakes.h"
 #include "percent_coordinate_fakes.h"
 #include "relative_coordinate_fakes.h"
+#include "cartesian_coordinate_fakes.h"
 #include "camera_fakes.h"
 #include "robot_fakes.h"
 
-#define ALL_FAKES(FAKE)             \
-    CONVERSION_FAKES(FAKE)          \
-    CAMERA_COORDINATE_FAKES(FAKE)   \
-    PIXEL_COORDINATE_FAKES(FAKE)    \
-    PERCENT_COORDINATE_FAKES(FAKE)  \
-    RELATIVE_COORDINATE_FAKES(FAKE) \
-    CAMERA_FAKES(FAKE)              \
+#define ALL_FAKES(FAKE)              \
+    CONVERSION_FAKES(FAKE)           \
+    CAMERA_COORDINATE_FAKES(FAKE)    \
+    PIXEL_COORDINATE_FAKES(FAKE)     \
+    PERCENT_COORDINATE_FAKES(FAKE)   \
+    RELATIVE_COORDINATE_FAKES(FAKE)  \
+    CARTESIAN_COORDINATE_FAKES(FAKE) \
+    CAMERA_FAKES(FAKE)               \
     ROBOT_FAKES(FAKE)
 
 #ifdef __cplusplus

@@ -1,8 +1,8 @@
 /*
- * GUCoordinates.hpp 
+ * cartesian_coordinate.c 
  * gucoordinates 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 21/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,16 +56,11 @@
  *
  */
 
-#ifndef GUCOORDINATES_HPP
-#define GUCOORDINATES_HPP
+#include "cartesian_coordinate.h"
 
-#include "gucoordinates.h"
-#include "CameraCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "PercentCoordinate.hpp"
-#include "RelativeCoordinate.hpp"
-#include "CartesianCoordinate.hpp"
-#include "Camera.hpp"
-#include "Robot.hpp"
+bool gu_cartesian_coordinate_equals(const gu_cartesian_coordinate lhs, const gu_cartesian_coordinate rhs)
+{
+    return lhs.x == rhs.x && lhs.y == rhs.y;
+}
 
-#endif  /* GUCOORDINATES_HPP */
+

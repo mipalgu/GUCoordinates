@@ -1,8 +1,8 @@
 /*
- * GUCoordinates.hpp 
- * gucoordinates 
+ * CartesianCoordinateTests.cc 
+ * tests 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 21/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,16 +56,46 @@
  *
  */
 
-#ifndef GUCOORDINATES_HPP
-#define GUCOORDINATES_HPP
+#include "GUCoordinatesTests.hpp"
 
-#include "gucoordinates.h"
-#include "CameraCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "PercentCoordinate.hpp"
-#include "RelativeCoordinate.hpp"
-#include "CartesianCoordinate.hpp"
-#include "Camera.hpp"
-#include "Robot.hpp"
+namespace CGTEST {
+    
+    class CartesianCoordinateCPPTests: public GUCoordinatesTests<GU::CartesianCoordinate, gu_cartesian_coordinate> {
 
-#endif  /* GUCOORDINATES_HPP */
+        protected:
+
+        GU::CartesianCoordinate initial()
+        {
+            return GU::CartesianCoordinate(90, 100);
+        }
+
+        gu_cartesian_coordinate empty()
+        {
+            return { 0, 0 };
+        }
+
+        void change(GU::CartesianCoordinate &obj)
+        {
+            obj.set_x(-90);
+        }
+
+        void cchange(gu_cartesian_coordinate &obj)
+        {
+            obj = {40, 15};
+        }
+
+    };
+
+    WRAPPER_TEST_Fs(CartesianCoordinate, gu_cartesian_coordinate)
+
+    TEST_F(CartesianCoordinateCPPTests, GettersSetters) {
+        GU::CartesianCoordinate coord = GU::CartesianCoordinate(90, 100);
+        ASSERT_EQ(coord.x(), 90);
+        coord.set_x(-90);
+        ASSERT_EQ(coord.x(), -90);
+        ASSERT_EQ(coord.y(), 100);
+        coord.set_y(10);
+        ASSERT_EQ(coord.y(), 10);
+    }
+
+}  // namespace

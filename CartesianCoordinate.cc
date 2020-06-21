@@ -1,8 +1,8 @@
 /*
- * GUCoordinates.hpp 
+ * CartesianCoordinate.cc 
  * gucoordinates 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 21/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,16 +56,112 @@
  *
  */
 
-#ifndef GUCOORDINATES_HPP
-#define GUCOORDINATES_HPP
-
-#include "gucoordinates.h"
-#include "CameraCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "PercentCoordinate.hpp"
-#include "RelativeCoordinate.hpp"
 #include "CartesianCoordinate.hpp"
-#include "Camera.hpp"
-#include "Robot.hpp"
+#include "conversions.h"
 
-#endif  /* GUCOORDINATES_HPP */
+#if __cplusplus >= 199711L
+#include <optional>
+#endif
+
+GU::CartesianCoordinate::CartesianCoordinate(): gu_cartesian_coordinate() {}
+
+GU::CartesianCoordinate::CartesianCoordinate(centimetres_t t_x, centimetres_t t_y): gu_cartesian_coordinate { t_x, t_y } {} 
+
+GU::CartesianCoordinate::CartesianCoordinate(const CartesianCoordinate& other): gu_cartesian_coordinate { other.x(), other.y() } {}
+
+GU::CartesianCoordinate::CartesianCoordinate(const gu_cartesian_coordinate & other): gu_cartesian_coordinate { other.x, other.y } {}
+
+#if __cplusplus >= 199711L
+GU::CartesianCoordinate::CartesianCoordinate(CartesianCoordinate&& other)
+{
+    set_x(other.x());
+    set_y(other.y());
+    other.set_x(0);
+    other.set_y(0);
+}
+#endif
+
+GU::CartesianCoordinate::~CartesianCoordinate() {}
+
+GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(const CartesianCoordinate& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_x(other.x());
+    set_y(other.y());
+    return *this;
+}
+
+GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(const gu_cartesian_coordinate& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_x(other.x);
+    set_y(other.y);
+    return *this;
+}
+
+#if __cplusplus >= 199711L
+GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&& other)
+{
+    if (&other == this) {
+        return *this;
+    }
+    set_x(other.x());
+    set_y(other.y());
+    other.set_x(0);
+    other.set_y(0);
+    return *this;
+}
+#endif
+
+gu_cartesian_coordinate GU::CartesianCoordinate::_c() const
+{
+    return *this;
+}
+
+centimetres_t GU::CartesianCoordinate::x() const
+{
+    return gu_cartesian_coordinate::x;
+}
+
+void GU::CartesianCoordinate::set_x(const centimetres_t newValue)
+{
+    gu_cartesian_coordinate::x = newValue;
+}
+
+centimetres_t GU::CartesianCoordinate::y() const
+{
+    return gu_cartesian_coordinate::y;
+}
+
+void GU::CartesianCoordinate::set_y(const centimetres_t newValue)
+{
+    gu_cartesian_coordinate::y = newValue;
+}
+
+bool GU::CartesianCoordinate::operator==(const CartesianCoordinate &other) const
+{
+    return gu_cartesian_coordinate_equals(*this, other);
+}
+
+bool GU::CartesianCoordinate::operator!=(const CartesianCoordinate &other) const
+{
+    return !(*this == other);
+}
+
+bool GU::CartesianCoordinate::operator==(const gu_cartesian_coordinate &other) const
+{
+    return gu_cartesian_coordinate_equals(*this, other);
+}
+
+bool GU::CartesianCoordinate::operator!=(const gu_cartesian_coordinate &other) const
+{
+    return !(*this == other);
+}
+
+

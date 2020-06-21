@@ -1,8 +1,8 @@
 /*
- * GUCoordinates.hpp 
+ * CartesianCoordinate.hpp 
  * gucoordinates 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 21/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,16 +56,55 @@
  *
  */
 
-#ifndef GUCOORDINATES_HPP
-#define GUCOORDINATES_HPP
+#ifndef CARTESIANCOORDINATE_HPP
+#define CARTESIANCOORDINATE_HPP
 
-#include "gucoordinates.h"
+#include "cartesian_coordinate.h"
+
+#include <cstdlib>
+#include <guunits/guunits.h>
 #include "CameraCoordinate.hpp"
 #include "PixelCoordinate.hpp"
 #include "PercentCoordinate.hpp"
-#include "RelativeCoordinate.hpp"
-#include "CartesianCoordinate.hpp"
-#include "Camera.hpp"
 #include "Robot.hpp"
 
-#endif  /* GUCOORDINATES_HPP */
+#if __cplusplus >= 199711L
+#include <optional>
+#endif
+
+namespace GU {
+
+    struct CartesianCoordinate: private gu_cartesian_coordinate {
+
+        CartesianCoordinate();
+        CartesianCoordinate(centimetres_t, centimetres_t);
+        CartesianCoordinate(const CartesianCoordinate& other);
+        CartesianCoordinate(const gu_cartesian_coordinate& other);
+#if __cplusplus >= 199711L
+        CartesianCoordinate(CartesianCoordinate&& other);
+#endif
+        ~CartesianCoordinate();
+        CartesianCoordinate& operator=(const CartesianCoordinate& other);
+        CartesianCoordinate& operator=(const gu_cartesian_coordinate& other);
+#if __cplusplus >= 199711L
+        CartesianCoordinate& operator=(CartesianCoordinate&& other);
+#endif
+
+        gu_cartesian_coordinate _c() const;
+
+        centimetres_t x() const;
+        void set_x(const centimetres_t);
+
+        centimetres_t y() const;
+        void set_y(const centimetres_t);
+
+        bool operator ==(const CartesianCoordinate &other) const;
+        bool operator !=(const CartesianCoordinate &other) const;
+        bool operator ==(const gu_cartesian_coordinate &other) const;
+        bool operator !=(const gu_cartesian_coordinate &other) const;
+
+    };
+
+};
+
+#endif  /* CARTESIANCOORDINATE_HPP */

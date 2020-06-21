@@ -63,6 +63,7 @@
 #include "pixel_coordinate.h"
 #include "percent_coordinate.h"
 #include "relative_coordinate.h"
+#include "cartesian_coordinate.h"
 #include "camera.h"
 #include "robot.h"
 #include "conversions.h"

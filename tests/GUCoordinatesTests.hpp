@@ -245,6 +245,17 @@ namespace CGTEST {
                     );
             }
 
+            void equals(const GU::CartesianCoordinate lhs, const GU::CartesianCoordinate rhs)
+            {
+                ASSERT_EQ(lhs.x(), rhs.x());
+                ASSERT_EQ(lhs.y(), rhs.y());
+            }
+
+            void nequals(const GU::CartesianCoordinate lhs, const GU::CartesianCoordinate rhs)
+            {
+                ASSERT_FALSE(lhs.x() == rhs.x() && lhs.y() == rhs.y());
+            }
+
             void equals(const GU::Robot lhs, const GU::Robot rhs)
             {
                 ASSERT_EQ(lhs.headPitch(), rhs.headPitch());
