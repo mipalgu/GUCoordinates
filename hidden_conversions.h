@@ -59,7 +59,6 @@
 #ifndef HIDDEN_CONVERSIONS_H
 #define HIDDEN_CONVERSIONS_H
 
-
 radians_d angle_between_points(const gu_cartesian_coordinate p1, const gu_cartesian_coordinate p2);
 centimetres_d distance_between_points(const gu_cartesian_coordinate point1, const gu_cartesian_coordinate point2);
 
