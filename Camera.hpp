@@ -65,7 +65,7 @@
 
 namespace GU {
 
-    struct Camera: private gu_camera {
+    struct Camera: public gu_camera {
 
         Camera();
         Camera(centimetres_f, centimetres_f, degrees_f, degrees_f, degrees_f);
@@ -81,8 +81,6 @@ namespace GU {
         Camera& operator=(Camera&& other);
         Camera& operator=(gu_camera&& other);
 #endif
-
-        gu_camera _c() const;
 
         centimetres_f height() const;
         void set_height(const centimetres_f);

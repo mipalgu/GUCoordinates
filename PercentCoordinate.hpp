@@ -72,7 +72,7 @@ namespace GU {
     struct PixelCoordinate; // Forward Declaration.
     struct RelativeCoordinate; // Forward Declaration.
 
-    struct PercentCoordinate: private gu_percent_coordinate {
+    struct PercentCoordinate: public gu_percent_coordinate {
 
         PercentCoordinate();
         PercentCoordinate(percent_f, percent_f);
@@ -87,8 +87,6 @@ namespace GU {
 #ifdef __cpp_rvalue_references
         PercentCoordinate& operator=(PercentCoordinate&& other);
 #endif
-
-        gu_percent_coordinate _c() const;
 
         CameraCoordinate cameraCoordinate(const pixels_u, const pixels_u) const;
         PixelCoordinate pixelCoordinate(const pixels_u, const pixels_u) const;

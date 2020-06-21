@@ -66,7 +66,7 @@
 
 namespace GU {
 
-    struct Robot: private gu_robot {
+    struct Robot: public gu_robot {
 
         Robot();
         Robot(degrees_f, degrees_f, const gu_camera[GU_ROBOT_NUM_CAMERAS], const centimetres_f[GU_ROBOT_NUM_CAMERAS], int);
@@ -81,8 +81,6 @@ namespace GU {
 #ifdef __cpp_rvalue_references
         Robot& operator=(Robot&& other);
 #endif
-
-        gu_robot _c() const;
 
         degrees_f headPitch() const;
         void set_headPitch(const degrees_f);

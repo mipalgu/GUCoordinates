@@ -98,7 +98,7 @@
 #define TO_C_TEST_F(className, strctName) \
     _TEST_F(testclassname(className), TO_C) { \
         const GU::className obj = initial(); \
-        const strctName converted = obj._c(); \
+        const strctName converted = obj; \
         equals(obj, converted); \
     }
 

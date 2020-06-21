@@ -61,9 +61,9 @@
 
 GU::FieldCoordinate::FieldCoordinate(): gu_field_coordinate() {}
 
-GU::FieldCoordinate::FieldCoordinate(GU::CartesianCoordinate t_position, degrees_t t_heading): gu_field_coordinate { t_position._c(), t_heading } {} 
+GU::FieldCoordinate::FieldCoordinate(GU::CartesianCoordinate t_position, degrees_t t_heading): gu_field_coordinate { t_position, t_heading } {} 
 
-GU::FieldCoordinate::FieldCoordinate(const FieldCoordinate& other): gu_field_coordinate { other.position()._c(), other.heading() } {}
+GU::FieldCoordinate::FieldCoordinate(const FieldCoordinate& other): gu_field_coordinate { other.position(), other.heading() } {}
 
 GU::FieldCoordinate::FieldCoordinate(const gu_field_coordinate & other): gu_field_coordinate { other.position, other.heading } {}
 
@@ -115,11 +115,6 @@ GU::FieldCoordinate& GU::FieldCoordinate::operator=(FieldCoordinate&& other)
 }
 #endif
 
-gu_field_coordinate GU::FieldCoordinate::_c() const
-{
-    return *this;
-}
-
 GU::CartesianCoordinate GU::FieldCoordinate::position() const
 {
     return gu_field_coordinate::position;
@@ -127,7 +122,7 @@ GU::CartesianCoordinate GU::FieldCoordinate::position() const
 
 void GU::FieldCoordinate::set_position(const GU::CartesianCoordinate newValue)
 {
-    gu_field_coordinate::position = newValue._c();
+    gu_field_coordinate::position = newValue;
 }
 
 degrees_t GU::FieldCoordinate::heading() const

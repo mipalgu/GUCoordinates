@@ -160,11 +160,6 @@ GU::Robot& GU::Robot::operator=(Robot&& other)
 }
 #endif
 
-gu_robot GU::Robot::_c() const
-{
-    return *this;
-}
-
 degrees_f GU::Robot::headPitch() const
 {
     return gu_robot::headPitch;
@@ -202,7 +197,7 @@ GU::Camera GU::Robot::camera(const int index) const
 
 void GU::Robot::set_camera(const int index, const GU::Camera newValue)
 {
-    gu_robot::cameras[index] = newValue._c();
+    gu_robot::cameras[index] = newValue;
 }
 
 const centimetres_f * GU::Robot::cameraHeightOffsets() const

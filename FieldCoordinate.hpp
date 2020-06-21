@@ -71,7 +71,7 @@
 
 namespace GU {
 
-    struct FieldCoordinate: private gu_field_coordinate {
+    struct FieldCoordinate: public gu_field_coordinate {
 
         FieldCoordinate();
         FieldCoordinate(CartesianCoordinate, degrees_t);
@@ -86,8 +86,6 @@ namespace GU {
 #ifdef __cpp_rvalue_references
         FieldCoordinate& operator=(FieldCoordinate&& other);
 #endif
-
-        gu_field_coordinate _c() const;
 
         CartesianCoordinate position() const;
         void set_position(const CartesianCoordinate);

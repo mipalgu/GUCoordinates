@@ -119,38 +119,11 @@ GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(RelativeCoordinate&& o
 }
 #endif
 
-gu_relative_coordinate GU::RelativeCoordinate::_c() const
-{
-    return *this;
-}
-    
-bool GU::RelativeCoordinate::cameraCoordinate(const GU::Robot robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::CameraCoordinate &other) const
-{
-    GU::PixelCoordinate coord;
-    if (!pixelCoordinate(robot, cameraOffset, resWidth, resHeight, coord))
-    {
-        return false;
-    }
-    other = coord.cameraCoordinate();
-    return true;
-}
-    
-bool GU::RelativeCoordinate::pixelCoordinate(const GU::Robot robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::PixelCoordinate &other) const
-{
-    GU::PercentCoordinate coord;
-    if (!percentCoordinate(robot, cameraOffset, coord))
-    {
-        return false;
-    }
-    other = coord.pixelCoordinate(resWidth, resHeight);
-    return true;
-}
-
     
 bool GU::RelativeCoordinate::percentCoordinate(const GU::Robot robot, const int cameraOffset, GU::PercentCoordinate &other) const
 {
     gu_percent_coordinate temp;
-    if (!rr_coord_to_pct_coord(*this, robot._c(), cameraOffset, &temp))
+    if (!rr_coord_to_pct_coord(*this, robot, cameraOffset, &temp))
     {
         return false;
     }

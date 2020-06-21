@@ -150,11 +150,6 @@ GU::Camera& GU::Camera::operator=(gu_camera&& other)
 }
 #endif
 
-gu_camera GU::Camera::_c() const
-{
-    return *this;
-}
-
 centimetres_f GU::Camera::height() const
 {
     return gu_camera::height;

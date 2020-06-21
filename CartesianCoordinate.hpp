@@ -70,7 +70,7 @@
 
 namespace GU {
 
-    struct CartesianCoordinate: private gu_cartesian_coordinate {
+    struct CartesianCoordinate: public gu_cartesian_coordinate {
 
         CartesianCoordinate();
         CartesianCoordinate(centimetres_t, centimetres_t);
@@ -85,8 +85,6 @@ namespace GU {
 #ifdef __cpp_rvalue_references
         CartesianCoordinate& operator=(CartesianCoordinate&& other);
 #endif
-
-        gu_cartesian_coordinate _c() const;
 
         centimetres_t x() const;
         void set_x(const centimetres_t);

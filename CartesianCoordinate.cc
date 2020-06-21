@@ -115,11 +115,6 @@ GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&
 }
 #endif
 
-gu_cartesian_coordinate GU::CartesianCoordinate::_c() const
-{
-    return *this;
-}
-
 centimetres_t GU::CartesianCoordinate::x() const
 {
     return gu_cartesian_coordinate::x;
