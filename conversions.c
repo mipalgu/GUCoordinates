@@ -180,3 +180,46 @@ bool rr_coord_to_px_coord(const gu_relative_coordinate coord, const gu_robot rob
     out->res_height = converted.res_height;
     return true;
 }
+
+gu_cartesian_coordinate rr_coord_to_cartesian_coord(const gu_relative_coordinate coord)
+{
+    gu_cartesian_coordinate out;
+    out.x = f_to_cm_t(cm_u_to_f(coord.distance) * sinf(deg_t_to_f(coord.direction)));
+    out.y = f_to_cm_t(cm_u_to_f(coord.distance) * sinf(deg_t_to_f(coord.direction)));
+    return out;
+}
+
+gu_cartesian_coordinate rr_coord_to_cartesian_coord_from_source(const gu_relative_coordinate coord, const gu_cartesian_coordinate source)
+{
+    gu_cartesian_coordinate temp = rr_coord_to_cartesian_coord(coord);
+    temp.x = source.x + temp.x;
+    temp.y = source.y + temp.y;
+    return temp;
+}
+
+gu_field_coordinate rr_coord_to_field_coord(const gu_relative_coordinate coord, const degrees_t heading)
+{
+    const gu_cartesian_coordinate temp = rr_coord_to_cartesian_coord(coord);
+    gu_field_coordinate out;
+    out.position = temp;
+    out.heading = heading;
+    return out;
+}
+
+gu_field_coordinate rr_coord_to_field_coord_from_source(const gu_relative_coordinate coord, const gu_field_coordinate source, const degrees_t heading)
+{
+    gu_relative_coordinate temp = coord;
+    temp.direction = source.heading + temp.direction;
+    gu_field_coordinate out = rr_coord_to_field_coord(temp, heading);
+    out.position.x = source.position.x + out.position.x;
+    out.position.y = source.position.y + out.position.y;
+    return out;
+}
+
+
+
+
+
+
+
+
