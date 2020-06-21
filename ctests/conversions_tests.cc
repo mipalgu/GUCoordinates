@@ -293,6 +293,26 @@ namespace CGTEST {
         const gu_relative_coordinate result8 = field_coord_to_rr_coord_to_target(source8, target8);
         ASSERT_EQ(result8.direction, -15);
         ASSERT_EQ(result8.distance, 1);
+        const gu_field_coordinate source9 = { {1, -2}, 180};
+        const gu_cartesian_coordinate target9 = { 2, -1 };
+        const gu_relative_coordinate result9 = field_coord_to_rr_coord_to_target(source9, target9);
+        ASSERT_EQ(result9.direction, -135);
+        ASSERT_EQ(result9.distance, 1);
+        const gu_field_coordinate source10 = { {1, -2}, -60};
+        const gu_cartesian_coordinate target10 = { 2, -1 };
+        const gu_relative_coordinate result10 = field_coord_to_rr_coord_to_target(source10, target10);
+        ASSERT_EQ(result10.direction, 105);
+        ASSERT_EQ(result10.distance, 1);
+        const gu_field_coordinate source11 = { {3, -7}, 0};
+        const gu_cartesian_coordinate target11 = { -9, 6 };
+        const gu_relative_coordinate result11 = field_coord_to_rr_coord_to_target(source11, target11);
+        ASSERT_EQ(result11.direction, 133);
+        ASSERT_EQ(result11.distance, 18);
+        const gu_field_coordinate source12 = { {1, 1}, 0};
+        const gu_cartesian_coordinate target12 = { 0, 1 };
+        const gu_relative_coordinate result12 = field_coord_to_rr_coord_to_target(source12, target12);
+        ASSERT_EQ(result12.direction, 180);
+        ASSERT_EQ(result12.distance, 1);
     }
 
 }  // namespace

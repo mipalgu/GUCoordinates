@@ -266,6 +266,10 @@ centimetres_d distance_between_points(const gu_cartesian_coordinate point1, cons
 }
 
 degrees_d normalise_deg_d(degrees_d angle) {
+    if (angle + 180.0 == 0.0)
+    {
+        return 180.0;
+    }
     if (angle < 0) {
         angle = fmod(angle, -360);
     } else {
