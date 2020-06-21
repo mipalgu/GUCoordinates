@@ -85,9 +85,17 @@
         ASSERT_EQ(equals_fake(strctName).call_count, 1); \
     }
 
-#define WRAPPER_TEST_Fs(testclassname, strctName) \
-    RO5_TEST_F(testclassname) \
-    EQUALS_TEST_F(testclassname, strctName)
+#define TO_C_TEST_F(className, strctName) \
+    _TEST_F(testclassname(className), TO_C) { \
+        const GU::className obj = initial(); \
+        const strctName converted = obj._c(); \
+        equals(obj, converted); \
+    }
+
+#define WRAPPER_TEST_Fs(className, strctName) \
+    RO5_TEST_F(className) \
+    EQUALS_TEST_F(className, strctName) \
+    TO_C_TEST_F(className, strctName)
 
 #define _TEST_F(testclassname, testname) \
     TEST_F(testclassname, testname)
