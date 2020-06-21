@@ -62,6 +62,8 @@ namespace CGTEST {
     
     class RelativeCoordinateCPPTests: public GUCoordinatesTests<GU::RelativeCoordinate, gu_relative_coordinate> {
 
+        protected:
+
         GU::RelativeCoordinate initial()
         {
             return GU::RelativeCoordinate(90, 100);
@@ -84,7 +86,7 @@ namespace CGTEST {
 
     };
 
-    RO5_TEST_F(RelativeCoordinateCPPTests)
+    WRAPPER_TEST_Fs(RelativeCoordinate, gu_relative_coordinate)
 
     TEST_F(RelativeCoordinateCPPTests, GettersSetters) {
         GU::RelativeCoordinate coord = GU::RelativeCoordinate(90, 100);
@@ -96,17 +98,6 @@ namespace CGTEST {
         ASSERT_EQ(coord.distance(), 10);
     }
 
-    TEST_F(RelativeCoordinateCPPTests, Equality) {
-        gu_relative_coordinate_equals_fake.return_val = true;
-        const GU::RelativeCoordinate leftFar = GU::RelativeCoordinate(-90, 100);
-        const GU::RelativeCoordinate inFront = GU::RelativeCoordinate(0, 50);
-        ASSERT_EQ(leftFar, leftFar);
-        ASSERT_EQ(gu_relative_coordinate_equals_fake.call_count, 1);
-        RESET_FAKE(gu_relative_coordinate_equals)
-        gu_relative_coordinate_equals_fake.return_val = false;
-        ASSERT_NE(leftFar, inFront);
-        ASSERT_EQ(gu_relative_coordinate_equals_fake.call_count, 1);
-    }
 /*
     TEST_F(RelativeCoordinateCPPTests, PixelCoordinate) {
         pct_coord_to_px_coord_fake.return_val = { -959, 540, 1920, 1080 };

@@ -62,6 +62,8 @@ namespace CGTEST {
 
     class CameraCoordinateCPPTests: public GUCoordinatesTests<GU::CameraCoordinate, gu_camera_coordinate> {
 
+        protected:
+
         GU::CameraCoordinate initial()
         {
             return GU::CameraCoordinate(1, 2, 3, 4);
@@ -84,7 +86,7 @@ namespace CGTEST {
 
     };
 
-    RO5_TEST_F(CameraCoordinateCPPTests)
+    WRAPPER_TEST_Fs(CameraCoordinate, gu_camera_coordinate)
 
     TEST_F(CameraCoordinateCPPTests, GettersSetters) {
         GU::CameraCoordinate coord = GU::CameraCoordinate(1, 2, 3, 4);
@@ -102,25 +104,13 @@ namespace CGTEST {
         ASSERT_EQ(coord.resHeight(), 8);
     }
 
-    TEST_F(CameraCoordinateCPPTests, Equality) {
-        gu_camera_coordinate_equals_fake.return_val = true;
-        const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
-        const GU::CameraCoordinate topRightEdge = GU::CameraCoordinate(1919, 0, 1920, 1080);
-        ASSERT_EQ(topLeftEdge, topLeftEdge);
-        ASSERT_EQ(gu_camera_coordinate_equals_fake.call_count, 1);
-        RESET_FAKE(gu_camera_coordinate_equals)
-        gu_camera_coordinate_equals_fake.return_val = false;
-        ASSERT_NE(topLeftEdge, topRightEdge);
-        ASSERT_EQ(gu_camera_coordinate_equals_fake.call_count, 1);
-    }
-
     TEST_F(CameraCoordinateCPPTests, PixelCoordinate) {
         cam_coord_to_px_coord_fake.return_val = { -959, 540, 1920, 1080 };
         const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
         const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
         const GU::PixelCoordinate out = topLeftEdge.pixelCoordinate();
         ASSERT_EQ(cam_coord_to_px_coord_fake.call_count, 1);
-        ASSERT_EQ(out, ptopLeftEdge);
+        equals(out, ptopLeftEdge);
     }
 
     TEST_F(CameraCoordinateCPPTests, PercentCoordinate) {
@@ -131,7 +121,7 @@ namespace CGTEST {
         const GU::PercentCoordinate out = topLeftEdge.percentCoordinate();
         ASSERT_EQ(cam_coord_to_px_coord_fake.call_count, 1);
         ASSERT_EQ(px_coord_to_pct_coord_fake.call_count, 1);
-        ASSERT_EQ(out, ptopLeftEdge);
+        equals(out, ptopLeftEdge);
     }
 
 }  // namespace

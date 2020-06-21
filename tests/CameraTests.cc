@@ -62,6 +62,8 @@ namespace CGTEST {
     
     class CameraCPPTests: public GUCoordinatesTests<GU::Camera, gu_camera> {
 
+        protected:
+
         GU::Camera initial()
         {
             return GU::Camera(1.0f, 1.5f, 2.0f, 3.0f, 4.0f);
@@ -84,7 +86,7 @@ namespace CGTEST {
 
     };
 
-    RO5_TEST_F(CameraCPPTests)
+    WRAPPER_TEST_Fs(Camera, gu_camera)
 
     TEST_F(CameraCPPTests, GettersSetters) {
         GU::Camera camera = GU::Camera(1.0f, 1.5f, 2.0f, 3.0f, 4.0f);
@@ -103,18 +105,6 @@ namespace CGTEST {
         ASSERT_EQ(camera.hFov(), 4.0f);
         camera.set_hFov(-4.0f);
         ASSERT_EQ(camera.hFov(), -4.0f);
-    }
-
-    TEST_F(CameraCPPTests, Equality) {
-        gu_camera_equals_fake.return_val = true;
-        const GU::Camera topCamera = NAO_V5_TOP_CAMERA;
-        const GU::Camera bottomCamera = NAO_V5_BOTTOM_CAMERA;
-        ASSERT_EQ(topCamera, topCamera);
-        ASSERT_EQ(gu_camera_equals_fake.call_count, 1);
-        RESET_FAKE(gu_camera_equals)
-        gu_camera_equals_fake.return_val = false;
-        ASSERT_NE(topCamera, bottomCamera);
-        ASSERT_EQ(gu_camera_equals_fake.call_count, 1);
     }
 
 }  // namespace

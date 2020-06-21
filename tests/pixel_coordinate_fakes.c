@@ -1,8 +1,8 @@
 /*
- * percent_coordinate.c 
- * guvision_utils 
+ * pixel_coordinate_fakes.c 
+ * tests 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 21/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,12 +56,6 @@
  *
  */
 
-#include "percent_coordinate.h"
-#include <math.h>
+#include "pixel_coordinate_fakes.h"
 
-bool gu_percent_coordinate_equals(const gu_percent_coordinate lhs, const gu_percent_coordinate rhs, const percent_f tolerance)
-{
-    const bool equalX = fabsf(pct_f_to_f(lhs.x) - pct_f_to_f(rhs.x)) <= pct_f_to_f(tolerance);
-    const bool equalY = fabsf(pct_f_to_f(lhs.y) - pct_f_to_f(rhs.y)) <= pct_f_to_f(tolerance);
-    return equalX && equalY;
-}
+DEFINE_FAKE_VALUE_FUNC(bool, gu_pixel_coordinate_equals, const gu_pixel_coordinate, const gu_pixel_coordinate);

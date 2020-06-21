@@ -62,6 +62,8 @@ namespace CGTEST {
 
     class RobotCPPTests: public GUCoordinatesTests<GU::Robot, gu_robot> {
 
+        protected:
+
         gu_camera cameras[GU_ROBOT_NUM_CAMERAS];
         centimetres_f offsets[GU_ROBOT_NUM_CAMERAS];
         gu_robot empty_strct;
@@ -110,7 +112,7 @@ namespace CGTEST {
 
     };
 
-    RO5_TEST_F(RobotCPPTests)
+    WRAPPER_TEST_Fs(Robot, gu_robot)
 
     TEST_F(RobotCPPTests, GettersSetters) {
         gu_robot nao_c = GU_NAO_V5_ROBOT(0.0f, 0.0f);
@@ -127,18 +129,6 @@ namespace CGTEST {
         ASSERT_EQ(nao.cameraHeightOffset(0), nao_c.cameraHeightOffsets[0]);
         nao.set_cameraHeightOffset(0, nao_c.cameraHeightOffsets[1]);
         ASSERT_EQ(nao.cameraHeightOffset(1), nao_c.cameraHeightOffsets[1]);
-    }
-
-    TEST_F(RobotCPPTests, Equality) {
-        gu_robot_equals_fake.return_val = true;
-        const GU::Robot nao = GU::Robot(GU_NAO_V5_ROBOT(0.0f, 0.0f));
-        const GU::Robot nao2 = GU::Robot(GU_NAO_V5_ROBOT(5.0f, 0.0f));
-        ASSERT_EQ(nao, nao);
-        ASSERT_EQ(gu_robot_equals_fake.call_count, 1);
-        RESET_FAKE(gu_robot_equals)
-        gu_robot_equals_fake.return_val = false;
-        ASSERT_NE(nao, nao2);
-        ASSERT_EQ(gu_robot_equals_fake.call_count, 1);
     }
 
 }  // namespace

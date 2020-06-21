@@ -62,6 +62,8 @@ namespace CGTEST {
 
     class PixelCoordinateCPPTests: public GUCoordinatesTests<GU::PixelCoordinate, gu_pixel_coordinate> {
 
+        protected:
+
         GU::PixelCoordinate initial()
         {
             return GU::PixelCoordinate(1, 2, 3, 4);
@@ -84,7 +86,7 @@ namespace CGTEST {
 
     };
 
-    RO5_TEST_F(PixelCoordinateCPPTests)
+    WRAPPER_TEST_Fs(PixelCoordinate, gu_pixel_coordinate)
 
     TEST_F(PixelCoordinateCPPTests, GettersSetters) {
         GU::PixelCoordinate coord = GU::PixelCoordinate(-959, 540, 1920, 1080);
@@ -100,23 +102,6 @@ namespace CGTEST {
         ASSERT_EQ(coord.resHeight(), 1080);
         coord.set_resHeight(1);
         ASSERT_EQ(coord.resHeight(), 1);
-    }
-
-    TEST_F(PixelCoordinateCPPTests, Equality) {
-        const GU::PixelCoordinate topLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
-        const GU::PixelCoordinate topRightEdge = GU::PixelCoordinate(960, 540, 1920, 1080);
-        const GU::PixelCoordinate bottomLeftEdge = GU::PixelCoordinate(-959, -539, 1920, 1080);
-        const GU::PixelCoordinate bottomRightEdge = GU::PixelCoordinate(960, -539, 1920, 1080);
-        const GU::PixelCoordinate middle = GU::PixelCoordinate(0, 0, 1920, 1080);
-        ASSERT_TRUE(topLeftEdge == topLeftEdge);
-        ASSERT_TRUE(topRightEdge == topRightEdge);
-        ASSERT_TRUE(bottomLeftEdge == bottomLeftEdge);
-        ASSERT_TRUE(bottomRightEdge == bottomRightEdge);
-        ASSERT_TRUE(middle == middle);
-        ASSERT_FALSE(topLeftEdge == topRightEdge);
-        ASSERT_FALSE(topRightEdge == bottomLeftEdge);
-        ASSERT_FALSE(bottomLeftEdge == bottomRightEdge);
-        ASSERT_FALSE(bottomRightEdge == middle);
     }
 
     TEST_F(PixelCoordinateCPPTests, CameraCoordinate) {

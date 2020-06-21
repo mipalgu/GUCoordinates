@@ -65,10 +65,36 @@
 #include "../GUCoordinates.hpp"
 #include "fakes.h"
 
-#define RO5_TEST_F(classname) \
-    TEST_F(classname, RO5) { \
+#include <typeinfo>
+
+#define RO5_TEST_F(className) \
+    _TEST_F(testclassname(className), RO5) { \
         ro5_test(); \
     }
+
+#define EQUALS_TEST_F(className, strctName) \
+    _TEST_F(testclassname(className), Equality) { \
+        equals_fake(strctName).return_val = true; \
+        const GU::className obj = initial(); \
+        const GU::className obj2 = empty(); \
+        ASSERT_EQ(obj, obj); \
+        ASSERT_EQ(equals_fake(strctName).call_count, 1); \
+        equals_reset(strctName) \
+        equals_fake(strctName).return_val = false; \
+        ASSERT_NE(obj, obj2); \
+        ASSERT_EQ(equals_fake(strctName).call_count, 1); \
+    }
+
+#define WRAPPER_TEST_Fs(testclassname, strctName) \
+    RO5_TEST_F(testclassname) \
+    EQUALS_TEST_F(testclassname, strctName)
+
+#define _TEST_F(testclassname, testname) \
+    TEST_F(testclassname, testname)
+#define testclassname(className) className##CPPTests
+#define equals_reset(strctName) strctName##_equals_reset();
+#define equals_func(strctName) strctName##_equals
+#define equals_fake(strctName) strctName##_equals_fake
 
 namespace CGTEST {
 

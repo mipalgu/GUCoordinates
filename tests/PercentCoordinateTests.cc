@@ -62,6 +62,8 @@ namespace CGTEST {
     
     class PercentCoordinateCPPTests: public GUCoordinatesTests<GU::PercentCoordinate, gu_percent_coordinate> {
 
+        protected:
+
         GU::PercentCoordinate initial()
         {
             return GU::PercentCoordinate(-1.0f, -1.0f);
@@ -84,7 +86,7 @@ namespace CGTEST {
 
     };
 
-    RO5_TEST_F(PercentCoordinateCPPTests)
+    WRAPPER_TEST_Fs(PercentCoordinate, gu_percent_coordinate)
 
     TEST_F(PercentCoordinateCPPTests, GettersSetters) {
         GU::PercentCoordinate coord = GU::PercentCoordinate(-1.0f, -1.0f);
@@ -96,30 +98,13 @@ namespace CGTEST {
         ASSERT_EQ(coord.y(), 1.0f);
     }
 
-    TEST_F(PercentCoordinateCPPTests, Equality) {
-        const GU::PercentCoordinate topLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
-        const GU::PercentCoordinate topRightEdge = GU::PercentCoordinate(1.0f, 1.0f);
-        const GU::PercentCoordinate bottomLeftEdge = GU::PercentCoordinate(-1.0f, -1.0f);
-        const GU::PercentCoordinate bottomRightEdge = GU::PercentCoordinate(1.0f, -1.0f);
-        const GU::PercentCoordinate middle = GU::PercentCoordinate(0.0f, 0.0f);
-        ASSERT_TRUE(topLeftEdge == topLeftEdge);
-        ASSERT_TRUE(topRightEdge == topRightEdge);
-        ASSERT_TRUE(bottomLeftEdge == bottomLeftEdge);
-        ASSERT_TRUE(bottomRightEdge == bottomRightEdge);
-        ASSERT_TRUE(middle == middle);
-        ASSERT_FALSE(topLeftEdge == topRightEdge);
-        ASSERT_FALSE(topRightEdge == bottomLeftEdge);
-        ASSERT_FALSE(bottomLeftEdge == bottomRightEdge);
-        ASSERT_FALSE(bottomRightEdge == middle);
-    }
-
     TEST_F(PercentCoordinateCPPTests, PixelCoordinate) {
         pct_coord_to_px_coord_fake.return_val = { -959, 540, 1920, 1080 };
         const GU::PercentCoordinate topLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
         const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
         const GU::PixelCoordinate out = topLeftEdge.pixelCoordinate(1920, 1080);
         ASSERT_EQ(pct_coord_to_px_coord_fake.call_count, 1);
-        ASSERT_EQ(out, ptopLeftEdge);
+        equals(out, ptopLeftEdge);
     }
 
     TEST_F(PercentCoordinateCPPTests, CameraCoordinate) {
@@ -130,10 +115,7 @@ namespace CGTEST {
         const GU::CameraCoordinate out = topLeftEdge.cameraCoordinate(1920, 1080);
         ASSERT_EQ(pct_coord_to_px_coord_fake.call_count, 1);
         ASSERT_EQ(px_coord_to_cam_coord_fake.call_count, 1);
-        ASSERT_EQ(out.x(), ctopLeftEdge.x());
-        ASSERT_EQ(out.y(), ctopLeftEdge.y());
-        ASSERT_EQ(out.resWidth(), ctopLeftEdge.resWidth());
-        ASSERT_EQ(out.resHeight(), ctopLeftEdge.resHeight());
+        equals(out, ctopLeftEdge);
     }
 
 }  // namespace
