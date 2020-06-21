@@ -70,4 +70,13 @@ bool gu_camera_equals(const gu_camera lhs, const gu_camera rhs, const float tole
         && fabsf(deg_f_to_f(lhs.hFov) - deg_f_to_f(rhs.hFov)) <= tolerance;
 }
 
-
+gu_camera gu_camera_make(const centimetres_f height, const centimetres_f centerOffset, const degrees_f vDirection, const degrees_f vFov, const degrees_f hFov)
+{
+    gu_camera temp;
+    temp.height = height;
+    temp.centerOffset = centerOffset;
+    temp.vDirection = vDirection;
+    temp.vFov = vFov;
+    temp.hFov = hFov;
+    return temp;
+}

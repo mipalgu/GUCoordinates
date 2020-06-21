@@ -20,7 +20,11 @@ PKGCONFIG_DESCRIPTION=Utilities for converting between coordinate systems.
 
 all:	all-real
 
-.ifndef IGNORE_TESTS
+.ifdef IGNORE_TESTS
+
+test:
+
+.else
 
 host-local:
 	$Ebmake host-local IGNORE_TESTS=yes
@@ -36,31 +40,42 @@ test: ctest cpptest
 ctest:
 .ifndef TARGET
 	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
+	${SAY} "Testing C Implementation."
 	$Ecd ${SRCDIR}/ctests && ${MAKE} build-test BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./ctests/build.host/ctests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
 .endif
 
 cpp98test:
 .ifndef TARGET
+	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
+	${SAY} "Testing C++ Implementation with C++98 Standard."
 	$Ecd ${SRCDIR}/tests && ${MAKE} build-test BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
 .endif
 
 cpp03test:
 .ifndef TARGET
+	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
+	${SAY} "Testing C++ Implementation with C++03 Standard."
 	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=03 BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
 .endif
 
 cpp11test:
 .ifndef TARGET
+	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
+	${SAY} "Testing C++ Implementation with C++11 Standard."
 	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=11 BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
 .endif
 
 cpp14test:
 .ifndef TARGET
+	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
+	${SAY} "Testing C++ Implementation with C++14 Standard."
 	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=14 BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
 .endif
 
 cpp17test:
 .ifndef TARGET
+	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
+	${SAY} "Testing C++ Implementation with C++17 Standard."
 	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=17 BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
 .endif
 

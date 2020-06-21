@@ -70,19 +70,23 @@ namespace CGTEST {
     
         void preamble()
         {
-            cameras[0] = NAO_V5_TOP_CAMERA; \
-            cameras[1] = NAO_V5_BOTTOM_CAMERA; \
-            offsets[0] = 0.0f; \
-            offsets[1] = 0.0f; \
-            for (int i = 2; i < GU_ROBOT_NUM_CAMERAS; i++) \
-            { \
-                cameras[i] = {}; \
-                offsets[i] = 0.0f; \
-            } \
-            empty_strct.headPitch = 0.0f; \
-            empty_strct.headYaw = 0.0f; \
-            memcpy(empty_strct.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera)); \
-            memcpy(empty_strct.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f)); \
+            cameras[0] = NAO_V5_TOP_CAMERA;
+            cameras[1] = NAO_V5_BOTTOM_CAMERA;
+            offsets[0] = 0.0f;
+            offsets[1] = 0.0f;
+            for (int i = 2; i < GU_ROBOT_NUM_CAMERAS; i++)
+            {
+                cameras[i].height = 0.0f;
+                cameras[i].centerOffset = 0.0f;
+                cameras[i].vDirection = 0.0f;
+                cameras[i].vFov = 0.0f;
+                cameras[i].hFov = 0.0f;
+                offsets[i] = 0.0f;
+            }
+            empty_strct.headPitch = 0.0f;
+            empty_strct.headYaw = 0.0f;
+            memcpy(empty_strct.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera));
+            memcpy(empty_strct.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f));
             empty_strct.numCameras = 0;
         }
 
