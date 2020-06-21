@@ -182,7 +182,7 @@ namespace CGTEST {
         const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 0.0f);
         gu_relative_coordinate coord;
         ASSERT_TRUE(px_coord_to_rr_coord(centrePoint, robot, &coord, 0));
-        ASSERT_EQ(coord.distance, 429);
+        ASSERT_EQ(coord.distance, 430);
         ASSERT_EQ(coord.direction, 0);
         //std::cout << coord.distance() << ", " << coord.direction() << std::endl;
     }
@@ -192,17 +192,8 @@ namespace CGTEST {
         const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 0.0f);
         gu_relative_coordinate coord;
         ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, robot, &coord, 0));
-        ASSERT_EQ(coord.distance, 430);
+        ASSERT_EQ(coord.distance, 432);
         ASSERT_EQ(coord.direction, 0);
-        /*std::cout << coord.distance() << ", " << coord.direction() << std::endl;
-        double distance = 0;
-        double angle = 0;
-        struct wb_vision_control_status vs = {};
-        struct wb_sensors_torsojointsensors joints = {};
-        joints.set_HeadYaw(0.0f);
-        joints.set_HeadPitch(rad_f_to_f(deg_f_to_rad_f(5.0f)));
-        pixel_to_rr_coord(0, 0, Top, &vs, &joints, &distance, &angle);
-        std::cout << "distance: " << distance << ", angle: " << angle << std::endl;*/
     }
 
     TEST_F(ConversionsTests, ConvertsFromPercentToRelativeCoordinate3) {
@@ -210,7 +201,7 @@ namespace CGTEST {
         const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 0.0f);
         gu_relative_coordinate coord;
         ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, robot, &coord, 0));
-        ASSERT_EQ(coord.distance, 629);
+        ASSERT_EQ(coord.distance, 612);
         ASSERT_EQ(coord.direction, 0);
     }
 
@@ -248,8 +239,8 @@ namespace CGTEST {
         ASSERT_TRUE(px_coord_to_rr_coord(point, robot, &coord, 0));
         gu_pixel_coordinate output;
         ASSERT_TRUE(rr_coord_to_px_coord(coord, robot, 0, &output, 1920, 1080));
-        ASSERT_EQ(output.y, -330);
-        ASSERT_EQ(output.x, 450);
+        ASSERT_LT(abs(output.y + 330), 5);
+        ASSERT_LT(abs(output.x - 450), 10);
     }
 
     TEST_F(ConversionsTests, ConvertsFromFieldCoordinateToRelativeCoordinate) {
