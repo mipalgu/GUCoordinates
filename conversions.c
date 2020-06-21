@@ -148,7 +148,7 @@ bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_robot ro
     {
         return false;
     }
-    const radians_f yawRad = deg_f_to_rad_f(yaw);
+    const radians_f yawRad = deg_t_to_rad_f(coord.direction);
     const float frontDistance = cm_u_to_f(coord.distance) * cosf(rad_f_to_f(yawRad)) + cm_f_to_f(camera.centerOffset);
     const centimetres_f actualCameraHeight = calculate_camera_height(robot, camera, robot.cameraHeightOffsets[cameraOffset]);
     const degrees_f totalPitch = 90.0f - rad_f_to_deg_f(f_to_rad_f(atan2f(frontDistance, cm_f_to_f(actualCameraHeight))));

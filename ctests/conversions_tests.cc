@@ -233,14 +233,18 @@ namespace CGTEST {
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPixelUsingPreviousCalculation) {
-        const gu_pixel_coordinate point = { 450, -330, 1920, 1080 };
-        const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 2.0f);
+        const pixels_t x = 450;
+        const pixels_t y = -330;
+        const pixels_u res_width = 1920;
+        const pixels_u res_height = 1080;
+        const gu_pixel_coordinate point = { x, y, res_width, res_height };
+        const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 45.0f);
         gu_relative_coordinate coord;
         ASSERT_TRUE(px_coord_to_rr_coord(point, robot, &coord, 0));
         gu_pixel_coordinate output;
-        ASSERT_TRUE(rr_coord_to_px_coord(coord, robot, 0, &output, 1920, 1080));
-        ASSERT_LT(abs(output.y + 330), 5);
-        ASSERT_LT(abs(output.x - 450), 10);
+        ASSERT_TRUE(rr_coord_to_px_coord(coord, robot, 0, &output, res_width, res_height));
+        ASSERT_LE(abs(output.x - x), px_u_to_px_t(res_width) / 200); // Within 0.5 percent.
+        ASSERT_LE(abs(output.y - y), px_u_to_px_t(res_height) / 200); // Within 0.5 percent.
     }
 
     TEST_F(ConversionsTests, ConvertsFromFieldCoordinateToRelativeCoordinate) {
