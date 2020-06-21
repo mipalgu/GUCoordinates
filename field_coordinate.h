@@ -60,6 +60,7 @@
 #define FIELD_COORDINATE_H
 
 #include <guunits/guunits.h>
+#include <stdbool.h>
 #include "cartesian_coordinate.h"
 
 #ifdef __cplusplus
@@ -111,6 +112,8 @@ typedef struct gu_field_coordinate
 
 
 } gu_field_coordinate;
+
+bool gu_field_coordinate_equals(const gu_field_coordinate, const gu_field_coordinate);
 
 #ifdef __cplusplus
 };

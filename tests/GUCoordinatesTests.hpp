@@ -264,6 +264,21 @@ namespace CGTEST {
                 ASSERT_FALSE(lhs.x() == rhs.x() && lhs.y() == rhs.y());
             }
 
+            void equals(const GU::FieldCoordinate lhs, const GU::FieldCoordinate rhs)
+            {
+                equals(lhs.position(), rhs.position());
+                ASSERT_EQ(lhs.heading(), rhs.heading());
+            }
+
+            void nequals(const GU::FieldCoordinate lhs, const GU::FieldCoordinate rhs)
+            {
+                ASSERT_FALSE(
+                        lhs.position().x() == rhs.position().x()
+                        && lhs.position().y() == rhs.position().y()
+                        && lhs.heading() == rhs.heading()
+                    );
+            }
+
             void equals(const GU::Robot lhs, const GU::Robot rhs)
             {
                 ASSERT_EQ(lhs.headPitch(), rhs.headPitch());

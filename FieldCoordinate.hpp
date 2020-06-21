@@ -1,8 +1,8 @@
 /*
- * fakes.h 
- * tests 
+ * FieldCoordinate.hpp 
+ * gucoordinates 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 21/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,37 +56,56 @@
  *
  */
 
-#ifndef FAKES_H
-#define FAKES_H
+#ifndef FIELDCOORDINATE_HPP
+#define FIELDCOORDINATE_HPP
 
-#ifdef __cplusplus
-extern "C" {
+#include "field_coordinate.h"
+
+#include <cstdlib>
+#include <guunits/guunits.h>
+#include "CameraCoordinate.hpp"
+#include "PixelCoordinate.hpp"
+#include "PercentCoordinate.hpp"
+#include "CartesianCoordinate.hpp"
+#include "Robot.hpp"
+
+#if __cplusplus >= 199711L
+#include <optional>
 #endif
 
-#include "fff.h"
-#include "conversion_fakes.h"
-#include "camera_coordinate_fakes.h"
-#include "pixel_coordinate_fakes.h"
-#include "percent_coordinate_fakes.h"
-#include "relative_coordinate_fakes.h"
-#include "cartesian_coordinate_fakes.h"
-#include "field_coordinate_fakes.h"
-#include "camera_fakes.h"
-#include "robot_fakes.h"
+namespace GU {
 
-#define ALL_FAKES(FAKE)              \
-    CONVERSION_FAKES(FAKE)           \
-    CAMERA_COORDINATE_FAKES(FAKE)    \
-    PIXEL_COORDINATE_FAKES(FAKE)     \
-    PERCENT_COORDINATE_FAKES(FAKE)   \
-    RELATIVE_COORDINATE_FAKES(FAKE)  \
-    CARTESIAN_COORDINATE_FAKES(FAKE) \
-    FIELD_COORDINATE_FAKES(FAKE)     \
-    CAMERA_FAKES(FAKE)               \
-    ROBOT_FAKES(FAKE)
+    struct FieldCoordinate: private gu_field_coordinate {
 
-#ifdef __cplusplus
+        FieldCoordinate();
+        FieldCoordinate(CartesianCoordinate, degrees_t);
+        FieldCoordinate(const FieldCoordinate& other);
+        FieldCoordinate(const gu_field_coordinate& other);
+#if __cplusplus >= 199711L
+        FieldCoordinate(FieldCoordinate&& other);
+#endif
+        ~FieldCoordinate();
+        FieldCoordinate& operator=(const FieldCoordinate& other);
+        FieldCoordinate& operator=(const gu_field_coordinate& other);
+#if __cplusplus >= 199711L
+        FieldCoordinate& operator=(FieldCoordinate&& other);
+#endif
+
+        gu_field_coordinate _c() const;
+
+        CartesianCoordinate position() const;
+        void set_position(const CartesianCoordinate);
+
+        degrees_t heading() const;
+        void set_heading(const degrees_t);
+
+        bool operator ==(const FieldCoordinate &other) const;
+        bool operator !=(const FieldCoordinate &other) const;
+        bool operator ==(const gu_field_coordinate &other) const;
+        bool operator !=(const gu_field_coordinate &other) const;
+
+    };
+
 };
-#endif
 
-#endif  /* FAKES_H */
+#endif  /* FIELDCOORDINATE_HPP */

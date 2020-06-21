@@ -1,8 +1,8 @@
 /*
- * fakes.h 
+ * FieldCoordinateTests.cc 
  * tests 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 21/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,37 +56,46 @@
  *
  */
 
-#ifndef FAKES_H
-#define FAKES_H
+#include "GUCoordinatesTests.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+namespace CGTEST {
+    
+    class FieldCoordinateCPPTests: public GUCoordinatesTests<GU::FieldCoordinate, gu_field_coordinate> {
 
-#include "fff.h"
-#include "conversion_fakes.h"
-#include "camera_coordinate_fakes.h"
-#include "pixel_coordinate_fakes.h"
-#include "percent_coordinate_fakes.h"
-#include "relative_coordinate_fakes.h"
-#include "cartesian_coordinate_fakes.h"
-#include "field_coordinate_fakes.h"
-#include "camera_fakes.h"
-#include "robot_fakes.h"
+        protected:
 
-#define ALL_FAKES(FAKE)              \
-    CONVERSION_FAKES(FAKE)           \
-    CAMERA_COORDINATE_FAKES(FAKE)    \
-    PIXEL_COORDINATE_FAKES(FAKE)     \
-    PERCENT_COORDINATE_FAKES(FAKE)   \
-    RELATIVE_COORDINATE_FAKES(FAKE)  \
-    CARTESIAN_COORDINATE_FAKES(FAKE) \
-    FIELD_COORDINATE_FAKES(FAKE)     \
-    CAMERA_FAKES(FAKE)               \
-    ROBOT_FAKES(FAKE)
+        GU::FieldCoordinate initial()
+        {
+            return GU::FieldCoordinate(GU::CartesianCoordinate(90, 50), 100);
+        }
 
-#ifdef __cplusplus
-};
-#endif
+        gu_field_coordinate empty()
+        {
+            return { { 0, 0 }, 0 };
+        }
 
-#endif  /* FAKES_H */
+        void change(GU::FieldCoordinate &obj)
+        {
+            obj.set_position(GU::CartesianCoordinate(-90, -50));
+        }
+
+        void cchange(gu_field_coordinate &obj)
+        {
+            obj = { {40, 30}, 15};
+        }
+
+    };
+
+    WRAPPER_TEST_Fs(FieldCoordinate, gu_field_coordinate)
+
+    TEST_F(FieldCoordinateCPPTests, GettersSetters) {
+        GU::FieldCoordinate coord = GU::FieldCoordinate(GU::CartesianCoordinate(90, 50), 100);
+        equals(coord.position(), GU::CartesianCoordinate(90, 50));
+        coord.set_position(GU::CartesianCoordinate(-90, -50));
+        equals(coord.position(), GU::CartesianCoordinate(-90, -50));
+        ASSERT_EQ(coord.heading(), 100);
+        coord.set_heading(10);
+        ASSERT_EQ(coord.heading(), 10);
+    }
+
+}  // namespace

@@ -65,6 +65,7 @@
 #include "PercentCoordinate.hpp"
 #include "RelativeCoordinate.hpp"
 #include "CartesianCoordinate.hpp"
+#include "FieldCoordinate.hpp"
 #include "Camera.hpp"
 #include "Robot.hpp"
 

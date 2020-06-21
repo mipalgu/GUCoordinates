@@ -1,8 +1,8 @@
 /*
- * fakes.h 
+ * field_coordinate_fakes.h 
  * tests 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 21/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,37 +56,23 @@
  *
  */
 
-#ifndef FAKES_H
-#define FAKES_H
+#ifndef FIELD_COORDINATE_FAKES_H
+#define FIELD_COORDINATE_FAKES_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "fff.h"
-#include "conversion_fakes.h"
-#include "camera_coordinate_fakes.h"
-#include "pixel_coordinate_fakes.h"
-#include "percent_coordinate_fakes.h"
-#include "relative_coordinate_fakes.h"
-#include "cartesian_coordinate_fakes.h"
-#include "field_coordinate_fakes.h"
-#include "camera_fakes.h"
-#include "robot_fakes.h"
+#include "../field_coordinate.h"
 
-#define ALL_FAKES(FAKE)              \
-    CONVERSION_FAKES(FAKE)           \
-    CAMERA_COORDINATE_FAKES(FAKE)    \
-    PIXEL_COORDINATE_FAKES(FAKE)     \
-    PERCENT_COORDINATE_FAKES(FAKE)   \
-    RELATIVE_COORDINATE_FAKES(FAKE)  \
-    CARTESIAN_COORDINATE_FAKES(FAKE) \
-    FIELD_COORDINATE_FAKES(FAKE)     \
-    CAMERA_FAKES(FAKE)               \
-    ROBOT_FAKES(FAKE)
+#define FIELD_COORDINATE_FAKES(FAKE) \
+    FAKE(gu_field_coordinate_equals)
+
+DECLARE_FAKE_VALUE_FUNC(bool, gu_field_coordinate_equals, const gu_field_coordinate, const gu_field_coordinate);
 
 #ifdef __cplusplus
 };
 #endif
 
-#endif  /* FAKES_H */
+#endif  /* FIELD_COORDINATE_FAKES_H */
