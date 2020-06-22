@@ -69,7 +69,10 @@ extern "C" {
 #define CAMERA_COORDINATE_FAKES(FAKE) \
     FAKE(gu_camera_coordinate_equals)
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wcast-qual"
 DECLARE_FAKE_VALUE_FUNC(bool, gu_camera_coordinate_equals, const gu_camera_coordinate, const gu_camera_coordinate)
+#pragma clang diagnostic pop
 
 #ifdef __cplusplus
 }

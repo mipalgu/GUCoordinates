@@ -1,4 +1,4 @@
-WFLAGS=-Wall -Weverything -Wno-unknown-pragmas -Wno-unknown-warning-option -Wno-global-constructors -Werror -Wno-padded -Wno-weak-vtables -Wno-c99-extensions ${EXTRA_WFLAGS}
+WFLAGS=-Wall -Weverything -Wno-unknown-pragmas -Wno-unknown-warning-option -Wno-global-constructors -Werror -Wno-padded -Wno-weak-vtables -Wno-c99-extensions -Wno-variadic-macros ${EXTRA_WFLAGS}
 .ifdef STD
 .  if ${STD} == 03
 CXXSTDFL=-std=c++${STD}

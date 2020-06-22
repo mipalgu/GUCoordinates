@@ -58,4 +58,7 @@
 
 #include "cartesian_coordinate_fakes.h"
 
-DEFINE_FAKE_VALUE_FUNC(bool, gu_cartesian_coordinate_equals, const gu_cartesian_coordinate, const gu_cartesian_coordinate);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wcast-qual"
+DEFINE_FAKE_VALUE_FUNC(bool, gu_cartesian_coordinate_equals, const gu_cartesian_coordinate, const gu_cartesian_coordinate)
+#pragma clang diagnostic pop

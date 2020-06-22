@@ -58,4 +58,7 @@
 
 #include "field_coordinate_fakes.h"
 
-DEFINE_FAKE_VALUE_FUNC(bool, gu_field_coordinate_equals, const gu_field_coordinate, const gu_field_coordinate);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wcast-qual"
+DEFINE_FAKE_VALUE_FUNC(bool, gu_field_coordinate_equals, const gu_field_coordinate, const gu_field_coordinate)
+#pragma clang diagnostic pop

@@ -52,56 +52,64 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see http://www.gnu.org/licenses/
  * or write to the Free Software Foundation, Inc., 51 Franklin Street,
- * Fifth Floor, Boston, MA  02110-1301, USA.
+ * Fifth FlooUNUSED(r), Boston, MA  02110-1301, USA.
  *
  */
 
 #include "custom_fakes.h"
 
-bool px_coord_to_rr_coord_custom_fake_true(const gu_pixel_coordinate c, const gu_robot r, gu_relative_coordinate * out, const int i)
+#ifndef UNUSED
+#  ifdef __GNUC__
+#    define UNUSED(x) UNUSED_ ## x __attribute__((__unused__))
+#  else
+#    define UNUSED(x) UNUSED_ ## x
+#  endif
+#endif
+
+bool px_coord_to_rr_coord_custom_fake_true(const gu_pixel_coordinate UNUSED(c), const gu_robot UNUSED(r), gu_relative_coordinate * out, const int UNUSED(i))
 {
     const gu_relative_coordinate temp = px_coord_to_rr_coord_custom_fake_result;
     *out = temp;
     return true;
 }
 
-bool px_coord_to_rr_coord_custom_fake_false(const gu_pixel_coordinate c, const gu_robot r, gu_relative_coordinate * o, const int i)
+bool px_coord_to_rr_coord_custom_fake_false(const gu_pixel_coordinate UNUSED(c), const gu_robot UNUSED(r), gu_relative_coordinate * UNUSED(o), const int UNUSED(i))
 {
     return false;
 }
 
-bool pct_coord_to_rr_coord_custom_fake_true(const gu_percent_coordinate c, const gu_robot r, gu_relative_coordinate * out, const int i)
+bool pct_coord_to_rr_coord_custom_fake_true(const gu_percent_coordinate UNUSED(c), const gu_robot UNUSED(r), gu_relative_coordinate * out, const int UNUSED(i))
 {
     const gu_relative_coordinate temp = pct_coord_to_rr_coord_custom_fake_result;
     *out = temp;
     return true;
 }
 
-bool pct_coord_to_rr_coord_custom_fake_false(const gu_percent_coordinate c, const gu_robot r, gu_relative_coordinate * o, const int i)
+bool pct_coord_to_rr_coord_custom_fake_false(const gu_percent_coordinate UNUSED(c), const gu_robot UNUSED(r), gu_relative_coordinate * UNUSED(o), const int UNUSED(i))
 {
     return false;
 }
 
-bool rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate c, const gu_robot r, const int i, gu_percent_coordinate * out)
+bool rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate UNUSED(c), const gu_robot UNUSED(r), const int UNUSED(i), gu_percent_coordinate * out)
 {
     const gu_percent_coordinate temp = rr_coord_to_pct_coord_custom_fake_result;
     *out = temp;
     return true;
 }
 
-bool rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate c, const gu_robot r, const int i, gu_percent_coordinate * o)
+bool rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate UNUSED(c), const gu_robot UNUSED(r), const int UNUSED(i), gu_percent_coordinate * UNUSED(o))
 {
     return false;
 }
 
-bool rr_coord_to_px_coord_custom_fake_true(const gu_relative_coordinate c, const gu_robot r, const int i, gu_pixel_coordinate * out, pixels_u rw, pixels_u rh)
+bool rr_coord_to_px_coord_custom_fake_true(const gu_relative_coordinate UNUSED(c), const gu_robot UNUSED(r), const int UNUSED(i), gu_pixel_coordinate * out, pixels_u UNUSED(rw), pixels_u UNUSED(rh))
 {
     const gu_pixel_coordinate temp = rr_coord_to_px_coord_custom_fake_result;
     *out = temp;
     return true;
 }
 
-bool rr_coord_to_px_coord_custom_fake_false(const gu_relative_coordinate c, const gu_robot r, const int i, gu_pixel_coordinate * o, pixels_u rw, pixels_u rh)
+bool rr_coord_to_px_coord_custom_fake_false(const gu_relative_coordinate UNUSED(c), const gu_robot UNUSED(r), const int UNUSED(i), gu_pixel_coordinate * UNUSED(o), pixels_u UNUSED(rw), pixels_u UNUSED(rh))
 {
     return false;
 }

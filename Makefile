@@ -23,10 +23,10 @@ PKGCONFIG_DESCRIPTION=Utilities for converting between coordinate systems.
 
 #WFLAGS=-Weverything wn-warning-option ${WERROR}
 WFLAGS=-Wall -Weverything -Wno-unknown-pragmas -Wno-unknown-warning-option -Werror
-CPP03_EXTRA_WFLAGS=-Wno-c++98-compat -Wc++98-compat-extra-semi
-CPP11_EXTRA_WFLAGS=-Wno-c++98-compat -Wc++98-compat-extra-semi
-CPP14_EXTRA_WFLAGS=-Wno-c++98-compat -Wc++98-compat-extra-semi
-CPP17_EXTRA_WFLAGS=-Wno-c++98-compat -Wc++98-compat-extra-semi
+CPP03_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-extra-semi
+CPP11_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-extra-semi
+CPP14_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-extra-semi
+CPP17_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-extra-semi
 
 all:	all-real
 

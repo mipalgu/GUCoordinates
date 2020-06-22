@@ -69,6 +69,9 @@
 #pragma clang diagnostic ignored "-Wundef"
 #pragma clang diagnostic ignored "-Wc++98-compat"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++11-long-long"
+#pragma clang diagnostic ignored "-Wc++11-extensions"
+#pragma clang diagnostic ignored "-Wdeprecated"
 #include <gtest/gtest.h>
 #pragma clang diagnostic pop
 
@@ -419,6 +422,6 @@ namespace CGTEST {
 
     };
 
-};
+}
 
 #endif  /* GUCOORDINATESTESTS_HPP */

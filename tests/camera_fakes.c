@@ -58,4 +58,7 @@
 
 #include "camera_fakes.h"
 
-DEFINE_FAKE_VALUE_FUNC(bool, gu_camera_equals, const gu_camera, const gu_camera, const float);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wcast-qual"
+DEFINE_FAKE_VALUE_FUNC(bool, gu_camera_equals, const gu_camera, const gu_camera, const float)
+#pragma clang diagnostic pop

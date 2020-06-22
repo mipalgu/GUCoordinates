@@ -58,4 +58,7 @@
 
 #include "pixel_coordinate_fakes.h"
 
-DEFINE_FAKE_VALUE_FUNC(bool, gu_pixel_coordinate_equals, const gu_pixel_coordinate, const gu_pixel_coordinate);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wcast-qual"
+DEFINE_FAKE_VALUE_FUNC(bool, gu_pixel_coordinate_equals, const gu_pixel_coordinate, const gu_pixel_coordinate)
+#pragma clang diagnostic pop
