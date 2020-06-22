@@ -105,6 +105,8 @@
 		F2E9420924A0536200041D08 /* tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E9420B24A0536200041D08 /* tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tests.swift; sourceTree = "<group>"; };
 		F2E9420D24A0536200041D08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2E9421124A05D5800041D08 /* NaoV5.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NaoV5.hpp; sourceTree = SOURCE_ROOT; };
+		F2E9421224A05E0000041D08 /* NaoV5.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NaoV5.cc; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,8 @@
 				F2E9417D24A045B500041D08 /* robot.c */,
 				F2E9417124A045B400041D08 /* robot.h */,
 				F2E9417024A045B400041D08 /* Robot.hpp */,
+				F2E9421124A05D5800041D08 /* NaoV5.hpp */,
+				F2E9421224A05E0000041D08 /* NaoV5.cc */,
 			);
 			path = gucoordinates;
 			sourceTree = "<group>";
@@ -327,7 +331,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export CODESIGN_ALLOCATE=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate\nif [[ \"$ACTION\" -eq \"build\" ]]\nthen\nexport ACTION=\"host-local\"\nfi\n\necho \"$ACTION\"\n\n/usr/local/bin/bmake $ACTION\n\nif [[ \"$ACTION\" -eq \"test\" || \"$ACTION\" -eq \"ctest\" ]]\nthen\n/usr/bin/codesign --force --sign - --timestamp=none $SRCROOT/ctests/build.host/ctests\nfi\n";
+			shellScript = "set -e\n\nexport CODESIGN_ALLOCATE=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate\nif [[ \"$ACTION\" -eq \"build\" ]]\nthen\nexport ACTION=\"host-local\"\n/usr/local/bin/bmake clean\nfi\n\necho \"$ACTION\"\n\n/usr/local/bin/bmake $ACTION\n\nif [[ \"$ACTION\" -eq \"test\" || \"$ACTION\" -eq \"ctest\" ]]\nthen\n/usr/bin/codesign --force --sign - --timestamp=none $SRCROOT/ctests/build.host/ctests\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
