@@ -74,7 +74,7 @@ build-lib:
 run-cpp-test: build-lib
 .ifndef TARGET
 	${SAY} "Testing C++ Implementation with C++${STD} Standard."
-	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=${STD} EXTRA_WFLAGS="${CPP${STD}_EXTRA_WFLAGS}" BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests
+	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=${STD} EXTRA_WFLAGS="${CPP${STD}_EXTRA_WFLAGS}" BUILDDIR=build.host-${STD} LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host-${STD}/tests
 .endif
 
 
@@ -85,19 +85,19 @@ ctest: build-lib
 .endif
 
 cpp98test:
-	${MAKE} run-cpp-test STD=98
+	$E${MAKE} run-cpp-test STD=98
 
 cpp03test: build-lib
-	${MAKE} run-cpp-test STD=03
+	$E${MAKE} run-cpp-test STD=03
 
 cpp11test: build-lib
-	${MAKE} run-cpp-test STD=11
+	$E${MAKE} run-cpp-test STD=11
 
 cpp14test: build-lib
-	${MAKE} run-cpp-test STD=14
+	$E${MAKE} run-cpp-test STD=14
 
 cpp17test: build-lib
-	${MAKE} run-cpp-test STD=17
+	$E${MAKE} run-cpp-test STD=17
 
 cpptest: cpp98test cpp03test cpp11test cpp14test cpp17test
 .endif

@@ -25,9 +25,12 @@ CODE_COVERAGE=yes
 
 all:	all-real
 
-build-test: clean host
+build-test: clean-build-dir host
 
 test:
+
+clean-build-dir:
+	rm -rf ${BUILDDIR}
 
 .include "../../../mk/mipal.mk"
 
