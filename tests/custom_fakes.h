@@ -65,6 +65,13 @@
 extern "C" {
 #endif
 
+#define px_coord_to_rr_coord_custom_fake_result { .direction = 20, .distance = 200 }
+
+bool px_coord_to_rr_coord_custom_fake_true(const gu_pixel_coordinate, const gu_robot, gu_relative_coordinate *, const int);
+
+bool px_coord_to_rr_coord_custom_fake_false(const gu_pixel_coordinate, const gu_robot, gu_relative_coordinate *, const int);
+
+
 #define pct_coord_to_rr_coord_custom_fake_result { .direction = 10, .distance = 100 }
 
 bool pct_coord_to_rr_coord_custom_fake_true(const gu_percent_coordinate, const gu_robot, gu_relative_coordinate * out, const int);

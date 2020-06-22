@@ -58,6 +58,18 @@
 
 #include "custom_fakes.h"
 
+bool px_coord_to_rr_coord_custom_fake_true(const gu_pixel_coordinate c, const gu_robot r, gu_relative_coordinate * out, const int i)
+{
+    const gu_relative_coordinate temp = px_coord_to_rr_coord_custom_fake_result;
+    *out = temp;
+    return true;
+}
+
+bool px_coord_to_rr_coord_custom_fake_false(const gu_pixel_coordinate c, const gu_robot r, gu_relative_coordinate * o, const int i)
+{
+    return false;
+}
+
 bool pct_coord_to_rr_coord_custom_fake_true(const gu_percent_coordinate c, const gu_robot r, gu_relative_coordinate * out, const int i)
 {
     const gu_relative_coordinate temp = pct_coord_to_rr_coord_custom_fake_result;
