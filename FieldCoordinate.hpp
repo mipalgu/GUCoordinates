@@ -89,6 +89,8 @@ namespace GU {
         FieldCoordinate& operator=(FieldCoordinate&& other);
 #endif
 
+        RelativeCoordinate relativeCoordinateTo(const GU::CartesianCoordinate &) const;
+
         CartesianCoordinate position() const;
         void set_position(const CartesianCoordinate);
 

@@ -115,6 +115,11 @@ GU::FieldCoordinate& GU::FieldCoordinate::operator=(FieldCoordinate&& other)
 }
 #endif
 
+GU::RelativeCoordinate GU::FieldCoordinate::relativeCoordinateTo(const GU::CartesianCoordinate & target) const
+{
+    return field_coord_to_rr_coord_to_target(*this, target);
+}
+
 GU::CartesianCoordinate GU::FieldCoordinate::position() const
 {
     return gu_field_coordinate::position;
