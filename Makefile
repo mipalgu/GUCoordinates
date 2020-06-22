@@ -20,6 +20,9 @@ PKGCONFIG_NAME=gucoordinates
 PKGCONFIG_VERSION=1.0
 PKGCONFIG_DESCRIPTION=Utilities for converting between coordinate systems.
 
+#WFLAGS=-Weverything wn-warning-option ${WERROR}
+WFLAGS=-Wall -Weverything -Wno-unknown-pragmas -Wno-unknown-warning-option -Werror
+
 all:	all-real
 
 .ifdef IGNORE_TESTS
