@@ -61,6 +61,7 @@
 
 #include "Robot.hpp"
 #include <cstdlib>
+#include <gusimplewhiteboard/typeClassDefs/wb_sensors_torsojointsensors.h>
 
 namespace GU {
 
@@ -68,11 +69,13 @@ namespace GU {
 
         NaoV5();
         NaoV5(const NaoV5& other);
+        NaoV5(const ::wb_sensors_torsojointsensors& joints);
 #ifdef __cpp_rvalue_references
         NaoV5(NaoV5&& other);
 #endif
         ~NaoV5();
         NaoV5& operator=(const NaoV5& other);
+        NaoV5& operator=(const ::wb_sensors_torsojointsensors& joints);
 #ifdef __cpp_rvalue_references
         NaoV5& operator=(NaoV5&& other);
 #endif

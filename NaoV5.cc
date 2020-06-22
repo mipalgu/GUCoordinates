@@ -58,11 +58,14 @@
 
 #include "NaoV5.hpp"
 
+#include <guunits/guunits.h>
 #include "robot.h"
 
 GU::NaoV5::NaoV5(): GU::Robot(GU_NAO_V5_ROBOT(0.0f, 0.0f)) {}
 
 GU::NaoV5::NaoV5(const NaoV5& other): GU::Robot(other) {}
+
+GU::NaoV5::NaoV5(const ::wb_sensors_torsojointsensors& joints): GU::Robot(GU_NAO_V5_ROBOT(rad_f_to_deg_f(f_to_rad_f(joints.HeadPitch())), rad_f_to_deg_f(f_to_rad_f(joints.HeadYaw())))) {}
 
 #ifdef __cpp_rvalue_references
 GU::NaoV5::NaoV5(NaoV5&& other): GU::Robot(other) {}
@@ -77,6 +80,12 @@ GU::NaoV5& GU::NaoV5::operator=(const GU::NaoV5& other) {
     set_cameraHeightOffsets(other.cameraHeightOffsets());
     set_numCameras(other.numCameras());
     return *this;
+}
+
+GU::NaoV5& GU::NaoV5::operator=(const ::wb_sensors_torsojointsensors& joints)
+{
+    set_headPitch(rad_f_to_deg_f(f_to_rad_f(joints.HeadPitch())));
+    set_headYaw(rad_f_to_deg_f(f_to_rad_f(joints.HeadYaw())));
 }
 
 #ifdef __cpp_rvalue_references

@@ -10,6 +10,7 @@ CC_SRCS!=ls *.cc
 ALL_HDRS!=ls *.h
 SPECIFIC_LIBS+=-lm
 SPECIFIC_LIBS+=-lguunits
+SPECIFIC_LIBS+=-lgusimplewhiteboard
 LOCAL=_LOCAL
 
 .include "../../mk/c++11.mk"
