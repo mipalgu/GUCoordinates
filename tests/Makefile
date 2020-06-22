@@ -1,6 +1,6 @@
 WFLAGS=-Wall -Weverything -Wno-unknown-pragmas -Wno-unknown-warning-option -Wno-global-constructors -Werror -Wno-padded -Wno-weak-vtables -Wno-c99-extensions -Wno-variadic-macros ${EXTRA_WFLAGS}
 .ifdef STD
-.  if ${STD} == 03
+.  if ${STD} == 03 || ${STD} == 98
 CXXSTDFL=-std=c++${STD}
 .  else
 .    include "../../../mk/c++${STD}.mk"
