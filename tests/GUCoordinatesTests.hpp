@@ -86,6 +86,8 @@
 
 #include <typeinfo>
 
+#include <math.h>
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wglobal-constructors"
 
@@ -248,6 +250,12 @@ namespace CGTEST {
             }
 #endif
 
+            bool near(const float lhs, const float rhs) const
+            {
+                const float tolerance = 0.00001f;
+                return fabsf(lhs - rhs) < tolerance;
+            }
+
             void equals(const GU::CameraCoordinate lhs, const GU::CameraCoordinate rhs)
             {
                 ASSERT_EQ(lhs.x(), rhs.x());
@@ -267,27 +275,22 @@ namespace CGTEST {
 
             void equals(const GU::Camera lhs, const GU::Camera rhs)
             {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wfloat-equal"
-                ASSERT_EQ(lhs.height(), rhs.height());
-                ASSERT_EQ(lhs.centerOffset(), rhs.centerOffset());
-                ASSERT_EQ(lhs.vDirection(), rhs.vDirection());
-                ASSERT_EQ(lhs.vFov(), rhs.vFov());
-                ASSERT_EQ(lhs.hFov(), rhs.hFov());
-#pragma clang diagnostic pop
+                ASSERT_FLOAT_EQ(lhs.height(), rhs.height());
+                ASSERT_FLOAT_EQ(lhs.centerOffset(), rhs.centerOffset());
+                ASSERT_FLOAT_EQ(lhs.vDirection(), rhs.vDirection());
+                ASSERT_FLOAT_EQ(lhs.vFov(), rhs.vFov());
+                ASSERT_FLOAT_EQ(lhs.hFov(), rhs.hFov());
             }
 
             void nequals(const GU::Camera lhs, const GU::Camera rhs)
             {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wfloat-equal"
-                ASSERT_FALSE(lhs.height() == rhs.height()
-                        && lhs.centerOffset() == rhs.centerOffset()
-                        && lhs.vDirection() == rhs.vDirection()
-                        && lhs.vFov() == rhs.vFov()
-                        && lhs.hFov() == rhs.hFov()
+                ASSERT_FALSE(
+                        near(lhs.height(), rhs.height())
+                        && near(lhs.centerOffset(), rhs.centerOffset())
+                        && near(lhs.vDirection(), rhs.vDirection())
+                        && near(lhs.vFov(), rhs.vFov())
+                        && near(lhs.hFov(), rhs.hFov())
                         );
-#pragma clang diagnostic pop
             }
 
             void equals(const GU::PixelCoordinate lhs, const GU::PixelCoordinate rhs)
@@ -310,22 +313,16 @@ namespace CGTEST {
 
             void equals(const GU::PercentCoordinate lhs, const GU::PercentCoordinate rhs)
             {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wfloat-equal"
-                ASSERT_EQ(lhs.x(), rhs.x());
-                ASSERT_EQ(lhs.y(), rhs.y());
-#pragma clang diagnostic pop
+                ASSERT_FLOAT_EQ(lhs.x(), rhs.x());
+                ASSERT_FLOAT_EQ(lhs.y(), rhs.y());
             }
 
             void nequals(const GU::PercentCoordinate lhs, const GU::PercentCoordinate rhs)
             {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wfloat-equal"
                 ASSERT_FALSE(
-                        lhs.x() == rhs.x()
-                        && lhs.y() == rhs.y()
+                        near(lhs.x(), rhs.x())
+                        && near(lhs.y(), rhs.y())
                     );
-#pragma clang diagnostic pop
             }
 
             void equals(const GU::RelativeCoordinate lhs, const GU::RelativeCoordinate rhs)
@@ -370,37 +367,32 @@ namespace CGTEST {
 
             void equals(const GU::Robot lhs, const GU::Robot rhs)
             {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wfloat-equal"
-                ASSERT_EQ(lhs.headPitch(), rhs.headPitch());
-                ASSERT_EQ(lhs.headYaw(), rhs.headYaw());
+                ASSERT_FLOAT_EQ(lhs.headPitch(), rhs.headPitch());
+                ASSERT_FLOAT_EQ(lhs.headYaw(), rhs.headYaw());
                 ASSERT_EQ(lhs.numCameras(), rhs.numCameras());
                 for (int i = 0; i < lhs.numCameras(); i++)
                 {
                     const GU::Camera lcamera = lhs.camera(i);
                     const GU::Camera rcamera = rhs.camera(i);
-                    ASSERT_EQ(lcamera.height(), rcamera.height());
-                    ASSERT_EQ(lcamera.centerOffset(), rcamera.centerOffset());
-                    ASSERT_EQ(lcamera.vDirection(), rcamera.vDirection());
-                    ASSERT_EQ(lcamera.vFov(), rcamera.vFov());
-                    ASSERT_EQ(lcamera.hFov(), rcamera.hFov());
-                    ASSERT_EQ(lhs.cameraHeightOffset(i), rhs.cameraHeightOffset(i));
+                    ASSERT_FLOAT_EQ(lcamera.height(), rcamera.height());
+                    ASSERT_FLOAT_EQ(lcamera.centerOffset(), rcamera.centerOffset());
+                    ASSERT_FLOAT_EQ(lcamera.vDirection(), rcamera.vDirection());
+                    ASSERT_FLOAT_EQ(lcamera.vFov(), rcamera.vFov());
+                    ASSERT_FLOAT_EQ(lcamera.hFov(), rcamera.hFov());
+                    ASSERT_FLOAT_EQ(lhs.cameraHeightOffset(i), rhs.cameraHeightOffset(i));
                 }
-#pragma clang diagnostic pop
             }
 
             void nequals(const GU::Robot lhs, const GU::Robot rhs)
             {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wfloat-equal"
-                if (!(lhs.headPitch() == rhs.headPitch()
-                        && lhs.headYaw() == rhs.headYaw()
-                        && lhs.numCameras() == rhs.numCameras()
+                if (!(near(lhs.headPitch(), rhs.headPitch())
+                        && near(lhs.headYaw(), rhs.headYaw())
+                        && near(lhs.numCameras(), rhs.numCameras())
                    ))
                 {
-                    ASSERT_FALSE(lhs.headPitch() == rhs.headPitch()
-                        && lhs.headYaw() == rhs.headYaw()
-                        && lhs.numCameras() == rhs.numCameras()
+                    ASSERT_FALSE(near(lhs.headPitch(), rhs.headPitch())
+                        && near(lhs.headYaw(), rhs.headYaw())
+                        && near(lhs.numCameras(), rhs.numCameras())
                         );
                     return;
                 }
@@ -409,15 +401,14 @@ namespace CGTEST {
                     const GU::Camera lcamera = lhs.camera(i);
                     const GU::Camera rcamera = rhs.camera(i);
                     ASSERT_FALSE(
-                            lcamera.height() == rcamera.height()
-                            && lcamera.centerOffset() == rcamera.centerOffset()
-                            && lcamera.vDirection() == rcamera.vDirection()
-                            && lcamera.vFov() == rcamera.vFov()
-                            && lcamera.hFov() == rcamera.hFov()
-                            && lhs.cameraHeightOffset(i) == rhs.cameraHeightOffset(i)
+                            near(lcamera.height(), rcamera.height())
+                            && near(lcamera.centerOffset(),rcamera.centerOffset())
+                            && near(lcamera.vDirection(), rcamera.vDirection())
+                            && near(lcamera.vFov(), rcamera.vFov())
+                            && near(lcamera.hFov(), rcamera.hFov())
+                            && near(lhs.cameraHeightOffset(i), rhs.cameraHeightOffset(i))
                             );
                 }
-#pragma clang diagnostic pop
             }
 
     };
