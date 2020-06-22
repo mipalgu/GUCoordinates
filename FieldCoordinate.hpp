@@ -72,6 +72,7 @@
 namespace GU {
 
     struct RelativeCoordinate;
+    struct CartesianCoordinate;
 
     struct FieldCoordinate: public gu_field_coordinate {
 
@@ -104,6 +105,6 @@ namespace GU {
 
     };
 
-};
+}
 
 #endif  /* FIELDCOORDINATE_HPP */

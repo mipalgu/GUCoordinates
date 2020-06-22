@@ -69,10 +69,10 @@ extern "C" {
 #define CAMERA_COORDINATE_FAKES(FAKE) \
     FAKE(gu_camera_coordinate_equals)
 
-DECLARE_FAKE_VALUE_FUNC(bool, gu_camera_coordinate_equals, const gu_camera_coordinate, const gu_camera_coordinate);
+DECLARE_FAKE_VALUE_FUNC(bool, gu_camera_coordinate_equals, const gu_camera_coordinate, const gu_camera_coordinate)
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* CAMERA_COORDINATE_FAKES_H */

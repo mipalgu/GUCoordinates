@@ -122,6 +122,6 @@ namespace GU {
 
     };
 
-};
+}
 
 #endif  /* CAMERACOORDINATE_HPP */

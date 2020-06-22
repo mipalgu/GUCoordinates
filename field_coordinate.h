@@ -116,7 +116,7 @@ typedef struct gu_field_coordinate
 bool gu_field_coordinate_equals(const gu_field_coordinate, const gu_field_coordinate);
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* FIELD_COORDINATE_H */

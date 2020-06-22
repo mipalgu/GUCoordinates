@@ -119,6 +119,6 @@ namespace GU {
 
     };
 
-};
+}
 
 #endif  /* PIXELCOORDINATE_HPP */

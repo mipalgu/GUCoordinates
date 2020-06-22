@@ -94,7 +94,7 @@ typedef struct gu_robot
 bool gu_robot_equals(const gu_robot, const gu_robot, const float);
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* ROBOT_H */

@@ -70,10 +70,10 @@ extern "C" {
 #define CAMERA_FAKES(FAKE) \
     FAKE(gu_camera_equals)
 
-DECLARE_FAKE_VALUE_FUNC(bool, gu_camera_equals, const gu_camera, const gu_camera, const float);
+DECLARE_FAKE_VALUE_FUNC(bool, gu_camera_equals, const gu_camera, const gu_camera, const float)
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* CAMERA_FAKES_H */

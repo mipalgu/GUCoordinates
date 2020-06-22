@@ -118,7 +118,7 @@ gu_camera gu_camera_make(const centimetres_f, const centimetres_f, const degrees
 
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* CAMERA_H */

@@ -103,7 +103,7 @@ typedef struct gu_camera_coordinate {
 bool gu_camera_coordinate_equals(const gu_camera_coordinate lhs, const gu_camera_coordinate rhs);
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* CAMERA_COORDINATE_H */

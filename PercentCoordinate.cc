@@ -132,7 +132,7 @@ std::optional<GU::RelativeCoordinate> GU::PercentCoordinate::relativeCoordinate(
     GU::RelativeCoordinate out;
     if (pct_coord_to_rr_coord(*this, robot, &out, cameraOffset))
     {
-        return std::optional(out);
+        return std::optional<GU::RelativeCoordinate>(out);
     }
     return std::nullopt;
 }

@@ -1,3 +1,14 @@
+WFLAGS=-Wall -Weverything -Wno-unknown-pragmas -Wno-unknown-warning-option -Wno-global-constructors -Werror -Wno-padded -Wno-weak-vtables -Wno-c99-extensions ${EXTRA_WFLAGS}
+.ifdef STD
+.  if ${STD} == 03
+CXXSTDFL=-std=c++${STD}
+.  else
+.    include "../../../mk/c++${STD}.mk"
+.  endif
+.else
+CXXSTDFL=-std=c++98
+.endif
+
 ALL_TARGETS=build-test
 
 SDIR?=.
@@ -9,22 +20,12 @@ CPP_SRCS!=ls *.cpp 2>/dev/null || :
 CXXFLAGS+=-I${SDIR} -I../../../../Common -I../../../gusimplewhiteboard
 TESTLIBDIR?=${SDIR}/../build.host-local
 SPECIFIC_LIBS=-L${TESTLIBDIR} -lgucoordinates -L/usr/local/lib -lgtest -lgtest_main -lguunits -rpath ${TESTLIBDIR}
-WFLAGS=
 
 all:	all-real
 
 build-test: clean host
 
 test:
-
-.ifdef STD
-CXXSTDFL=-std=c++${STD}
-.  if ${STD} != 03
-.    include "../../../mk/c++${STD}.mk"
-.  endif
-.else
-CXXSTDFL=-std=c++98
-.endif
 
 .include "../../../mk/mipal.mk"
 

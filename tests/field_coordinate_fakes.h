@@ -69,10 +69,10 @@ extern "C" {
 #define FIELD_COORDINATE_FAKES(FAKE) \
     FAKE(gu_field_coordinate_equals)
 
-DECLARE_FAKE_VALUE_FUNC(bool, gu_field_coordinate_equals, const gu_field_coordinate, const gu_field_coordinate);
+DECLARE_FAKE_VALUE_FUNC(bool, gu_field_coordinate_equals, const gu_field_coordinate, const gu_field_coordinate)
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* FIELD_COORDINATE_FAKES_H */

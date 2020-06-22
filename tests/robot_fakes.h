@@ -69,10 +69,10 @@ extern "C" {
 #define ROBOT_FAKES(FAKE) \
     FAKE(gu_robot_equals)
 
-DECLARE_FAKE_VALUE_FUNC(bool, gu_robot_equals, const gu_robot, const gu_robot, const float);
+DECLARE_FAKE_VALUE_FUNC(bool, gu_robot_equals, const gu_robot, const gu_robot, const float)
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* ROBOT_FAKES_H */

@@ -72,7 +72,10 @@ namespace GU {
         Camera(const Camera& other);
         Camera(const gu_camera& other);
 #ifdef __cpp_rvalue_references
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         Camera(Camera&& other);
+#pragma clang diagnostic pop
 #endif
         ~Camera();
         Camera& operator=(const Camera& other);
@@ -104,6 +107,6 @@ namespace GU {
 
     };
 
-};
+}
 
 #endif  /* CAMERA_HPP */

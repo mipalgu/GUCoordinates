@@ -63,6 +63,7 @@
 #include "RelativeCoordinate.hpp"
 #include "PixelCoordinate.hpp"
 #include "CameraCoordinate.hpp"
+#include "Robot.hpp"
 
 #include <cstdlib>
 
@@ -112,6 +113,6 @@ namespace GU {
 
     };
 
-};
+}
 
 #endif  /* PERCENTCOORDINATE_HPP */

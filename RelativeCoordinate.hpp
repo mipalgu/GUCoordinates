@@ -117,6 +117,6 @@ namespace GU {
 
     };
 
-};
+}
 
 #endif  /* RELATIVECOORDINATE_HPP */

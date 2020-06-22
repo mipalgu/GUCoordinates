@@ -69,10 +69,10 @@ extern "C" {
 #define CARTESIAN_COORDINATE_FAKES(FAKE) \
     FAKE(gu_cartesian_coordinate_equals)
 
-DECLARE_FAKE_VALUE_FUNC(bool, gu_cartesian_coordinate_equals, const gu_cartesian_coordinate, const gu_cartesian_coordinate);
+DECLARE_FAKE_VALUE_FUNC(bool, gu_cartesian_coordinate_equals, const gu_cartesian_coordinate, const gu_cartesian_coordinate)
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* CARTESIAN_COORDINATE_FAKES_H */

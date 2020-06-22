@@ -99,7 +99,7 @@ typedef struct gu_cartesian_coordinate
 bool gu_cartesian_coordinate_equals(const gu_cartesian_coordinate, const gu_cartesian_coordinate);
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* CARTESIAN_COORDINATE_H */

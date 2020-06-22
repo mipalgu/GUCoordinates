@@ -59,8 +59,23 @@
 #ifndef GUCOORDINATESTESTS_HPP
 #define GUCOORDINATESTESTS_HPP
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
+#pragma clang diagnostic ignored "-Wfloat-equal"
+#pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
+#pragma clang diagnostic ignored "-Wshift-sign-overflow"
+#pragma clang diagnostic ignored "-Wused-but-marked-unused"
+#pragma clang diagnostic ignored "-Wundef"
+#pragma clang diagnostic ignored "-Wc++98-compat"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 #include <gtest/gtest.h>
+#pragma clang diagnostic pop
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 #include "fff.h"
+#pragma clang diagnostic pop
 
 #include "../GUCoordinates.hpp"
 #include "fakes.h"
@@ -68,15 +83,18 @@
 
 #include <typeinfo>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wglobal-constructors"
+
 #define RO3_TEST_F(className) \
-    _TEST_F(testclassname(className), RO3) { \
+    TEST2_F(testclassname(className), RO3) { \
         ro3_test(); \
     }
 
 #ifdef __cpp_rvalue_references
 #define RO5_TEST_Fs(className) \
     RO3_TEST_F(className) \
-    _TEST_F(testclassname(className), RO5) { \
+    TEST2_F(testclassname(className), RO5) { \
         ro5_test(); \
     }
 #else
@@ -84,7 +102,7 @@
 #endif
 
 #define EQUALS_TEST_F(className, strctName) \
-    _TEST_F(testclassname(className), Equality) { \
+    TEST2_F(testclassname(className), Equality) { \
         equals_fake(strctName).return_val = true; \
         const GU::className obj = initial(); \
         const GU::className obj2 = empty(); \
@@ -97,7 +115,7 @@
     }
 
 #define TO_C_TEST_F(className, strctName) \
-    _TEST_F(testclassname(className), TO_C) { \
+    TEST2_F(testclassname(className), TO_C) { \
         const GU::className obj = initial(); \
         const strctName converted = obj; \
         equals(obj, converted); \
@@ -108,11 +126,11 @@
     EQUALS_TEST_F(className, strctName) \
     TO_C_TEST_F(className, strctName)
 
-#define _TEST_F(testclassname, testname) \
+#define TEST2_F(testclassname, testname) \
     TEST_F(testclassname, testname)
 
 #define GETTER_TEST_NAME_F(className, testName, resultType, call, get, ...) \
-    _TEST_F(testclassname(className), testName) {\
+    TEST2_F(testclassname(className), testName) {\
         const GU::resultType result = GU::resultType(__VA_ARGS__); \
         call##_fake.return_val = result; \
         equals(initial().get, result); \
@@ -125,7 +143,7 @@
 
 #if __cplusplus >= 201703L
 #define GETTER_OPT_TRUE_TEST_NAME_F(className, testName, resultType, call, get, ...) \
-    _TEST_F(testclassname(className), testName) {\
+    TEST2_F(testclassname(className), testName) {\
         call##_fake.custom_fake = call##_custom_fake_true; \
         const GU::resultType result = GU::resultType(call##_custom_fake_result); \
         const std::optional<GU::resultType> out = initial().get(__VA_ARGS__); \
@@ -153,6 +171,8 @@
 #define equals_reset(strctName) strctName##_equals_reset();
 #define equals_func(strctName) strctName##_equals
 #define equals_fake(strctName) strctName##_equals_fake
+
+#pragma clang diagnostic pop
 
 namespace CGTEST {
 
@@ -244,21 +264,27 @@ namespace CGTEST {
 
             void equals(const GU::Camera lhs, const GU::Camera rhs)
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wfloat-equal"
                 ASSERT_EQ(lhs.height(), rhs.height());
                 ASSERT_EQ(lhs.centerOffset(), rhs.centerOffset());
                 ASSERT_EQ(lhs.vDirection(), rhs.vDirection());
                 ASSERT_EQ(lhs.vFov(), rhs.vFov());
                 ASSERT_EQ(lhs.hFov(), rhs.hFov());
+#pragma clang diagnostic pop
             }
 
             void nequals(const GU::Camera lhs, const GU::Camera rhs)
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wfloat-equal"
                 ASSERT_FALSE(lhs.height() == rhs.height()
                         && lhs.centerOffset() == rhs.centerOffset()
                         && lhs.vDirection() == rhs.vDirection()
                         && lhs.vFov() == rhs.vFov()
                         && lhs.hFov() == rhs.hFov()
                         );
+#pragma clang diagnostic pop
             }
 
             void equals(const GU::PixelCoordinate lhs, const GU::PixelCoordinate rhs)
@@ -281,16 +307,22 @@ namespace CGTEST {
 
             void equals(const GU::PercentCoordinate lhs, const GU::PercentCoordinate rhs)
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wfloat-equal"
                 ASSERT_EQ(lhs.x(), rhs.x());
                 ASSERT_EQ(lhs.y(), rhs.y());
+#pragma clang diagnostic pop
             }
 
             void nequals(const GU::PercentCoordinate lhs, const GU::PercentCoordinate rhs)
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wfloat-equal"
                 ASSERT_FALSE(
                         lhs.x() == rhs.x()
                         && lhs.y() == rhs.y()
                     );
+#pragma clang diagnostic pop
             }
 
             void equals(const GU::RelativeCoordinate lhs, const GU::RelativeCoordinate rhs)
@@ -335,6 +367,8 @@ namespace CGTEST {
 
             void equals(const GU::Robot lhs, const GU::Robot rhs)
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wfloat-equal"
                 ASSERT_EQ(lhs.headPitch(), rhs.headPitch());
                 ASSERT_EQ(lhs.headYaw(), rhs.headYaw());
                 ASSERT_EQ(lhs.numCameras(), rhs.numCameras());
@@ -349,10 +383,13 @@ namespace CGTEST {
                     ASSERT_EQ(lcamera.hFov(), rcamera.hFov());
                     ASSERT_EQ(lhs.cameraHeightOffset(i), rhs.cameraHeightOffset(i));
                 }
+#pragma clang diagnostic pop
             }
 
             void nequals(const GU::Robot lhs, const GU::Robot rhs)
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wfloat-equal"
                 if (!(lhs.headPitch() == rhs.headPitch()
                         && lhs.headYaw() == rhs.headYaw()
                         && lhs.numCameras() == rhs.numCameras()
@@ -377,6 +414,7 @@ namespace CGTEST {
                             && lhs.cameraHeightOffset(i) == rhs.cameraHeightOffset(i)
                             );
                 }
+#pragma clang diagnostic pop
             }
 
     };

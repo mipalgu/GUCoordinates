@@ -101,6 +101,6 @@ namespace GU {
 
     };
 
-};
+}
 
 #endif  /* CARTESIANCOORDINATE_HPP */

@@ -69,10 +69,10 @@ extern "C" {
 #define PIXEL_COORDINATE_FAKES(FAKE) \
     FAKE(gu_pixel_coordinate_equals)
 
-DECLARE_FAKE_VALUE_FUNC(bool, gu_pixel_coordinate_equals, const gu_pixel_coordinate, const gu_pixel_coordinate);
+DECLARE_FAKE_VALUE_FUNC(bool, gu_pixel_coordinate_equals, const gu_pixel_coordinate, const gu_pixel_coordinate)
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* PIXEL_COORDINATE_FAKES_H */

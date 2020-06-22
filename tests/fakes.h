@@ -86,7 +86,7 @@ extern "C" {
     ROBOT_FAKES(FAKE)
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* FAKES_H */

@@ -96,7 +96,7 @@ typedef struct gu_relative_coordinate
 bool gu_relative_coordinate_equals(const gu_relative_coordinate, const gu_relative_coordinate);
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* RELATIVE_COORDINATE_H */

@@ -83,30 +83,30 @@ extern "C" {
     FAKE(cartesian_coord_to_rr_coord_from_source) \
     FAKE(field_coord_to_rr_coord_to_target)
 
-DECLARE_FAKE_VALUE_FUNC(gu_pixel_coordinate, cam_coord_to_px_coord, const gu_camera_coordinate);
-DECLARE_FAKE_VALUE_FUNC(gu_camera_coordinate, px_coord_to_cam_coord, const gu_pixel_coordinate);
-DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, px_coord_to_pct_coord, const gu_pixel_coordinate);
-DECLARE_FAKE_VALUE_FUNC(gu_pixel_coordinate, pct_coord_to_px_coord, const gu_percent_coordinate, const pixels_u, const pixels_u);
+DECLARE_FAKE_VALUE_FUNC(gu_pixel_coordinate, cam_coord_to_px_coord, const gu_camera_coordinate)
+DECLARE_FAKE_VALUE_FUNC(gu_camera_coordinate, px_coord_to_cam_coord, const gu_pixel_coordinate)
+DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, px_coord_to_pct_coord, const gu_pixel_coordinate)
+DECLARE_FAKE_VALUE_FUNC(gu_pixel_coordinate, pct_coord_to_px_coord, const gu_percent_coordinate, const pixels_u, const pixels_u)
 
-DECLARE_FAKE_VALUE_FUNC(bool, px_coord_to_rr_coord, const gu_pixel_coordinate, const gu_robot, gu_relative_coordinate *, const int);
-DECLARE_FAKE_VALUE_FUNC(bool, pct_coord_to_rr_coord, const gu_percent_coordinate, const gu_robot, gu_relative_coordinate *, const int);
+DECLARE_FAKE_VALUE_FUNC(bool, px_coord_to_rr_coord, const gu_pixel_coordinate, const gu_robot, gu_relative_coordinate *, const int)
+DECLARE_FAKE_VALUE_FUNC(bool, pct_coord_to_rr_coord, const gu_percent_coordinate, const gu_robot, gu_relative_coordinate *, const int)
 
-DECLARE_FAKE_VALUE_FUNC(bool, rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_robot, const int, gu_percent_coordinate *);
-DECLARE_FAKE_VALUE_FUNC(bool, rr_coord_to_px_coord, const gu_relative_coordinate, const gu_robot, const int, gu_pixel_coordinate *, pixels_u, pixels_u);
+DECLARE_FAKE_VALUE_FUNC(bool, rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_robot, const int, gu_percent_coordinate *)
+DECLARE_FAKE_VALUE_FUNC(bool, rr_coord_to_px_coord, const gu_relative_coordinate, const gu_robot, const int, gu_pixel_coordinate *, pixels_u, pixels_u)
 
 // Converting from the robot relative coordinate system to the field coordinate systems.
-DECLARE_FAKE_VALUE_FUNC(gu_cartesian_coordinate, rr_coord_to_cartesian_coord, const gu_relative_coordinate);
-DECLARE_FAKE_VALUE_FUNC(gu_cartesian_coordinate, rr_coord_to_cartesian_coord_from_source, const gu_relative_coordinate, const gu_cartesian_coordinate);
-DECLARE_FAKE_VALUE_FUNC(gu_field_coordinate, rr_coord_to_field_coord, const gu_relative_coordinate, const degrees_t);
-DECLARE_FAKE_VALUE_FUNC(gu_field_coordinate, rr_coord_to_field_coord_from_source, const gu_relative_coordinate, const gu_field_coordinate, const degrees_t);
+DECLARE_FAKE_VALUE_FUNC(gu_cartesian_coordinate, rr_coord_to_cartesian_coord, const gu_relative_coordinate)
+DECLARE_FAKE_VALUE_FUNC(gu_cartesian_coordinate, rr_coord_to_cartesian_coord_from_source, const gu_relative_coordinate, const gu_cartesian_coordinate)
+DECLARE_FAKE_VALUE_FUNC(gu_field_coordinate, rr_coord_to_field_coord, const gu_relative_coordinate, const degrees_t)
+DECLARE_FAKE_VALUE_FUNC(gu_field_coordinate, rr_coord_to_field_coord_from_source, const gu_relative_coordinate, const gu_field_coordinate, const degrees_t)
 
 // Converting from field coordinates to relative coordinates.
-DECLARE_FAKE_VALUE_FUNC(gu_relative_coordinate, cartesian_coord_to_rr_coord, const gu_cartesian_coordinate);
-DECLARE_FAKE_VALUE_FUNC(gu_relative_coordinate, cartesian_coord_to_rr_coord_from_source, const gu_cartesian_coordinate, const gu_cartesian_coordinate);
-DECLARE_FAKE_VALUE_FUNC(gu_relative_coordinate, field_coord_to_rr_coord_to_target, const gu_field_coordinate, const gu_cartesian_coordinate);
+DECLARE_FAKE_VALUE_FUNC(gu_relative_coordinate, cartesian_coord_to_rr_coord, const gu_cartesian_coordinate)
+DECLARE_FAKE_VALUE_FUNC(gu_relative_coordinate, cartesian_coord_to_rr_coord_from_source, const gu_cartesian_coordinate, const gu_cartesian_coordinate)
+DECLARE_FAKE_VALUE_FUNC(gu_relative_coordinate, field_coord_to_rr_coord_to_target, const gu_field_coordinate, const gu_cartesian_coordinate)
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* CONVERSION_FAKES_H */

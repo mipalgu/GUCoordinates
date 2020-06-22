@@ -110,6 +110,6 @@ namespace GU {
 
     };
 
-};
+}
 
 #endif  /* ROBOT_HPP */

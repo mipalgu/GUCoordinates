@@ -98,7 +98,7 @@ gu_relative_coordinate cartesian_coord_to_rr_coord_from_source(const gu_cartesia
 gu_relative_coordinate field_coord_to_rr_coord_to_target(const gu_field_coordinate, const gu_cartesian_coordinate);
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif  /* CONVERSIONS_H */
