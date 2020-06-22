@@ -112,37 +112,8 @@ namespace CGTEST {
         ASSERT_EQ(coord.resHeight(), 8);
     }
 
-    TEST_F(CameraCoordinateCPPTests, PixelCoordinate) {
-        gu_pixel_coordinate px_coord;
-        px_coord.x = -959;
-        px_coord.y = 540;
-        px_coord.res_width = 1920;
-        px_coord.res_height = 1080;
-        cam_coord_to_px_coord_fake.return_val = px_coord;
-        const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
-        const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
-        const GU::PixelCoordinate out = topLeftEdge.pixelCoordinate();
-        ASSERT_EQ(cam_coord_to_px_coord_fake.call_count, 1);
-        equals(out, ptopLeftEdge);
-    }
-
-    TEST_F(CameraCoordinateCPPTests, PercentCoordinate) {
-        gu_pixel_coordinate px_coord;
-        px_coord.x = -959;
-        px_coord.y = 540;
-        px_coord.res_width = 1920;
-        px_coord.res_height = 1080;
-        cam_coord_to_px_coord_fake.return_val = px_coord;
-        gu_percent_coordinate pct_coord;
-        pct_coord.x = -1.0f;
-        pct_coord.y = 1.0f;
-        px_coord_to_pct_coord_fake.return_val = pct_coord;
-        const GU::CameraCoordinate topLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
-        const GU::PercentCoordinate ptopLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
-        const GU::PercentCoordinate out = topLeftEdge.percentCoordinate();
-        ASSERT_EQ(cam_coord_to_px_coord_fake.call_count, 1);
-        ASSERT_EQ(px_coord_to_pct_coord_fake.call_count, 1);
-        equals(out, ptopLeftEdge);
-    }
+    GETTER_TEST_F(CameraCoordinate, PixelCoordinate, cam_coord_to_px_coord, pixelCoordinate(), 10, 12, 1920, 1080)
+    GETTER_TEST_F(CameraCoordinate, PercentCoordinate, px_coord_to_pct_coord, percentCoordinate(), -0.4f, 0.6f)
+    GETTER_OPT_TRUE_TEST_F(CameraCoordinate, RelativeCoordinate, pct_coord_to_rr_coord, relativeCoordinate, nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX)
 
 }  // namespace

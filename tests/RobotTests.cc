@@ -70,8 +70,8 @@ namespace CGTEST {
     
         void preamble()
         {
-            cameras[0] = NAO_V5_TOP_CAMERA;
-            cameras[1] = NAO_V5_BOTTOM_CAMERA;
+            cameras[0] = GU_NAO_V5_TOP_CAMERA;
+            cameras[1] = GU_NAO_V5_BOTTOM_CAMERA;
             offsets[0] = 0.0f;
             offsets[1] = 0.0f;
             for (int i = 2; i < GU_ROBOT_NUM_CAMERAS; i++)

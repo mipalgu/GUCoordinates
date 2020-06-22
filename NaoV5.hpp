@@ -63,6 +63,10 @@
 #include <cstdlib>
 #include <gusimplewhiteboard/typeClassDefs/wb_sensors_torsojointsensors.h>
 
+#ifdef __cpp_lib_optional
+#include <optional>
+#endif
+
 namespace GU {
 
     struct NaoV5: public Robot {
@@ -80,8 +84,16 @@ namespace GU {
         NaoV5& operator=(NaoV5&& other);
 #endif
 
-        bool operator ==(const NaoV5 &other) const;
-        bool operator !=(const NaoV5 &other) const;
+/*
+#ifdef __cpp_lib_optional
+        std::optional<RelativeCoordinate> topCameraRelativeCoordinate(const GU::CameraCoordinate &);
+        std::optional<RelativeCoordinate> topCameraRelativeCoordinate(const GU::PixelCoordinate &);
+        std::optional<RelativeCoordinate> topCameraRelativeCoordinate(const GU::PercentCoordinate &);
+        std::optional<RelativeCoordinate> bottomCameraRelativeCoordinate(const GU::CameraCoordinate &);
+        std::optional<RelativeCoordinate> bottomCameraRelativeCoordinate(const GU::PixelCoordinate &);
+        std::optional<RelativeCoordinate> bottomCameraRelativeCoordinate(const GU::PercentCoordinate &);
+#endif
+*/
 
     };
 

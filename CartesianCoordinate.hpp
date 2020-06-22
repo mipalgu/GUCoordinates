@@ -70,6 +70,8 @@
 
 namespace GU {
 
+    struct RelativeCoordinate;
+
     struct CartesianCoordinate: public gu_cartesian_coordinate {
 
         CartesianCoordinate();

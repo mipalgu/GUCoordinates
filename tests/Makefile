@@ -18,11 +18,10 @@ build-test: clean host
 test:
 
 .ifdef STD
-.if ${STD} == 03
-CXXSTDFL=-std=c++03
-.else
-.include "../../../mk/c++${STD}.mk"
-.endif
+CXXSTDFL=-std=c++${STD}
+.  if ${STD} != 03
+.    include "../../../mk/c++${STD}.mk"
+.  endif
 .else
 CXXSTDFL=-std=c++98
 .endif

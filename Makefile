@@ -14,6 +14,7 @@ SPECIFIC_LIBS+=-lgusimplewhiteboard
 LOCAL=_LOCAL
 
 .include "../../mk/c++11.mk"
+CXXSTDFL=-std=c++17
 
 ${MODULE_BASE}_HDRS=${ALL_HDRS}
 PKGCONFIG_NAME=gucoordinates

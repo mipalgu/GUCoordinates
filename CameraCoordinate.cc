@@ -59,6 +59,7 @@
 #include "CameraCoordinate.hpp"
 #include "conversions.h"
 
+#include <optional>
 
 GU::CameraCoordinate::CameraCoordinate(): gu_camera_coordinate() {}
 
@@ -141,6 +142,27 @@ GU::PercentCoordinate GU::CameraCoordinate::percentCoordinate() const
 pixels_u GU::CameraCoordinate::x() const
 {
     return gu_camera_coordinate::x;
+}
+
+std::optional<GU::RelativeCoordinate> GU::CameraCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset) const
+{
+    return percentCoordinate().relativeCoordinate(robot, cameraOffset);
+}
+
+std::optional<GU::CartesianCoordinate> GU::CameraCoordinate::cartesianCoordinate(const GU::Robot & robot, const int cameraOffset) const
+{
+    const std::optional<GU::RelativeCoordinate> result = relativeCoordinate(robot, cameraOffset);
+    if (!result.has_value())
+        return std::nullopt;
+    return result.value().cartesianCoordinate();
+}
+
+std::optional<GU::FieldCoordinate> GU::CameraCoordinate::fieldCoordinate(const GU::Robot & robot, const int cameraOffset) const
+{
+    const std::optional<GU::FieldCoordinate> result = relativeCoordinate(robot, cameraOffset);
+    if (!result.has_value())
+        return std::nullopt;
+    return result.value().cartesianCoordinate();
 }
 
 void GU::CameraCoordinate::set_x(const pixels_u newValue)

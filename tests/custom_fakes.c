@@ -1,8 +1,8 @@
 /*
- * CameraCoordinate.hpp 
- * guvision_utils 
+ * custom_fakes.c 
+ * tests 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 22/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,74 +56,16 @@
  *
  */
 
-#ifndef CAMERACOORDINATE_HPP
-#define CAMERACOORDINATE_HPP
+#include "custom_fakes.h"
 
-#include "camera_coordinate.h"
-#include "PixelCoordinate.hpp"
-#include "PercentCoordinate.hpp"
-#include "RelativeCoordinate.hpp"
-#include "CartesianCoordinate.hpp"
-#include "FieldCoordinate.hpp"
+bool pct_coord_to_rr_coord_custom_fake_true(const gu_percent_coordinate c, const gu_robot r, gu_relative_coordinate * out, const int i)
+{
+    const gu_relative_coordinate temp = pct_coord_to_rr_coord_custom_fake_result;
+    *out = temp;
+    return true;
+}
 
-#include <cstdlib>
-
-#if __cplusplus >= 201703L
-#include <optional>
-#endif
-
-namespace GU {
-
-    struct PixelCoordinate;
-    struct PercentCoordinate;
-    struct RelativeCoordinate;
-    struct CartesianCoordinate;
-    struct FieldCoordinate;
-
-    struct CameraCoordinate: public gu_camera_coordinate {
-
-        CameraCoordinate();
-        CameraCoordinate(pixels_u, pixels_u, pixels_u, pixels_u);
-        CameraCoordinate(const CameraCoordinate& other);
-        CameraCoordinate(const gu_camera_coordinate& other);
-#ifdef __cpp_rvalue_references
-        CameraCoordinate(CameraCoordinate&& other);
-#endif
-        ~CameraCoordinate();
-        CameraCoordinate& operator=(const CameraCoordinate& other);
-        CameraCoordinate& operator=(const gu_camera_coordinate& other);
-#ifdef __cpp_rvalue_references
-        CameraCoordinate& operator=(CameraCoordinate&& other);
-#endif
-
-        GU::PixelCoordinate pixelCoordinate() const;
-        GU::PercentCoordinate percentCoordinate() const;
-
-#if __cplusplus >= 201703L
-        std::optional<RelativeCoordinate> relativeCoordinate(const GU::Robot &, const int) const;
-        std::optional<CartesianCoordinate> cartesianCoordinate(const GU::Robot &, const int) const;
-        std::optional<FieldCoordinate> fieldCoordinate(const GU::Robot &, const int) const;
-#endif
-
-        pixels_u x() const;
-        void set_x(const pixels_u);
-
-        pixels_u y() const;
-        void set_y(const pixels_u);
-
-        pixels_u resWidth() const;
-        void set_resWidth(const pixels_u);
-
-        pixels_u resHeight() const;
-        void set_resHeight(const pixels_u);
-
-        bool operator ==(const CameraCoordinate &other) const;
-        bool operator !=(const CameraCoordinate &other) const;
-        bool operator ==(const gu_camera_coordinate &other) const;
-        bool operator !=(const gu_camera_coordinate &other) const;
-
-    };
-
-};
-
-#endif  /* CAMERACOORDINATE_HPP */
+bool pct_to_rr_custom_fake_false(const gu_percent_coordinate c, const gu_robot r, gu_relative_coordinate * o, const int i)
+{
+    return false;
+}

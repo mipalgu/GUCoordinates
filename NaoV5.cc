@@ -106,3 +106,36 @@ GU::NaoV5& GU::NaoV5::operator=(GU::NaoV5&& other) {
     return *this;
 }
 #endif
+/*
+#ifdef __cpp_lib_optional
+std::optional<RelativeCoordinate> GU::NaoV5::topCameraRelativeCoordinate(const GU::CameraCoordinate & coord)
+{
+    return coord.relativeCoordinate(*this, NAO_V5_TOP_CAMERA_INDEX);
+}
+
+std::optional<RelativeCoordinate> GU::NaoV5::topCameraRelativeCoordinate(const GU::PixelCoordinate & coord)
+{
+    return coord.relativeCoordinate(*this, NAO_V5_TOP_CAMERA_INDEX);
+}
+
+std::optional<RelativeCoordinate> topCameraRelativeCoordinate(const GU::PercentCoordinate & coord)
+{
+    return coord.relativeCoordinate(*this, NAO_V5_TOP_CAMERA_INDEX);
+}
+
+std::optional<RelativeCoordinate> bottomCameraRelativeCoordinate(const GU::CameraCoordinate & coord)
+{
+    return coord.relativeCoordinate(*this, NAO_V5_BOTTOM_CAMERA_INDEX);
+}
+
+std::optional<RelativeCoordinate> bottomCameraRelativeCoordinate(const GU::PixelCoordinate & coord)
+{
+    return coord.relativeCoordinate(*this, NAO_V5_BOTTOM_CAMERA_INDEX);
+}
+
+std::optional<RelativeCoordinate> bottomCameraRelativeCoordinate(const GU::PercentCoordinate & coord)
+{
+    return coord.relativeCoordinate(*this, NAO_V5_BOTTOM_CAMERA_INDEX);
+}
+#endif
+*/

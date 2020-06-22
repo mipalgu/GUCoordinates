@@ -71,7 +71,9 @@ extern "C" {
 #endif
 
 #ifndef GU_NAO_V5_ROBOT
-#define GU_NAO_V5_ROBOT(p, y) {p, y, {NAO_V5_TOP_CAMERA, NAO_V5_BOTTOM_CAMERA}, {41.7f, 41.7f}, 2}
+#define GU_NAO_V5_ROBOT(p, y) (gu_robot) {.headPitch = p, .headYaw = y, .cameras = {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, .cameraHeightOffsets = {41.7f, 41.7f}, .numCameras = 2}
+#define GU_NAO_V5_TOP_CAMERA_INDEX 0
+#define GU_NAO_V5_BOTTOM_CAMERA_INDEX 1 
 #endif
 
 #ifndef GU_PEPPER_ROBOT

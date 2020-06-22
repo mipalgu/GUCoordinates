@@ -85,8 +85,8 @@ namespace CGTEST {
     };
 
     TEST_F(CameraTests, Equality) {
-        const gu_camera topCamera = NAO_V5_TOP_CAMERA;
-        const gu_camera bottomCamera = NAO_V5_BOTTOM_CAMERA;
+        const gu_camera topCamera = GU_NAO_V5_TOP_CAMERA;
+        const gu_camera bottomCamera = GU_NAO_V5_BOTTOM_CAMERA;
         ASSERT_TRUE(gu_camera_equals(topCamera, topCamera, 0.0001));
         ASSERT_TRUE(gu_camera_equals(bottomCamera, bottomCamera, 0.0001));
         ASSERT_FALSE(gu_camera_equals(topCamera, bottomCamera, 0.0001));

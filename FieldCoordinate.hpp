@@ -71,6 +71,8 @@
 
 namespace GU {
 
+    struct RelativeCoordinate;
+
     struct FieldCoordinate: public gu_field_coordinate {
 
         FieldCoordinate();

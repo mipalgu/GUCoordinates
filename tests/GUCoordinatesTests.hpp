@@ -64,6 +64,7 @@
 
 #include "../GUCoordinates.hpp"
 #include "fakes.h"
+#include "custom_fakes.h"
 
 #include <typeinfo>
 
@@ -109,6 +110,42 @@
 
 #define _TEST_F(testclassname, testname) \
     TEST_F(testclassname, testname)
+
+#define GETTER_TEST_NAME_F(className, testName, resultType, call, get, ...) \
+    _TEST_F(testclassname(className), testName) {\
+        const GU::resultType result = GU::resultType(__VA_ARGS__); \
+        call##_fake.return_val = result; \
+        equals(initial().get, result); \
+        ASSERT_EQ(call##_fake.call_count, 1); \
+        call##_reset(); \
+    }
+
+#define GETTER_TEST_F(className, resultType, call, get, ...) \
+    GETTER_TEST_NAME_F(className, resultType, resultType, call, get, __VA_ARGS__)
+
+#if __cplusplus >= 201703L
+#define GETTER_OPT_TRUE_TEST_NAME_F(className, testName, resultType, call, get, ...) \
+    _TEST_F(testclassname(className), testName) {\
+        call##_fake.custom_fake = call##_custom_fake_true; \
+        const GU::resultType result = GU::resultType(call##_custom_fake_result); \
+        const std::optional<GU::resultType> out = initial().get(__VA_ARGS__); \
+        if (out.has_value()) \
+        { \
+            equals(out.value(), result); \
+            ASSERT_EQ(call##_fake.call_count, 1); \
+            call##_reset(); \
+        } else { \
+            FAIL() << "Result is nullopt from initial().get"; \
+        } \
+    }
+
+#define GETTER_OPT_TRUE_TEST_F(className, resultType, call, get, ...) \
+    GETTER_OPT_TRUE_TEST_NAME_F(className, resultType, resultType, call, get, __VA_ARGS__)
+#else
+#define GETTER_OPT_TRUE_TEST_NAME_F(className, testName, resultType, call, get, ...)
+#define GETTER_OPT_TRUE_TEST_F(className, resultType, call, get, ...)
+#endif
+
 #define testclassname(className) className##CPPTests
 #define equals_reset(strctName) strctName##_equals_reset();
 #define equals_func(strctName) strctName##_equals
@@ -122,9 +159,16 @@ namespace CGTEST {
 
         protected:
 
+            GU::Robot nao;
+            GU::Camera topCamera;
+            GU::Camera bottomCamera;
+
             virtual void SetUp() {
                 ALL_FAKES(RESET_FAKE);
                 FFF_RESET_HISTORY();
+                nao = GU_NAO_V5_ROBOT(0.0f, 0.0f);
+                topCamera = GU_NAO_V5_TOP_CAMERA;
+                bottomCamera = GU_NAO_V5_BOTTOM_CAMERA;
             }
 
             virtual void TearDown() {
