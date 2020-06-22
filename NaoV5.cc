@@ -86,6 +86,7 @@ GU::NaoV5& GU::NaoV5::operator=(const ::wb_sensors_torsojointsensors& joints)
 {
     set_headPitch(rad_f_to_deg_f(f_to_rad_f(joints.HeadPitch())));
     set_headYaw(rad_f_to_deg_f(f_to_rad_f(joints.HeadYaw())));
+    return *this;
 }
 
 #ifdef __cpp_rvalue_references
