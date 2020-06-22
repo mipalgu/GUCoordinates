@@ -91,6 +91,9 @@ namespace CGTEST {
     };
 
     WRAPPER_TEST_Fs(PercentCoordinate, gu_percent_coordinate)
+    GETTER_TEST_F(PercentCoordinate, CameraCoordinate, px_coord_to_cam_coord, cameraCoordinate(1920, 1080), 5, 5, 1920, 1080)
+    GETTER_TEST_F(PercentCoordinate, PixelCoordinate, pct_coord_to_px_coord, pixelCoordinate(1920, 1080), 10, 12, 1920, 1080)
+    GETTER_OPT_TRUE_TEST_F(PercentCoordinate, RelativeCoordinate, pct_coord_to_rr_coord, relativeCoordinate, nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX)
 
     TEST_F(PercentCoordinateCPPTests, GettersSetters) {
         GU::PercentCoordinate coord = GU::PercentCoordinate(-1.0f, -1.0f);
@@ -100,41 +103,6 @@ namespace CGTEST {
         ASSERT_EQ(coord.y(), -1.0f);
         coord.set_y(1.0f);
         ASSERT_EQ(coord.y(), 1.0f);
-    }
-
-    TEST_F(PercentCoordinateCPPTests, PixelCoordinate) {
-        gu_pixel_coordinate px;
-        px.x = -959;
-        px.y = 540;
-        px.res_width = 1920;
-        px.res_height = 1080;
-        pct_coord_to_px_coord_fake.return_val = px;
-        const GU::PercentCoordinate topLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
-        const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
-        const GU::PixelCoordinate out = topLeftEdge.pixelCoordinate(1920, 1080);
-        ASSERT_EQ(pct_coord_to_px_coord_fake.call_count, 1);
-        equals(out, ptopLeftEdge);
-    }
-
-    TEST_F(PercentCoordinateCPPTests, CameraCoordinate) {
-        gu_pixel_coordinate px;
-        px.x = -959;
-        px.y = 540;
-        px.res_width = 1920;
-        px.res_height = 1080;
-        pct_coord_to_px_coord_fake.return_val = px;
-        gu_camera_coordinate cam;
-        cam.x = 0;
-        cam.y = 0;
-        cam.res_width = 1920;
-        cam.res_height = 1080;
-        px_coord_to_cam_coord_fake.return_val = cam;
-        const GU::PercentCoordinate topLeftEdge = GU::PercentCoordinate(-1.0f, 1.0f);
-        const GU::CameraCoordinate ctopLeftEdge = GU::CameraCoordinate(0, 0, 1920, 1080);
-        const GU::CameraCoordinate out = topLeftEdge.cameraCoordinate(1920, 1080);
-        ASSERT_EQ(pct_coord_to_px_coord_fake.call_count, 1);
-        ASSERT_EQ(px_coord_to_cam_coord_fake.call_count, 1);
-        equals(out, ctopLeftEdge);
     }
 
 }  // namespace
