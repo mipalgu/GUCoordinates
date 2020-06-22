@@ -16,9 +16,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F2E941D824A048E700041D08"
-               BuildableName = "asdasd.xctest"
-               BlueprintName = "asdasd"
+               BlueprintIdentifier = "F2E9420824A0536200041D08"
+               BuildableName = "tests.xctest"
+               BlueprintName = "tests"
                ReferencedContainer = "container:gucoordinates.xcodeproj">
             </BuildableReference>
          </TestableReference>
