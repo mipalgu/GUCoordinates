@@ -137,6 +137,9 @@
         } else { \
             FAIL() << "Result is nullopt from initial().get"; \
         } \
+        call##_fake.custom_fake = call##_custom_fake_false; \
+        const std::optional<GU::resultType> out2 = initial().get(__VA_ARGS__); \
+        ASSERT_FALSE(out2.has_value()); \
     }
 
 #define GETTER_OPT_TRUE_TEST_F(className, resultType, call, get, ...) \

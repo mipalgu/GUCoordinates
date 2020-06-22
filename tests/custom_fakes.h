@@ -69,7 +69,7 @@ extern "C" {
 
 bool pct_coord_to_rr_coord_custom_fake_true(const gu_percent_coordinate, const gu_robot, gu_relative_coordinate * out, const int);
 
-bool pct_to_rr_custom_fake_false(const gu_percent_coordinate, const gu_robot, gu_relative_coordinate *, const int);
+bool pct_coord_to_rr_coord_custom_fake_false(const gu_percent_coordinate, const gu_robot, gu_relative_coordinate *, const int);
 
 #ifdef __cplusplus
 }
