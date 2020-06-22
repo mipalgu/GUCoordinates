@@ -28,19 +28,28 @@ CPP14_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-e
 CPP17_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-extra-semi
 
 .ifdef TESTING
-
 CODE_COVERAGE=yes
 SPECIFIC_CPPFLAGS+=-fprofile-arcs -ftest-coverage
 SPECIFIC_LDFLAGS+=--coverage
-
 .endif
+
+LCOV!=which lcov &2>/dev/null
+GENHTML!=which genhtml &2>/dev/null
 
 all:	all-real
 
 coverage:
+.if empty(LCOV)
+	${SAY} "You must install lcov in order to generate a code coverage report."
+.endif
+.if empty(GENHTML)
+	${SAY} "You must install genhtml in order to generate a code coverage report."
+.endif
+.if !empty(LCOV) && !empty(GENHTML)
 	cp ${SRCDIR}/ctests/build.host/*.gc* build.host-local/ || true 
 	cp ${SRCDIR}/tests/build.host/*.gc* build.host-local/ || true
 	cd build.host-local && lcov --directory . --base-directory . --gcov-tool gcov --capture -o cov.info && genhtml cov.info -o coverage || cd ${SRCDIR}
+.endif
 
 .ifdef IGNORE_TESTS
 
