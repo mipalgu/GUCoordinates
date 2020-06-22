@@ -1,0 +1,900 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		F2E941AB24A0478300041D08 /* gu_coordinates_tests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F2E941AC24A0478300041D08 /* Build configuration list for PBXAggregateTarget "gu_coordinates_tests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				F2E941D424A0485200041D08 /* PBXTargetDependency */,
+				F2E941B024A0478A00041D08 /* PBXTargetDependency */,
+			);
+			name = gu_coordinates_tests;
+			productName = gu_coordinates_tests;
+		};
+		F2E941C524A0483300041D08 /* gucoordinates_cpptests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F2E941C624A0483300041D08 /* Build configuration list for PBXAggregateTarget "gucoordinates_cpptests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				F2E941CA24A0484700041D08 /* PBXTargetDependency */,
+				F2E941CC24A0484700041D08 /* PBXTargetDependency */,
+				F2E941CE24A0484700041D08 /* PBXTargetDependency */,
+				F2E941D024A0484700041D08 /* PBXTargetDependency */,
+				F2E941D224A0484700041D08 /* PBXTargetDependency */,
+			);
+			name = gucoordinates_cpptests;
+			productName = gucoordinates_cpptests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXContainerItemProxy section */
+		F2E941AF24A0478A00041D08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2E9414D24A044F900041D08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2E9415824A0456F00041D08;
+			remoteInfo = gu_coordinates_ctests;
+		};
+		F2E941C924A0484700041D08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2E9414D24A044F900041D08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2E941B124A047A800041D08;
+			remoteInfo = gu_coordinates_cpp98tests;
+		};
+		F2E941CB24A0484700041D08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2E9414D24A044F900041D08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2E941B524A047E000041D08;
+			remoteInfo = gucoordinates_cpp03tests;
+		};
+		F2E941CD24A0484700041D08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2E9414D24A044F900041D08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2E941B924A047F800041D08;
+			remoteInfo = gucoordinates_cpp11test;
+		};
+		F2E941CF24A0484700041D08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2E9414D24A044F900041D08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2E941BD24A0480900041D08;
+			remoteInfo = gucoordinates_cpp14test;
+		};
+		F2E941D124A0484700041D08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2E9414D24A044F900041D08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2E941C124A0481B00041D08;
+			remoteInfo = gucoordinates_cpp17tests;
+		};
+		F2E941D324A0485200041D08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2E9414D24A044F900041D08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2E941C524A0483300041D08;
+			remoteInfo = gucoordinates_cpptests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F2E9415C24A045B300041D08 /* PixelCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PixelCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F2E9415D24A045B300041D08 /* PixelCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PixelCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F2E9415E24A045B300041D08 /* relative_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = relative_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F2E9415F24A045B300041D08 /* field_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = field_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F2E9416024A045B300041D08 /* pixel_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pixel_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F2E9416124A045B400041D08 /* conversions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = conversions.h; sourceTree = SOURCE_ROOT; };
+		F2E9416224A045B400041D08 /* camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = SOURCE_ROOT; };
+		F2E9416324A045B400041D08 /* percent_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = percent_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F2E9416424A045B400041D08 /* CartesianCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CartesianCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F2E9416524A045B400041D08 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = SOURCE_ROOT; };
+		F2E9416624A045B400041D08 /* CameraCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CameraCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F2E9416724A045B400041D08 /* CameraCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CameraCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F2E9416824A045B400041D08 /* PercentCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PercentCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F2E9416924A045B400041D08 /* cartesian_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cartesian_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F2E9416A24A045B400041D08 /* field_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = field_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F2E9416B24A045B400041D08 /* hidden_conversions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hidden_conversions.h; sourceTree = SOURCE_ROOT; };
+		F2E9416C24A045B400041D08 /* FieldCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FieldCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F2E9416D24A045B400041D08 /* GUCoordinates.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GUCoordinates.hpp; sourceTree = SOURCE_ROOT; };
+		F2E9416E24A045B400041D08 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile; sourceTree = SOURCE_ROOT; };
+		F2E9416F24A045B400041D08 /* PercentCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PercentCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F2E9417024A045B400041D08 /* Robot.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Robot.hpp; sourceTree = SOURCE_ROOT; };
+		F2E9417124A045B400041D08 /* robot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = robot.h; sourceTree = SOURCE_ROOT; };
+		F2E9417224A045B400041D08 /* Robot_cpp.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Robot_cpp.cc; sourceTree = SOURCE_ROOT; };
+		F2E9417324A045B400041D08 /* gucoordinates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gucoordinates.h; sourceTree = SOURCE_ROOT; };
+		F2E9417424A045B400041D08 /* pixel_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pixel_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F2E9417524A045B400041D08 /* FieldCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FieldCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F2E9417624A045B400041D08 /* CartesianCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CartesianCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F2E9417724A045B400041D08 /* RelativeCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RelativeCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F2E9417824A045B400041D08 /* percent_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = percent_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F2E9417924A045B400041D08 /* cartesian_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cartesian_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F2E9417A24A045B400041D08 /* relative_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = relative_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F2E9417B24A045B500041D08 /* CameraCPP.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CameraCPP.cc; sourceTree = SOURCE_ROOT; };
+		F2E9417C24A045B500041D08 /* camera_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = camera_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F2E9417D24A045B500041D08 /* robot.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = robot.c; sourceTree = SOURCE_ROOT; };
+		F2E9417E24A045B500041D08 /* conversions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = conversions.c; sourceTree = SOURCE_ROOT; };
+		F2E9417F24A045B500041D08 /* RelativeCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RelativeCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F2E9418024A045B500041D08 /* camera_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = camera_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F2E9418124A045B500041D08 /* camera.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = camera.c; sourceTree = SOURCE_ROOT; };
+		F2E9418324A0470900041D08 /* relative_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = relative_coordinate_tests.cc; path = ctests/relative_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9418424A0470900041D08 /* pixel_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pixel_coordinate_tests.cc; path = ctests/pixel_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9418524A0470900041D08 /* conversions_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = conversions_tests.cc; path = ctests/conversions_tests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9418624A0470900041D08 /* camera_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera_coordinate_tests.cc; path = ctests/camera_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9418724A0470900041D08 /* percent_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = percent_coordinate_tests.cc; path = ctests/percent_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9418824A0470900041D08 /* camera_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera_tests.cc; path = ctests/camera_tests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9418924A0470900041D08 /* robot_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = robot_tests.cc; path = ctests/robot_tests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9418B24A0474400041D08 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Makefile; path = tests/Makefile; sourceTree = SOURCE_ROOT; };
+		F2E9418C24A0474400041D08 /* camera_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = camera_fakes.c; path = tests/camera_fakes.c; sourceTree = SOURCE_ROOT; };
+		F2E9418D24A0474400041D08 /* percent_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = percent_coordinate_fakes.h; path = tests/percent_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F2E9418E24A0474400041D08 /* cartesian_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cartesian_coordinate_fakes.c; path = tests/cartesian_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
+		F2E9418F24A0474400041D08 /* FieldCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FieldCoordinateTests.cc; path = tests/FieldCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9419024A0474400041D08 /* CameraTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CameraTests.cc; path = tests/CameraTests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9419124A0474400041D08 /* field_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = field_coordinate_fakes.h; path = tests/field_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F2E9419224A0474400041D08 /* robot_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = robot_fakes.h; path = tests/robot_fakes.h; sourceTree = SOURCE_ROOT; };
+		F2E9419324A0474400041D08 /* RobotTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RobotTests.cc; path = tests/RobotTests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9419424A0474400041D08 /* CameraCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CameraCoordinateTests.cc; path = tests/CameraCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9419524A0474400041D08 /* CartesianCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CartesianCoordinateTests.cc; path = tests/CartesianCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9419624A0474400041D08 /* conversion_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = conversion_fakes.h; path = tests/conversion_fakes.h; sourceTree = SOURCE_ROOT; };
+		F2E9419724A0474400041D08 /* relative_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = relative_coordinate_fakes.h; path = tests/relative_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F2E9419824A0474400041D08 /* PixelCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PixelCoordinateTests.cc; path = tests/PixelCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9419924A0474400041D08 /* fff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fff.h; path = tests/fff.h; sourceTree = SOURCE_ROOT; };
+		F2E9419A24A0474400041D08 /* cartesian_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cartesian_coordinate_fakes.h; path = tests/cartesian_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F2E9419B24A0474400041D08 /* percent_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = percent_coordinate_fakes.c; path = tests/percent_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
+		F2E9419C24A0474400041D08 /* PercentCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PercentCoordinateTests.cc; path = tests/PercentCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F2E9419D24A0474400041D08 /* pixel_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = pixel_coordinate_fakes.c; path = tests/pixel_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
+		F2E9419E24A0474400041D08 /* camera_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = camera_fakes.h; path = tests/camera_fakes.h; sourceTree = SOURCE_ROOT; };
+		F2E9419F24A0474400041D08 /* field_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = field_coordinate_fakes.c; path = tests/field_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
+		F2E941A024A0474400041D08 /* GUCoordinatesTests.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GUCoordinatesTests.hpp; path = tests/GUCoordinatesTests.hpp; sourceTree = SOURCE_ROOT; };
+		F2E941A124A0474400041D08 /* camera_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = camera_coordinate_fakes.c; path = tests/camera_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
+		F2E941A224A0474400041D08 /* RelativeCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RelativeCoordinateTests.cc; path = tests/RelativeCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F2E941A324A0474400041D08 /* camera_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = camera_coordinate_fakes.h; path = tests/camera_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F2E941A424A0474400041D08 /* robot_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = robot_fakes.c; path = tests/robot_fakes.c; sourceTree = SOURCE_ROOT; };
+		F2E941A524A0474400041D08 /* fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fakes.h; path = tests/fakes.h; sourceTree = SOURCE_ROOT; };
+		F2E941A624A0474400041D08 /* relative_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = relative_coordinate_fakes.c; path = tests/relative_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
+		F2E941A724A0474400041D08 /* fff.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = fff.c; path = tests/fff.c; sourceTree = SOURCE_ROOT; };
+		F2E941A824A0474400041D08 /* pixel_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pixel_coordinate_fakes.h; path = tests/pixel_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F2E941A924A0474400041D08 /* conversion_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = conversion_fakes.c; path = tests/conversion_fakes.c; sourceTree = SOURCE_ROOT; };
+		F2E941AA24A0475200041D08 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Makefile; path = ctests/Makefile; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		F2E9414C24A044F900041D08 = {
+			isa = PBXGroup;
+			children = (
+				F2E9415724A0452D00041D08 /* gucoordinates */,
+				F2E9418224A046EB00041D08 /* gucoordinates_ctests */,
+				F2E9418A24A0472100041D08 /* gucoordinates_tests */,
+				F2E941DA24A048E700041D08 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F2E9415724A0452D00041D08 /* gucoordinates */ = {
+			isa = PBXGroup;
+			children = (
+				F2E9417C24A045B500041D08 /* camera_coordinate.c */,
+				F2E9418024A045B500041D08 /* camera_coordinate.h */,
+				F2E9418124A045B500041D08 /* camera.c */,
+				F2E9416224A045B400041D08 /* camera.h */,
+				F2E9416524A045B400041D08 /* Camera.hpp */,
+				F2E9416724A045B400041D08 /* CameraCoordinate.cc */,
+				F2E9416624A045B400041D08 /* CameraCoordinate.hpp */,
+				F2E9417B24A045B500041D08 /* CameraCPP.cc */,
+				F2E9417924A045B400041D08 /* cartesian_coordinate.c */,
+				F2E9416924A045B400041D08 /* cartesian_coordinate.h */,
+				F2E9417624A045B400041D08 /* CartesianCoordinate.cc */,
+				F2E9416424A045B400041D08 /* CartesianCoordinate.hpp */,
+				F2E9417E24A045B500041D08 /* conversions.c */,
+				F2E9416124A045B400041D08 /* conversions.h */,
+				F2E9415F24A045B300041D08 /* field_coordinate.c */,
+				F2E9416A24A045B400041D08 /* field_coordinate.h */,
+				F2E9416C24A045B400041D08 /* FieldCoordinate.cc */,
+				F2E9417524A045B400041D08 /* FieldCoordinate.hpp */,
+				F2E9417324A045B400041D08 /* gucoordinates.h */,
+				F2E9416D24A045B400041D08 /* GUCoordinates.hpp */,
+				F2E9416B24A045B400041D08 /* hidden_conversions.h */,
+				F2E9416E24A045B400041D08 /* Makefile */,
+				F2E9416324A045B400041D08 /* percent_coordinate.c */,
+				F2E9417824A045B400041D08 /* percent_coordinate.h */,
+				F2E9416F24A045B400041D08 /* PercentCoordinate.cc */,
+				F2E9416824A045B400041D08 /* PercentCoordinate.hpp */,
+				F2E9417424A045B400041D08 /* pixel_coordinate.c */,
+				F2E9416024A045B300041D08 /* pixel_coordinate.h */,
+				F2E9415C24A045B300041D08 /* PixelCoordinate.cc */,
+				F2E9415D24A045B300041D08 /* PixelCoordinate.hpp */,
+				F2E9417A24A045B400041D08 /* relative_coordinate.c */,
+				F2E9415E24A045B300041D08 /* relative_coordinate.h */,
+				F2E9417724A045B400041D08 /* RelativeCoordinate.cc */,
+				F2E9417F24A045B500041D08 /* RelativeCoordinate.hpp */,
+				F2E9417224A045B400041D08 /* Robot_cpp.cc */,
+				F2E9417D24A045B500041D08 /* robot.c */,
+				F2E9417124A045B400041D08 /* robot.h */,
+				F2E9417024A045B400041D08 /* Robot.hpp */,
+			);
+			path = gucoordinates;
+			sourceTree = "<group>";
+		};
+		F2E9418224A046EB00041D08 /* gucoordinates_ctests */ = {
+			isa = PBXGroup;
+			children = (
+				F2E9418624A0470900041D08 /* camera_coordinate_tests.cc */,
+				F2E9418824A0470900041D08 /* camera_tests.cc */,
+				F2E9418524A0470900041D08 /* conversions_tests.cc */,
+				F2E941AA24A0475200041D08 /* Makefile */,
+				F2E9418724A0470900041D08 /* percent_coordinate_tests.cc */,
+				F2E9418424A0470900041D08 /* pixel_coordinate_tests.cc */,
+				F2E9418324A0470900041D08 /* relative_coordinate_tests.cc */,
+				F2E9418924A0470900041D08 /* robot_tests.cc */,
+			);
+			path = gucoordinates_ctests;
+			sourceTree = "<group>";
+		};
+		F2E9418A24A0472100041D08 /* gucoordinates_tests */ = {
+			isa = PBXGroup;
+			children = (
+				F2E941A124A0474400041D08 /* camera_coordinate_fakes.c */,
+				F2E941A324A0474400041D08 /* camera_coordinate_fakes.h */,
+				F2E9418C24A0474400041D08 /* camera_fakes.c */,
+				F2E9419E24A0474400041D08 /* camera_fakes.h */,
+				F2E9419424A0474400041D08 /* CameraCoordinateTests.cc */,
+				F2E9419024A0474400041D08 /* CameraTests.cc */,
+				F2E9418E24A0474400041D08 /* cartesian_coordinate_fakes.c */,
+				F2E9419A24A0474400041D08 /* cartesian_coordinate_fakes.h */,
+				F2E9419524A0474400041D08 /* CartesianCoordinateTests.cc */,
+				F2E941A924A0474400041D08 /* conversion_fakes.c */,
+				F2E9419624A0474400041D08 /* conversion_fakes.h */,
+				F2E941A524A0474400041D08 /* fakes.h */,
+				F2E941A724A0474400041D08 /* fff.c */,
+				F2E9419924A0474400041D08 /* fff.h */,
+				F2E9419F24A0474400041D08 /* field_coordinate_fakes.c */,
+				F2E9419124A0474400041D08 /* field_coordinate_fakes.h */,
+				F2E9418F24A0474400041D08 /* FieldCoordinateTests.cc */,
+				F2E941A024A0474400041D08 /* GUCoordinatesTests.hpp */,
+				F2E9418B24A0474400041D08 /* Makefile */,
+				F2E9419B24A0474400041D08 /* percent_coordinate_fakes.c */,
+				F2E9418D24A0474400041D08 /* percent_coordinate_fakes.h */,
+				F2E9419C24A0474400041D08 /* PercentCoordinateTests.cc */,
+				F2E9419D24A0474400041D08 /* pixel_coordinate_fakes.c */,
+				F2E941A824A0474400041D08 /* pixel_coordinate_fakes.h */,
+				F2E9419824A0474400041D08 /* PixelCoordinateTests.cc */,
+				F2E941A624A0474400041D08 /* relative_coordinate_fakes.c */,
+				F2E9419724A0474400041D08 /* relative_coordinate_fakes.h */,
+				F2E941A224A0474400041D08 /* RelativeCoordinateTests.cc */,
+				F2E941A424A0474400041D08 /* robot_fakes.c */,
+				F2E9419224A0474400041D08 /* robot_fakes.h */,
+				F2E9419324A0474400041D08 /* RobotTests.cc */,
+			);
+			path = gucoordinates_tests;
+			sourceTree = "<group>";
+		};
+		F2E941DA24A048E700041D08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		F2E9415124A044F900041D08 /* gucoordinates */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = F2E9415424A044F900041D08 /* Build configuration list for PBXLegacyTarget "gucoordinates" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "$(SRCROOT)";
+			dependencies = (
+			);
+			name = gucoordinates;
+			passBuildSettingsInEnvironment = 1;
+			productName = gucoordinates;
+		};
+		F2E9415824A0456F00041D08 /* gu_coordinates_ctests */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = ctests;
+			buildConfigurationList = F2E9415924A0456F00041D08 /* Build configuration list for PBXLegacyTarget "gu_coordinates_ctests" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = gu_coordinates_ctests;
+			passBuildSettingsInEnvironment = 1;
+			productName = gu_coordinates_ctests;
+		};
+		F2E941B124A047A800041D08 /* gu_coordinates_cpp98tests */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = cpp98test;
+			buildConfigurationList = F2E941B224A047A800041D08 /* Build configuration list for PBXLegacyTarget "gu_coordinates_cpp98tests" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = gu_coordinates_cpp98tests;
+			passBuildSettingsInEnvironment = 1;
+			productName = gu_coordinates_cpp98tests;
+		};
+		F2E941B524A047E000041D08 /* gucoordinates_cpp03tests */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = cpp03test;
+			buildConfigurationList = F2E941B624A047E000041D08 /* Build configuration list for PBXLegacyTarget "gucoordinates_cpp03tests" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = gucoordinates_cpp03tests;
+			passBuildSettingsInEnvironment = 1;
+			productName = gucoordinates_cpp03tests;
+		};
+		F2E941B924A047F800041D08 /* gucoordinates_cpp11test */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = cpp11test;
+			buildConfigurationList = F2E941BA24A047F800041D08 /* Build configuration list for PBXLegacyTarget "gucoordinates_cpp11test" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = gucoordinates_cpp11test;
+			passBuildSettingsInEnvironment = 1;
+			productName = gucoordinates_cpp11test;
+		};
+		F2E941BD24A0480900041D08 /* gucoordinates_cpp14test */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = cpp14test;
+			buildConfigurationList = F2E941BE24A0480900041D08 /* Build configuration list for PBXLegacyTarget "gucoordinates_cpp14test" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = gucoordinates_cpp14test;
+			passBuildSettingsInEnvironment = 1;
+			productName = gucoordinates_cpp14test;
+		};
+		F2E941C124A0481B00041D08 /* gucoordinates_cpp17tests */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = cpp17test;
+			buildConfigurationList = F2E941C224A0481B00041D08 /* Build configuration list for PBXLegacyTarget "gucoordinates_cpp17tests" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/bmake;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = gucoordinates_cpp17tests;
+			passBuildSettingsInEnvironment = 1;
+			productName = gucoordinates_cpp17tests;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		F2E9414D24A044F900041D08 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Griffith University";
+				TargetAttributes = {
+					F2E9415124A044F900041D08 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					F2E9415824A0456F00041D08 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					F2E941AB24A0478300041D08 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					F2E941B124A047A800041D08 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					F2E941B524A047E000041D08 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					F2E941B924A047F800041D08 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					F2E941BD24A0480900041D08 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					F2E941C124A0481B00041D08 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					F2E941C524A0483300041D08 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+				};
+			};
+			buildConfigurationList = F2E9415024A044F900041D08 /* Build configuration list for PBXProject "gucoordinates" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F2E9414C24A044F900041D08;
+			productRefGroup = F2E941DA24A048E700041D08 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2E9415124A044F900041D08 /* gucoordinates */,
+				F2E941AB24A0478300041D08 /* gu_coordinates_tests */,
+				F2E9415824A0456F00041D08 /* gu_coordinates_ctests */,
+				F2E941C524A0483300041D08 /* gucoordinates_cpptests */,
+				F2E941B124A047A800041D08 /* gu_coordinates_cpp98tests */,
+				F2E941B524A047E000041D08 /* gucoordinates_cpp03tests */,
+				F2E941B924A047F800041D08 /* gucoordinates_cpp11test */,
+				F2E941BD24A0480900041D08 /* gucoordinates_cpp14test */,
+				F2E941C124A0481B00041D08 /* gucoordinates_cpp17tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXTargetDependency section */
+		F2E941B024A0478A00041D08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2E9415824A0456F00041D08 /* gu_coordinates_ctests */;
+			targetProxy = F2E941AF24A0478A00041D08 /* PBXContainerItemProxy */;
+		};
+		F2E941CA24A0484700041D08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2E941B124A047A800041D08 /* gu_coordinates_cpp98tests */;
+			targetProxy = F2E941C924A0484700041D08 /* PBXContainerItemProxy */;
+		};
+		F2E941CC24A0484700041D08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2E941B524A047E000041D08 /* gucoordinates_cpp03tests */;
+			targetProxy = F2E941CB24A0484700041D08 /* PBXContainerItemProxy */;
+		};
+		F2E941CE24A0484700041D08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2E941B924A047F800041D08 /* gucoordinates_cpp11test */;
+			targetProxy = F2E941CD24A0484700041D08 /* PBXContainerItemProxy */;
+		};
+		F2E941D024A0484700041D08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2E941BD24A0480900041D08 /* gucoordinates_cpp14test */;
+			targetProxy = F2E941CF24A0484700041D08 /* PBXContainerItemProxy */;
+		};
+		F2E941D224A0484700041D08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2E941C124A0481B00041D08 /* gucoordinates_cpp17tests */;
+			targetProxy = F2E941D124A0484700041D08 /* PBXContainerItemProxy */;
+		};
+		F2E941D424A0485200041D08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2E941C524A0483300041D08 /* gucoordinates_cpptests */;
+			targetProxy = F2E941D324A0485200041D08 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F2E9415224A044F900041D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		F2E9415324A044F900041D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+			};
+			name = Release;
+		};
+		F2E9415524A044F900041D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2E9415624A044F900041D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F2E9415A24A0456F00041D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2E9415B24A0456F00041D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F2E941AD24A0478300041D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2E941AE24A0478300041D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F2E941B324A047A800041D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2E941B424A047A800041D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F2E941B724A047E000041D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2E941B824A047E000041D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F2E941BB24A047F800041D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2E941BC24A047F800041D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F2E941BF24A0480900041D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2E941C024A0480900041D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F2E941C324A0481B00041D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2E941C424A0481B00041D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F2E941C724A0483300041D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2E941C824A0483300041D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2E9415024A044F900041D08 /* Build configuration list for PBXProject "gucoordinates" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2E9415224A044F900041D08 /* Debug */,
+				F2E9415324A044F900041D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2E9415424A044F900041D08 /* Build configuration list for PBXLegacyTarget "gucoordinates" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2E9415524A044F900041D08 /* Debug */,
+				F2E9415624A044F900041D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2E9415924A0456F00041D08 /* Build configuration list for PBXLegacyTarget "gu_coordinates_ctests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2E9415A24A0456F00041D08 /* Debug */,
+				F2E9415B24A0456F00041D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2E941AC24A0478300041D08 /* Build configuration list for PBXAggregateTarget "gu_coordinates_tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2E941AD24A0478300041D08 /* Debug */,
+				F2E941AE24A0478300041D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2E941B224A047A800041D08 /* Build configuration list for PBXLegacyTarget "gu_coordinates_cpp98tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2E941B324A047A800041D08 /* Debug */,
+				F2E941B424A047A800041D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2E941B624A047E000041D08 /* Build configuration list for PBXLegacyTarget "gucoordinates_cpp03tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2E941B724A047E000041D08 /* Debug */,
+				F2E941B824A047E000041D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2E941BA24A047F800041D08 /* Build configuration list for PBXLegacyTarget "gucoordinates_cpp11test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2E941BB24A047F800041D08 /* Debug */,
+				F2E941BC24A047F800041D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2E941BE24A0480900041D08 /* Build configuration list for PBXLegacyTarget "gucoordinates_cpp14test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2E941BF24A0480900041D08 /* Debug */,
+				F2E941C024A0480900041D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2E941C224A0481B00041D08 /* Build configuration list for PBXLegacyTarget "gucoordinates_cpp17tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2E941C324A0481B00041D08 /* Debug */,
+				F2E941C424A0481B00041D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2E941C624A0483300041D08 /* Build configuration list for PBXAggregateTarget "gucoordinates_cpptests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2E941C724A0483300041D08 /* Debug */,
+				F2E941C824A0483300041D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2E9414D24A044F900041D08 /* Project object */;
+}
