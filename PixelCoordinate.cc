@@ -58,6 +58,7 @@
 
 #include "PixelCoordinate.hpp"
 #include "conversions.h"
+#include <optional>
 
 GU::PixelCoordinate::PixelCoordinate(): gu_pixel_coordinate() {}
 
@@ -135,6 +136,11 @@ GU::CameraCoordinate GU::PixelCoordinate::cameraCoordinate() const
 GU::PercentCoordinate GU::PixelCoordinate::percentCoordinate() const
 {
     return px_coord_to_pct_coord(*this);
+}
+
+std::optional<GU::RelativeCoordinate> GU::PixelCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset) const
+{
+    return percentCoordinate().relativeCoordinate(robot, cameraOffset);
 }
 
 pixels_t GU::PixelCoordinate::x() const

@@ -59,6 +59,8 @@
 #include "PercentCoordinate.hpp"
 #include "conversions.h"
 
+#include <optional>
+
 GU::PercentCoordinate::PercentCoordinate(): gu_percent_coordinate() {}
 
 GU::PercentCoordinate::PercentCoordinate(percent_f t_x, percent_f t_y): gu_percent_coordinate { t_x, t_y } {} 
@@ -123,6 +125,16 @@ GU::PixelCoordinate GU::PercentCoordinate::pixelCoordinate(const pixels_u resWid
 GU::CameraCoordinate GU::PercentCoordinate::cameraCoordinate(const pixels_u resWidth, const pixels_u resHeight) const
 {
     return pixelCoordinate(resWidth, resHeight).cameraCoordinate();
+}
+
+std::optional<GU::RelativeCoordinate> GU::PercentCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset) const
+{
+    GU::RelativeCoordinate out;
+    if (pct_coord_to_rr_coord(*this, robot, &out, cameraOffset))
+    {
+        return std::optional(out);
+    }
+    return std::nullopt;
 }
 
 percent_f GU::PercentCoordinate::x() const

@@ -63,8 +63,13 @@
 #include "CameraCoordinate.hpp"
 #include "PercentCoordinate.hpp"
 #include "RelativeCoordinate.hpp"
+#include "Robot.hpp"
 
 #include <cstdlib>
+
+#if __cplusplus >= 201703L
+#include <optional>
+#endif
 
 namespace GU {
 
@@ -90,6 +95,10 @@ namespace GU {
 
         CameraCoordinate cameraCoordinate() const;
         PercentCoordinate percentCoordinate() const;
+
+#if __cplusplus >= 201703L
+        std::optional<RelativeCoordinate> relativeCoordinate(const GU::Robot &, const int) const;
+#endif
 
         pixels_t x() const;
         void set_x(const pixels_t);
