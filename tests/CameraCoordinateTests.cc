@@ -114,6 +114,6 @@ namespace CGTEST {
 
     GETTER_TEST_F(CameraCoordinate, PixelCoordinate, cam_coord_to_px_coord, pixelCoordinate(), 10, 12, 1920, 1080)
     GETTER_TEST_F(CameraCoordinate, PercentCoordinate, px_coord_to_pct_coord, percentCoordinate(), -0.4f, 0.6f)
-    GETTER_OPT_TRUE_TEST_F(CameraCoordinate, RelativeCoordinate, pct_coord_to_rr_coord, relativeCoordinate, nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX)
+    //GETTER_OPT_TRUE_TEST_F(CameraCoordinate, RelativeCoordinate, pct_coord_to_rr_coord, relativeCoordinate, nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX)
 
 }  // namespace

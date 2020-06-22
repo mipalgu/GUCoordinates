@@ -99,11 +99,13 @@ namespace GU {
         GU::PixelCoordinate pixelCoordinate() const;
         GU::PercentCoordinate percentCoordinate() const;
 
+/*
 #if __cplusplus >= 201703L
         std::optional<RelativeCoordinate> relativeCoordinate(const GU::Robot &, const int) const;
         std::optional<CartesianCoordinate> cartesianCoordinate(const GU::Robot &, const int) const;
         std::optional<FieldCoordinate> fieldCoordinate(const GU::Robot &, const int) const;
 #endif
+*/
 
         pixels_u x() const;
         void set_x(const pixels_u);
