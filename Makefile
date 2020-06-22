@@ -4,7 +4,6 @@
 #
 
 .include "../../mk/c++17.mk"
-#CXXSTDFL=-std=c++17
 
 ALL_TARGETS=test robot-local
 
@@ -28,7 +27,20 @@ CPP11_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-e
 CPP14_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-extra-semi
 CPP17_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-extra-semi
 
+.ifdef TESTING
+
+CODE_COVERAGE=yes
+SPECIFIC_CPPFLAGS+=-fprofile-arcs -ftest-coverage
+SPECIFIC_LDFLAGS+=--coverage
+
+.endif
+
 all:	all-real
+
+coverage:
+	cp ${SRCDIR}/ctests/build.host/*.gc* build.host-local/ || true 
+	cp ${SRCDIR}/tests/build.host/*.gc* build.host-local/ || true
+	cd build.host-local && lcov --directory . --base-directory . --gcov-tool gcov --capture -o cov.info && genhtml cov.info -o coverage || cd ${SRCDIR}
 
 .ifdef IGNORE_TESTS
 
@@ -45,48 +57,46 @@ robot-local:
 upload-robot:
 	$Ebmake upload-robot IGNORE_TESTS=yes
 
-test: ctest cpptest
+test: clean ctest cpptest
 
-ctest:
-.ifndef TARGET
+build-lib:
 	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
+
+
+ctest: build-lib
+.ifndef TARGET
 	${SAY} "Testing C Implementation."
-	$Ecd ${SRCDIR}/ctests && ${MAKE} build-test BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./ctests/build.host/ctests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
+	$Ecd ${SRCDIR}/ctests && ${MAKE} build-test BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./ctests/build.host/ctests
 .endif
 
-cpp98test:
+cpp98test: build-lib
 .ifndef TARGET
-	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
 	${SAY} "Testing C++ Implementation with C++98 Standard."
-	$Ecd ${SRCDIR}/tests && ${MAKE} build-test BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
+	$Ecd ${SRCDIR}/tests && ${MAKE} build-test BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests
 .endif
 
-cpp03test:
+cpp03test: build-lib
 .ifndef TARGET
-	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
 	${SAY} "Testing C++ Implementation with C++03 Standard."
-	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=03 EXTRA_WFLAGS="${CPP03_EXTRA_WFLAGS}" BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
+	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=03 EXTRA_WFLAGS="${CPP03_EXTRA_WFLAGS}" BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests
 .endif
 
-cpp11test:
+cpp11test: build-lib
 .ifndef TARGET
-	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
 	${SAY} "Testing C++ Implementation with C++11 Standard."
-	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=11 EXTRA_WFLAGS="${CPP11_EXTRA_WFLAGS}" BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
+	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=11 EXTRA_WFLAGS="${CPP11_EXTRA_WFLAGS}" BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests
 .endif
 
-cpp14test:
+cpp14test: build-lib
 .ifndef TARGET
-	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
 	${SAY} "Testing C++ Implementation with C++14 Standard."
-	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=14 EXTRA_WFLAGS="${CPP14_EXTRA_WFLAGS}" BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
+	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=14 EXTRA_WFLAGS="${CPP14_EXTRA_WFLAGS}" BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests
 .endif
 
-cpp17test:
+cpp17test: build-lib
 .ifndef TARGET
-	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
 	${SAY} "Testing C++ Implementation with C++17 Standard."
-	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=17 EXTRA_WFLAGS="${CPP17_EXTRA_WFLAGS}" BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests || cd ${SRCDIR} && env ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes
+	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=17 EXTRA_WFLAGS="${CPP17_EXTRA_WFLAGS}" BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host/tests
 .endif
 
 cpptest: cpp98test cpp03test cpp11test cpp14test cpp17test

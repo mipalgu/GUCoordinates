@@ -19,7 +19,9 @@ CC_SRCS!=ls *.cc 2>/dev/null || :
 CPP_SRCS!=ls *.cpp 2>/dev/null || :
 CXXFLAGS+=-I${SDIR} -I../../../../Common -I../../../gusimplewhiteboard
 TESTLIBDIR?=${SDIR}/../build.host-local
-SPECIFIC_LIBS=-L${TESTLIBDIR} -lgucoordinates -L/usr/local/lib -lgtest -lgtest_main -lguunits -rpath ${TESTLIBDIR}
+SPECIFIC_LIBS=-L${TESTLIBDIR} -lgucoordinates -L/usr/local/lib -lgtest -lgtest_main -lguunits -rpath ${TESTLIBDIR} --coverage
+
+CODE_COVERAGE=yes
 
 all:	all-real
 
