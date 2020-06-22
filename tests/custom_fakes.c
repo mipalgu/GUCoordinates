@@ -81,3 +81,27 @@ bool pct_coord_to_rr_coord_custom_fake_false(const gu_percent_coordinate c, cons
 {
     return false;
 }
+
+bool rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate c, const gu_robot r, const int i, gu_percent_coordinate * out)
+{
+    const gu_percent_coordinate temp = rr_coord_to_pct_coord_custom_fake_result;
+    *out = temp;
+    return true;
+}
+
+bool rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate c, const gu_robot r, const int i, gu_percent_coordinate * o)
+{
+    return false;
+}
+
+bool rr_coord_to_px_coord_custom_fake_true(const gu_relative_coordinate c, const gu_robot r, const int i, gu_pixel_coordinate * out, pixels_u rw, pixels_u rh)
+{
+    const gu_pixel_coordinate temp = rr_coord_to_px_coord_custom_fake_result;
+    *out = temp;
+    return true;
+}
+
+bool rr_coord_to_px_coord_custom_fake_false(const gu_relative_coordinate c, const gu_robot r, const int i, gu_pixel_coordinate * o, pixels_u rw, pixels_u rh)
+{
+    return false;
+}

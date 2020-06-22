@@ -78,6 +78,18 @@ bool pct_coord_to_rr_coord_custom_fake_true(const gu_percent_coordinate, const g
 
 bool pct_coord_to_rr_coord_custom_fake_false(const gu_percent_coordinate, const gu_robot, gu_relative_coordinate *, const int);
 
+#define rr_coord_to_pct_coord_custom_fake_result { .x = -0.4f, .y = -0.2f }
+
+bool rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate, const gu_robot, const int, gu_percent_coordinate *);
+
+bool rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate, const gu_robot, const int, gu_percent_coordinate *);
+
+#define rr_coord_to_px_coord_custom_fake_result { .x = -5, .y = 10, .res_width = 1920, .res_height = 1080 }
+
+bool rr_coord_to_px_coord_custom_fake_true(const gu_relative_coordinate, const gu_robot, const int, gu_pixel_coordinate *, pixels_u, pixels_u);
+
+bool rr_coord_to_px_coord_custom_fake_false(const gu_relative_coordinate, const gu_robot, const int, gu_pixel_coordinate *, pixels_u, pixels_u);
+
 #ifdef __cplusplus
 }
 #endif
