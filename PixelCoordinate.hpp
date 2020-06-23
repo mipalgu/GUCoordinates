@@ -95,6 +95,7 @@ namespace GU {
 
         CameraCoordinate cameraCoordinate() const;
         PercentCoordinate percentCoordinate() const;
+        bool relativeCoordinate(const GU::Robot &, const int, GU::RelativeCoordinate &) const;
 
 #if __cplusplus >= 201703L
         std::optional<RelativeCoordinate> relativeCoordinate(const GU::Robot &, const int) const;

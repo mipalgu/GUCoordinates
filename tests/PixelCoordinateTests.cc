@@ -97,6 +97,7 @@ namespace CGTEST {
     WRAPPER_TEST_Fs(PixelCoordinate, gu_pixel_coordinate)
     GETTER_TEST_F(PixelCoordinate, CameraCoordinate, px_coord_to_cam_coord, cameraCoordinate())
     GETTER_TEST_F(PixelCoordinate, PercentCoordinate, px_coord_to_pct_coord, percentCoordinate())
+    GETTER_BOOL_TEST_F(PixelCoordinate, RelativeCoordinate, pct_coord_to_rr_coord, relativeCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))
     GETTER_OPT_TEST_F(PixelCoordinate, RelativeCoordinate, pct_coord_to_rr_coord, relativeCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
 
     TEST_F(PixelCoordinateCPPTests, GettersSetters) {

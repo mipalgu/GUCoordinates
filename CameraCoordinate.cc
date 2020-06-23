@@ -139,6 +139,11 @@ GU::PercentCoordinate GU::CameraCoordinate::percentCoordinate() const
     return pixelCoordinate().percentCoordinate();
 }
 
+bool GU::CameraCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset, GU::RelativeCoordinate & other) const
+{
+    return percentCoordinate().relativeCoordinate(robot, cameraOffset, other);
+}
+
 pixels_u GU::CameraCoordinate::x() const
 {
     return gu_camera_coordinate::x;

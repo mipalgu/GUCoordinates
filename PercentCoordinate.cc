@@ -127,10 +127,15 @@ GU::CameraCoordinate GU::PercentCoordinate::cameraCoordinate(const pixels_u resW
     return pixelCoordinate(resWidth, resHeight).cameraCoordinate();
 }
 
+bool GU::PercentCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset, GU::RelativeCoordinate & other) const
+{
+    return pct_coord_to_rr_coord(*this, robot, &other, cameraOffset);
+}
+
 std::optional<GU::RelativeCoordinate> GU::PercentCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset) const
 {
     GU::RelativeCoordinate out;
-    if (pct_coord_to_rr_coord(*this, robot, &out, cameraOffset))
+    if (relativeCoordinate(robot, cameraOffset, out))
     {
         return std::optional<GU::RelativeCoordinate>(out);
     }
