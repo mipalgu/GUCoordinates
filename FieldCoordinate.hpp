@@ -90,9 +90,10 @@ namespace GU {
         FieldCoordinate& operator=(FieldCoordinate&& other);
 #endif
 
-        RelativeCoordinate relativeCoordinateTo(const GU::CartesianCoordinate &) const;
         CartesianCoordinate cartesianCoordinateAt(const GU::RelativeCoordinate &) const;
         FieldCoordinate fieldCoordinateAt(const GU::RelativeCoordinate &, const degrees_t) const;
+        RelativeCoordinate relativeCoordinateTo(const GU::CartesianCoordinate &) const;
+        RelativeCoordinate relativeCoordinateTo(const GU::FieldCoordinate &) const;
 
         CartesianCoordinate position() const;
         void set_position(const CartesianCoordinate);

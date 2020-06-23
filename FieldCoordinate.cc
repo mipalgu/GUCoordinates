@@ -115,11 +115,6 @@ GU::FieldCoordinate& GU::FieldCoordinate::operator=(FieldCoordinate&& other)
 }
 #endif
 
-GU::RelativeCoordinate GU::FieldCoordinate::relativeCoordinateTo(const GU::CartesianCoordinate & target) const
-{
-    return field_coord_to_rr_coord_to_target(*this, target);
-}
-
 GU::CartesianCoordinate GU::FieldCoordinate::cartesianCoordinateAt(const GU::RelativeCoordinate & target) const
 {
     return rr_coord_to_cartesian_coord_from_source(target, this->position());
@@ -128,6 +123,16 @@ GU::CartesianCoordinate GU::FieldCoordinate::cartesianCoordinateAt(const GU::Rel
 GU::FieldCoordinate GU::FieldCoordinate::fieldCoordinateAt(const GU::RelativeCoordinate & target, const degrees_t targetHeading) const
 {
     return rr_coord_to_field_coord_from_source(target, *this, targetHeading);
+}
+
+GU::RelativeCoordinate GU::FieldCoordinate::relativeCoordinateTo(const GU::CartesianCoordinate & target) const
+{
+    return field_coord_to_rr_coord_to_target(*this, target);
+}
+
+GU::RelativeCoordinate GU::FieldCoordinate::relativeCoordinateTo(const GU::FieldCoordinate & target) const
+{
+    return relativeCoordinateTo(target.position());
 }
 
 GU::CartesianCoordinate GU::FieldCoordinate::position() const
