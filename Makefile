@@ -57,7 +57,7 @@ generate-coverage-report:
 
 
 c-coverage:
-	bmake generate-coverage-report TEST_BUILD_DIR="${SRCDIR}/ctests/build.host" COVERAGE_BUILD_DIR="coverage/c" COVERAGE_TITLE="C Implementation Code Coverage"
+	bmake generate-coverage-report TEST_BUILD_DIR="${SRCDIR}/ctests/build.host" COVERAGE_BUILD_DIR="coverage/c" COVERAGE_TITLE="C Tests Coverage"
 
 cpp-coverage:
 .for std in ${STDS}
@@ -66,7 +66,7 @@ cpp-coverage:
 
 .ifdef STD
 single-cpp-coverage:
-	bmake generate-coverage-report TEST_BUILD_DIR="${SRCDIR}/tests/build.host-${STD}" COVERAGE_BUILD_DIR="coverage/${STD}" COVERAGE_TITLE="C++${STD} Implementation Coverage"
+	bmake generate-coverage-report TEST_BUILD_DIR="${SRCDIR}/tests/build.host-${STD}" COVERAGE_BUILD_DIR="coverage/${STD}" COVERAGE_TITLE="C++${STD} Tests Coverage"
 .endif
 
 .ifdef IGNORE_TESTS
