@@ -115,7 +115,7 @@ GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&
 }
 #endif
 
-GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinate(const GU::RelativeCoordinate & target) const
+GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::RelativeCoordinate & target) const
 {
     return rr_coord_to_cartesian_coord_from_source(target, *this);
 }
