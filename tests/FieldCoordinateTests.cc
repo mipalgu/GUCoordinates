@@ -102,9 +102,12 @@ namespace CGTEST {
     GETTER_TEST_NAME_F(FieldCoordinate, RelativeCoordinateToCartesian, RelativeCoordinate, field_coord_to_rr_coord_to_target, relativeCoordinateTo(GU::CartesianCoordinate(-80, 23)))
     GETTER_TEST_NAME_F(FieldCoordinate, RelativeCoordinateToField, RelativeCoordinate, field_coord_to_rr_coord_to_target, relativeCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(-80, 23), 23)))
 
-    GETTER_BOOL_TEST_NAME_F(FieldCoordinate, PercentCoordinateRelative, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinateTo(GU::RelativeCoordinate(23, 100), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))
-    GETTER_BOOL_TEST_NAME_F(FieldCoordinate, PercentCoordinateCartesian, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))
-    GETTER_BOOL_TEST_NAME_F(FieldCoordinate, PercentCoordinateField, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))
+    GETTER_BOOL_TEST_NAME_F(FieldCoordinate, PercentCoordinateRelativeBool, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinateTo(GU::RelativeCoordinate(23, 100), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))
+    GETTER_BOOL_TEST_NAME_F(FieldCoordinate, PercentCoordinateCartesianBool, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))
+    GETTER_BOOL_TEST_NAME_F(FieldCoordinate, PercentCoordinateFieldBool, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))
+    GETTER_OPT_TEST_NAME_F(FieldCoordinate, PercentCoordinateRelative, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinateTo(GU::RelativeCoordinate(23, 100), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+    GETTER_OPT_TEST_NAME_F(FieldCoordinate, PercentCoordinateCartesian, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+    GETTER_OPT_TEST_NAME_F(FieldCoordinate, PercentCoordinateField, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
 
     TEST_F(FieldCoordinateCPPTests, GettersSetters) {
         GU::FieldCoordinate coord = GU::FieldCoordinate(GU::CartesianCoordinate(90, 50), 100);

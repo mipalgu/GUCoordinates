@@ -150,6 +150,24 @@ bool GU::FieldCoordinate::percentCoordinateTo(const GU::FieldCoordinate & target
     return percentCoordinateTo(relativeCoordinateTo(target), robot, cameraOffset, other);
 }
 
+std::optional<GU::PercentCoordinate> GU::FieldCoordinate::percentCoordinateTo(const GU::RelativeCoordinate & target, const GU::Robot & robot, const int cameraOffset) const
+{
+    GU::PercentCoordinate temp;
+    if (percentCoordinateTo(target, robot, cameraOffset, temp))
+        return std::optional<GU::PercentCoordinate>(temp);
+    return std::nullopt;
+}
+
+std::optional<GU::PercentCoordinate> GU::FieldCoordinate::percentCoordinateTo(const GU::CartesianCoordinate & target, const GU::Robot & robot, const int cameraOffset) const
+{
+    return percentCoordinateTo(relativeCoordinateTo(target), robot, cameraOffset);
+}
+
+std::optional<GU::PercentCoordinate> GU::FieldCoordinate::percentCoordinateTo(const GU::FieldCoordinate & target, const GU::Robot & robot, const int cameraOffset) const
+{
+    return percentCoordinateTo(relativeCoordinateTo(target), robot, cameraOffset);
+}
+
 GU::CartesianCoordinate GU::FieldCoordinate::position() const
 {
     return gu_field_coordinate::position;
