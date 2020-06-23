@@ -58,6 +58,11 @@
 
 #include "custom_fakes.h"
 
+const gu_relative_coordinate px_coord_to_rr_coord_custom_fake_result = { 20, 200 };
+const gu_relative_coordinate pct_coord_to_rr_coord_custom_fake_result = { 10, 100 };
+const gu_percent_coordinate rr_coord_to_pct_coord_custom_fake_result = { -0.4f, -0.2f };
+const gu_pixel_coordinate rr_coord_to_px_coord_custom_fake_result = { -5, 10, 1920, 1080 };
+
 #ifndef UNUSED
 #  ifdef __GNUC__
 #    define UNUSED(x) UNUSED_ ## x __attribute__((__unused__))

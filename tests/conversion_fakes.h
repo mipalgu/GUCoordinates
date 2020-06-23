@@ -84,12 +84,12 @@ extern "C" {
     FAKE(cartesian_coord_to_rr_coord_from_source) \
     FAKE(field_coord_to_rr_coord_to_target)
 
-#define cam_result { .x = 19, .y = 23, .res_width = 1920, .res_height = 1080 }
-#define px_result { .x = -19, .y = -23, .res_width = 1920, .res_height = 1080 }
-#define pct_result { .x = -0.19f, .y = -0.23f }
-#define rr_result { .direction = -15, .distance = 100 }
-#define cartesian_result { .x = -36, .y = 70 }
-#define field_result { .position = cartesian_result, .heading = 32 }
+extern const gu_camera_coordinate cam_result;
+extern const gu_pixel_coordinate px_result;
+extern const gu_percent_coordinate pct_result;
+extern const gu_relative_coordinate rr_result;
+extern const gu_cartesian_coordinate cartesian_result;
+extern const gu_field_coordinate field_result;
 
 #define cam_coord_to_px_coord_result px_result
 DECLARE_FAKE_VALUE_FUNC(gu_pixel_coordinate, cam_coord_to_px_coord, const gu_camera_coordinate)

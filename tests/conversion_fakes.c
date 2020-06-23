@@ -58,6 +58,13 @@
 
 #include "conversion_fakes.h"
 
+const gu_camera_coordinate cam_result = {19, 23, 1920, 1080};
+const gu_pixel_coordinate px_result = {-19, -23, 1920, 1080};
+const gu_percent_coordinate pct_result = {-0.19f, -0.23f};
+const gu_relative_coordinate rr_result = {15, 100};
+const gu_cartesian_coordinate cartesian_result = {-36, 70};
+const gu_field_coordinate field_result = {{ -36, 70}, 32};
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wcast-qual"
 
