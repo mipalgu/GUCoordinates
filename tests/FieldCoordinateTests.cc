@@ -105,6 +105,13 @@ namespace CGTEST {
     GETTER_OPT_IM_TEST_NAME_F(FieldCoordinate, CartesianCoordinatePixel, CartesianCoordinate, pct_coord_to_rr_coord, rr_coord_to_cartesian_coord_from_source, cartesianCoordinateAt(GU::PixelCoordinate(42, -123, 1920, 1080), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
     GETTER_OPT_IM_TEST_NAME_F(FieldCoordinate, CartesianCoordinatePercent, CartesianCoordinate, pct_coord_to_rr_coord, rr_coord_to_cartesian_coord_from_source, cartesianCoordinateAt(GU::PercentCoordinate(-0.24f, 0.5f), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
 
+    GETTER_BOOL_IM_TEST_NAME_F(FieldCoordinate, FieldCoordinateCameraBool, FieldCoordinate, pct_coord_to_rr_coord, rr_coord_to_field_coord_from_source, fieldCoordinateAt(GU::CameraCoordinate(23, 52, 1920, 1080), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 23, temp))
+    GETTER_BOOL_IM_TEST_NAME_F(FieldCoordinate, FieldCoordinatePixelBool, FieldCoordinate, pct_coord_to_rr_coord, rr_coord_to_field_coord_from_source, fieldCoordinateAt(GU::PixelCoordinate(42, -123, 1920, 1080), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 23, temp))
+    GETTER_BOOL_IM_TEST_NAME_F(FieldCoordinate, FieldCoordinatePercentBool, FieldCoordinate, pct_coord_to_rr_coord, rr_coord_to_field_coord_from_source, fieldCoordinateAt(GU::PercentCoordinate(-0.24f, 0.5f), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 23, temp))
+    GETTER_OPT_IM_TEST_NAME_F(FieldCoordinate, FieldCoordinateCamera, FieldCoordinate, pct_coord_to_rr_coord, rr_coord_to_field_coord_from_source, fieldCoordinateAt(GU::CameraCoordinate(23, 52, 1920, 1080), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 23))
+    GETTER_OPT_IM_TEST_NAME_F(FieldCoordinate, FieldCoordinatePixel, FieldCoordinate, pct_coord_to_rr_coord, rr_coord_to_field_coord_from_source, fieldCoordinateAt(GU::PixelCoordinate(42, -123, 1920, 1080), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 24))
+    GETTER_OPT_IM_TEST_NAME_F(FieldCoordinate, FieldCoordinatePercent, FieldCoordinate, pct_coord_to_rr_coord, rr_coord_to_field_coord_from_source, fieldCoordinateAt(GU::PercentCoordinate(-0.24f, 0.5f), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 25))
+
     GETTER_TEST_F(FieldCoordinate, CartesianCoordinate, rr_coord_to_cartesian_coord_from_source, cartesianCoordinateAt(GU::RelativeCoordinate(-23, 823)))
     GETTER_TEST_F(FieldCoordinate, FieldCoordinate, rr_coord_to_field_coord_from_source, fieldCoordinateAt(GU::RelativeCoordinate(-23, 823), -3))
     GETTER_TEST_NAME_F(FieldCoordinate, RelativeCoordinateToCartesian, RelativeCoordinate, field_coord_to_rr_coord_to_target, relativeCoordinateTo(GU::CartesianCoordinate(-80, 23)))

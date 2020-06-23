@@ -106,6 +106,11 @@ namespace GU {
         bool cartesianCoordinateAt(const GU::CameraCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
         bool cartesianCoordinateAt(const GU::PixelCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
         bool cartesianCoordinateAt(const GU::PercentCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
+        bool fieldCoordinateAt(const GU::CameraCoordinate &, const GU::Robot &, const int, const degrees_t, GU::FieldCoordinate &) const;
+        bool fieldCoordinateAt(const GU::PixelCoordinate &, const GU::Robot &, const int, const degrees_t, GU::FieldCoordinate &) const;
+        bool fieldCoordinateAt(const GU::PercentCoordinate &, const GU::Robot &, const int, const degrees_t, GU::FieldCoordinate &) const;
+
+
         bool cameraCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u, GU::CameraCoordinate &) const;
         bool cameraCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u, GU::CameraCoordinate &) const;
         bool pixelCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u, GU::PixelCoordinate &) const;
@@ -117,6 +122,10 @@ namespace GU {
         std::optional<GU::CartesianCoordinate> cartesianCoordinateAt(const GU::CameraCoordinate &, const GU::Robot &, const int) const;
         std::optional<GU::CartesianCoordinate> cartesianCoordinateAt(const GU::PixelCoordinate &, const GU::Robot &, const int) const;
         std::optional<GU::CartesianCoordinate> cartesianCoordinateAt(const GU::PercentCoordinate &, const GU::Robot &, const int) const;
+        std::optional<GU::FieldCoordinate> fieldCoordinateAt(const GU::CameraCoordinate &, const GU::Robot &, const int, const degrees_t) const;
+        std::optional<GU::FieldCoordinate> fieldCoordinateAt(const GU::PixelCoordinate &, const GU::Robot &, const int, const degrees_t) const;
+        std::optional<GU::FieldCoordinate> fieldCoordinateAt(const GU::PercentCoordinate &, const GU::Robot &, const int, const degrees_t) const;
+
         std::optional<GU::CameraCoordinate> cameraCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
         std::optional<GU::CameraCoordinate> cameraCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
         std::optional<GU::PixelCoordinate> pixelCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
