@@ -68,7 +68,7 @@
 #include "PercentCoordinate.hpp"
 #include "Robot.hpp"
 
-#ifdef __cpp_lib_optional
+#if __cplusplus >= 201703L
 #include <optional>
 #endif
 
@@ -98,7 +98,7 @@ namespace GU {
         bool pixelCoordinate(const Robot robot, const int, const pixels_u, const pixels_u, PixelCoordinate &) const;
         bool percentCoordinate(Robot, const int, PercentCoordinate & other) const;
 
-#ifdef __cpp_lib_optional
+#if __cplusplus >= 201703L
         std::optional<CameraCoordinate> cameraCoordinate(const Robot, const int, const pixels_u, const pixels_u) const;
         std::optional<PixelCoordinate> pixelCoordinate(const Robot, const int, const pixels_u, const pixels_u) const;
         std::optional<PercentCoordinate> percentCoordinate(const Robot, const int) const;

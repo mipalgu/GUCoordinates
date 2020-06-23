@@ -180,8 +180,9 @@
     GETTER_OPT_TEST_NAME_F(className, resultType, resultType, call, get)
 
 #define GETTER_OPT_IM_TEST_NAME_F(className, testName, resultType, failCall, resultCall, get) \
-    Test2_F(testclassname(className), testName) { \
+    TEST2_F(testclassname(className), testName) { \
         failCall##_fake.custom_fake = failCall##_custom_fake_true; \
+        resultCall##_fake.return_val = resultCall##_result; \
         const GU::resultType result = GU::resultType(resultCall##_result); \
         const std::optional<GU::resultType> out = initial().get; \
         if (out.has_value()) \
@@ -189,11 +190,11 @@
             equals(out.value(), result); \
             ASSERT_EQ(failCall##_fake.call_count, 1); \
             ASSERT_EQ(resultCall##_fake.call_count, 1); \
-            failCall##_reset(); \
-            resultCall##_reset(); \
         } else { \
             FAIL() << "Result is nullopt from initial().get"; \
         } \
+        failCall##_reset(); \
+        resultCall##_reset(); \
         failCall##_fake.custom_fake = failCall##_custom_fake_false; \
         const std::optional<GU::resultType> out2 = initial().get; \
         ASSERT_FALSE(out2.has_value()); \
