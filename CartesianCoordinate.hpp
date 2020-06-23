@@ -66,11 +66,14 @@
 #include "CameraCoordinate.hpp"
 #include "PixelCoordinate.hpp"
 #include "PercentCoordinate.hpp"
+#include "RelativeCoordinate.hpp"
+#include "FieldCoordinate.hpp"
 #include "Robot.hpp"
 
 namespace GU {
 
     struct RelativeCoordinate;
+    struct FieldCoordinate;
 
     struct CartesianCoordinate: public gu_cartesian_coordinate {
 
@@ -89,7 +92,8 @@ namespace GU {
 #endif
 
         CartesianCoordinate cartesianCoordinateAt(const GU::RelativeCoordinate &) const;
-        RelativeCoordinate relativeCoordinateTo(const GU:: CartesianCoordinate &) const;
+        RelativeCoordinate relativeCoordinateTo(const GU::CartesianCoordinate &) const;
+        RelativeCoordinate relativeCoordinateTo(const GU::FieldCoordinate &) const;
 
         centimetres_t x() const;
         void set_x(const centimetres_t);
