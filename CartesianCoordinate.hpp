@@ -98,6 +98,8 @@ namespace GU {
         CartesianCoordinate& operator=(CartesianCoordinate&& other);
 #endif
 
+        bool cartesianCoordinateAt(const GU::CameraCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
+        bool cartesianCoordinateAt(const GU::PixelCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
         bool cartesianCoordinateAt(const GU::PercentCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
 
         CartesianCoordinate cartesianCoordinateAt(const GU::RelativeCoordinate &) const;
