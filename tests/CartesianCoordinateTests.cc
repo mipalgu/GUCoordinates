@@ -91,6 +91,10 @@ namespace CGTEST {
     };
 
     WRAPPER_TEST_Fs(CartesianCoordinate, gu_cartesian_coordinate)
+
+    GETTER_BOOL_IM_TEST_NAME_F(CartesianCoordinate, CartesianCoordinatePercentBool, CartesianCoordinate, pct_coord_to_rr_coord, rr_coord_to_cartesian_coord_from_source, cartesianCoordinateAt(GU::PercentCoordinate(-0.24f, 0.5f), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))
+
+
     GETTER_TEST_F(CartesianCoordinate, CartesianCoordinate, rr_coord_to_cartesian_coord_from_source, cartesianCoordinateAt(GU::RelativeCoordinate(10, 123)))
     GETTER_TEST_NAME_F(CartesianCoordinate, RelativeCoordinateCartesian, RelativeCoordinate, cartesian_coord_to_rr_coord_from_source, relativeCoordinateTo(GU::CartesianCoordinate(123, 323)))
     GETTER_TEST_NAME_F(CartesianCoordinate, RelativeCoordinateField, RelativeCoordinate, cartesian_coord_to_rr_coord_from_source, relativeCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(123, 323), -50)))

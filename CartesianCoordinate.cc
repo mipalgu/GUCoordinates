@@ -115,6 +115,15 @@ GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&
 }
 #endif
 
+bool GU::CartesianCoordinate::cartesianCoordinateAt(const GU::PercentCoordinate & target, const GU::Robot & robot, const int cameraOffset, GU::CartesianCoordinate & other) const
+{
+    GU::RelativeCoordinate temp;
+    if (!pct_coord_to_rr_coord(target, robot, &temp, cameraOffset))
+        return false;
+    other = cartesianCoordinateAt(temp);
+    return true;
+}
+
 GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::RelativeCoordinate & target) const
 {
     return rr_coord_to_cartesian_coord_from_source(target, *this);
