@@ -168,6 +168,28 @@ std::optional<GU::PercentCoordinate> GU::FieldCoordinate::percentCoordinateTo(co
     return percentCoordinateTo(relativeCoordinateTo(target), robot, cameraOffset);
 }
 
+bool GU::FieldCoordinate::pixelCoordinateTo(const GU::CartesianCoordinate & target, const GU::Robot & robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::PixelCoordinate & other) const
+{
+    return relativeCoordinateTo(target).pixelCoordinate(robot, cameraOffset, resWidth, resHeight, other);
+}
+
+bool GU::FieldCoordinate::pixelCoordinateTo(const GU::FieldCoordinate & target, const GU::Robot & robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::PixelCoordinate & other) const
+{
+    return relativeCoordinateTo(target).pixelCoordinate(robot, cameraOffset, resWidth, resHeight, other);
+}
+
+#if __cplusplus >= 201703L
+std::optional<GU::PixelCoordinate> GU::FieldCoordinate::pixelCoordinateTo(const GU::CartesianCoordinate & target, const GU::Robot & robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+{
+    return relativeCoordinateTo(target).pixelCoordinate(robot, cameraOffset, resWidth, resHeight);
+}
+
+std::optional<GU::PixelCoordinate> GU::FieldCoordinate::pixelCoordinateTo(const GU::FieldCoordinate & target, const GU::Robot & robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+{
+    return relativeCoordinateTo(target).pixelCoordinate(robot, cameraOffset, resWidth, resHeight);
+}
+#endif
+
 GU::CartesianCoordinate GU::FieldCoordinate::position() const
 {
     return gu_field_coordinate::position;
