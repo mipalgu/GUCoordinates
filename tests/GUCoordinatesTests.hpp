@@ -145,24 +145,24 @@
 #define TEST2_F(testclassname, testname) \
     TEST_F(testclassname, testname)
 
-#define GETTER_TEST_NAME_F(className, testName, resultType, call, get, ...) \
+#define GETTER_TEST_NAME_F(className, testName, resultType, call, get) \
     TEST2_F(testclassname(className), testName) {\
-        const GU::resultType result = GU::resultType(__VA_ARGS__); \
+        const GU::resultType result = GU::resultType(call##_result); \
         call##_fake.return_val = result; \
         equals(initial().get, result); \
         ASSERT_EQ(call##_fake.call_count, 1); \
         call##_reset(); \
     }
 
-#define GETTER_TEST_F(className, resultType, call, get, ...) \
-    GETTER_TEST_NAME_F(className, resultType, resultType, call, get, __VA_ARGS__)
+#define GETTER_TEST_F(className, resultType, call, get) \
+    GETTER_TEST_NAME_F(className, resultType, resultType, call, get)
 
 #if __cplusplus >= 201703L
-#define GETTER_OPT_TRUE_TEST_NAME_F(className, testName, resultType, call, get, ...) \
+#define GETTER_OPT_TEST_NAME_F(className, testName, resultType, call, get) \
     TEST2_F(testclassname(className), testName) {\
         call##_fake.custom_fake = call##_custom_fake_true; \
         const GU::resultType result = GU::resultType(call##_custom_fake_result); \
-        const std::optional<GU::resultType> out = initial().get(__VA_ARGS__); \
+        const std::optional<GU::resultType> out = initial().get; \
         if (out.has_value()) \
         { \
             equals(out.value(), result); \
@@ -172,15 +172,40 @@
             FAIL() << "Result is nullopt from initial().get"; \
         } \
         call##_fake.custom_fake = call##_custom_fake_false; \
-        const std::optional<GU::resultType> out2 = initial().get(__VA_ARGS__); \
+        const std::optional<GU::resultType> out2 = initial().get; \
         ASSERT_FALSE(out2.has_value()); \
     }
 
-#define GETTER_OPT_TRUE_TEST_F(className, resultType, call, get, ...) \
-    GETTER_OPT_TRUE_TEST_NAME_F(className, resultType, resultType, call, get, __VA_ARGS__)
+#define GETTER_OPT_TEST_F(className, resultType, call, get) \
+    GETTER_OPT_TEST_NAME_F(className, resultType, resultType, call, get)
+
+#define GETTER_OPT_IM_TEST_NAME_F(className, testName, resultType, failCall, resultCall, get) \
+    Test2_F(testclassname(className), testName) { \
+        failCall##_fake.custom_fake = failCall##_custom_fake_true; \
+        const GU::resultType result = GU::resultType(resultCall##_result); \
+        const std::optional<GU::resultType> out = initial().get; \
+        if (out.has_value()) \
+        { \
+            equals(out.value(), result); \
+            ASSERT_EQ(failCall##_fake.call_count, 1); \
+            ASSERT_EQ(resultCall##_fake.call_count, 1); \
+            failCall##_reset(); \
+            resultCall##_reset(); \
+        } else { \
+            FAIL() << "Result is nullopt from initial().get"; \
+        } \
+        failCall##_fake.custom_fake = failCall##_custom_fake_false; \
+        const std::optional<GU::resultType> out2 = initial().get; \
+        ASSERT_FALSE(out2.has_value()); \
+    }
+
+#define GETTER_OPT_IM_TEST_F(className, resultType, failCall, resultCall, get) \
+    GETTER_OPT_IM_TEST_NAME_F(className, resultType, resultType, failCall, resultCall, get)
 #else
-#define GETTER_OPT_TRUE_TEST_NAME_F(className, testName, resultType, call, get, ...)
-#define GETTER_OPT_TRUE_TEST_F(className, resultType, call, get, ...)
+#define GETTER_OPT_TEST_NAME_F(className, testName, resultType, call, get)
+#define GETTER_OPT_TEST_F(className, resultType, call, get)
+#define GETTER_OPT_IM_TEST_NAME_F(className, testName, resultType, failCall, resultCall, get)
+#define GETTER_OPT_IM_TEST_F(className, resultType, failCall, resultCall, get)
 #endif
 
 #define testclassname(className) className##CPPTests

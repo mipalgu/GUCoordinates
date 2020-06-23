@@ -91,6 +91,7 @@ namespace CGTEST {
     };
 
     WRAPPER_TEST_Fs(RelativeCoordinate, gu_relative_coordinate)
+    //GETTER_OPT_IM_TEST_F(RelativeCoordinate, CameraCoordinate, rr_coord_to_pct_coord, px_coord_to_cam_coord, cameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
 
     TEST_F(RelativeCoordinateCPPTests, GettersSetters) {
         GU::RelativeCoordinate coord = GU::RelativeCoordinate(90, 100);
@@ -102,28 +103,4 @@ namespace CGTEST {
         ASSERT_EQ(coord.distance(), 10);
     }
 
-/*
-    TEST_F(RelativeCoordinateCPPTests, PixelCoordinate) {
-        pct_coord_to_px_coord_fake.return_val = { -959, 540, 1920, 1080 };
-        const GU::RelativeCoordinate topLeftEdge = GU::RelativeCoordinate(-1.0f, 1.0f);
-        const GU::PixelCoordinate ptopLeftEdge = GU::PixelCoordinate(-959, 540, 1920, 1080);
-        const GU::PixelCoordinate out = topLeftEdge.pixelCoordinate(1920, 1080);
-        ASSERT_EQ(pct_coord_to_px_coord_fake.call_count, 1);
-        ASSERT_EQ(out, ptopLeftEdge);
-    }
-
-    TEST_F(RelativeCoordinateCPPTests, RelativeCoordinate) {
-        pct_coord_to_px_coord_fake.return_val = { -959, 540, 1920, 1080 };
-        px_coord_to_cam_coord_fake.return_val = { 0, 0, 1920, 1080 };
-        const GU::RelativeCoordinate topLeftEdge = GU::RelativeCoordinate(-1.0f, 1.0f);
-        const GU::RelativeCoordinate ctopLeftEdge = GU::RelativeCoordinate(0, 0, 1920, 1080);
-        const GU::RelativeCoordinate out = topLeftEdge.cameraCoordinate(1920, 1080);
-        ASSERT_EQ(pct_coord_to_px_coord_fake.call_count, 1);
-        ASSERT_EQ(px_coord_to_cam_coord_fake.call_count, 1);
-        ASSERT_EQ(out.x(), ctopLeftEdge.x());
-        ASSERT_EQ(out.y(), ctopLeftEdge.y());
-        ASSERT_EQ(out.resWidth(), ctopLeftEdge.resWidth());
-        ASSERT_EQ(out.resHeight(), ctopLeftEdge.resHeight());
-    }
-*/
 }  // namespace

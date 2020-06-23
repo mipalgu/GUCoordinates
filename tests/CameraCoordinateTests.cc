@@ -95,9 +95,9 @@ namespace CGTEST {
     };
 
     WRAPPER_TEST_Fs(CameraCoordinate, gu_camera_coordinate)
-    GETTER_TEST_F(CameraCoordinate, PixelCoordinate, cam_coord_to_px_coord, pixelCoordinate(), 10, 12, 1920, 1080)
-    GETTER_TEST_F(CameraCoordinate, PercentCoordinate, px_coord_to_pct_coord, percentCoordinate(), -0.4f, 0.6f)
-    GETTER_OPT_TRUE_TEST_F(CameraCoordinate, RelativeCoordinate, pct_coord_to_rr_coord, relativeCoordinate, nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX)
+    GETTER_TEST_F(CameraCoordinate, PixelCoordinate, cam_coord_to_px_coord, pixelCoordinate())
+    GETTER_TEST_F(CameraCoordinate, PercentCoordinate, px_coord_to_pct_coord, percentCoordinate())
+    GETTER_OPT_TEST_F(CameraCoordinate, RelativeCoordinate, pct_coord_to_rr_coord, relativeCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
 
     TEST_F(CameraCoordinateCPPTests, GettersSetters) {
         GU::CameraCoordinate coord = GU::CameraCoordinate(1, 2, 3, 4);
