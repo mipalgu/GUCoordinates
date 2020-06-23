@@ -157,6 +157,27 @@
 #define GETTER_TEST_F(className, resultType, call, get) \
     GETTER_TEST_NAME_F(className, resultType, resultType, call, get)
 
+
+#define GETTER_BOOL_TEST_NAME_F(className, testName, resultType, call, get) \
+    TEST2_F(testclassname(className), testName) {\
+        call##_fake.custom_fake = call##_custom_fake_true; \
+        const GU::resultType result = GU::resultType(call##_custom_fake_result); \
+        GU::resultType temp; \
+        if (initial().get) \
+        { \
+            equals(temp, result); \
+            ASSERT_EQ(call##_fake.call_count, 1); \
+            call##_reset(); \
+        } else { \
+            FAIL() << "Result is nullopt from initial().get"; \
+        } \
+        call##_fake.custom_fake = call##_custom_fake_false; \
+        ASSERT_FALSE(initial().get); \
+    }
+
+#define GETTER_BOOL_TEST_F(className, resultType, call, get) \
+    GETTER_BOOL_TEST_NAME_F(className, resultType##Bool, resultType, call, get)
+
 #if __cplusplus >= 201703L
 #define GETTER_OPT_TEST_NAME_F(className, testName, resultType, call, get) \
     TEST2_F(testclassname(className), testName) {\
