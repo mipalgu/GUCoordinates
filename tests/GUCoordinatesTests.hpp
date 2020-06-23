@@ -329,11 +329,11 @@ namespace CGTEST {
 
             void equals(const GU::Camera lhs, const GU::Camera rhs)
             {
-                ASSERT_FLOAT_EQ(lhs.height(), rhs.height());
-                ASSERT_FLOAT_EQ(lhs.centerOffset(), rhs.centerOffset());
-                ASSERT_FLOAT_EQ(lhs.vDirection(), rhs.vDirection());
-                ASSERT_FLOAT_EQ(lhs.vFov(), rhs.vFov());
-                ASSERT_FLOAT_EQ(lhs.hFov(), rhs.hFov());
+                ASSERT_TRUE(near(lhs.height(), rhs.height()));
+                ASSERT_TRUE(near(lhs.centerOffset(), rhs.centerOffset()));
+                ASSERT_TRUE(near(lhs.vDirection(), rhs.vDirection()));
+                ASSERT_TRUE(near(lhs.vFov(), rhs.vFov()));
+                ASSERT_TRUE(near(lhs.hFov(), rhs.hFov()));
             }
 
             void nequals(const GU::Camera lhs, const GU::Camera rhs)
@@ -367,8 +367,8 @@ namespace CGTEST {
 
             void equals(const GU::PercentCoordinate lhs, const GU::PercentCoordinate rhs)
             {
-                ASSERT_FLOAT_EQ(lhs.x(), rhs.x());
-                ASSERT_FLOAT_EQ(lhs.y(), rhs.y());
+                ASSERT_TRUE(near(lhs.x(), rhs.x()));
+                ASSERT_TRUE(near(lhs.y(), rhs.y()));
             }
 
             void nequals(const GU::PercentCoordinate lhs, const GU::PercentCoordinate rhs)
@@ -421,19 +421,19 @@ namespace CGTEST {
 
             void equals(const GU::Robot lhs, const GU::Robot rhs)
             {
-                ASSERT_FLOAT_EQ(lhs.headPitch(), rhs.headPitch());
-                ASSERT_FLOAT_EQ(lhs.headYaw(), rhs.headYaw());
+                ASSERT_TRUE(near(lhs.headPitch(), rhs.headPitch()));
+                ASSERT_TRUE(near(lhs.headYaw(), rhs.headYaw()));
                 ASSERT_EQ(lhs.numCameras(), rhs.numCameras());
                 for (int i = 0; i < lhs.numCameras(); i++)
                 {
                     const GU::Camera lcamera = lhs.camera(i);
                     const GU::Camera rcamera = rhs.camera(i);
-                    ASSERT_FLOAT_EQ(lcamera.height(), rcamera.height());
-                    ASSERT_FLOAT_EQ(lcamera.centerOffset(), rcamera.centerOffset());
-                    ASSERT_FLOAT_EQ(lcamera.vDirection(), rcamera.vDirection());
-                    ASSERT_FLOAT_EQ(lcamera.vFov(), rcamera.vFov());
-                    ASSERT_FLOAT_EQ(lcamera.hFov(), rcamera.hFov());
-                    ASSERT_FLOAT_EQ(lhs.cameraHeightOffset(i), rhs.cameraHeightOffset(i));
+                    ASSERT_TRUE(near(lcamera.height(), rcamera.height()));
+                    ASSERT_TRUE(near(lcamera.centerOffset(), rcamera.centerOffset()));
+                    ASSERT_TRUE(near(lcamera.vDirection(), rcamera.vDirection()));
+                    ASSERT_TRUE(near(lcamera.vFov(), rcamera.vFov()));
+                    ASSERT_TRUE(near(lcamera.hFov(), rcamera.hFov()));
+                    ASSERT_TRUE(near(lhs.cameraHeightOffset(i), rhs.cameraHeightOffset(i)));
                 }
             }
 
