@@ -209,8 +209,8 @@ namespace CGTEST {
         ASSERT_EQ(target2.heading, 40);
         const gu_relative_coordinate coord3 = { .direction = -60, .distance = 6 };
         const gu_field_coordinate target3 = rr_coord_to_field_coord(coord3, 12);
-        ASSERT_EQ(target3.position.x, 2);
-        ASSERT_EQ(target3.position.y, -4);
+        ASSERT_EQ(target3.position.x, 3);
+        ASSERT_EQ(target3.position.y, -5);
         ASSERT_EQ(target3.heading, 12);
     }
 
