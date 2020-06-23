@@ -92,6 +92,7 @@ namespace GU {
 
         RelativeCoordinate relativeCoordinateTo(const GU::CartesianCoordinate &) const;
         CartesianCoordinate cartesianCoordinateAt(const GU::RelativeCoordinate &) const;
+        FieldCoordinate fieldCoordinateAt(const GU::RelativeCoordinate &, const degrees_t) const;
 
         CartesianCoordinate position() const;
         void set_position(const CartesianCoordinate);

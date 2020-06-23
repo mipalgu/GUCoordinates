@@ -125,6 +125,11 @@ GU::CartesianCoordinate GU::FieldCoordinate::cartesianCoordinateAt(const GU::Rel
     return rr_coord_to_cartesian_coord_from_source(target, this->position());
 }
 
+GU::FieldCoordinate GU::FieldCoordinate::fieldCoordinateAt(const GU::RelativeCoordinate & target, const degrees_t targetHeading) const
+{
+    return rr_coord_to_field_coord_from_source(target, *this, targetHeading);
+}
+
 GU::CartesianCoordinate GU::FieldCoordinate::position() const
 {
     return gu_field_coordinate::position;
