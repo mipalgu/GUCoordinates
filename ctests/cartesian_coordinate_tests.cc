@@ -1,8 +1,8 @@
 /*
- * percent_coordinate_tests.cc 
- * tests 
+ * cartesian_coordinate_tests.cc 
+ * ctests 
  *
- * Created by Callum McColl on 18/06/2020.
+ * Created by Callum McColl on 23/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,19 +60,9 @@
 
 namespace CGTEST {
     
-    class PercentCoordinateTests: public GUCoordinatesTests {};
+    class CartesianCoordinateTests: public GUCoordinatesTests {};
 
-    TEST_F(PercentCoordinateTests, Equality) {
-        const gu_percent_coordinate topLeftEdge = { -1.0f, 1.0f };
-        const gu_percent_coordinate topRightEdge = { 1.0f, 1.0f };
-        const gu_percent_coordinate bottomLeftEdge = { -1.0f, -1.0f };
-        const gu_percent_coordinate bottomRightEdge = { 1.0f, -1.0f };
-        const gu_percent_coordinate middle = { 0.0f, 0.0f };
-        ASSERT_TRUE(gu_percent_coordinate_equals(middle, middle, 0.0001));
-        ASSERT_FALSE(gu_percent_coordinate_equals(topLeftEdge, topRightEdge, 0.0001));
-        ASSERT_FALSE(gu_percent_coordinate_equals(topRightEdge, bottomLeftEdge, 0.0001));
-        ASSERT_FALSE(gu_percent_coordinate_equals(bottomLeftEdge, bottomRightEdge, 0.0001));
-        ASSERT_FALSE(gu_percent_coordinate_equals(bottomRightEdge, middle, 0.0001));
+    TEST_F(CartesianCoordinateTests, Equality) {
     }
 
 }  // namespace

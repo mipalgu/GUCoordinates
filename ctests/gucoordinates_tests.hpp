@@ -1,8 +1,8 @@
 /*
- * percent_coordinate_tests.cc 
- * tests 
+ * gucoordinates_tests.hpp 
+ * ctests 
  *
- * Created by Callum McColl on 18/06/2020.
+ * Created by Callum McColl on 23/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,23 +56,68 @@
  *
  */
 
-#include "gucoordinates_tests.hpp"
+#ifndef GUCOORDINATES_TESTS_HPP
+#define GUCOORDINATES_TESTS_HPP
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
+#pragma clang diagnostic ignored "-Wfloat-equal"
+#pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
+#pragma clang diagnostic ignored "-Wshift-sign-overflow"
+#pragma clang diagnostic ignored "-Wused-but-marked-unused"
+#pragma clang diagnostic ignored "-Wundef"
+#pragma clang diagnostic ignored "-Wc++98-compat"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wc++11-long-long"
+#pragma clang diagnostic ignored "-Wc++11-extensions"
+#pragma clang diagnostic ignored "-Wdeprecated"
+#include <gtest/gtest.h>
+#pragma clang diagnostic pop
+
+#include "../gucoordinates.h"
+
+#include <math.h>
 
 namespace CGTEST {
-    
-    class PercentCoordinateTests: public GUCoordinatesTests {};
 
-    TEST_F(PercentCoordinateTests, Equality) {
-        const gu_percent_coordinate topLeftEdge = { -1.0f, 1.0f };
-        const gu_percent_coordinate topRightEdge = { 1.0f, 1.0f };
-        const gu_percent_coordinate bottomLeftEdge = { -1.0f, -1.0f };
-        const gu_percent_coordinate bottomRightEdge = { 1.0f, -1.0f };
-        const gu_percent_coordinate middle = { 0.0f, 0.0f };
-        ASSERT_TRUE(gu_percent_coordinate_equals(middle, middle, 0.0001));
-        ASSERT_FALSE(gu_percent_coordinate_equals(topLeftEdge, topRightEdge, 0.0001));
-        ASSERT_FALSE(gu_percent_coordinate_equals(topRightEdge, bottomLeftEdge, 0.0001));
-        ASSERT_FALSE(gu_percent_coordinate_equals(bottomLeftEdge, bottomRightEdge, 0.0001));
-        ASSERT_FALSE(gu_percent_coordinate_equals(bottomRightEdge, middle, 0.0001));
-    }
+    class GUCoordinatesTests: public ::testing::Test {
+        protected:
 
-}  // namespace
+        virtual void SetUp() {}
+
+        virtual void TearDown() {}
+
+        void camera_equal(const gu_camera_coordinate lhs, const gu_camera_coordinate rhs)
+        {
+            ASSERT_EQ(lhs.x, rhs.x);
+            ASSERT_EQ(lhs.y, rhs.y);
+            ASSERT_EQ(lhs.res_width, rhs.res_width);
+            ASSERT_EQ(lhs.res_height, rhs.res_height);
+        }
+
+        void pixel_equal(const gu_pixel_coordinate lhs, const gu_pixel_coordinate rhs)
+        {
+            ASSERT_EQ(lhs.x, rhs.x);
+            ASSERT_EQ(lhs.y, rhs.y);
+            ASSERT_EQ(lhs.res_width, rhs.res_width);
+            ASSERT_EQ(lhs.res_height, rhs.res_height);
+        }
+
+        void percent_equal(const gu_percent_coordinate lhs, const gu_percent_coordinate rhs)
+        {
+            ASSERT_EQ(lhs.x, rhs.x);
+            ASSERT_EQ(lhs.y, rhs.y);
+        }
+
+        void percent_near(const gu_percent_coordinate lhs, const gu_percent_coordinate rhs)
+        {
+            ASSERT_LT(fabs(lhs.x - rhs.x), 0.001);
+            ASSERT_LT(fabs(lhs.y - rhs.y), 0.001);
+        }
+
+    };
+
+}
+
+#endif  /* GUCOORDINATES_TESTS_HPP */

@@ -56,62 +56,11 @@
  *
  */
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wglobal-constructors"
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
-#pragma clang diagnostic ignored "-Wshift-sign-overflow"
-#pragma clang diagnostic ignored "-Wused-but-marked-unused"
-#pragma clang diagnostic ignored "-Wdeprecated"
-#pragma clang diagnostic ignored "-Wunused-parameter"
-#pragma clang diagnostic ignored "-Wsign-compare"
-#pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
-#pragma clang diagnostic ignored "-Wfloat-equal"
-
-#include <gtest/gtest.h>
-#include "../gucoordinates.h"
-#include <iostream>
-#include <gusimplewhiteboard/typeClassDefs/wb_pixel_to_robot_relative_coord.h>
+#include "gucoordinates_tests.hpp"
 
 namespace CGTEST {
     
-    class ConversionsTests: public ::testing::Test {
-    protected:
-        
-        virtual void SetUp() {
-        }
-        
-        virtual void TearDown() {
-        }
-
-    };
-
-    void camera_equal(const gu_camera_coordinate lhs, const gu_camera_coordinate rhs)
-    {
-        ASSERT_EQ(lhs.x, rhs.x);
-        ASSERT_EQ(lhs.y, rhs.y);
-        ASSERT_EQ(lhs.res_width, rhs.res_width);
-        ASSERT_EQ(lhs.res_height, rhs.res_height);
-    }
-
-    void pixel_equal(const gu_pixel_coordinate lhs, const gu_pixel_coordinate rhs)
-    {
-        ASSERT_EQ(lhs.x, rhs.x);
-        ASSERT_EQ(lhs.y, rhs.y);
-        ASSERT_EQ(lhs.res_width, rhs.res_width);
-        ASSERT_EQ(lhs.res_height, rhs.res_height);
-    }
-
-    void percent_equal(const gu_percent_coordinate lhs, const gu_percent_coordinate rhs)
-    {
-        ASSERT_EQ(lhs.x, rhs.x);
-        ASSERT_EQ(lhs.y, rhs.y);
-    }
-
-    void percent_near(const gu_percent_coordinate lhs, const gu_percent_coordinate rhs)
-    {
-        ASSERT_LT(fabs(lhs.x - rhs.x), 0.001);
-        ASSERT_LT(fabs(lhs.y - rhs.y), 0.001);
-    }
+    class ConversionsTests: public GUCoordinatesTests {};
 
     TEST_F(ConversionsTests, ConvertsToCorrectPercentCoordinate) {
         const gu_pixel_coordinate topLeftEdge = { -959, 540, 1920, 1080 };
@@ -311,5 +260,3 @@ namespace CGTEST {
     }
 
 }  // namespace
-
-#pragma clang diagnostic pop

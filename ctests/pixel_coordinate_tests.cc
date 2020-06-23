@@ -56,33 +56,11 @@
  *
  */
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wglobal-constructors"
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
-#pragma clang diagnostic ignored "-Wshift-sign-overflow"
-#pragma clang diagnostic ignored "-Wused-but-marked-unused"
-#pragma clang diagnostic ignored "-Wdeprecated"
-#pragma clang diagnostic ignored "-Wunused-parameter"
-#pragma clang diagnostic ignored "-Wsign-compare"
-#pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
-#pragma clang diagnostic ignored "-Wfloat-equal"
-
-#include <gtest/gtest.h>
-
-#include "../gucoordinates.h"
+#include "gucoordinates_tests.hpp"
 
 namespace CGTEST {
     
-    class PixelCoordinateTests: public ::testing::Test {
-    protected:
-        
-        virtual void SetUp() {
-        }
-        
-        virtual void TearDown() {
-        }
-
-    };
+    class PixelCoordinateTests: public GUCoordinatesTests {};
 
     TEST_F(PixelCoordinateTests, Equality) {
         const gu_pixel_coordinate topLeftEdge = { -959, 540, 1920, 1080 };
@@ -102,5 +80,3 @@ namespace CGTEST {
     }
 
 }  // namespace
-
-#pragma clang diagnostic pop
