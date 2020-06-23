@@ -76,6 +76,7 @@
 
 namespace GU {
 
+    struct CameraCoordinate;
     struct PixelCoordinate;
     struct PercentCoordinate;
     struct RelativeCoordinate;
@@ -118,6 +119,14 @@ namespace GU {
 #if __cplusplus >= 201703L
         std::optional<GU::PixelCoordinate> pixelCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
         std::optional<GU::PixelCoordinate> pixelCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
+#endif
+
+        bool cameraCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u, GU::CameraCoordinate &) const;
+        bool cameraCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u, GU::CameraCoordinate &) const;
+
+#if __cplusplus >= 201703L
+        std::optional<GU::CameraCoordinate> cameraCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
+        std::optional<GU::CameraCoordinate> cameraCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
 #endif
 
         CartesianCoordinate position() const;
