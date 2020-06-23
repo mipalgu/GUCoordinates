@@ -157,6 +157,16 @@ std::optional<GU::PixelCoordinate> GU::RelativeCoordinate::pixelCoordinate(const
     return std::nullopt;
 }
 
+GU::CartesianCoordinate GU::RelativeCoordinate::cartesianCoordinate() const
+{
+    return rr_coord_to_cartesian_coord(*this);
+}
+
+GU::FieldCoordinate GU::RelativeCoordinate::fieldCoordinate(const degrees_t heading) const
+{
+    return rr_coord_to_field_coord(*this, heading);
+}
+
 std::optional<GU::PercentCoordinate> GU::RelativeCoordinate::percentCoordinate(const GU::Robot robot, const int cameraOffset) const
 {
     GU::PercentCoordinate temp;

@@ -66,6 +66,8 @@
 #include "CameraCoordinate.hpp"
 #include "PixelCoordinate.hpp"
 #include "PercentCoordinate.hpp"
+#include "CartesianCoordinate.hpp"
+#include "FieldCoordinate.hpp"
 #include "Robot.hpp"
 
 #if __cplusplus >= 201703L
@@ -74,9 +76,11 @@
 
 namespace GU {
 
-    struct CameraCoordinate; // Forward Declaration.
-    struct PixelCoordinate; // Forward Declaration.
-    struct PercentCoordinate; // Forward Declaration.
+    struct CameraCoordinate;
+    struct PixelCoordinate;
+    struct PercentCoordinate;
+    struct CartesianCoordinate;
+    struct FieldCoordinate;
 
     struct RelativeCoordinate: public gu_relative_coordinate {
 
@@ -103,6 +107,9 @@ namespace GU {
         std::optional<PixelCoordinate> pixelCoordinate(const Robot, const int, const pixels_u, const pixels_u) const;
         std::optional<PercentCoordinate> percentCoordinate(const Robot, const int) const;
 #endif
+
+        CartesianCoordinate cartesianCoordinate() const;
+        FieldCoordinate fieldCoordinate(const degrees_t) const;
 
         degrees_t direction() const;
         void set_direction(const degrees_t);

@@ -97,6 +97,9 @@ namespace CGTEST {
     GETTER_OPT_IM_TEST_F(RelativeCoordinate, PixelCoordinate, rr_coord_to_pct_coord, pct_coord_to_px_coord, pixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
     GETTER_OPT_TEST_F(RelativeCoordinate, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
 
+    GETTER_TEST_F(RelativeCoordinate, CartesianCoordinate, rr_coord_to_cartesian_coord, cartesianCoordinate())
+    GETTER_TEST_F(RelativeCoordinate, FieldCoordinate, rr_coord_to_field_coord, fieldCoordinate(30))
+
     TEST_F(RelativeCoordinateCPPTests, GettersSetters) {
         GU::RelativeCoordinate coord = GU::RelativeCoordinate(90, 100);
         ASSERT_EQ(coord.direction(), 90);
