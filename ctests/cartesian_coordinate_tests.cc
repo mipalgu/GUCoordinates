@@ -63,6 +63,12 @@ namespace CGTEST {
     class CartesianCoordinateTests: public GUCoordinatesTests {};
 
     TEST_F(CartesianCoordinateTests, Equality) {
+        const gu_cartesian_coordinate leftNear = { .x = -23, .y = 80 };
+        const gu_cartesian_coordinate leftFar = { .x = -23, .y = 300 };
+        const gu_cartesian_coordinate leftBelow = { .x = 300, .y = 80 };
+        ASSERT_TRUE(gu_cartesian_coordinate_equals(leftNear, leftNear));
+        ASSERT_FALSE(gu_cartesian_coordinate_equals(leftNear, leftFar));
+        ASSERT_FALSE(gu_cartesian_coordinate_equals(leftNear, leftBelow));
     }
 
 }  // namespace
