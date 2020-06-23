@@ -98,14 +98,13 @@ namespace GU {
         CartesianCoordinate& operator=(CartesianCoordinate&& other);
 #endif
 
-        bool cartesianCoordinateAt(const GU::CameraCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
-        bool cartesianCoordinateAt(const GU::PixelCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
-        bool cartesianCoordinateAt(const GU::PercentCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
-
         CartesianCoordinate cartesianCoordinateAt(const GU::RelativeCoordinate &) const;
         RelativeCoordinate relativeCoordinateTo(const GU::CartesianCoordinate &) const;
         RelativeCoordinate relativeCoordinateTo(const GU::FieldCoordinate &) const;
 
+        bool cartesianCoordinateAt(const GU::CameraCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
+        bool cartesianCoordinateAt(const GU::PixelCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
+        bool cartesianCoordinateAt(const GU::PercentCoordinate &, const GU::Robot &, const int, GU::CartesianCoordinate &) const;
         bool percentCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, GU::PercentCoordinate &) const;
         bool percentCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, GU::PercentCoordinate &) const;
         bool pixelCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u, GU::PixelCoordinate &) const;
@@ -114,6 +113,9 @@ namespace GU {
         bool cameraCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u, GU::CameraCoordinate &) const;
 
 #if __cplusplus >= 201703L
+        std::optional<GU::CartesianCoordinate> cartesianCoordinateAt(const GU::CameraCoordinate &, const GU::Robot &, const int) const;
+        std::optional<GU::CartesianCoordinate> cartesianCoordinateAt(const GU::PixelCoordinate &, const GU::Robot &, const int) const;
+        std::optional<GU::CartesianCoordinate> cartesianCoordinateAt(const GU::PercentCoordinate &, const GU::Robot &, const int) const;
         std::optional<GU::PercentCoordinate> percentCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int) const;
         std::optional<GU::PercentCoordinate> percentCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int) const;
         std::optional<GU::PixelCoordinate> pixelCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;

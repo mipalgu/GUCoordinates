@@ -143,6 +143,30 @@ bool GU::CartesianCoordinate::cartesianCoordinateAt(const GU::PercentCoordinate 
     return true;
 }
 
+std::optional<GU::CartesianCoordinate> GU::CartesianCoordinate::cartesianCoordinateAt(const GU::CameraCoordinate & target, const GU::Robot & robot, const int cameraOffset) const
+{
+    const std::optional<GU::RelativeCoordinate> temp = target.relativeCoordinate(robot, cameraOffset);
+    if (!temp.has_value())
+        return std::nullopt;
+    return cartesianCoordinateAt(temp.value());
+}
+
+std::optional<GU::CartesianCoordinate> GU::CartesianCoordinate::cartesianCoordinateAt(const GU::PixelCoordinate & target, const GU::Robot & robot, const int cameraOffset) const
+{
+    const std::optional<GU::RelativeCoordinate> temp = target.relativeCoordinate(robot, cameraOffset);
+    if (!temp.has_value())
+        return std::nullopt;
+    return cartesianCoordinateAt(temp.value());
+}
+
+std::optional<GU::CartesianCoordinate> GU::CartesianCoordinate::cartesianCoordinateAt(const GU::PercentCoordinate & target, const GU::Robot & robot, const int cameraOffset) const
+{
+    const std::optional<GU::RelativeCoordinate> temp = target.relativeCoordinate(robot, cameraOffset);
+    if (!temp.has_value())
+        return std::nullopt;
+    return cartesianCoordinateAt(temp.value());
+}
+
 GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::RelativeCoordinate & target) const
 {
     return rr_coord_to_cartesian_coord_from_source(target, *this);
