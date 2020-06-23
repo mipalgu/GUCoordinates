@@ -135,6 +135,11 @@ GU::RelativeCoordinate GU::FieldCoordinate::relativeCoordinateTo(const GU::Field
     return relativeCoordinateTo(target.position());
 }
 
+bool GU::FieldCoordinate::percentCoordinateTo(const GU::RelativeCoordinate & target, const GU::Robot & robot, const int cameraOffset, GU::PercentCoordinate & other) const
+{
+    return target.percentCoordinate(robot, cameraOffset, other);
+}
+
 GU::CartesianCoordinate GU::FieldCoordinate::position() const
 {
     return gu_field_coordinate::position;

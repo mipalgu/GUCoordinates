@@ -72,6 +72,7 @@
 
 namespace GU {
 
+    struct PercentCoordinate;
     struct RelativeCoordinate;
     struct CartesianCoordinate;
 
@@ -95,6 +96,8 @@ namespace GU {
         FieldCoordinate fieldCoordinateAt(const GU::RelativeCoordinate &, const degrees_t) const;
         RelativeCoordinate relativeCoordinateTo(const GU::CartesianCoordinate &) const;
         RelativeCoordinate relativeCoordinateTo(const GU::FieldCoordinate &) const;
+
+        bool percentCoordinateTo(const GU::RelativeCoordinate &, const GU::Robot &, const int, GU::PercentCoordinate &) const;
 
         CartesianCoordinate position() const;
         void set_position(const CartesianCoordinate);
