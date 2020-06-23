@@ -123,11 +123,11 @@ coverage-cpptest:
 cpp${std}test: build-lib
 	$E${MAKE} run-cpp-test STD=${std}
 .ifdef COVERAGE
-	$E${MAKE} cpp${std}coverage
+	$E${MAKE} single-cpp-coverage STD=${std}
 .endif
 
 cpp${std}coverage:
-	$E${MAKE} single-cpp-coverage STD=${std}
+	$E${MAKE} cpp${std}test COVERAGE=yes
 .endfor
 
 .endif

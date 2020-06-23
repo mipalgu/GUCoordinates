@@ -117,6 +117,17 @@
         equals_fake(strctName).return_val = false; \
         ASSERT_NE(obj, obj2); \
         ASSERT_EQ(equals_fake(strctName).call_count, 1); \
+        equals_reset(strctName) \
+        equals_fake(strctName).return_val = true; \
+        const GU::className obj3 = initial(); \
+        const strctName obj4 = empty(); \
+        const strctName obj5 = obj; \
+        ASSERT_EQ(obj3, obj5); \
+        ASSERT_EQ(equals_fake(strctName).call_count, 1); \
+        equals_reset(strctName) \
+        equals_fake(strctName).return_val = false; \
+        ASSERT_TRUE(obj3 != obj4); \
+        ASSERT_EQ(equals_fake(strctName).call_count, 1); \
     }
 
 #define TO_C_TEST_F(className, strctName) \
@@ -217,6 +228,11 @@ namespace CGTEST {
             void ro3_test() {
                 preamble();
                 Class obj = initial();
+#pragma clang diangostic push
+#pragma clang diagnostic ignored "-Wself-assign"
+                obj = obj;
+#pragma clang diagnostic pop
+                equals(obj, obj);
                 Class obj2 = Class(obj);
                 equals(obj, obj2);
                 Class obj3 = obj2;
@@ -232,6 +248,12 @@ namespace CGTEST {
                 equals(obj7, obj6);
                 equals(obj8, obj6);
                 equals(obj7, obj8);
+                Strct * obj9 = &obj8;
+                obj8 = *obj9;
+                equals(*obj9, obj8);
+                Class obj10;
+                obj10 = obj8;
+                equals(obj10, obj8);
             }
 
 #ifdef __cpp_rvalue_references
@@ -247,6 +269,13 @@ namespace CGTEST {
                 nequals(obj4, obj3);
                 equals(obj4, obj2);
                 equals(obj3, empty());
+                Class * obj5 = &obj4;
+                obj4 = std::move(*obj5);
+                nequals(obj4, obj3);
+                equals(obj4, obj2);
+                nequals(*obj5, obj3);
+                equals(*obj5, obj2);
+                equals(*obj5, obj4);
             }
 #endif
 
