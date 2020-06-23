@@ -180,9 +180,11 @@ bool rr_coord_to_px_coord(const gu_relative_coordinate coord, const gu_robot rob
 
 gu_cartesian_coordinate rr_coord_to_cartesian_coord(const gu_relative_coordinate coord)
 {
+    const float distance = cm_u_to_f(coord.distance);
+    const float rads = rad_f_to_f(deg_t_to_rad_f(coord.direction));
     gu_cartesian_coordinate out;
-    out.x = f_to_cm_t(cm_u_to_f(coord.distance) * sinf(deg_t_to_f(coord.direction)));
-    out.y = f_to_cm_t(cm_u_to_f(coord.distance) * sinf(deg_t_to_f(coord.direction)));
+    out.x = f_to_cm_t(distance * cosf(rads));
+    out.y = f_to_cm_t(distance * sinf(rads));
     return out;
 }
 

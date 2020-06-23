@@ -196,6 +196,24 @@ namespace CGTEST {
         ASSERT_LE(abs(output.y - y), px_u_to_px_t(res_height) / 200); // Within 0.5 percent.
     }
 
+    TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToFieldCoordinate) {
+        const gu_relative_coordinate coord = { .direction = 0, .distance = 1 };
+        const gu_field_coordinate target = rr_coord_to_field_coord(coord, 40);
+        ASSERT_EQ(target.position.x, 1);
+        ASSERT_EQ(target.position.y, 0);
+        ASSERT_EQ(target.heading, 40);
+        const gu_relative_coordinate coord2 = { .direction = -45, .distance = 2 };
+        const gu_field_coordinate target2 = rr_coord_to_field_coord(coord2, 40);
+        ASSERT_EQ(target2.position.x, 1);
+        ASSERT_EQ(target2.position.y, -1);
+        ASSERT_EQ(target2.heading, 40);
+        const gu_relative_coordinate coord3 = { .direction = -60, .distance = 6 };
+        const gu_field_coordinate target3 = rr_coord_to_field_coord(coord3, 12);
+        ASSERT_EQ(target3.position.x, 2);
+        ASSERT_EQ(target3.position.y, -4);
+        ASSERT_EQ(target3.heading, 12);
+    }
+
     TEST_F(ConversionsTests, ConvertsFromFieldCoordinateToRelativeCoordinate) {
         const gu_field_coordinate source = { { 1, 1 }, 45 };
         const gu_cartesian_coordinate target = { 2, 2 };
