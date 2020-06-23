@@ -102,28 +102,18 @@ namespace GU {
         RelativeCoordinate relativeCoordinateTo(const GU::CartesianCoordinate &) const;
         RelativeCoordinate relativeCoordinateTo(const GU::FieldCoordinate &) const;
 
-        bool percentCoordinateTo(const GU::RelativeCoordinate &, const GU::Robot &, const int, GU::PercentCoordinate &) const;
         bool percentCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, GU::PercentCoordinate &) const;
         bool percentCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, GU::PercentCoordinate &) const;
-
-#if __cplusplus >= 201703L
-        std::optional<GU::PercentCoordinate> percentCoordinateTo(const GU::RelativeCoordinate &, const GU::Robot &, const int) const;
-        std::optional<GU::PercentCoordinate> percentCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int) const;
-        std::optional<GU::PercentCoordinate> percentCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int) const;
-#endif
-
         bool pixelCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u, GU::PixelCoordinate &) const;
         bool pixelCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u, GU::PixelCoordinate &) const;
-
-#if __cplusplus >= 201703L
-        std::optional<GU::PixelCoordinate> pixelCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
-        std::optional<GU::PixelCoordinate> pixelCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
-#endif
-
         bool cameraCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u, GU::CameraCoordinate &) const;
         bool cameraCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u, GU::CameraCoordinate &) const;
 
 #if __cplusplus >= 201703L
+        std::optional<GU::PercentCoordinate> percentCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int) const;
+        std::optional<GU::PercentCoordinate> percentCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int) const;
+        std::optional<GU::PixelCoordinate> pixelCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
+        std::optional<GU::PixelCoordinate> pixelCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
         std::optional<GU::CameraCoordinate> cameraCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
         std::optional<GU::CameraCoordinate> cameraCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, const pixels_u, const pixels_u) const;
 #endif
