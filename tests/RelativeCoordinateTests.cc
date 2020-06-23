@@ -92,6 +92,7 @@ namespace CGTEST {
 
     WRAPPER_TEST_Fs(RelativeCoordinate, gu_relative_coordinate)
     GETTER_BOOL_TEST_F(RelativeCoordinate, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))
+    GETTER_BOOL_IM_TEST_F(RelativeCoordinate, PixelCoordinate, rr_coord_to_pct_coord, pct_coord_to_px_coord, pixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, temp))
     GETTER_OPT_IM_TEST_F(RelativeCoordinate, CameraCoordinate, rr_coord_to_pct_coord, px_coord_to_cam_coord, cameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
     GETTER_OPT_IM_TEST_F(RelativeCoordinate, PixelCoordinate, rr_coord_to_pct_coord, pct_coord_to_px_coord, pixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
     GETTER_OPT_TEST_F(RelativeCoordinate, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))

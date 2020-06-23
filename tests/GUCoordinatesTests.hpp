@@ -169,7 +169,7 @@
             ASSERT_EQ(call##_fake.call_count, 1); \
             call##_reset(); \
         } else { \
-            FAIL() << "Result is nullopt from initial().get"; \
+            FAIL() << "Result is false from initial().get"; \
         } \
         call##_fake.custom_fake = call##_custom_fake_false; \
         ASSERT_FALSE(initial().get); \
@@ -177,6 +177,29 @@
 
 #define GETTER_BOOL_TEST_F(className, resultType, call, get) \
     GETTER_BOOL_TEST_NAME_F(className, resultType##Bool, resultType, call, get)
+
+#define GETTER_BOOL_IM_TEST_NAME_F(className, testName, resultType, failCall, resultCall, get) \
+    TEST2_F(testclassname(className), testName) {\
+        failCall##_fake.custom_fake = failCall##_custom_fake_true; \
+        resultCall##_fake.return_val = resultCall##_result; \
+        const GU::resultType result = GU::resultType(resultCall##_result); \
+        GU::resultType temp; \
+        if (initial().get) \
+        { \
+            equals(temp, result); \
+            ASSERT_EQ(failCall##_fake.call_count, 1); \
+            ASSERT_EQ(resultCall##_fake.call_count, 1); \
+        } else { \
+            FAIL() << "Result is false from initial().get"; \
+        } \
+        failCall##_reset(); \
+        resultCall##_reset(); \
+        failCall##_fake.custom_fake = failCall##_custom_fake_false; \
+        ASSERT_FALSE(initial().get); \
+    }
+
+#define GETTER_BOOL_IM_TEST_F(className, resultType, failCall, resultCall, get) \
+    GETTER_BOOL_IM_TEST_NAME_F(className, resultType##Bool, resultType, failCall, resultCall, get)
 
 #if __cplusplus >= 201703L
 #define GETTER_OPT_TEST_NAME_F(className, testName, resultType, call, get) \
