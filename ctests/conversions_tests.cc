@@ -214,6 +214,30 @@ namespace CGTEST {
         ASSERT_EQ(target3.heading, 12);
     }
 
+    TEST_F(ConversionsTests, ConvertsToRelativeCoordinateFromFieldSource) {
+        const gu_field_coordinate source = { { 1, 1 }, 45 };
+        const gu_relative_coordinate target = { .direction = 45, .distance = 5};
+        const gu_field_coordinate coord = rr_coord_to_field_coord_from_source(target, source, 23);
+        ASSERT_EQ(coord.position.x, 1);
+        ASSERT_EQ(coord.position.y, 6);
+        ASSERT_EQ(coord.heading, 23);
+        const gu_relative_coordinate target2 = { .direction = -45, .distance = 5 };
+        const gu_field_coordinate coord2 = rr_coord_to_field_coord_from_source(target2, source, 26);
+        ASSERT_EQ(coord2.position.x, 6);
+        ASSERT_EQ(coord2.position.y, 1);
+        ASSERT_EQ(coord2.heading, 26);
+        const gu_relative_coordinate target3 = { .direction = 105, .distance = 6 };
+        const gu_field_coordinate coord3 = rr_coord_to_field_coord_from_source(target3, source, -18);
+        ASSERT_EQ(coord3.position.x, -4);
+        ASSERT_EQ(coord3.position.y, 4);
+        ASSERT_EQ(coord3.heading, -18);
+        const gu_relative_coordinate target4 = { .direction = -135, .distance = 10 };
+        const gu_field_coordinate coord4 = rr_coord_to_field_coord_from_source(target4, source, 80);
+        ASSERT_EQ(coord4.position.x, 1);
+        ASSERT_EQ(coord4.position.y, -9);
+        ASSERT_EQ(coord4.heading, 80);
+    }
+
     TEST_F(ConversionsTests, ConvertsFromFieldCoordinateToRelativeCoordinate) {
         const gu_field_coordinate source = { { 1, 1 }, 45 };
         const gu_cartesian_coordinate target = { 2, 2 };
