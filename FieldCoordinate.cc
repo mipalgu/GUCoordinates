@@ -135,37 +135,24 @@ GU::RelativeCoordinate GU::FieldCoordinate::relativeCoordinateTo(const GU::Field
     return relativeCoordinateTo(target.position());
 }
 
-bool GU::FieldCoordinate::percentCoordinateTo(const GU::RelativeCoordinate & target, const GU::Robot & robot, const int cameraOffset, GU::PercentCoordinate & other) const
-{
-    return target.percentCoordinate(robot, cameraOffset, other);
-}
-
 bool GU::FieldCoordinate::percentCoordinateTo(const GU::CartesianCoordinate & target, const GU::Robot & robot, const int cameraOffset, GU::PercentCoordinate & other) const
 {
-    return percentCoordinateTo(relativeCoordinateTo(target), robot, cameraOffset, other);
+    return relativeCoordinateTo(target).percentCoordinate(robot, cameraOffset, other);
 }
 
 bool GU::FieldCoordinate::percentCoordinateTo(const GU::FieldCoordinate & target, const GU::Robot & robot, const int cameraOffset, GU::PercentCoordinate & other) const
 {
-    return percentCoordinateTo(relativeCoordinateTo(target), robot, cameraOffset, other);
-}
-
-std::optional<GU::PercentCoordinate> GU::FieldCoordinate::percentCoordinateTo(const GU::RelativeCoordinate & target, const GU::Robot & robot, const int cameraOffset) const
-{
-    GU::PercentCoordinate temp;
-    if (percentCoordinateTo(target, robot, cameraOffset, temp))
-        return std::optional<GU::PercentCoordinate>(temp);
-    return std::nullopt;
+    return relativeCoordinateTo(target).percentCoordinate(robot, cameraOffset, other);
 }
 
 std::optional<GU::PercentCoordinate> GU::FieldCoordinate::percentCoordinateTo(const GU::CartesianCoordinate & target, const GU::Robot & robot, const int cameraOffset) const
 {
-    return percentCoordinateTo(relativeCoordinateTo(target), robot, cameraOffset);
+    return relativeCoordinateTo(target).percentCoordinate(robot, cameraOffset);
 }
 
 std::optional<GU::PercentCoordinate> GU::FieldCoordinate::percentCoordinateTo(const GU::FieldCoordinate & target, const GU::Robot & robot, const int cameraOffset) const
 {
-    return percentCoordinateTo(relativeCoordinateTo(target), robot, cameraOffset);
+    return relativeCoordinateTo(target).percentCoordinate(robot, cameraOffset);
 }
 
 bool GU::FieldCoordinate::pixelCoordinateTo(const GU::CartesianCoordinate & target, const GU::Robot & robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::PixelCoordinate & other) const
