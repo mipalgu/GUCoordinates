@@ -98,6 +98,8 @@ namespace GU {
         RelativeCoordinate relativeCoordinateTo(const GU::FieldCoordinate &) const;
 
         bool percentCoordinateTo(const GU::RelativeCoordinate &, const GU::Robot &, const int, GU::PercentCoordinate &) const;
+        bool percentCoordinateTo(const GU::CartesianCoordinate &, const GU::Robot &, const int, GU::PercentCoordinate &) const;
+        bool percentCoordinateTo(const GU::FieldCoordinate &, const GU::Robot &, const int, GU::PercentCoordinate &) const;
 
         CartesianCoordinate position() const;
         void set_position(const CartesianCoordinate);

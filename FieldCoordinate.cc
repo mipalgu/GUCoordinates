@@ -140,6 +140,16 @@ bool GU::FieldCoordinate::percentCoordinateTo(const GU::RelativeCoordinate & tar
     return target.percentCoordinate(robot, cameraOffset, other);
 }
 
+bool GU::FieldCoordinate::percentCoordinateTo(const GU::CartesianCoordinate & target, const GU::Robot & robot, const int cameraOffset, GU::PercentCoordinate & other) const
+{
+    return percentCoordinateTo(relativeCoordinateTo(target), robot, cameraOffset, other);
+}
+
+bool GU::FieldCoordinate::percentCoordinateTo(const GU::FieldCoordinate & target, const GU::Robot & robot, const int cameraOffset, GU::PercentCoordinate & other) const
+{
+    return percentCoordinateTo(relativeCoordinateTo(target), robot, cameraOffset, other);
+}
+
 GU::CartesianCoordinate GU::FieldCoordinate::position() const
 {
     return gu_field_coordinate::position;
