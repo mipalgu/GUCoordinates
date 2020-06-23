@@ -89,6 +89,7 @@ namespace GU {
 #endif
 
         CartesianCoordinate cartesianCoordinateAt(const GU::RelativeCoordinate &) const;
+        RelativeCoordinate relativeCoordinateTo(const GU:: CartesianCoordinate &) const;
 
         centimetres_t x() const;
         void set_x(const centimetres_t);

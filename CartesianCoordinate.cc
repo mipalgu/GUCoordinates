@@ -120,6 +120,11 @@ GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU:
     return rr_coord_to_cartesian_coord_from_source(target, *this);
 }
 
+GU::RelativeCoordinate GU::CartesianCoordinate::relativeCoordinateTo(const GU::CartesianCoordinate & target) const
+{
+    return cartesian_coord_to_rr_coord_from_source(*this, target);
+}
+
 centimetres_t GU::CartesianCoordinate::x() const
 {
     return gu_cartesian_coordinate::x;
