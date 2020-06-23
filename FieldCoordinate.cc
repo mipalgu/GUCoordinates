@@ -120,6 +120,11 @@ GU::RelativeCoordinate GU::FieldCoordinate::relativeCoordinateTo(const GU::Carte
     return field_coord_to_rr_coord_to_target(*this, target);
 }
 
+GU::CartesianCoordinate GU::FieldCoordinate::cartesianCoordinateAt(const GU::RelativeCoordinate & target) const
+{
+    return rr_coord_to_cartesian_coord_from_source(target, this->position());
+}
+
 GU::CartesianCoordinate GU::FieldCoordinate::position() const
 {
     return gu_field_coordinate::position;

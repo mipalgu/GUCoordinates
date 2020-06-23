@@ -98,6 +98,7 @@ namespace CGTEST {
 
     WRAPPER_TEST_Fs(FieldCoordinate, gu_field_coordinate)
     GETTER_TEST_F(FieldCoordinate, RelativeCoordinate, field_coord_to_rr_coord_to_target, relativeCoordinateTo(GU::CartesianCoordinate(-80, 23)))
+    GETTER_TEST_F(FieldCoordinate, CartesianCoordinate, rr_coord_to_cartesian_coord_from_source, cartesianCoordinateAt(GU::RelativeCoordinate(-23, 823)))
 
     TEST_F(FieldCoordinateCPPTests, GettersSetters) {
         GU::FieldCoordinate coord = GU::FieldCoordinate(GU::CartesianCoordinate(90, 50), 100);
