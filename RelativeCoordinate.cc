@@ -117,6 +117,14 @@ GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(RelativeCoordinate&& o
 }
 #endif
 
+bool GU::RelativeCoordinate::pixelCoordinate(const GU::Robot robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::PixelCoordinate &other) const
+{
+    GU::PercentCoordinate temp;
+    if (!percentCoordinate(robot, cameraOffset, temp))
+        return false;
+    other = temp.pixelCoordinate(resWidth, resHeight);
+    return true;
+}
     
 bool GU::RelativeCoordinate::percentCoordinate(const GU::Robot robot, const int cameraOffset, GU::PercentCoordinate &other) const
 {
