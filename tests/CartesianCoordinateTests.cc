@@ -91,6 +91,7 @@ namespace CGTEST {
     };
 
     WRAPPER_TEST_Fs(CartesianCoordinate, gu_cartesian_coordinate)
+    GETTER_TEST_F(CartesianCoordinate, CartesianCoordinate, rr_coord_to_cartesian_coord_from_source, cartesianCoordinate(GU::RelativeCoordinate(10, 123)))
 
     TEST_F(CartesianCoordinateCPPTests, GettersSetters) {
         GU::CartesianCoordinate coord = GU::CartesianCoordinate(90, 100);

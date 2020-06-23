@@ -115,6 +115,11 @@ GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&
 }
 #endif
 
+GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinate(const GU::RelativeCoordinate & target) const
+{
+    return rr_coord_to_cartesian_coord_from_source(target, *this);
+}
+
 centimetres_t GU::CartesianCoordinate::x() const
 {
     return gu_cartesian_coordinate::x;

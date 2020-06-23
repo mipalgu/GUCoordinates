@@ -88,6 +88,8 @@ namespace GU {
         CartesianCoordinate& operator=(CartesianCoordinate&& other);
 #endif
 
+        CartesianCoordinate cartesianCoordinate(const GU::RelativeCoordinate &) const;
+
         centimetres_t x() const;
         void set_x(const centimetres_t);
 
