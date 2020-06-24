@@ -79,6 +79,9 @@ GU::NaoV5::NaoV5(NaoV5&& other) {
 GU::NaoV5::~NaoV5() {}
 
 GU::NaoV5& GU::NaoV5::operator=(const GU::NaoV5& other) {
+    if (&other == this) {
+        return *this;
+    }
     set_headPitch(other.headPitch());
     set_headYaw(other.headYaw());
     return *this;
@@ -92,6 +95,9 @@ GU::NaoV5& GU::NaoV5::operator=(const ::wb_sensors_torsojointsensors& joints)
 }
 
 GU::NaoV5& GU::NaoV5::operator=(GU::NaoV5&& other) {
+    if (&other == this) {
+        return *this;
+    }
     set_headPitch(other.headPitch());
     set_headYaw(other.headYaw());
     other.set_headPitch(0.0f);
