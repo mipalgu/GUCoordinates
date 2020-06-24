@@ -61,24 +61,26 @@
 #include <guunits/guunits.h>
 #include "robot.h"
 
-GU::NaoV5::NaoV5(): GU::Robot(GU_NAO_V5_ROBOT(0.0f, 0.0f)) {}
+GU::NaoV5::NaoV5(): _headPitch(0.0f), _headYaw(0.0f) {}
 
-GU::NaoV5::NaoV5(const NaoV5& other): GU::Robot(other) {}
+GU::NaoV5::NaoV5(const degrees_f t_headPitch, const degrees_f t_headYaw): _headPitch(t_headPitch), _headYaw(t_headYaw) {}
 
-GU::NaoV5::NaoV5(const ::wb_sensors_torsojointsensors& joints): GU::Robot(GU_NAO_V5_ROBOT(rad_f_to_deg_f(f_to_rad_f(joints.HeadPitch())), rad_f_to_deg_f(f_to_rad_f(joints.HeadYaw())))) {}
+GU::NaoV5::NaoV5(const NaoV5& other): _headPitch(other.headPitch()), _headYaw(other.headYaw()) {}
 
-#ifdef __cpp_rvalue_references
-GU::NaoV5::NaoV5(NaoV5&& other): GU::Robot(other) {}
-#endif
+GU::NaoV5::NaoV5(const ::wb_sensors_torsojointsensors& joints): _headPitch(rad_f_to_deg_f(f_to_rad_f(joints.HeadPitch()))), _headYaw(rad_f_to_deg_f(f_to_rad_f(joints.HeadYaw()))) {}
+
+GU::NaoV5::NaoV5(NaoV5&& other) {
+    _headPitch = other.headPitch();
+    _headYaw = other.headYaw();
+    other.set_headPitch(0.0f);
+    other.set_headYaw(0.0f);
+}
 
 GU::NaoV5::~NaoV5() {}
 
 GU::NaoV5& GU::NaoV5::operator=(const GU::NaoV5& other) {
     set_headPitch(other.headPitch());
     set_headYaw(other.headYaw());
-    set_cameras(other.cameras());
-    set_cameraHeightOffsets(other.cameraHeightOffsets());
-    set_numCameras(other.numCameras());
     return *this;
 }
 
@@ -89,23 +91,42 @@ GU::NaoV5& GU::NaoV5::operator=(const ::wb_sensors_torsojointsensors& joints)
     return *this;
 }
 
-#ifdef __cpp_rvalue_references
 GU::NaoV5& GU::NaoV5::operator=(GU::NaoV5&& other) {
     set_headPitch(other.headPitch());
     set_headYaw(other.headYaw());
-    set_cameras(other.cameras());
-    set_cameraHeightOffsets(other.cameraHeightOffsets());
-    set_numCameras(other.numCameras());
     other.set_headPitch(0.0f);
     other.set_headYaw(0.0f);
-    static const gu_camera newCameras[GU_ROBOT_NUM_CAMERAS] = {};
-    static const centimetres_f newCameraHeightOffsets[GU_ROBOT_NUM_CAMERAS] = {};
-    other.set_cameras(newCameras);
-    other.set_cameraHeightOffsets(newCameraHeightOffsets);
-    other.set_numCameras(0);
     return *this;
 }
-#endif
+
+degrees_f GU::NaoV5::headPitch() const
+{
+    return _headPitch;
+}
+
+void GU::NaoV5::set_headPitch(const degrees_f newValue)
+{
+    _headPitch = newValue;
+}
+
+degrees_f GU::NaoV5::headYaw() const
+{
+    return _headYaw;
+}
+
+void GU::NaoV5::set_headYaw(const degrees_f newValue)
+{
+    _headYaw = newValue;
+}
+
+GU::Robot GU::NaoV5::toRobot() const
+{
+    return GU_NAO_V5_ROBOT(_headPitch, _headYaw);
+}
+
+
+
+
 /*
 #ifdef __cpp_lib_optional
 std::optional<RelativeCoordinate> GU::NaoV5::topCameraRelativeCoordinate(const GU::CameraCoordinate & coord)

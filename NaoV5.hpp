@@ -61,6 +61,8 @@
 
 #include "Robot.hpp"
 #include <cstdlib>
+
+#include <guunits/guunits.h>
 #include <gusimplewhiteboard/typeClassDefs/wb_sensors_torsojointsensors.h>
 
 #ifdef __cpp_lib_optional
@@ -69,20 +71,35 @@
 
 namespace GU {
 
-    struct NaoV5: public Robot {
+    struct NaoV5 {
+    
+    private:
+        degrees_f _headPitch;
+        degrees_f _headYaw;
 
+    public:
         NaoV5();
+        NaoV5(const degrees_f, const degrees_f);
         NaoV5(const NaoV5& other);
         NaoV5(const ::wb_sensors_torsojointsensors& joints);
-#ifdef __cpp_rvalue_references
+
+#if __cplusplus >= 201103L
         NaoV5(NaoV5&& other);
 #endif
         ~NaoV5();
         NaoV5& operator=(const NaoV5& other);
         NaoV5& operator=(const ::wb_sensors_torsojointsensors& joints);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         NaoV5& operator=(NaoV5&& other);
 #endif
+
+        degrees_f headPitch() const;
+        void set_headPitch(const degrees_f);
+
+        degrees_f headYaw() const;
+        void set_headYaw(const degrees_f);
+
+        GU::Robot toRobot() const;
 
 /*
 #ifdef __cpp_lib_optional

@@ -68,5 +68,6 @@
 #include "FieldCoordinate.hpp"
 #include "Camera.hpp"
 #include "Robot.hpp"
+#include "NaoV5.hpp"
 
 #endif  /* GUCOORDINATES_HPP */
