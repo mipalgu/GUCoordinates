@@ -61,6 +61,11 @@
 
 #include "GUCoordinatesTests.hpp"
 
+#define C_CONVERTIBLE_TEST_F(className) \
+    TEST2_F(testclassname(className), ConvertibleToC) { \
+        c_convertible_test(); \
+    }
+
 #define EQUALS_TEST_F(className, strctName) \
     TEST2_F(testclassname(className), Equality) { \
         equals_fake(strctName).return_val = true; \
@@ -94,6 +99,7 @@
 
 #define WRAPPER_TEST_Fs(className, strctName) \
     RO5_TEST_Fs(className) \
+    C_CONVERTIBLE_TEST_F(className) \
     EQUALS_TEST_F(className, strctName) \
     TO_C_TEST_F(className, strctName)
 
@@ -225,12 +231,12 @@ namespace CGTEST {
                 Class obj2 = obj;
                 Class obj3;
                 obj3 = obj;
-                equals(obj, obj2);
-                equals(obj, obj3);
-                equals(obj2, obj3);
+                this->equals(obj, obj2);
+                this->equals(obj, obj3);
+                this->equals(obj2, obj3);
                 Strct * obj4 = &obj3;
                 obj3 = *obj4;
-                equals(obj3, *obj4);
+                this->equals(obj3, *obj4);
             }
 
     };
