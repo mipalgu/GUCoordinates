@@ -103,9 +103,6 @@
     EQUALS_TEST_F(className, strctName) \
     TO_C_TEST_F(className, strctName)
 
-#define TEST2_F(testclassname, testname) \
-    TEST_F(testclassname, testname)
-
 #define GETTER_TEST_NAME_F(className, testName, resultType, call, get) \
     TEST2_F(testclassname(className), testName) {\
         const GU::resultType result = GU::resultType(call##_result); \

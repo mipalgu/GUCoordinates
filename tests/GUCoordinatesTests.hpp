@@ -91,6 +91,9 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wglobal-constructors"
 
+#define TEST2_F(testclassname, testname) \
+    TEST_F(testclassname, testname)
+
 #define RO3_TEST_F(className) \
     TEST2_F(testclassname(className), RO3) { \
         ro3_test(); \
@@ -195,6 +198,11 @@ namespace CGTEST {
             {
                 const float tolerance = 0.00001f;
                 return fabsf(lhs - rhs) < tolerance;
+            }
+
+            void assert_near(const float lhs, const float rhs, const float tolerance) const
+            {
+                ASSERT_LE(fabsf(lhs - rhs), tolerance);
             }
 
             void equals(const GU::CameraCoordinate lhs, const GU::CameraCoordinate rhs)
@@ -350,6 +358,17 @@ namespace CGTEST {
                             && near(lhs.cameraHeightOffset(i), rhs.cameraHeightOffset(i))
                             );
                 }
+            }
+
+            void equals(const GU::NaoV5 lhs, const GU::NaoV5 rhs)
+            {
+                assert_near(lhs.headPitch(), rhs.headPitch(), 0.0001f);
+                assert_near(lhs.headYaw(), rhs.headYaw(), 0.0001f);
+            }
+
+            void nequals(const GU::NaoV5 lhs, const GU::NaoV5 rhs)
+            {
+                ASSERT_FALSE(near(lhs.headPitch(), rhs.headPitch()) && near(lhs.headYaw(), rhs.headYaw()));
             }
 
     };
