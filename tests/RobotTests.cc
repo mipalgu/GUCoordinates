@@ -56,11 +56,11 @@
  *
  */
 
-#include "GUCoordinatesTests.hpp" 
+#include "GUWrapperTests.hpp" 
 
 namespace CGTEST {
 
-    class RobotCPPTests: public GUCoordinatesTests<GU::Robot, gu_robot> {
+    class RobotCPPTests: public GUWrapperTests<GU::Robot, gu_robot> {
 
         protected:
 
@@ -95,9 +95,9 @@ namespace CGTEST {
             return GU::Robot(2.0f, 3.0f, cameras, offsets, 2);
         }
 
-        gu_robot empty()
+        GU::Robot empty()
         {
-            return empty_strct;
+            return GU::Robot(empty_strct);
         }
 
         void change(GU::Robot & obj)
@@ -112,6 +112,11 @@ namespace CGTEST {
             memcpy(obj.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera)); \
             memcpy(obj.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f)); \
             obj.numCameras = 2;
+        }
+
+        gu_robot cempty()
+        {
+            return empty();
         }
 
     };

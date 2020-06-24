@@ -56,11 +56,11 @@
  *
  */
 
-#include "GUCoordinatesTests.hpp"
+#include "GUWrapperTests.hpp"
 
 namespace CGTEST {
     
-    class RelativeCoordinateCPPTests: public GUCoordinatesTests<GU::RelativeCoordinate, gu_relative_coordinate> {
+    class RelativeCoordinateCPPTests: public GUWrapperTests<GU::RelativeCoordinate, gu_relative_coordinate> {
 
         protected:
 
@@ -69,12 +69,9 @@ namespace CGTEST {
             return GU::RelativeCoordinate(90, 100);
         }
 
-        gu_relative_coordinate empty()
+        GU::RelativeCoordinate empty()
         {
-            gu_relative_coordinate temp;
-            temp.direction = 0;
-            temp.distance = 0;
-            return temp;
+            return GU::RelativeCoordinate(0, 0);
         }
 
         void change(GU::RelativeCoordinate &obj)
@@ -86,6 +83,11 @@ namespace CGTEST {
         {
             obj.direction = 40;
             obj.distance = 15;
+        }
+
+        gu_relative_coordinate cempty()
+        {
+            return empty();
         }
 
     };

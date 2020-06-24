@@ -56,11 +56,11 @@
  *
  */
 
-#include "GUCoordinatesTests.hpp"
+#include "GUWrapperTests.hpp"
 
 namespace CGTEST {
     
-    class CameraCPPTests: public GUCoordinatesTests<GU::Camera, gu_camera> {
+    class CameraCPPTests: public GUWrapperTests<GU::Camera, gu_camera> {
 
         protected:
 
@@ -69,15 +69,9 @@ namespace CGTEST {
             return GU::Camera(1.0f, 1.5f, 2.0f, 3.0f, 4.0f);
         }
 
-        gu_camera empty()
+        GU::Camera empty()
         {
-            gu_camera temp;
-            temp.height = 0.0f;
-            temp.centerOffset = 0.0f;
-            temp.vDirection = 0.0f;
-            temp.vFov = 0.0f;
-            temp.hFov = 0.0f;
-            return temp;
+            return GU::Camera(0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
         }
 
         void change(GU::Camera &obj)
@@ -92,6 +86,11 @@ namespace CGTEST {
             obj.vDirection = 3.0f;
             obj.vFov = 4.0f;
             obj.hFov = 5.0f;
+        }
+
+        gu_camera cempty()
+        {
+            return empty();
         }
 
     };

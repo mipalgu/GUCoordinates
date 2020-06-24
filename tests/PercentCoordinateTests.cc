@@ -56,11 +56,11 @@
  *
  */
 
-#include "GUCoordinatesTests.hpp"
+#include "GUWrapperTests.hpp"
 
 namespace CGTEST {
     
-    class PercentCoordinateCPPTests: public GUCoordinatesTests<GU::PercentCoordinate, gu_percent_coordinate> {
+    class PercentCoordinateCPPTests: public GUWrapperTests<GU::PercentCoordinate, gu_percent_coordinate> {
 
         protected:
 
@@ -69,12 +69,9 @@ namespace CGTEST {
             return GU::PercentCoordinate(-1.0f, -1.0f);
         }
 
-        gu_percent_coordinate empty()
+        GU::PercentCoordinate empty()
         {
-            gu_percent_coordinate temp;
-            temp.x = 0.0f;
-            temp.y = 0.0f;
-            return temp;
+            return GU::PercentCoordinate(0.0f, 0.0f);
         }
 
         void change(GU::PercentCoordinate &obj)
@@ -86,6 +83,11 @@ namespace CGTEST {
         {
             obj.x = 1.0f;
             obj.y = 2.0f;
+        }
+
+        gu_percent_coordinate cempty()
+        {
+            return empty();
         }
 
     };

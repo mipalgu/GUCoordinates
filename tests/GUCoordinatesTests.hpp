@@ -106,153 +106,6 @@
 #define RO5_TEST_Fs(className) RO3_TEST_F(className)
 #endif
 
-#define EQUALS_TEST_F(className, strctName) \
-    TEST2_F(testclassname(className), Equality) { \
-        equals_fake(strctName).return_val = true; \
-        const GU::className obj = initial(); \
-        const GU::className obj2 = empty(); \
-        ASSERT_EQ(obj, obj); \
-        ASSERT_EQ(equals_fake(strctName).call_count, 1); \
-        equals_reset(strctName) \
-        equals_fake(strctName).return_val = false; \
-        ASSERT_NE(obj, obj2); \
-        ASSERT_EQ(equals_fake(strctName).call_count, 1); \
-        equals_reset(strctName) \
-        equals_fake(strctName).return_val = true; \
-        const GU::className obj3 = initial(); \
-        const strctName obj4 = empty(); \
-        const strctName obj5 = obj; \
-        ASSERT_EQ(obj3, obj5); \
-        ASSERT_EQ(equals_fake(strctName).call_count, 1); \
-        equals_reset(strctName) \
-        equals_fake(strctName).return_val = false; \
-        ASSERT_TRUE(obj3 != obj4); \
-        ASSERT_EQ(equals_fake(strctName).call_count, 1); \
-    }
-
-#define TO_C_TEST_F(className, strctName) \
-    TEST2_F(testclassname(className), TO_C) { \
-        const GU::className obj = initial(); \
-        const strctName converted = obj; \
-        equals(obj, converted); \
-    }
-
-#define WRAPPER_TEST_Fs(className, strctName) \
-    RO5_TEST_Fs(className) \
-    EQUALS_TEST_F(className, strctName) \
-    TO_C_TEST_F(className, strctName)
-
-#define TEST2_F(testclassname, testname) \
-    TEST_F(testclassname, testname)
-
-#define GETTER_TEST_NAME_F(className, testName, resultType, call, get) \
-    TEST2_F(testclassname(className), testName) {\
-        const GU::resultType result = GU::resultType(call##_result); \
-        call##_fake.return_val = result; \
-        equals(initial().get, result); \
-        ASSERT_EQ(call##_fake.call_count, 1); \
-        call##_reset(); \
-    }
-
-#define GETTER_TEST_F(className, resultType, call, get) \
-    GETTER_TEST_NAME_F(className, resultType, resultType, call, get)
-
-
-#define GETTER_BOOL_TEST_NAME_F(className, testName, resultType, call, get) \
-    TEST2_F(testclassname(className), testName) {\
-        call##_fake.custom_fake = call##_custom_fake_true; \
-        const GU::resultType result = GU::resultType(call##_custom_fake_result); \
-        GU::resultType temp; \
-        if (initial().get) \
-        { \
-            equals(temp, result); \
-            ASSERT_EQ(call##_fake.call_count, 1); \
-            call##_reset(); \
-        } else { \
-            FAIL() << "Result is false from initial().get"; \
-        } \
-        call##_fake.custom_fake = call##_custom_fake_false; \
-        ASSERT_FALSE(initial().get); \
-    }
-
-#define GETTER_BOOL_TEST_F(className, resultType, call, get) \
-    GETTER_BOOL_TEST_NAME_F(className, resultType##Bool, resultType, call, get)
-
-#define GETTER_BOOL_IM_TEST_NAME_F(className, testName, resultType, failCall, resultCall, get) \
-    TEST2_F(testclassname(className), testName) {\
-        failCall##_fake.custom_fake = failCall##_custom_fake_true; \
-        resultCall##_fake.return_val = resultCall##_result; \
-        const GU::resultType result = GU::resultType(resultCall##_result); \
-        GU::resultType temp; \
-        if (initial().get) \
-        { \
-            equals(temp, result); \
-            ASSERT_EQ(failCall##_fake.call_count, 1); \
-            ASSERT_EQ(resultCall##_fake.call_count, 1); \
-        } else { \
-            FAIL() << "Result is false from initial().get"; \
-        } \
-        failCall##_reset(); \
-        resultCall##_reset(); \
-        failCall##_fake.custom_fake = failCall##_custom_fake_false; \
-        ASSERT_FALSE(initial().get); \
-    }
-
-#define GETTER_BOOL_IM_TEST_F(className, resultType, failCall, resultCall, get) \
-    GETTER_BOOL_IM_TEST_NAME_F(className, resultType##Bool, resultType, failCall, resultCall, get)
-
-#if __cplusplus >= 201703L
-#define GETTER_OPT_TEST_NAME_F(className, testName, resultType, call, get) \
-    TEST2_F(testclassname(className), testName) {\
-        call##_fake.custom_fake = call##_custom_fake_true; \
-        const GU::resultType result = GU::resultType(call##_custom_fake_result); \
-        const std::optional<GU::resultType> out = initial().get; \
-        if (out.has_value()) \
-        { \
-            equals(out.value(), result); \
-            ASSERT_EQ(call##_fake.call_count, 1); \
-            call##_reset(); \
-        } else { \
-            FAIL() << "Result is nullopt from initial().get"; \
-        } \
-        call##_fake.custom_fake = call##_custom_fake_false; \
-        const std::optional<GU::resultType> out2 = initial().get; \
-        ASSERT_FALSE(out2.has_value()); \
-    }
-
-#define GETTER_OPT_TEST_F(className, resultType, call, get) \
-    GETTER_OPT_TEST_NAME_F(className, resultType, resultType, call, get)
-
-#define GETTER_OPT_IM_TEST_NAME_F(className, testName, resultType, failCall, resultCall, get) \
-    TEST2_F(testclassname(className), testName) { \
-        failCall##_fake.custom_fake = failCall##_custom_fake_true; \
-        resultCall##_fake.return_val = resultCall##_result; \
-        const GU::resultType result = GU::resultType(resultCall##_result); \
-        const std::optional<GU::resultType> out = initial().get; \
-        if (out.has_value()) \
-        { \
-            equals(out.value(), result); \
-            ASSERT_EQ(failCall##_fake.call_count, 1); \
-            ASSERT_EQ(resultCall##_fake.call_count, 1); \
-        } else { \
-            FAIL() << "Result is nullopt from initial().get"; \
-        } \
-        failCall##_reset(); \
-        resultCall##_reset(); \
-        failCall##_fake.custom_fake = failCall##_custom_fake_false; \
-        const std::optional<GU::resultType> out2 = initial().get; \
-        ASSERT_FALSE(out2.has_value()); \
-    }
-
-#define GETTER_OPT_IM_TEST_F(className, resultType, failCall, resultCall, get) \
-    GETTER_OPT_IM_TEST_NAME_F(className, resultType, resultType, failCall, resultCall, get)
-#else
-#define GETTER_OPT_TEST_NAME_F(className, testName, resultType, call, get)
-#define GETTER_OPT_TEST_F(className, resultType, call, get)
-#define GETTER_OPT_IM_TEST_NAME_F(className, testName, resultType, failCall, resultCall, get)
-#define GETTER_OPT_IM_TEST_F(className, resultType, failCall, resultCall, get)
-#endif
-
 #define testclassname(className) className##CPPTests
 #define equals_reset(strctName) strctName##_equals_reset();
 #define equals_func(strctName) strctName##_equals
@@ -262,7 +115,7 @@
 
 namespace CGTEST {
 
-    template <typename Class, typename Strct>
+    template <typename Class>
     class GUCoordinatesTests: public ::testing::Test {
         private:
 
@@ -289,11 +142,9 @@ namespace CGTEST {
 
             virtual Class initial() = 0;
 
-            virtual Strct empty() = 0;
-
             virtual void change(Class &) {}
 
-            virtual void cchange(Strct &) {}
+            virtual Class empty() = 0;
 
             void ro3_test() {
                 preamble();
@@ -310,20 +161,11 @@ namespace CGTEST {
                 change(obj);
                 nequals(obj, obj3);
                 equals(obj2, obj3);
-                Strct obj6 = {};
-                cchange(obj6);
-                Class obj7 = obj6;
-                Class obj8;
-                obj8 = obj6;
-                equals(obj7, obj6);
-                equals(obj8, obj6);
-                equals(obj7, obj8);
-                Strct * obj9 = &obj8;
-                obj8 = *obj9;
-                equals(*obj9, obj8);
-                Class obj10;
-                obj10 = obj8;
-                equals(obj10, obj8);
+                Class obj4;
+                obj4 = obj3;
+                equals(obj4, obj3);
+                Class * obj5 = &obj4;
+                equals(obj4, *obj5);
             }
 
 #ifdef __cpp_rvalue_references

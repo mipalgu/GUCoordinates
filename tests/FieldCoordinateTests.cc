@@ -56,11 +56,11 @@
  *
  */
 
-#include "GUCoordinatesTests.hpp"
+#include "GUWrapperTests.hpp"
 
 namespace CGTEST {
     
-    class FieldCoordinateCPPTests: public GUCoordinatesTests<GU::FieldCoordinate, gu_field_coordinate> {
+    class FieldCoordinateCPPTests: public GUWrapperTests<GU::FieldCoordinate, gu_field_coordinate> {
 
         protected:
 
@@ -69,15 +69,9 @@ namespace CGTEST {
             return GU::FieldCoordinate(GU::CartesianCoordinate(90, 50), 100);
         }
 
-        gu_field_coordinate empty()
+        GU::FieldCoordinate empty()
         {
-            gu_field_coordinate temp;
-            gu_cartesian_coordinate coord;
-            coord.x = 0;
-            coord.y = 0;
-            temp.position = coord;
-            temp.heading = 0;
-            return temp;
+            return GU::FieldCoordinate(GU::CartesianCoordinate(0, 0), 0);
         }
 
         void change(GU::FieldCoordinate &obj)
@@ -92,6 +86,11 @@ namespace CGTEST {
             coord.y = 30;
             obj.position = coord;
             obj.heading = 15;
+        }
+
+        gu_field_coordinate cempty()
+        {
+            return empty();
         }
 
     };

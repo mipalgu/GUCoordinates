@@ -56,11 +56,11 @@
  *
  */
 
-#include "GUCoordinatesTests.hpp"
+#include "GUWrapperTests.hpp"
 
 namespace CGTEST {
 
-    class PixelCoordinateCPPTests: public GUCoordinatesTests<GU::PixelCoordinate, gu_pixel_coordinate> {
+    class PixelCoordinateCPPTests: public GUWrapperTests<GU::PixelCoordinate, gu_pixel_coordinate> {
 
         protected:
 
@@ -69,14 +69,9 @@ namespace CGTEST {
             return GU::PixelCoordinate(1, 2, 3, 4);
         }
 
-        gu_pixel_coordinate empty()
+        GU::PixelCoordinate empty()
         {
-            gu_pixel_coordinate temp;
-            temp.x = 0;
-            temp.y = 0;
-            temp.res_width = 0;
-            temp.res_height = 0;
-            return temp;
+            return GU::PixelCoordinate(0, 0, 0, 0);
         }
 
         void change(GU::PixelCoordinate &obj)
@@ -90,6 +85,11 @@ namespace CGTEST {
             obj.y = 2;
             obj.res_width = 3;
             obj.res_height = 4;
+        }
+
+        gu_pixel_coordinate cempty()
+        {
+            return empty();
         }
 
     };
