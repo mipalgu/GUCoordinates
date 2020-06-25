@@ -65,6 +65,7 @@
 #include "RelativeCoordinate.hpp"
 #include "CartesianCoordinate.hpp"
 #include "FieldCoordinate.hpp"
+#include "CameraPivot.hpp"
 
 #include <cstdlib>
 
@@ -98,10 +99,10 @@ namespace GU {
 
         GU::PixelCoordinate pixelCoordinate() const;
         GU::PercentCoordinate percentCoordinate() const;
-        bool relativeCoordinate(const GU::Robot &, const int, GU::RelativeCoordinate &) const;
+        bool relativeCoordinate(const GU::CameraPivot &, const int, GU::RelativeCoordinate &) const;
 
 #if __cplusplus >= 201703L
-        std::optional<RelativeCoordinate> relativeCoordinate(const GU::Robot &, const int) const;
+        std::optional<RelativeCoordinate> relativeCoordinate(const GU::CameraPivot &, const int) const;
 #endif
 
         pixels_u x() const;

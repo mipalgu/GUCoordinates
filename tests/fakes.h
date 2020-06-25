@@ -72,7 +72,7 @@ extern "C" {
 #include "cartesian_coordinate_fakes.h"
 #include "field_coordinate_fakes.h"
 #include "camera_fakes.h"
-#include "robot_fakes.h"
+#include "camera_pivot_fakes.h"
 
 #define ALL_FAKES(FAKE)              \
     CONVERSION_FAKES(FAKE)           \
@@ -83,7 +83,7 @@ extern "C" {
     CARTESIAN_COORDINATE_FAKES(FAKE) \
     FIELD_COORDINATE_FAKES(FAKE)     \
     CAMERA_FAKES(FAKE)               \
-    ROBOT_FAKES(FAKE)
+    CAMERA_PIVOT_FAKES(FAKE)
 
 #ifdef __cplusplus
 }

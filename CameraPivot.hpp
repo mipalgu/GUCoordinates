@@ -1,8 +1,8 @@
 /*
- * robot_tests.cc 
- * tests 
+ * CameraPivot.hpp 
+ * gucoordinates 
  *
- * Created by Callum McColl on 18/06/2020.
+ * Created by Callum McColl on 20/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,18 +56,60 @@
  *
  */
 
-#include "gucoordinates_tests.hpp"
+#ifndef ROBOT_HPP
+#define ROBOT_HPP
 
-namespace CGTEST {
-    
-    class RobotTests: public GUCoordinatesTests {};
+#include "camera_pivot.h"
+#include "Camera.hpp"
 
-    TEST_F(RobotTests, Equality) {
-        const gu_robot nao = GU_NAO_V5_ROBOT(0.0f, 0.0f);
-        const gu_robot pepper = GU_PEPPER_ROBOT(0.0f, 0.0f);
-        ASSERT_TRUE(gu_robot_equals(nao, nao, 0.0001f));
-        ASSERT_TRUE(gu_robot_equals(pepper, pepper, 0.0001f));
-        ASSERT_FALSE(gu_robot_equals(nao, pepper, 0.0001f));
-    }
+#include <cstdlib>
 
-}  // namespace
+namespace GU {
+
+    struct CameraPivot: public gu_camera_pivot {
+
+        CameraPivot();
+        CameraPivot(degrees_f, degrees_f, const gu_camera[GU_CAMERA_PIVOT_NUM_CAMERAS], const centimetres_f[GU_CAMERA_PIVOT_NUM_CAMERAS], int);
+        CameraPivot(const CameraPivot& other);
+        CameraPivot(const gu_camera_pivot& other);
+#if __cplusplus >= 201103L
+        CameraPivot(CameraPivot&& other);
+#endif
+        ~CameraPivot();
+        CameraPivot& operator=(const CameraPivot& other);
+        CameraPivot& operator=(const gu_camera_pivot& other);
+#if __cplusplus >= 201103L
+        CameraPivot& operator=(CameraPivot&& other);
+#endif
+
+        degrees_f headPitch() const;
+        void set_headPitch(const degrees_f);
+
+        degrees_f headYaw() const;
+        void set_headYaw(const degrees_f);
+
+        const gu_camera * cameras() const;
+        void set_cameras(const gu_camera[GU_CAMERA_PIVOT_NUM_CAMERAS]);
+
+        Camera camera(const int) const;
+        void set_camera(const int, const Camera);
+
+        const centimetres_f * cameraHeightOffsets() const;
+        void set_cameraHeightOffsets(const centimetres_f[GU_CAMERA_PIVOT_NUM_CAMERAS]);
+
+        centimetres_f cameraHeightOffset(const int) const;
+        void set_cameraHeightOffset(const int, const centimetres_f);
+
+        int numCameras() const;
+        void set_numCameras(const int);
+
+        bool operator ==(const CameraPivot &other) const;
+        bool operator !=(const CameraPivot &other) const;
+        bool operator ==(const gu_camera_pivot &other) const;
+        bool operator !=(const gu_camera_pivot &other) const;
+
+    };
+
+}
+
+#endif  /* ROBOT_HPP */

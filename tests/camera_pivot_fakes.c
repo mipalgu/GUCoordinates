@@ -56,10 +56,10 @@
  *
  */
 
-#include "robot_fakes.h"
+#include "camera_pivot_fakes.h"
 
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wcast-qual"
-DEFINE_FAKE_VALUE_FUNC(bool, gu_robot_equals, const gu_robot, const gu_robot, const float)
+DEFINE_FAKE_VALUE_FUNC(bool, gu_camera_pivot_equals, const gu_camera_pivot, const gu_camera_pivot, const float)
 #pragma clang diagnostic pop

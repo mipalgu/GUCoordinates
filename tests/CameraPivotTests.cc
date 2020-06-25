@@ -1,5 +1,5 @@
 /*
- * RobotTests.cc 
+ * CameraPivotTests.cc 
  * tests 
  *
  * Created by Callum McColl on 20/06/2020.
@@ -60,13 +60,13 @@
 
 namespace CGTEST {
 
-    class RobotCPPTests: public GUWrapperTests<GU::Robot, gu_robot> {
+    class CameraPivotCPPTests: public GUWrapperTests<GU::CameraPivot, gu_camera_pivot> {
 
         protected:
 
-        gu_camera cameras[GU_ROBOT_NUM_CAMERAS];
-        centimetres_f offsets[GU_ROBOT_NUM_CAMERAS];
-        gu_robot empty_strct;
+        gu_camera cameras[GU_CAMERA_PIVOT_NUM_CAMERAS];
+        centimetres_f offsets[GU_CAMERA_PIVOT_NUM_CAMERAS];
+        gu_camera_pivot empty_strct;
     
         void preamble()
         {
@@ -74,7 +74,7 @@ namespace CGTEST {
             cameras[1] = GU_NAO_V5_BOTTOM_CAMERA;
             offsets[0] = 0.0f;
             offsets[1] = 0.0f;
-            for (int i = 2; i < GU_ROBOT_NUM_CAMERAS; i++)
+            for (int i = 2; i < GU_CAMERA_PIVOT_NUM_CAMERAS; i++)
             {
                 cameras[i].height = 0.0f;
                 cameras[i].centerOffset = 0.0f;
@@ -85,47 +85,47 @@ namespace CGTEST {
             }
             empty_strct.headPitch = 0.0f;
             empty_strct.headYaw = 0.0f;
-            memcpy(empty_strct.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera));
-            memcpy(empty_strct.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f));
+            memcpy(empty_strct.cameras, cameras, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(gu_camera));
+            memcpy(empty_strct.cameraHeightOffsets, offsets, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(centimetres_f));
             empty_strct.numCameras = 0;
         }
 
-        GU::Robot initial()
+        GU::CameraPivot initial()
         {
-            return GU::Robot(2.0f, 3.0f, cameras, offsets, 2);
+            return GU::CameraPivot(2.0f, 3.0f, cameras, offsets, 2);
         }
 
-        GU::Robot empty()
+        GU::CameraPivot empty()
         {
-            return GU::Robot(empty_strct);
+            return GU::CameraPivot(empty_strct);
         }
 
-        void change(GU::Robot & obj)
+        void change(GU::CameraPivot & obj)
         {
             obj.set_headPitch(1.0f);
         }
 
-        void cchange(gu_robot & obj)
+        void cchange(gu_camera_pivot & obj)
         {
             obj.headPitch = 1.0f; \
             obj.headYaw = 2.0f; \
-            memcpy(obj.cameras, cameras, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera)); \
-            memcpy(obj.cameraHeightOffsets, offsets, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f)); \
+            memcpy(obj.cameras, cameras, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(gu_camera)); \
+            memcpy(obj.cameraHeightOffsets, offsets, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(centimetres_f)); \
             obj.numCameras = 2;
         }
 
-        gu_robot cempty()
+        gu_camera_pivot cempty()
         {
             return empty();
         }
 
     };
 
-    WRAPPER_TEST_Fs(Robot, gu_robot)
+    WRAPPER_TEST_Fs(CameraPivot, gu_camera_pivot)
 
-    TEST_F(RobotCPPTests, GettersSetters) {
-        gu_robot nao_c = GU_NAO_V5_ROBOT(0.0f, 0.0f);
-        GU::Robot nao = nao_c;
+    TEST_F(CameraPivotCPPTests, GettersSetters) {
+        gu_camera_pivot nao_c = GU_NAO_V5_HEAD(0.0f, 0.0f);
+        GU::CameraPivot nao = nao_c;
         ASSERT_EQ(nao.headPitch(), 0.0f);
         nao.set_headPitch(5.0f);
         ASSERT_EQ(nao.headPitch(), 5.0f);

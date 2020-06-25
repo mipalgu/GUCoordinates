@@ -59,7 +59,7 @@
 #ifndef NAO_V5_HPP
 #define NAO_V5_HPP
 
-#include "Robot.hpp"
+#include "CameraPivot.hpp"
 #include <cstdlib>
 
 #include <guunits/guunits.h>
@@ -99,7 +99,7 @@ namespace GU {
         degrees_f headYaw() const;
         void set_headYaw(const degrees_f);
 
-        GU::Robot toRobot() const;
+        GU::CameraPivot toCameraPivot() const;
 
 /*
 #ifdef __cpp_lib_optional

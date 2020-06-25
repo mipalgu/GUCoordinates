@@ -1,8 +1,8 @@
 /*
- * robot.h 
- * gunavigation 
+ * robot_fakes.h 
+ * tests 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 20/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,45 +56,23 @@
  *
  */
 
-#ifndef ROBOT_H
-#define ROBOT_H
-
-#include "camera.h"
-#include <stdbool.h>
+#ifndef CAMERA_PIVOT_FAKES_H
+#define CAMERA_PIVOT_FAKES_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#ifndef GU_ROBOT_NUM_CAMERAS
-#define GU_ROBOT_NUM_CAMERAS 2
-#endif
+#include "fff.h"
+#include "../camera_pivot.h"
 
-#ifndef GU_NAO_V5_ROBOT
-#define GU_NAO_V5_ROBOT(p, y) (gu_robot) {.headPitch = p, .headYaw = y, .cameras = {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, .cameraHeightOffsets = {41.7f, 41.7f}, .numCameras = 2}
-#define GU_NAO_V5_TOP_CAMERA_INDEX 0
-#define GU_NAO_V5_BOTTOM_CAMERA_INDEX 1 
-#endif
+#define CAMERA_PIVOT_FAKES(FAKE) \
+    FAKE(gu_camera_pivot_equals)
 
-#ifndef GU_PEPPER_ROBOT
-#define GU_PEPPER_ROBOT(p, y) {p, y, {PEPPER_TOP_CAMERA, PEPPER_BOTTOM_CAMERA}, {0.0f, 0.0f}, 2}
-#endif
-
-typedef struct gu_robot
-{
-
-    degrees_f headPitch;
-    degrees_f headYaw;
-    gu_camera cameras[GU_ROBOT_NUM_CAMERAS];
-    centimetres_f cameraHeightOffsets[GU_ROBOT_NUM_CAMERAS];
-    int numCameras;
-
-} gu_robot;
-
-bool gu_robot_equals(const gu_robot, const gu_robot, const float);
+DECLARE_FAKE_VALUE_FUNC(bool, gu_camera_pivot_equals, const gu_camera_pivot, const gu_camera_pivot, const float)
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  /* ROBOT_H */
+#endif  /* CAMERA_PIVOT_FAKES_H */

@@ -159,9 +159,9 @@ GU::PercentCoordinate GU::CameraCoordinate::percentCoordinate() const
     return pixelCoordinate().percentCoordinate();
 }
 
-bool GU::CameraCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset, GU::RelativeCoordinate & other) const
+bool GU::CameraCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset, GU::RelativeCoordinate & other) const
 {
-    return percentCoordinate().relativeCoordinate(robot, cameraOffset, other);
+    return percentCoordinate().relativeCoordinate(cameraPivot, cameraOffset, other);
 }
 
 pixels_u GU::CameraCoordinate::x() const
@@ -170,24 +170,24 @@ pixels_u GU::CameraCoordinate::x() const
 }
 
 #if __cplusplus >= 201703L
-std::optional<GU::RelativeCoordinate> GU::CameraCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset) const
+std::optional<GU::RelativeCoordinate> GU::CameraCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    return percentCoordinate().relativeCoordinate(robot, cameraOffset);
+    return percentCoordinate().relativeCoordinate(cameraPivot, cameraOffset);
 }
 #endif
 
 /*
-std::optional<GU::CartesianCoordinate> GU::CameraCoordinate::cartesianCoordinate(const GU::Robot & robot, const int cameraOffset) const
+std::optional<GU::CartesianCoordinate> GU::CameraCoordinate::cartesianCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    const std::optional<GU::RelativeCoordinate> result = relativeCoordinate(robot, cameraOffset);
+    const std::optional<GU::RelativeCoordinate> result = relativeCoordinate(cameraPivot, cameraOffset);
     if (!result.has_value())
         return std::nullopt;
     return result.value().cartesianCoordinate();
 }
 
-std::optional<GU::FieldCoordinate> GU::CameraCoordinate::fieldCoordinate(const GU::Robot & robot, const int cameraOffset) const
+std::optional<GU::FieldCoordinate> GU::CameraCoordinate::fieldCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    const std::optional<GU::FieldCoordinate> result = relativeCoordinate(robot, cameraOffset);
+    const std::optional<GU::FieldCoordinate> result = relativeCoordinate(cameraPivot, cameraOffset);
     if (!result.has_value())
         return std::nullopt;
     return result.value().cartesianCoordinate();

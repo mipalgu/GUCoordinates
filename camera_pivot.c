@@ -1,8 +1,8 @@
 /*
- * robot_fakes.h 
- * tests 
+ * camera_pivot.c 
+ * gunavigation 
  *
- * Created by Callum McColl on 20/06/2020.
+ * Created by Callum McColl on 19/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,23 +56,29 @@
  *
  */
 
-#ifndef ROBOT_FAKES_H
-#define ROBOT_FAKES_H
+#include "camera_pivot.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <stdbool.h>
+#include <math.h>
 
-#include "fff.h"
-#include "../robot.h"
-
-#define ROBOT_FAKES(FAKE) \
-    FAKE(gu_robot_equals)
-
-DECLARE_FAKE_VALUE_FUNC(bool, gu_robot_equals, const gu_robot, const gu_robot, const float)
-
-#ifdef __cplusplus
+bool gu_camera_pivot_equals(const gu_camera_pivot lhs, const gu_camera_pivot rhs, const float tolerance)
+{
+    const bool headEqual = fabsf(deg_f_to_f(lhs.headPitch) - deg_f_to_f(rhs.headPitch)) <= tolerance
+        && fabsf(deg_f_to_f(lhs.headYaw) - deg_f_to_f(rhs.headYaw)) <= tolerance;
+    if (!headEqual || lhs.numCameras != rhs.numCameras)
+    {
+        return false;
+    }
+    for (int i = 0; i < lhs.numCameras; i++)
+    {
+        if (!gu_camera_equals(lhs.cameras[i], rhs.cameras[i], tolerance))
+        {
+            return false;
+        }
+        if (fabsf(cm_f_to_f(lhs.cameraHeightOffsets[i]) - cm_f_to_f(rhs.cameraHeightOffsets[i])) > tolerance)
+        {
+            return false;
+        }
+    }
+    return true;
 }
-#endif
-
-#endif  /* ROBOT_FAKES_H */

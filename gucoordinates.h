@@ -63,7 +63,7 @@
 #include "cartesian_coordinate.h"
 #include "field_coordinate.h"
 #include "camera.h"
-#include "robot.h"
+#include "camera_pivot.h"
 #include "conversions.h"
 
 #ifdef __cplusplus
@@ -74,6 +74,6 @@
 #include "CartesianCoordinate.hpp"
 #include "FieldCoordinate.hpp"
 #include "Camera.hpp"
-#include "Robot.hpp"
+#include "CameraPivot.hpp"
 #include "NaoV5.hpp"
 #endif

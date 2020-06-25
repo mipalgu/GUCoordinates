@@ -1,8 +1,8 @@
 /*
- * Robot.hpp 
- * gucoordinates 
+ * camera_pivot.h 
+ * gunavigation 
  *
- * Created by Callum McColl on 20/06/2020.
+ * Created by Callum McColl on 19/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,60 +56,45 @@
  *
  */
 
-#ifndef ROBOT_HPP
-#define ROBOT_HPP
+#ifndef CAMERA_PIVOT_H
+#define CAMERA_PIVOT_H
 
-#include "robot.h"
-#include "Camera.hpp"
+#include "camera.h"
+#include <stdbool.h>
 
-#include <cstdlib>
-
-namespace GU {
-
-    struct Robot: public gu_robot {
-
-        Robot();
-        Robot(degrees_f, degrees_f, const gu_camera[GU_ROBOT_NUM_CAMERAS], const centimetres_f[GU_ROBOT_NUM_CAMERAS], int);
-        Robot(const Robot& other);
-        Robot(const gu_robot& other);
-#if __cplusplus >= 201103L
-        Robot(Robot&& other);
-#endif
-        ~Robot();
-        Robot& operator=(const Robot& other);
-        Robot& operator=(const gu_robot& other);
-#if __cplusplus >= 201103L
-        Robot& operator=(Robot&& other);
+#ifdef __cplusplus
+extern "C" {
 #endif
 
-        degrees_f headPitch() const;
-        void set_headPitch(const degrees_f);
+#ifndef GU_CAMERA_PIVOT_NUM_CAMERAS
+#define GU_CAMERA_PIVOT_NUM_CAMERAS 2
+#endif
 
-        degrees_f headYaw() const;
-        void set_headYaw(const degrees_f);
+#ifndef GU_NAO_V5_HEAD
+#define GU_NAO_V5_HEAD(p, y) (gu_camera_pivot) {.headPitch = p, .headYaw = y, .cameras = {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, .cameraHeightOffsets = {41.7f, 41.7f}, .numCameras = 2}
+#define GU_NAO_V5_TOP_CAMERA_INDEX 0
+#define GU_NAO_V5_BOTTOM_CAMERA_INDEX 1 
+#endif
 
-        const gu_camera * cameras() const;
-        void set_cameras(const gu_camera[GU_ROBOT_NUM_CAMERAS]);
+#ifndef GU_PEPPER_HEAD
+#define GU_PEPPER_HEAD(p, y) {p, y, {PEPPER_TOP_CAMERA, PEPPER_BOTTOM_CAMERA}, {0.0f, 0.0f}, 2}
+#endif
 
-        Camera camera(const int) const;
-        void set_camera(const int, const Camera);
+typedef struct gu_camera_pivot
+{
 
-        const centimetres_f * cameraHeightOffsets() const;
-        void set_cameraHeightOffsets(const centimetres_f[GU_ROBOT_NUM_CAMERAS]);
+    degrees_f headPitch;
+    degrees_f headYaw;
+    gu_camera cameras[GU_CAMERA_PIVOT_NUM_CAMERAS];
+    centimetres_f cameraHeightOffsets[GU_CAMERA_PIVOT_NUM_CAMERAS];
+    int numCameras;
 
-        centimetres_f cameraHeightOffset(const int) const;
-        void set_cameraHeightOffset(const int, const centimetres_f);
+} gu_camera_pivot;
 
-        int numCameras() const;
-        void set_numCameras(const int);
+bool gu_camera_pivot_equals(const gu_camera_pivot, const gu_camera_pivot, const float);
 
-        bool operator ==(const Robot &other) const;
-        bool operator !=(const Robot &other) const;
-        bool operator ==(const gu_robot &other) const;
-        bool operator !=(const gu_robot &other) const;
-
-    };
-
+#ifdef __cplusplus
 }
+#endif
 
-#endif  /* ROBOT_HPP */
+#endif  /* CAMERA_PIVOT_H */

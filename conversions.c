@@ -102,28 +102,28 @@ gu_pixel_coordinate pct_coord_to_px_coord(const gu_percent_coordinate coord, con
 }
 
 
-bool px_coord_to_rr_coord(const gu_pixel_coordinate coord, const gu_robot robot, gu_relative_coordinate * out, const int cameraOffset)
+bool px_coord_to_rr_coord(const gu_pixel_coordinate coord, const gu_camera_pivot camera_pivot, gu_relative_coordinate * out, const int cameraOffset)
 {
-    return pct_coord_to_rr_coord(px_coord_to_pct_coord(coord), robot, out, cameraOffset);
+    return pct_coord_to_rr_coord(px_coord_to_pct_coord(coord), camera_pivot, out, cameraOffset);
 }
 
-static centimetres_f calculate_camera_height(const gu_robot robot, const gu_camera camera, const centimetres_f cameraHeightOffset)
+static centimetres_f calculate_camera_height(const gu_camera_pivot camera_pivot, const gu_camera camera, const centimetres_f cameraHeightOffset)
 {
     const centimetres_f relativeHeightToCameraFromNeck = camera.height - cameraHeightOffset;
-    const float cosPitch = cosf(deg_f_to_rad_f(robot.headPitch));
-    const float sinPitch = sinf(deg_f_to_rad_f(robot.headPitch));
+    const float cosPitch = cosf(deg_f_to_rad_f(camera_pivot.headPitch));
+    const float sinPitch = sinf(deg_f_to_rad_f(camera_pivot.headPitch));
     return (camera.height - relativeHeightToCameraFromNeck * f_to_cm_f(1.0f - cosPitch)) - camera.centerOffset * f_to_cm_f(sinPitch); 
 }
 
-bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot robot, gu_relative_coordinate * out, const int cameraOffset)
+bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_camera_pivot camera_pivot, gu_relative_coordinate * out, const int cameraOffset)
 {
-    const gu_camera camera = robot.cameras[cameraOffset];
-    const degrees_f pitchToObject = robot.headPitch + camera.vDirection - f_to_deg_f(pct_f_to_f(coord.y)) * (camera.vFov / 2.0f);
+    const gu_camera camera = camera_pivot.cameras[cameraOffset];
+    const degrees_f pitchToObject = camera_pivot.headPitch + camera.vDirection - f_to_deg_f(pct_f_to_f(coord.y)) * (camera.vFov / 2.0f);
     if (pitchToObject >= 90.0f || pitchToObject <= 0.0f)
     {
         return false;
     }
-    const degrees_f yaw = robot.headYaw - f_to_deg_f(pct_f_to_f(coord.x)) * (camera.hFov / 2.0f);
+    const degrees_f yaw = camera_pivot.headYaw - f_to_deg_f(pct_f_to_f(coord.x)) * (camera.hFov / 2.0f);
     const radians_f pitchRad = deg_f_to_rad_f(pitchToObject);
     const radians_f yawRad = deg_f_to_rad_f(yaw);
     const float cosYaw = cosf(rad_f_to_f(yawRad));
@@ -132,17 +132,17 @@ bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_robot rob
     {
         return false;
     }
-    const centimetres_f actualCameraHeight = calculate_camera_height(robot, camera, robot.cameraHeightOffsets[cameraOffset]);
+    const centimetres_f actualCameraHeight = calculate_camera_height(camera_pivot, camera, camera_pivot.cameraHeightOffsets[cameraOffset]);
     const float distance = cm_f_to_f(actualCameraHeight) * tanf(((float) M_PI_2) - rad_f_to_f(pitchRad)) / cosYaw;
     out->distance = f_to_cm_u(fabsf(distance)) - cm_f_to_cm_u(camera.centerOffset);
     out->direction = deg_f_to_deg_t(yaw);
     return true;
 }
 
-bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_robot robot, const int cameraOffset, gu_percent_coordinate * out)
+bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset, gu_percent_coordinate * out)
 {
-    const gu_camera camera = robot.cameras[cameraOffset];
-    const degrees_f yaw = deg_t_to_deg_f(coord.direction) - robot.headYaw;
+    const gu_camera camera = camera_pivot.cameras[cameraOffset];
+    const degrees_f yaw = deg_t_to_deg_f(coord.direction) - camera_pivot.headYaw;
     const percent_f x = f_to_pct_f(deg_f_to_f(-yaw / (camera.hFov / 2.0f)));
     if (x < -1.0f || x > 1.0f)
     {
@@ -150,9 +150,9 @@ bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_robot ro
     }
     const radians_f yawRad = deg_t_to_rad_f(coord.direction);
     const float frontDistance = cm_u_to_f(coord.distance) * cosf(rad_f_to_f(yawRad)) + cm_f_to_f(camera.centerOffset);
-    const centimetres_f actualCameraHeight = calculate_camera_height(robot, camera, robot.cameraHeightOffsets[cameraOffset]);
+    const centimetres_f actualCameraHeight = calculate_camera_height(camera_pivot, camera, camera_pivot.cameraHeightOffsets[cameraOffset]);
     const degrees_f totalPitch = 90.0f - rad_f_to_deg_f(f_to_rad_f(atan2f(frontDistance, cm_f_to_f(actualCameraHeight))));
-    const degrees_f pitch = totalPitch - camera.vDirection - robot.headPitch;
+    const degrees_f pitch = totalPitch - camera.vDirection - camera_pivot.headPitch;
     const percent_f y = f_to_pct_f(deg_f_to_f(-pitch / (camera.vFov / 2.0f)));
     if (y < -1.0f || y > 1.0f)
     {
@@ -163,10 +163,10 @@ bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_robot ro
     return true;
 }
 
-bool rr_coord_to_px_coord(const gu_relative_coordinate coord, const gu_robot robot, const int cameraOffset, gu_pixel_coordinate * out, pixels_u res_width, pixels_u res_height)
+bool rr_coord_to_px_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset, gu_pixel_coordinate * out, pixels_u res_width, pixels_u res_height)
 {
     gu_percent_coordinate temp;
-    if (!rr_coord_to_pct_coord(coord, robot, cameraOffset, &temp))
+    if (!rr_coord_to_pct_coord(coord, camera_pivot, cameraOffset, &temp))
     {
         return false;
     }

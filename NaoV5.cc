@@ -59,7 +59,6 @@
 #include "NaoV5.hpp"
 
 #include <guunits/guunits.h>
-#include "robot.h"
 
 GU::NaoV5::NaoV5() {
     set_headPitch(0.0f);
@@ -144,9 +143,9 @@ void GU::NaoV5::set_headYaw(const degrees_f newValue)
     _headYaw = newValue;
 }
 
-GU::Robot GU::NaoV5::toRobot() const
+GU::CameraPivot GU::NaoV5::toCameraPivot() const
 {
-    return GU_NAO_V5_ROBOT(_headPitch, _headYaw);
+    return GU_NAO_V5_HEAD(_headPitch, _headYaw);
 }
 
 

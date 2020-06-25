@@ -159,15 +159,15 @@ GU::PercentCoordinate GU::PixelCoordinate::percentCoordinate() const
     return px_coord_to_pct_coord(*this);
 }
 
-bool GU::PixelCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset, GU::RelativeCoordinate & other) const
+bool GU::PixelCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset, GU::RelativeCoordinate & other) const
 {
-    return percentCoordinate().relativeCoordinate(robot, cameraOffset, other);
+    return percentCoordinate().relativeCoordinate(cameraPivot, cameraOffset, other);
 }
 
 #if __cplusplus >= 201703L
-std::optional<GU::RelativeCoordinate> GU::PixelCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset) const
+std::optional<GU::RelativeCoordinate> GU::PixelCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    return percentCoordinate().relativeCoordinate(robot, cameraOffset);
+    return percentCoordinate().relativeCoordinate(cameraPivot, cameraOffset);
 }
 #endif
 

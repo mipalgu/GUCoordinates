@@ -1,5 +1,5 @@
 /*
- * Robot.cc 
+ * CameraPivot.cc 
  * gucoordinates 
  *
  * Created by Callum McColl on 20/06/2020.
@@ -56,14 +56,14 @@
  *
  */
 
-#include "Robot.hpp"
+#include "CameraPivot.hpp"
 #include "conversions.h"
 
 #include <string.h>
 
-GU::Robot::Robot() {}
+GU::CameraPivot::CameraPivot() {}
 
-GU::Robot::Robot(degrees_f t_headPitch, degrees_f t_headYaw, const gu_camera t_cameras[GU_ROBOT_NUM_CAMERAS], const centimetres_f t_cameraHeightOffsets[GU_ROBOT_NUM_CAMERAS], int t_numCameras)
+GU::CameraPivot::CameraPivot(degrees_f t_headPitch, degrees_f t_headYaw, const gu_camera t_cameras[GU_CAMERA_PIVOT_NUM_CAMERAS], const centimetres_f t_cameraHeightOffsets[GU_CAMERA_PIVOT_NUM_CAMERAS], int t_numCameras)
 {
     set_headPitch(t_headPitch);
     set_headYaw(t_headYaw);
@@ -72,7 +72,7 @@ GU::Robot::Robot(degrees_f t_headPitch, degrees_f t_headYaw, const gu_camera t_c
     set_numCameras(t_numCameras);
 }
 
-GU::Robot::Robot(const Robot& other)
+GU::CameraPivot::CameraPivot(const CameraPivot& other)
 {
     set_headPitch(other.headPitch());
     set_headYaw(other.headYaw());
@@ -81,7 +81,7 @@ GU::Robot::Robot(const Robot& other)
     set_numCameras(other.numCameras());
 } 
 
-GU::Robot::Robot(const gu_robot& other)
+GU::CameraPivot::CameraPivot(const gu_camera_pivot& other)
 {
     set_headPitch(other.headPitch);
     set_headYaw(other.headYaw);
@@ -91,7 +91,7 @@ GU::Robot::Robot(const gu_robot& other)
 }
 
 #if __cplusplus >= 201103L
-GU::Robot::Robot(Robot&& other)
+GU::CameraPivot::CameraPivot(CameraPivot&& other)
 {
     set_headPitch(other.headPitch());
     set_headYaw(other.headYaw());
@@ -100,17 +100,17 @@ GU::Robot::Robot(Robot&& other)
     set_numCameras(other.numCameras());
     other.set_headPitch(0.0f);
     other.set_headYaw(0.0f);
-    static const gu_camera newCameras[GU_ROBOT_NUM_CAMERAS] = {};
-    static const centimetres_f newCameraHeightOffsets[GU_ROBOT_NUM_CAMERAS] = {};
+    static const gu_camera newCameras[GU_CAMERA_PIVOT_NUM_CAMERAS] = {};
+    static const centimetres_f newCameraHeightOffsets[GU_CAMERA_PIVOT_NUM_CAMERAS] = {};
     other.set_cameras(newCameras);
     other.set_cameraHeightOffsets(newCameraHeightOffsets);
     other.set_numCameras(0);
 }
 #endif
 
-GU::Robot::~Robot() {}
+GU::CameraPivot::~CameraPivot() {}
 
-GU::Robot& GU::Robot::operator=(const Robot& other)
+GU::CameraPivot& GU::CameraPivot::operator=(const CameraPivot& other)
 {
     if (&other == this)
     {
@@ -124,7 +124,7 @@ GU::Robot& GU::Robot::operator=(const Robot& other)
     return *this;
 }
 
-GU::Robot& GU::Robot::operator=(const gu_robot& other)
+GU::CameraPivot& GU::CameraPivot::operator=(const gu_camera_pivot& other)
 {
     if (&other == this)
     {
@@ -139,7 +139,7 @@ GU::Robot& GU::Robot::operator=(const gu_robot& other)
 }
 
 #if __cplusplus >= 201103L
-GU::Robot& GU::Robot::operator=(Robot&& other)
+GU::CameraPivot& GU::CameraPivot::operator=(CameraPivot&& other)
 {
     if (&other == this) {
         return *this;
@@ -151,8 +151,8 @@ GU::Robot& GU::Robot::operator=(Robot&& other)
     set_numCameras(other.numCameras());
     other.set_headPitch(0.0f);
     other.set_headYaw(0.0f);
-    static const gu_camera newCameras[GU_ROBOT_NUM_CAMERAS] = {};
-    static const centimetres_f newCameraHeightOffsets[GU_ROBOT_NUM_CAMERAS] = {};
+    static const gu_camera newCameras[GU_CAMERA_PIVOT_NUM_CAMERAS] = {};
+    static const centimetres_f newCameraHeightOffsets[GU_CAMERA_PIVOT_NUM_CAMERAS] = {};
     other.set_cameras(newCameras);
     other.set_cameraHeightOffsets(newCameraHeightOffsets);
     other.set_numCameras(0);
@@ -160,92 +160,92 @@ GU::Robot& GU::Robot::operator=(Robot&& other)
 }
 #endif
 
-degrees_f GU::Robot::headPitch() const
+degrees_f GU::CameraPivot::headPitch() const
 {
-    return gu_robot::headPitch;
+    return gu_camera_pivot::headPitch;
 }
 
-void GU::Robot::set_headPitch(const degrees_f newValue)
+void GU::CameraPivot::set_headPitch(const degrees_f newValue)
 {
-    gu_robot::headPitch = newValue;
+    gu_camera_pivot::headPitch = newValue;
 }
 
-degrees_f GU::Robot::headYaw() const
+degrees_f GU::CameraPivot::headYaw() const
 {
-    return gu_robot::headYaw;
+    return gu_camera_pivot::headYaw;
 }
 
-void GU::Robot::set_headYaw(const degrees_f newValue)
+void GU::CameraPivot::set_headYaw(const degrees_f newValue)
 {
-    gu_robot::headYaw = newValue;
+    gu_camera_pivot::headYaw = newValue;
 }
 
-const gu_camera * GU::Robot::cameras() const
+const gu_camera * GU::CameraPivot::cameras() const
 {
-    return &gu_robot::cameras[0];
+    return &gu_camera_pivot::cameras[0];
 }
 
-void GU::Robot::set_cameras(const gu_camera newValue[GU_ROBOT_NUM_CAMERAS])
+void GU::CameraPivot::set_cameras(const gu_camera newValue[GU_CAMERA_PIVOT_NUM_CAMERAS])
 {
-    memcpy(gu_robot::cameras, newValue, GU_ROBOT_NUM_CAMERAS * sizeof(gu_camera));
+    memcpy(gu_camera_pivot::cameras, newValue, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(gu_camera));
 }
 
-GU::Camera GU::Robot::camera(const int index) const
+GU::Camera GU::CameraPivot::camera(const int index) const
 {
-    return gu_robot::cameras[index];
+    return gu_camera_pivot::cameras[index];
 }
 
-void GU::Robot::set_camera(const int index, const GU::Camera newValue)
+void GU::CameraPivot::set_camera(const int index, const GU::Camera newValue)
 {
-    gu_robot::cameras[index] = newValue;
+    gu_camera_pivot::cameras[index] = newValue;
 }
 
-const centimetres_f * GU::Robot::cameraHeightOffsets() const
+const centimetres_f * GU::CameraPivot::cameraHeightOffsets() const
 {
-    return gu_robot::cameraHeightOffsets;
+    return gu_camera_pivot::cameraHeightOffsets;
 }
 
-void GU::Robot::set_cameraHeightOffsets(const centimetres_f newValue[GU_ROBOT_NUM_CAMERAS])
+void GU::CameraPivot::set_cameraHeightOffsets(const centimetres_f newValue[GU_CAMERA_PIVOT_NUM_CAMERAS])
 {
-    memcpy(gu_robot::cameraHeightOffsets, newValue, GU_ROBOT_NUM_CAMERAS * sizeof(centimetres_f));
+    memcpy(gu_camera_pivot::cameraHeightOffsets, newValue, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(centimetres_f));
 }
 
-centimetres_f GU::Robot::cameraHeightOffset(const int index) const
+centimetres_f GU::CameraPivot::cameraHeightOffset(const int index) const
 {
-    return gu_robot::cameraHeightOffsets[index];
+    return gu_camera_pivot::cameraHeightOffsets[index];
 }
 
-void GU::Robot::set_cameraHeightOffset(const int index, const centimetres_f newValue)
+void GU::CameraPivot::set_cameraHeightOffset(const int index, const centimetres_f newValue)
 {
-    gu_robot::cameraHeightOffsets[index] = newValue;
+    gu_camera_pivot::cameraHeightOffsets[index] = newValue;
 }
 
-int GU::Robot::numCameras() const
+int GU::CameraPivot::numCameras() const
 {
-    return gu_robot::numCameras;
+    return gu_camera_pivot::numCameras;
 }
 
-void GU::Robot::set_numCameras(const int newValue)
+void GU::CameraPivot::set_numCameras(const int newValue)
 {
-    gu_robot::numCameras = newValue;
+    gu_camera_pivot::numCameras = newValue;
 }
 
-bool GU::Robot::operator==(const Robot &other) const
+bool GU::CameraPivot::operator==(const CameraPivot &other) const
 {
-    return gu_robot_equals(*this, other, 0.0001f);
+    return gu_camera_pivot_equals(*this, other, 0.0001f);
 }
 
-bool GU::Robot::operator!=(const Robot &other) const
+bool GU::CameraPivot::operator!=(const CameraPivot &other) const
 {
     return !(*this == other);
 }
 
-bool GU::Robot::operator==(const gu_robot &other) const
+bool GU::CameraPivot::operator==(const gu_camera_pivot &other) const
 {
-    return gu_robot_equals(*this, other, 0.0001f);
+    return gu_camera_pivot_equals(*this, other, 0.0001f);
 }
 
-bool GU::Robot::operator!=(const gu_robot &other) const
+bool GU::CameraPivot::operator!=(const gu_camera_pivot &other) const
 {
     return !(*this == other);
 }

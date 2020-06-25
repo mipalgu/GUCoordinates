@@ -1,8 +1,8 @@
 /*
- * robot.c 
- * gunavigation 
+ * camera_pivot_tests.cc 
+ * tests 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 18/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,29 +56,18 @@
  *
  */
 
-#include "robot.h"
+#include "gucoordinates_tests.hpp"
 
-#include <stdbool.h>
-#include <math.h>
+namespace CGTEST {
+    
+    class RobotTests: public GUCoordinatesTests {};
 
-bool gu_robot_equals(const gu_robot lhs, const gu_robot rhs, const float tolerance)
-{
-    const bool headEqual = fabsf(deg_f_to_f(lhs.headPitch) - deg_f_to_f(rhs.headPitch)) <= tolerance
-        && fabsf(deg_f_to_f(lhs.headYaw) - deg_f_to_f(rhs.headYaw)) <= tolerance;
-    if (!headEqual || lhs.numCameras != rhs.numCameras)
-    {
-        return false;
+    TEST_F(RobotTests, Equality) {
+        const gu_camera_pivot nao = GU_NAO_V5_HEAD(0.0f, 0.0f);
+        const gu_camera_pivot pepper = GU_PEPPER_HEAD(0.0f, 0.0f);
+        ASSERT_TRUE(gu_camera_pivot_equals(nao, nao, 0.0001f));
+        ASSERT_TRUE(gu_camera_pivot_equals(pepper, pepper, 0.0001f));
+        ASSERT_FALSE(gu_camera_pivot_equals(nao, pepper, 0.0001f));
     }
-    for (int i = 0; i < lhs.numCameras; i++)
-    {
-        if (!gu_camera_equals(lhs.cameras[i], rhs.cameras[i], tolerance))
-        {
-            return false;
-        }
-        if (fabsf(cm_f_to_f(lhs.cameraHeightOffsets[i]) - cm_f_to_f(rhs.cameraHeightOffsets[i])) > tolerance)
-        {
-            return false;
-        }
-    }
-    return true;
-}
+
+}  // namespace

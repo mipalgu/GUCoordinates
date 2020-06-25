@@ -70,21 +70,21 @@ extern const gu_relative_coordinate pct_coord_to_rr_coord_custom_fake_result;
 extern const gu_percent_coordinate rr_coord_to_pct_coord_custom_fake_result;
 extern const gu_pixel_coordinate rr_coord_to_px_coord_custom_fake_result;
 
-bool px_coord_to_rr_coord_custom_fake_true(const gu_pixel_coordinate, const gu_robot, gu_relative_coordinate *, const int);
+bool px_coord_to_rr_coord_custom_fake_true(const gu_pixel_coordinate, const gu_camera_pivot, gu_relative_coordinate *, const int);
 
-bool px_coord_to_rr_coord_custom_fake_false(const gu_pixel_coordinate, const gu_robot, gu_relative_coordinate *, const int);
+bool px_coord_to_rr_coord_custom_fake_false(const gu_pixel_coordinate, const gu_camera_pivot, gu_relative_coordinate *, const int);
 
-bool pct_coord_to_rr_coord_custom_fake_true(const gu_percent_coordinate, const gu_robot, gu_relative_coordinate * out, const int);
+bool pct_coord_to_rr_coord_custom_fake_true(const gu_percent_coordinate, const gu_camera_pivot, gu_relative_coordinate * out, const int);
 
-bool pct_coord_to_rr_coord_custom_fake_false(const gu_percent_coordinate, const gu_robot, gu_relative_coordinate *, const int);
+bool pct_coord_to_rr_coord_custom_fake_false(const gu_percent_coordinate, const gu_camera_pivot, gu_relative_coordinate *, const int);
 
-bool rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate, const gu_robot, const int, gu_percent_coordinate *);
+bool rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate, const gu_camera_pivot, const int, gu_percent_coordinate *);
 
-bool rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate, const gu_robot, const int, gu_percent_coordinate *);
+bool rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate, const gu_camera_pivot, const int, gu_percent_coordinate *);
 
-bool rr_coord_to_px_coord_custom_fake_true(const gu_relative_coordinate, const gu_robot, const int, gu_pixel_coordinate *, pixels_u, pixels_u);
+bool rr_coord_to_px_coord_custom_fake_true(const gu_relative_coordinate, const gu_camera_pivot, const int, gu_pixel_coordinate *, pixels_u, pixels_u);
 
-bool rr_coord_to_px_coord_custom_fake_false(const gu_relative_coordinate, const gu_robot, const int, gu_pixel_coordinate *, pixels_u, pixels_u);
+bool rr_coord_to_px_coord_custom_fake_false(const gu_relative_coordinate, const gu_camera_pivot, const int, gu_pixel_coordinate *, pixels_u, pixels_u);
 
 #ifdef __cplusplus
 }

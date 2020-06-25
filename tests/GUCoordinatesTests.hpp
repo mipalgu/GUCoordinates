@@ -124,14 +124,14 @@ namespace CGTEST {
 
         protected:
 
-            GU::Robot nao;
+            GU::CameraPivot nao;
             GU::Camera topCamera;
             GU::Camera bottomCamera;
 
             virtual void SetUp() {
                 ALL_FAKES(RESET_FAKE);
                 FFF_RESET_HISTORY();
-                nao = GU_NAO_V5_ROBOT(0.0f, 0.0f);
+                nao = GU_NAO_V5_HEAD(0.0f, 0.0f);
                 topCamera = GU_NAO_V5_TOP_CAMERA;
                 bottomCamera = GU_NAO_V5_BOTTOM_CAMERA;
             }
@@ -314,7 +314,7 @@ namespace CGTEST {
                     );
             }
 
-            void equals(const GU::Robot lhs, const GU::Robot rhs)
+            void equals(const GU::CameraPivot lhs, const GU::CameraPivot rhs)
             {
                 ASSERT_TRUE(near(lhs.headPitch(), rhs.headPitch()));
                 ASSERT_TRUE(near(lhs.headYaw(), rhs.headYaw()));
@@ -332,7 +332,7 @@ namespace CGTEST {
                 }
             }
 
-            void nequals(const GU::Robot lhs, const GU::Robot rhs)
+            void nequals(const GU::CameraPivot lhs, const GU::CameraPivot rhs)
             {
                 if (!(near(lhs.headPitch(), rhs.headPitch())
                         && near(lhs.headYaw(), rhs.headYaw())

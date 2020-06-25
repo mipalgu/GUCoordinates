@@ -128,9 +128,9 @@ namespace CGTEST {
 
     TEST_F(ConversionsTests, ConvertsFromPixelToRelativeCoordinate) {
         const gu_pixel_coordinate centrePoint = { 0, 0, 1920, 1080 };
-        const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 0.0f);
+        const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(5.0f, 0.0f);
         gu_relative_coordinate coord;
-        ASSERT_TRUE(px_coord_to_rr_coord(centrePoint, robot, &coord, 0));
+        ASSERT_TRUE(px_coord_to_rr_coord(centrePoint, camera_pivot, &coord, 0));
         ASSERT_EQ(coord.distance, 430);
         ASSERT_EQ(coord.direction, 0);
         //std::cout << coord.distance() << ", " << coord.direction() << std::endl;
@@ -138,45 +138,45 @@ namespace CGTEST {
 
     TEST_F(ConversionsTests, ConvertsFromPercentToRelativeCoordinate) {
         const gu_percent_coordinate centrePoint = { 0.0f, 0.0f};
-        const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 0.0f);
+        const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(5.0f, 0.0f);
         gu_relative_coordinate coord;
-        ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, robot, &coord, 0));
+        ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, camera_pivot, &coord, 0));
         ASSERT_EQ(coord.distance, 432);
         ASSERT_EQ(coord.direction, 0);
     }
 
     TEST_F(ConversionsTests, ConvertsFromPercentToRelativeCoordinate3) {
         const gu_percent_coordinate centrePoint = {0.0f, 0.5f};
-        const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 0.0f);
+        const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(15.0f, 0.0f);
         gu_relative_coordinate coord;
-        ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, robot, &coord, 0));
+        ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, camera_pivot, &coord, 0));
         ASSERT_EQ(coord.distance, 612);
         ASSERT_EQ(coord.direction, 0);
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercent) {
         const gu_relative_coordinate coord = { 0, 430 };
-        const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 0.0f);
+        const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(5.0f, 0.0f);
         gu_percent_coordinate output;
-        ASSERT_TRUE(rr_coord_to_pct_coord(coord, robot, 0, &output));
+        ASSERT_TRUE(rr_coord_to_pct_coord(coord, camera_pivot, 0, &output));
         ASSERT_TRUE(fabsf(output.x - 0.0f) < 0.01f);
         ASSERT_TRUE(fabsf(output.y - 0.0f) < 0.01f);
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercent2) {
         const gu_relative_coordinate coord = { 0, 153 };
-        const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 0.0f);
+        const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(15.0f, 0.0f);
         gu_percent_coordinate output;
-        ASSERT_TRUE(rr_coord_to_pct_coord(coord, robot, 0, &output));
+        ASSERT_TRUE(rr_coord_to_pct_coord(coord, camera_pivot, 0, &output));
         ASSERT_LT(fabsf(output.x - 0.0f), 0.01f);
         ASSERT_LT(fabsf(output.y - 0.0f), 0.01f);
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercent3) {
         const gu_relative_coordinate coord = { 0, 629};
-        const gu_robot robot = GU_NAO_V5_ROBOT(15.0f, 0.0f);
+        const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(15.0f, 0.0f);
         gu_percent_coordinate output;
-        ASSERT_TRUE(rr_coord_to_pct_coord(coord, robot, 0, &output));
+        ASSERT_TRUE(rr_coord_to_pct_coord(coord, camera_pivot, 0, &output));
         ASSERT_LT(fabsf(output.x - 0.0f), 0.01f);
         ASSERT_LT(fabsf(output.y - 0.5f), 0.01f);
     }
@@ -187,11 +187,11 @@ namespace CGTEST {
         const pixels_u res_width = 1920;
         const pixels_u res_height = 1080;
         const gu_pixel_coordinate point = { x, y, res_width, res_height };
-        const gu_robot robot = GU_NAO_V5_ROBOT(5.0f, 45.0f);
+        const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(5.0f, 45.0f);
         gu_relative_coordinate coord;
-        ASSERT_TRUE(px_coord_to_rr_coord(point, robot, &coord, 0));
+        ASSERT_TRUE(px_coord_to_rr_coord(point, camera_pivot, &coord, 0));
         gu_pixel_coordinate output;
-        ASSERT_TRUE(rr_coord_to_px_coord(coord, robot, 0, &output, res_width, res_height));
+        ASSERT_TRUE(rr_coord_to_px_coord(coord, camera_pivot, 0, &output, res_width, res_height));
         ASSERT_LE(abs(output.x - x), px_u_to_px_t(res_width) / 200); // Within 0.5 percent.
         ASSERT_LE(abs(output.y - y), px_u_to_px_t(res_height) / 200); // Within 0.5 percent.
     }
