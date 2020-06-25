@@ -343,4 +343,13 @@ namespace CGTEST {
         ASSERT_EQ(result2.y, 450);
     }
 
+    TEST_F(ConversionsTests, ConvertsToRelativeFromFieldToTarget)
+    {
+        const gu_field_coordinate source = { {-90, 120}, 70 };
+        const gu_cartesian_coordinate coord1 = {0, 450};
+        const gu_relative_coordinate result1 = field_coord_to_rr_coord_to_target(source, coord1);
+        ASSERT_EQ(result1.direction, 5);
+        ASSERT_EQ(result1.distance, 342);
+    }
+
 }  // namespace
