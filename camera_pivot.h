@@ -77,7 +77,7 @@ extern "C" {
 #endif
 
 #ifndef GU_PEPPER_HEAD
-#define GU_PEPPER_HEAD(p, y) {p, y, {PEPPER_TOP_CAMERA, PEPPER_BOTTOM_CAMERA}, {0.0f, 0.0f}, 2}
+#define GU_PEPPER_HEAD(p, y) {p, y, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, {0.0f, 0.0f}, 2}
 #endif
 
 typedef struct gu_camera_pivot
