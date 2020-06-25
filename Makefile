@@ -99,19 +99,15 @@ robot-local:
 upload-robot:
 	$Ebmake upload-robot IGNORE_TESTS=yes
 
-test: clean ctest cpptest
+test: ctest cpptest
 
 coverage-test:
 	$Ebmake test COVERAGE=yes
 
-.ifdef COVERAGE
 build-lib: clean
-.else
-build-lib:
-.endif
 	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
 
-run-cpp-test: build-lib
+run-cpp-test:
 .ifndef TARGET
 	${SAY} "Testing C++ Implementation with C++${STD} Standard."
 	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=${STD} EXTRA_WFLAGS="${CPP${STD}_EXTRA_WFLAGS}" BUILDDIR=build.host-${STD} LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host-${STD}/tests
