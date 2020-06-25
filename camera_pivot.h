@@ -70,16 +70,6 @@ extern "C" {
 #define GU_CAMERA_PIVOT_NUM_CAMERAS 2
 #endif
 
-#ifndef GU_NAO_V5_HEAD
-#define GU_NAO_V5_HEAD(p, y) (gu_camera_pivot) {.headPitch = p, .headYaw = y, .cameras = {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, .cameraHeightOffsets = {41.7f, 41.7f}, .numCameras = 2}
-#define GU_NAO_V5_TOP_CAMERA_INDEX 0
-#define GU_NAO_V5_BOTTOM_CAMERA_INDEX 1 
-#endif
-
-#ifndef GU_PEPPER_HEAD
-#define GU_PEPPER_HEAD(p, y) {p, y, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, {0.0f, 0.0f}, 2}
-#endif
-
 typedef struct gu_camera_pivot
 {
 
