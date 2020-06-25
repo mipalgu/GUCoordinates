@@ -329,4 +329,18 @@ namespace CGTEST {
         ASSERT_EQ(result2.distance, 342);
     }
 
+    TEST_F(ConversionsTests, ConvertsToFieldFromRelativeFromField)
+    {
+        const gu_field_coordinate source = { {-90, 120}, 70 };
+        const gu_relative_coordinate coord1 = {2, 26};
+        const gu_cartesian_coordinate result1 = rr_coord_to_cartesian_coord_from_field(coord1, source);
+        ASSERT_EQ(result1.x, -82);
+        ASSERT_EQ(result1.y, 145);
+
+        const gu_relative_coordinate coord2 = {5, 342};
+        const gu_cartesian_coordinate result2 = rr_coord_to_cartesian_coord_from_field(coord2, source);
+        ASSERT_EQ(result2.x, -1);
+        ASSERT_EQ(result2.y, 450);
+    }
+
 }  // namespace

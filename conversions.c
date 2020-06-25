@@ -196,6 +196,12 @@ gu_cartesian_coordinate rr_coord_to_cartesian_coord_from_source(const gu_relativ
     return temp;
 }
 
+gu_cartesian_coordinate rr_coord_to_cartesian_coord_from_field(const gu_relative_coordinate coord, const gu_field_coordinate source)
+{
+    const gu_relative_coordinate offset = { coord.direction + source.heading, coord.distance };
+    return rr_coord_to_cartesian_coord_from_source(offset, source.position);
+}
+
 gu_field_coordinate rr_coord_to_field_coord(const gu_relative_coordinate coord, const degrees_t heading)
 {
     const gu_cartesian_coordinate temp = rr_coord_to_cartesian_coord(coord);
@@ -209,9 +215,8 @@ gu_field_coordinate rr_coord_to_field_coord_from_source(const gu_relative_coordi
 {
     gu_relative_coordinate temp = coord;
     temp.direction = source.heading + temp.direction;
-    gu_field_coordinate out = rr_coord_to_field_coord(temp, heading);
-    out.position.x = source.position.x + out.position.x;
-    out.position.y = source.position.y + out.position.y;
+    const gu_cartesian_coordinate position = rr_coord_to_cartesian_coord_from_source(temp, source.position);
+    const gu_field_coordinate out = { .position = position, .heading = heading };
     return out;
 }
 

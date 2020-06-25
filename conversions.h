@@ -89,6 +89,7 @@ bool rr_coord_to_px_coord(const gu_relative_coordinate, const gu_camera_pivot, c
 // Converting from the robot relative coordinate system to the field coordinate systems.
 gu_cartesian_coordinate rr_coord_to_cartesian_coord(const gu_relative_coordinate) __attribute__((const));
 gu_cartesian_coordinate rr_coord_to_cartesian_coord_from_source(const gu_relative_coordinate, const gu_cartesian_coordinate) __attribute__((const));
+gu_cartesian_coordinate rr_coord_to_cartesian_coord_from_field(const gu_relative_coordinate, const gu_field_coordinate) __attribute__((const));
 gu_field_coordinate rr_coord_to_field_coord(const gu_relative_coordinate, const degrees_t) __attribute__((const));
 gu_field_coordinate rr_coord_to_field_coord_from_source(const gu_relative_coordinate, const gu_field_coordinate, const degrees_t) __attribute__((const));
 
