@@ -301,4 +301,32 @@ namespace CGTEST {
         ASSERT_EQ(result12.distance, 1);
     }
 
+    TEST_F(ConversionsTests, ConvertsFromRelativeToCartesianFromSource)
+    {
+        const gu_cartesian_coordinate source = {-90, 120};
+        const gu_relative_coordinate coord1 = {2, 26};
+        const gu_cartesian_coordinate result1 = rr_coord_to_cartesian_coord_from_source(coord1, source);
+        ASSERT_EQ(result1.x, -64);
+        ASSERT_EQ(result1.y, 121);
+
+        const gu_relative_coordinate coord2 = {5, 342};
+        const gu_cartesian_coordinate result2 = rr_coord_to_cartesian_coord_from_source(coord2, source);
+        ASSERT_EQ(result2.x, 251);
+        ASSERT_EQ(result2.y, 150);
+    }
+
+    TEST_F(ConversionsTests, ConvertesFromCartesianToRelativeFromSource)
+    {
+        const gu_cartesian_coordinate source = {-90, 120};
+        const gu_cartesian_coordinate coord1 = {-64, 121};
+        const gu_relative_coordinate result1 = cartesian_coord_to_rr_coord_from_source(source, coord1);
+        ASSERT_EQ(result1.direction, 2);
+        ASSERT_EQ(result1.distance, 26);
+
+        const gu_cartesian_coordinate coord2 = {251, 150};
+        const gu_relative_coordinate result2 = cartesian_coord_to_rr_coord_from_source(source, coord2);
+        ASSERT_EQ(result2.direction, 5);
+        ASSERT_EQ(result2.distance, 342);
+    }
+
 }  // namespace
