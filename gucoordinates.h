@@ -75,5 +75,4 @@
 #include "FieldCoordinate.hpp"
 #include "Camera.hpp"
 #include "CameraPivot.hpp"
-#include "NaoV5.hpp"
 #endif
