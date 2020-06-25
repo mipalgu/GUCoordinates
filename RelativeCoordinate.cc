@@ -174,7 +174,7 @@ std::optional<GU::PercentCoordinate> GU::RelativeCoordinate::percentCoordinate(c
     GU::PercentCoordinate temp;
     const bool result = percentCoordinate(robot, cameraOffset, temp);
     if (result) {
-        return std::move(temp);
+        return std::optional<GU::PercentCoordinate>(temp);
     }
     return std::nullopt;
 }
