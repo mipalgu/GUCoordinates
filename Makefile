@@ -29,7 +29,6 @@ CC_SRCS!=ls *.cc
 ALL_HDRS!=ls *.h *.hpp
 SPECIFIC_LIBS+=-lm
 SPECIFIC_LIBS+=-lguunits
-SPECIFIC_LIBS+=-lgusimplewhiteboard
 LOCAL=_LOCAL
 
 ${MODULE_BASE}_HDRS=${ALL_HDRS}
