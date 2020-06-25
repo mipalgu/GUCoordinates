@@ -70,7 +70,12 @@ extern "C" {
 typedef struct gu_camera
 {
     /**
-     * The height from the ground to the middle of the camera.
+     * The height from the pivot of the camera to the middle of the camera.
+     *
+     * If there is no pivot then this is the height to the ground. If it is
+     * a camera on a stick then it's the length of the stick. If it's a camera
+     * on the head of the robot then its the length from the neck to the
+     * camera.
      */
     centimetres_f height;
 

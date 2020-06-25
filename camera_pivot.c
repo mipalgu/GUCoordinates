@@ -63,8 +63,8 @@
 
 bool gu_camera_pivot_equals(const gu_camera_pivot lhs, const gu_camera_pivot rhs, const float tolerance)
 {
-    const bool headEqual = fabsf(deg_f_to_f(lhs.headPitch) - deg_f_to_f(rhs.headPitch)) <= tolerance
-        && fabsf(deg_f_to_f(lhs.headYaw) - deg_f_to_f(rhs.headYaw)) <= tolerance;
+    const bool headEqual = fabsf(deg_f_to_f(lhs.pitch) - deg_f_to_f(rhs.pitch)) <= tolerance
+        && fabsf(deg_f_to_f(lhs.yaw) - deg_f_to_f(rhs.yaw)) <= tolerance;
     if (!headEqual || lhs.numCameras != rhs.numCameras)
     {
         return false;

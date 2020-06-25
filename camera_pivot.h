@@ -73,8 +73,8 @@ extern "C" {
 typedef struct gu_camera_pivot
 {
 
-    degrees_f headPitch;
-    degrees_f headYaw;
+    degrees_f pitch;
+    degrees_f yaw;
     gu_camera cameras[GU_CAMERA_PIVOT_NUM_CAMERAS];
     centimetres_f cameraHeightOffsets[GU_CAMERA_PIVOT_NUM_CAMERAS];
     int numCameras;

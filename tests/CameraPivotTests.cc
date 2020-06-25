@@ -83,8 +83,8 @@ namespace CGTEST {
                 cameras[i].hFov = 0.0f;
                 offsets[i] = 0.0f;
             }
-            empty_strct.headPitch = 0.0f;
-            empty_strct.headYaw = 0.0f;
+            empty_strct.pitch = 0.0f;
+            empty_strct.yaw = 0.0f;
             memcpy(empty_strct.cameras, cameras, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(gu_camera));
             memcpy(empty_strct.cameraHeightOffsets, offsets, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(centimetres_f));
             empty_strct.numCameras = 0;
@@ -102,13 +102,13 @@ namespace CGTEST {
 
         void change(GU::CameraPivot & obj)
         {
-            obj.set_headPitch(1.0f);
+            obj.set_pitch(1.0f);
         }
 
         void cchange(gu_camera_pivot & obj)
         {
-            obj.headPitch = 1.0f; \
-            obj.headYaw = 2.0f; \
+            obj.pitch = 1.0f; \
+            obj.yaw = 2.0f; \
             memcpy(obj.cameras, cameras, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(gu_camera)); \
             memcpy(obj.cameraHeightOffsets, offsets, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(centimetres_f)); \
             obj.numCameras = 2;
@@ -126,12 +126,12 @@ namespace CGTEST {
     TEST_F(CameraPivotCPPTests, GettersSetters) {
         gu_camera_pivot nao_c = GU_NAO_V5_HEAD(0.0f, 0.0f);
         GU::CameraPivot nao = nao_c;
-        ASSERT_EQ(nao.headPitch(), 0.0f);
-        nao.set_headPitch(5.0f);
-        ASSERT_EQ(nao.headPitch(), 5.0f);
-        ASSERT_EQ(nao.headYaw(), 0.0f);
-        nao.set_headYaw(6.0f);
-        ASSERT_EQ(nao.headYaw(), 6.0f);
+        ASSERT_EQ(nao.pitch(), 0.0f);
+        nao.set_pitch(5.0f);
+        ASSERT_EQ(nao.pitch(), 5.0f);
+        ASSERT_EQ(nao.yaw(), 0.0f);
+        nao.set_yaw(6.0f);
+        ASSERT_EQ(nao.yaw(), 6.0f);
         equals(nao.camera(0), nao_c.cameras[0]);
         nao.set_camera(0, nao_c.cameras[1]);
         equals(nao.camera(1), nao_c.cameras[1]);

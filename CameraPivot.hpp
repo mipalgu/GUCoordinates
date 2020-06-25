@@ -82,11 +82,11 @@ namespace GU {
         CameraPivot& operator=(CameraPivot&& other);
 #endif
 
-        degrees_f headPitch() const;
-        void set_headPitch(const degrees_f);
+        degrees_f pitch() const;
+        void set_pitch(const degrees_f);
 
-        degrees_f headYaw() const;
-        void set_headYaw(const degrees_f);
+        degrees_f yaw() const;
+        void set_yaw(const degrees_f);
 
         const gu_camera * cameras() const;
         void set_cameras(const gu_camera[GU_CAMERA_PIVOT_NUM_CAMERAS]);
