@@ -38,16 +38,21 @@ CPP11_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-e
 CPP14_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-extra-semi
 CPP17_EXTRA_WFLAGS=-Wno-c++98-compat -Wno-c++98-compat-pedantic -Wc++98-compat-extra-semi
 
-.ifdef TESTING
+all:	all-real
+
+.ifndef COVERAGE
+generate-coverage-report:
+	${MAKE} generate-coverage-report COVERAGE=yes
+
+c-coverage:
+	${MAKE} c-coverage COVERAGE=yes
+.else
 CODE_COVERAGE=yes
 SPECIFIC_CPPFLAGS+=-fprofile-arcs -ftest-coverage
 SPECIFIC_LDFLAGS+=--coverage
-.endif
 
 LCOV!=which lcov &2>/dev/null
 GENHTML!=which genhtml &2>/dev/null
-
-all:	all-real
 
 generate-coverage-report:
 .if empty(LCOV)
@@ -67,6 +72,7 @@ generate-coverage-report:
 
 c-coverage:
 	bmake generate-coverage-report TEST_BUILD_DIR="${SRCDIR}/ctests/build.host" COVERAGE_BUILD_DIR="coverage/c" COVERAGE_TITLE="C Tests Coverage"
+.endif
 
 cpp-coverage:
 .for std in ${STDS}
