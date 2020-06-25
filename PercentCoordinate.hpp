@@ -83,13 +83,13 @@ namespace GU {
         PercentCoordinate(percent_f, percent_f);
         PercentCoordinate(const PercentCoordinate& other);
         PercentCoordinate(const gu_percent_coordinate& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         PercentCoordinate(PercentCoordinate&& other);
 #endif
         ~PercentCoordinate();
         PercentCoordinate& operator=(const PercentCoordinate& other);
         PercentCoordinate& operator=(const gu_percent_coordinate& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         PercentCoordinate& operator=(PercentCoordinate&& other);
 #endif
 

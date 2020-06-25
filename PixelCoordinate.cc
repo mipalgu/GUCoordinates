@@ -58,7 +58,10 @@
 
 #include "PixelCoordinate.hpp"
 #include "conversions.h"
+
+#if __cplusplus >= 201703L
 #include <optional>
+#endif
 
 GU::PixelCoordinate::PixelCoordinate(): gu_pixel_coordinate() {}
 
@@ -68,7 +71,7 @@ GU::PixelCoordinate::PixelCoordinate(const PixelCoordinate& other): gu_pixel_coo
 
 GU::PixelCoordinate::PixelCoordinate(const gu_pixel_coordinate& other): gu_pixel_coordinate { other.x, other.y, other.res_width, other.res_height } {}
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::PixelCoordinate::PixelCoordinate(PixelCoordinate&& other)
 {
     set_x(other.x());
@@ -110,7 +113,7 @@ GU::PixelCoordinate& GU::PixelCoordinate::operator=(const gu_pixel_coordinate& o
     return *this;
 }
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::PixelCoordinate& GU::PixelCoordinate::operator=(PixelCoordinate&& other)
 {
     if (&other == this) {
@@ -143,10 +146,12 @@ bool GU::PixelCoordinate::relativeCoordinate(const GU::Robot & robot, const int 
     return percentCoordinate().relativeCoordinate(robot, cameraOffset, other);
 }
 
+#if __cplusplus >= 201703L
 std::optional<GU::RelativeCoordinate> GU::PixelCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset) const
 {
     return percentCoordinate().relativeCoordinate(robot, cameraOffset);
 }
+#endif
 
 pixels_t GU::PixelCoordinate::x() const
 {

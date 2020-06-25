@@ -59,7 +59,9 @@
 #include "CameraCoordinate.hpp"
 #include "conversions.h"
 
+#if __cplusplus >= 201703L
 #include <optional>
+#endif
 
 GU::CameraCoordinate::CameraCoordinate(): gu_camera_coordinate() {}
 
@@ -69,7 +71,7 @@ GU::CameraCoordinate::CameraCoordinate(const CameraCoordinate& other): gu_camera
 
 GU::CameraCoordinate::CameraCoordinate(const gu_camera_coordinate& other): gu_camera_coordinate { other.x, other.y, other.res_width, other.res_height } {}
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::CameraCoordinate::CameraCoordinate(CameraCoordinate&& other)
 {
     set_x(other.x());
@@ -111,7 +113,7 @@ GU::CameraCoordinate& GU::CameraCoordinate::operator=(const gu_camera_coordinate
     return *this;
 }
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::CameraCoordinate& GU::CameraCoordinate::operator=(CameraCoordinate&& other)
 {
     if (&other == this) {
@@ -149,10 +151,12 @@ pixels_u GU::CameraCoordinate::x() const
     return gu_camera_coordinate::x;
 }
 
+#if __cplusplus >= 201703L
 std::optional<GU::RelativeCoordinate> GU::CameraCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset) const
 {
     return percentCoordinate().relativeCoordinate(robot, cameraOffset);
 }
+#endif
 
 /*
 std::optional<GU::CartesianCoordinate> GU::CameraCoordinate::cartesianCoordinate(const GU::Robot & robot, const int cameraOffset) const

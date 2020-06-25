@@ -99,7 +99,7 @@
         ro3_test(); \
     }
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 #define RO5_TEST_Fs(className) \
     RO3_TEST_F(className) \
     TEST2_F(testclassname(className), RO5) { \
@@ -171,7 +171,7 @@ namespace CGTEST {
                 equals(obj4, *obj5);
             }
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
             void ro5_test() {
                 Class obj = initial();
                 Class obj2 = initial();

@@ -71,7 +71,7 @@ namespace GU {
         Camera(centimetres_f, centimetres_f, degrees_f, degrees_f, degrees_f);
         Camera(const Camera& other);
         Camera(const gu_camera& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
         Camera(Camera&& other);
@@ -80,7 +80,7 @@ namespace GU {
         ~Camera();
         Camera& operator=(const Camera& other);
         Camera& operator=(const gu_camera& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         Camera& operator=(Camera&& other);
         Camera& operator=(gu_camera&& other);
 #endif

@@ -59,7 +59,9 @@
 #include "PercentCoordinate.hpp"
 #include "conversions.h"
 
+#if __cplusplus >= 201703L
 #include <optional>
+#endif
 
 GU::PercentCoordinate::PercentCoordinate(): gu_percent_coordinate() {}
 
@@ -69,7 +71,7 @@ GU::PercentCoordinate::PercentCoordinate(const PercentCoordinate& other): gu_per
 
 GU::PercentCoordinate::PercentCoordinate(const gu_percent_coordinate & other): gu_percent_coordinate { other.x, other.y } {}
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::PercentCoordinate::PercentCoordinate(PercentCoordinate&& other)
 {
     set_x(other.x());
@@ -103,7 +105,7 @@ GU::PercentCoordinate& GU::PercentCoordinate::operator=(const gu_percent_coordin
     return *this;
 }
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::PercentCoordinate& GU::PercentCoordinate::operator=(PercentCoordinate&& other)
 {
     if (&other == this) {
@@ -132,6 +134,7 @@ bool GU::PercentCoordinate::relativeCoordinate(const GU::Robot & robot, const in
     return pct_coord_to_rr_coord(*this, robot, &other, cameraOffset);
 }
 
+#if __cplusplus >= 201703L
 std::optional<GU::RelativeCoordinate> GU::PercentCoordinate::relativeCoordinate(const GU::Robot & robot, const int cameraOffset) const
 {
     GU::RelativeCoordinate out;
@@ -141,6 +144,7 @@ std::optional<GU::RelativeCoordinate> GU::PercentCoordinate::relativeCoordinate(
     }
     return std::nullopt;
 }
+#endif
 
 percent_f GU::PercentCoordinate::x() const
 {

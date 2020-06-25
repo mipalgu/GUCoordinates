@@ -66,7 +66,7 @@ GU::Camera::Camera(const Camera& other): gu_camera { other.height(), other.cente
 
 GU::Camera::Camera(const gu_camera& other): gu_camera { other.height, other.centerOffset, other.vDirection, other.vFov, other.hFov } {}
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::Camera::Camera(Camera&& other)
 {
     set_height(other.height());
@@ -112,7 +112,7 @@ GU::Camera& GU::Camera::operator=(const gu_camera& other)
     return *this;
 }
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::Camera& GU::Camera::operator=(Camera&& other)
 {
     if (&other == this) {

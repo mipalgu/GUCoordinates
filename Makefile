@@ -3,7 +3,18 @@
 # Callum McColl, 2019-06-05 11:58
 #
 
-.include "../../mk/c++17.mk"
+STDS=98 03 11 14 17
+STD?=17
+
+.ifdef STD
+.  if ${STD} == 03 || ${STD} == 98
+CXXSTDFL=-std=c++${STD}
+.  else
+.    include "../../mk/c++${STD}.mk"
+.  endif
+.else
+CXXSTDFL=-std=c++98
+.endif
 
 ALL_TARGETS=test robot-local
 
@@ -14,8 +25,6 @@ SPECIFIC_LIBS+=-lm
 SPECIFIC_LIBS+=-lguunits
 SPECIFIC_LIBS+=-lgusimplewhiteboard
 LOCAL=_LOCAL
-
-STDS=98 03 11 14 17
 
 ${MODULE_BASE}_HDRS=${ALL_HDRS}
 PKGCONFIG_NAME=gucoordinates

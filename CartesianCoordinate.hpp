@@ -88,13 +88,13 @@ namespace GU {
         CartesianCoordinate(centimetres_t, centimetres_t);
         CartesianCoordinate(const CartesianCoordinate& other);
         CartesianCoordinate(const gu_cartesian_coordinate& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         CartesianCoordinate(CartesianCoordinate&& other);
 #endif
         ~CartesianCoordinate();
         CartesianCoordinate& operator=(const CartesianCoordinate& other);
         CartesianCoordinate& operator=(const gu_cartesian_coordinate& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         CartesianCoordinate& operator=(CartesianCoordinate&& other);
 #endif
 

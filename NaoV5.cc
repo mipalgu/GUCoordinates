@@ -69,12 +69,14 @@ GU::NaoV5::NaoV5(const NaoV5& other): _headPitch(other.headPitch()), _headYaw(ot
 
 GU::NaoV5::NaoV5(const ::wb_sensors_torsojointsensors& joints): _headPitch(rad_f_to_deg_f(f_to_rad_f(joints.HeadPitch()))), _headYaw(rad_f_to_deg_f(f_to_rad_f(joints.HeadYaw()))) {}
 
+#if __cplusplus >= 201103L
 GU::NaoV5::NaoV5(NaoV5&& other) {
     _headPitch = other.headPitch();
     _headYaw = other.headYaw();
     other.set_headPitch(0.0f);
     other.set_headYaw(0.0f);
 }
+#endif
 
 GU::NaoV5::~NaoV5() {}
 
@@ -94,6 +96,7 @@ GU::NaoV5& GU::NaoV5::operator=(const ::wb_sensors_torsojointsensors& joints)
     return *this;
 }
 
+#if __cplusplus >= 201103L
 GU::NaoV5& GU::NaoV5::operator=(GU::NaoV5&& other) {
     if (&other == this) {
         return *this;
@@ -104,6 +107,7 @@ GU::NaoV5& GU::NaoV5::operator=(GU::NaoV5&& other) {
     other.set_headYaw(0.0f);
     return *this;
 }
+#endif
 
 degrees_f GU::NaoV5::headPitch() const
 {
@@ -134,7 +138,7 @@ GU::Robot GU::NaoV5::toRobot() const
 
 
 /*
-#ifdef __cpp_lib_optional
+#if __cplusplus 201703L
 std::optional<RelativeCoordinate> GU::NaoV5::topCameraRelativeCoordinate(const GU::CameraCoordinate & coord)
 {
     return coord.relativeCoordinate(*this, NAO_V5_TOP_CAMERA_INDEX);

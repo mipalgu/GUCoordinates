@@ -59,7 +59,9 @@
 #include "RelativeCoordinate.hpp"
 #include "conversions.h"
 
+#if __cplusplus >= 201703L
 #include <optional>
+#endif
 
 GU::RelativeCoordinate::RelativeCoordinate(): gu_relative_coordinate() {}
 
@@ -69,7 +71,7 @@ GU::RelativeCoordinate::RelativeCoordinate(const RelativeCoordinate& other): gu_
 
 GU::RelativeCoordinate::RelativeCoordinate(const gu_relative_coordinate & other): gu_relative_coordinate { other.direction, other.distance } {}
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::RelativeCoordinate::RelativeCoordinate(RelativeCoordinate&& other)
 {
     set_direction(other.direction());
@@ -103,7 +105,7 @@ GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(const gu_relative_coor
     return *this;
 }
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(RelativeCoordinate&& other)
 {
     if (&other == this) {
@@ -146,6 +148,7 @@ bool GU::RelativeCoordinate::percentCoordinate(const GU::Robot robot, const int 
     return true;
 }
 
+#if __cplusplus >= 201703L
 std::optional<GU::CameraCoordinate> GU::RelativeCoordinate::cameraCoordinate(const GU::Robot robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
     const std::optional<GU::PixelCoordinate> p = pixelCoordinate(robot, cameraOffset, resWidth, resHeight);
@@ -166,16 +169,6 @@ std::optional<GU::PixelCoordinate> GU::RelativeCoordinate::pixelCoordinate(const
     return std::nullopt;
 }
 
-GU::CartesianCoordinate GU::RelativeCoordinate::cartesianCoordinate() const
-{
-    return rr_coord_to_cartesian_coord(*this);
-}
-
-GU::FieldCoordinate GU::RelativeCoordinate::fieldCoordinate(const degrees_t heading) const
-{
-    return rr_coord_to_field_coord(*this, heading);
-}
-
 std::optional<GU::PercentCoordinate> GU::RelativeCoordinate::percentCoordinate(const GU::Robot robot, const int cameraOffset) const
 {
     GU::PercentCoordinate temp;
@@ -184,6 +177,17 @@ std::optional<GU::PercentCoordinate> GU::RelativeCoordinate::percentCoordinate(c
         return std::move(temp);
     }
     return std::nullopt;
+}
+#endif
+
+GU::CartesianCoordinate GU::RelativeCoordinate::cartesianCoordinate() const
+{
+    return rr_coord_to_cartesian_coord(*this);
+}
+
+GU::FieldCoordinate GU::RelativeCoordinate::fieldCoordinate(const degrees_t heading) const
+{
+    return rr_coord_to_field_coord(*this, heading);
 }
 
 degrees_t GU::RelativeCoordinate::direction() const

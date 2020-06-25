@@ -88,13 +88,13 @@ namespace GU {
         FieldCoordinate(CartesianCoordinate, degrees_t);
         FieldCoordinate(const FieldCoordinate& other);
         FieldCoordinate(const gu_field_coordinate& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         FieldCoordinate(FieldCoordinate&& other);
 #endif
         ~FieldCoordinate();
         FieldCoordinate& operator=(const FieldCoordinate& other);
         FieldCoordinate& operator=(const gu_field_coordinate& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         FieldCoordinate& operator=(FieldCoordinate&& other);
 #endif
 

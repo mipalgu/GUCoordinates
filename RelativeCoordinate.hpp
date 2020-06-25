@@ -88,13 +88,13 @@ namespace GU {
         RelativeCoordinate(degrees_t, centimetres_u);
         RelativeCoordinate(const RelativeCoordinate& other);
         RelativeCoordinate(const gu_relative_coordinate& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         RelativeCoordinate(RelativeCoordinate&& other);
 #endif
         ~RelativeCoordinate();
         RelativeCoordinate& operator=(const RelativeCoordinate& other);
         RelativeCoordinate& operator=(const gu_relative_coordinate& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         RelativeCoordinate& operator=(RelativeCoordinate&& other);
 #endif
 

@@ -83,13 +83,13 @@ namespace GU {
         PixelCoordinate(pixels_t, pixels_t, pixels_u, pixels_u);
         PixelCoordinate(const PixelCoordinate& other);
         PixelCoordinate(const gu_pixel_coordinate& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         PixelCoordinate(PixelCoordinate&& other);
 #endif
         ~PixelCoordinate();
         PixelCoordinate& operator=(const PixelCoordinate& other);
         PixelCoordinate& operator=(const gu_pixel_coordinate& other);
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
         PixelCoordinate& operator=(PixelCoordinate&& other);
 #endif
 

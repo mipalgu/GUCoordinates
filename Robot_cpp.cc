@@ -90,7 +90,7 @@ GU::Robot::Robot(const gu_robot& other)
     set_numCameras(other.numCameras);
 }
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::Robot::Robot(Robot&& other)
 {
     set_headPitch(other.headPitch());
@@ -138,7 +138,7 @@ GU::Robot& GU::Robot::operator=(const gu_robot& other)
     return *this;
 }
 
-#ifdef __cpp_rvalue_references
+#if __cplusplus >= 201103L
 GU::Robot& GU::Robot::operator=(Robot&& other)
 {
     if (&other == this) {
