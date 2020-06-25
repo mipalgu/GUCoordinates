@@ -56,9 +56,6 @@
  *
  */
 
-#ifndef GUCOORDINATES_H
-#define GUCOORDINATES_H
-
 #include "camera_coordinate.h"
 #include "pixel_coordinate.h"
 #include "percent_coordinate.h"
@@ -69,4 +66,14 @@
 #include "robot.h"
 #include "conversions.h"
 
-#endif  /* GUCOORDINATES_H */
+#ifdef __cplusplus
+#include "CameraCoordinate.hpp"
+#include "PixelCoordinate.hpp"
+#include "PercentCoordinate.hpp"
+#include "RelativeCoordinate.hpp"
+#include "CartesianCoordinate.hpp"
+#include "FieldCoordinate.hpp"
+#include "Camera.hpp"
+#include "Robot.hpp"
+#include "NaoV5.hpp"
+#endif

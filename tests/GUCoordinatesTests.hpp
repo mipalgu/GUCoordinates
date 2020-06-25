@@ -80,7 +80,7 @@
 #include "fff.h"
 #pragma clang diagnostic pop
 
-#include "../GUCoordinates.hpp"
+#include "../gucoordinates.h"
 #include "fakes.h"
 #include "custom_fakes.h"
 
