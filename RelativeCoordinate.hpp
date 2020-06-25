@@ -98,14 +98,14 @@ namespace GU {
         RelativeCoordinate& operator=(RelativeCoordinate&& other);
 #endif
 
-        bool cameraCoordinate(const Robot, const int, const pixels_u, const pixels_u, CameraCoordinate &) const;
-        bool pixelCoordinate(const Robot robot, const int, const pixels_u, const pixels_u, PixelCoordinate &) const;
-        bool percentCoordinate(Robot, const int, PercentCoordinate & other) const;
+        bool cameraCoordinate(const Robot &, const int, const pixels_u, const pixels_u, CameraCoordinate &) const;
+        bool pixelCoordinate(const Robot &, const int, const pixels_u, const pixels_u, PixelCoordinate &) const;
+        bool percentCoordinate(const Robot &, const int, PercentCoordinate & other) const;
 
 #if __cplusplus >= 201703L
-        std::optional<CameraCoordinate> cameraCoordinate(const Robot, const int, const pixels_u, const pixels_u) const;
-        std::optional<PixelCoordinate> pixelCoordinate(const Robot, const int, const pixels_u, const pixels_u) const;
-        std::optional<PercentCoordinate> percentCoordinate(const Robot, const int) const;
+        std::optional<CameraCoordinate> cameraCoordinate(const Robot &, const int, const pixels_u, const pixels_u) const;
+        std::optional<PixelCoordinate> pixelCoordinate(const Robot &, const int, const pixels_u, const pixels_u) const;
+        std::optional<PercentCoordinate> percentCoordinate(const Robot &, const int) const;
 #endif
 
         CartesianCoordinate cartesianCoordinate() const;

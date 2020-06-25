@@ -119,7 +119,7 @@ GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(RelativeCoordinate&& o
 }
 #endif
 
-bool GU::RelativeCoordinate::cameraCoordinate(const GU::Robot robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::CameraCoordinate &other) const
+bool GU::RelativeCoordinate::cameraCoordinate(const GU::Robot &robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::CameraCoordinate &other) const
 {
     GU::PercentCoordinate temp;
     if (!percentCoordinate(robot, cameraOffset, temp))
@@ -128,7 +128,7 @@ bool GU::RelativeCoordinate::cameraCoordinate(const GU::Robot robot, const int c
     return true;
 }
 
-bool GU::RelativeCoordinate::pixelCoordinate(const GU::Robot robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::PixelCoordinate &other) const
+bool GU::RelativeCoordinate::pixelCoordinate(const GU::Robot &robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::PixelCoordinate &other) const
 {
     GU::PercentCoordinate temp;
     if (!percentCoordinate(robot, cameraOffset, temp))
@@ -137,7 +137,7 @@ bool GU::RelativeCoordinate::pixelCoordinate(const GU::Robot robot, const int ca
     return true;
 }
     
-bool GU::RelativeCoordinate::percentCoordinate(const GU::Robot robot, const int cameraOffset, GU::PercentCoordinate &other) const
+bool GU::RelativeCoordinate::percentCoordinate(const GU::Robot &robot, const int cameraOffset, GU::PercentCoordinate &other) const
 {
     gu_percent_coordinate temp;
     if (!rr_coord_to_pct_coord(*this, robot, cameraOffset, &temp))
@@ -149,7 +149,7 @@ bool GU::RelativeCoordinate::percentCoordinate(const GU::Robot robot, const int 
 }
 
 #if __cplusplus >= 201703L
-std::optional<GU::CameraCoordinate> GU::RelativeCoordinate::cameraCoordinate(const GU::Robot robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+std::optional<GU::CameraCoordinate> GU::RelativeCoordinate::cameraCoordinate(const GU::Robot &robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
     const std::optional<GU::PixelCoordinate> p = pixelCoordinate(robot, cameraOffset, resWidth, resHeight);
     if (p.has_value())
@@ -159,7 +159,7 @@ std::optional<GU::CameraCoordinate> GU::RelativeCoordinate::cameraCoordinate(con
     return std::nullopt;
 }
 
-std::optional<GU::PixelCoordinate> GU::RelativeCoordinate::pixelCoordinate(const GU::Robot robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+std::optional<GU::PixelCoordinate> GU::RelativeCoordinate::pixelCoordinate(const GU::Robot &robot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
     const std::optional<GU::PercentCoordinate> p = percentCoordinate(robot, cameraOffset);
     if (p.has_value())
@@ -169,7 +169,7 @@ std::optional<GU::PixelCoordinate> GU::RelativeCoordinate::pixelCoordinate(const
     return std::nullopt;
 }
 
-std::optional<GU::PercentCoordinate> GU::RelativeCoordinate::percentCoordinate(const GU::Robot robot, const int cameraOffset) const
+std::optional<GU::PercentCoordinate> GU::RelativeCoordinate::percentCoordinate(const GU::Robot &robot, const int cameraOffset) const
 {
     GU::PercentCoordinate temp;
     const bool result = percentCoordinate(robot, cameraOffset, temp);
