@@ -3,8 +3,14 @@
 # Callum McColl, 2019-06-05 11:58
 #
 
+.unexport SAY
+
 STDS=98 03 11 14 17
 STD?=17
+
+.for std in ${STDS}
+.unexport USE_CXX${std}
+.endfor
 
 .ifdef STD
 .  if ${STD} == 03 || ${STD} == 98
@@ -71,7 +77,7 @@ generate-coverage-report:
 
 
 c-coverage:
-	bmake generate-coverage-report TEST_BUILD_DIR="${SRCDIR}/ctests/build.host" COVERAGE_BUILD_DIR="coverage/c" COVERAGE_TITLE="C Tests Coverage"
+	$E${MAKE} generate-coverage-report TEST_BUILD_DIR="${SRCDIR}/ctests/build.host" COVERAGE_BUILD_DIR="coverage/c" COVERAGE_TITLE="C Tests Coverage"
 .endif
 
 cpp-coverage:
@@ -102,9 +108,9 @@ upload-robot:
 test: ctest cpptest
 
 coverage-test:
-	$Ebmake test COVERAGE=yes
+	$E${MAKE} test COVERAGE=yes STD=${STD}
 
-build-lib: clean
+build-lib:
 	$Eenv ${MAKE} host-local MAKEFLAGS= IGNORE_TESTS=yes TESTING=yes
 
 run-cpp-test:
@@ -113,8 +119,11 @@ run-cpp-test:
 	$Ecd ${SRCDIR}/tests && ${MAKE} build-test STD=${STD} EXTRA_WFLAGS="${CPP${STD}_EXTRA_WFLAGS}" BUILDDIR=build.host-${STD} LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./tests/build.host-${STD}/tests
 .endif
 
-ctest: build-lib
+ctest:
 .ifndef TARGET
+	$E${MAKE} clean
+	${SAY} "Building Implementation with C99 Standard."
+	$E${MAKE} build-lib
 	${SAY} "Testing C Implementation."
 	$Ecd ${SRCDIR}/ctests && ${MAKE} build-test BUILDDIR=build.host LOCAL= MAKEFLAGS= SDIR=${SRCDIR} TESTLIBDIR=${SRCDIR}/build.host-local && cd ${SRCDIR} && ./ctests/build.host/ctests
 .ifdef COVERAGE
@@ -123,16 +132,19 @@ ctest: build-lib
 .endif
 
 coverage-ctest:
-	$Ebmake ctest COVERAGE=yes
+	$E${MAKE} ctest COVERAGE=yes
 
 cpptest: ${STDS:=cpp%test}
 
 coverage-cpptest:
-	$Ebmake cpptest COVERAGE=yes
+	$E${MAKE} cpptest COVERAGE=yes
 
 .for std in ${STDS}
 cpp${std}test: build-lib
-	$E${MAKE} run-cpp-test STD=${std}
+	$E${MAKE} clean
+	${SAY} "Building Implementation with C++${std} Standard."
+	$E${MAKE} build-lib STD=${std}
+	$E${MAKE} run-cpp-test TESTING=yes STD=${std}
 .ifdef COVERAGE
 	$E${MAKE} single-cpp-coverage STD=${std}
 .endif
