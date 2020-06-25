@@ -108,6 +108,7 @@ namespace GU {
         std::optional<PercentCoordinate> percentCoordinate(const GU::CameraPivot &, const int) const;
 #endif
 
+        RelativeCoordinate relativeCoordinateTo(const RelativeCoordinate &) const;
         CartesianCoordinate cartesianCoordinate() const;
         FieldCoordinate fieldCoordinate(const degrees_t) const;
 

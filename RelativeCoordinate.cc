@@ -192,6 +192,11 @@ std::optional<GU::PercentCoordinate> GU::RelativeCoordinate::percentCoordinate(c
 }
 #endif
 
+GU::RelativeCoordinate GU::RelativeCoordinate::relativeCoordinateTo(const RelativeCoordinate & coord) const
+{
+    return cartesianCoordinate().relativeCoordinateTo(coord.cartesianCoordinate());
+}
+
 GU::CartesianCoordinate GU::RelativeCoordinate::cartesianCoordinate() const
 {
     return rr_coord_to_cartesian_coord(*this);

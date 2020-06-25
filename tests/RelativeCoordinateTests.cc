@@ -102,6 +102,7 @@ namespace CGTEST {
 
     GETTER_TEST_F(RelativeCoordinate, CartesianCoordinate, rr_coord_to_cartesian_coord, cartesianCoordinate())
     GETTER_TEST_F(RelativeCoordinate, FieldCoordinate, rr_coord_to_field_coord, fieldCoordinate(30))
+    GETTER_TEST_F(RelativeCoordinate, RelativeCoordinate, cartesian_coord_to_rr_coord_from_source, relativeCoordinateTo(GU::RelativeCoordinate(30, 120)))
 
     TEST_F(RelativeCoordinateCPPTests, GettersSetters) {
         GU::RelativeCoordinate coord = GU::RelativeCoordinate(90, 100);
