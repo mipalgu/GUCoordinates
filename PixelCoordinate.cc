@@ -65,11 +65,29 @@
 
 GU::PixelCoordinate::PixelCoordinate(): gu_pixel_coordinate() {}
 
-GU::PixelCoordinate::PixelCoordinate(pixels_t t_x, pixels_t t_y, pixels_u t_resWidth, pixels_u t_resHeight): gu_pixel_coordinate { t_x, t_y, t_resWidth, t_resHeight } {} 
+GU::PixelCoordinate::PixelCoordinate(pixels_t t_x, pixels_t t_y, pixels_u t_resWidth, pixels_u t_resHeight)
+{
+    set_x(t_x);
+    set_y(t_y);
+    set_resWidth(t_resWidth);
+    set_resHeight(t_resHeight);
+}
 
-GU::PixelCoordinate::PixelCoordinate(const PixelCoordinate& other): gu_pixel_coordinate { other.x(), other.y(), other.resWidth(), other.resHeight() } {}
+GU::PixelCoordinate::PixelCoordinate(const PixelCoordinate& other)
+{
+    set_x(other.x());
+    set_y(other.y());
+    set_resWidth(other.resWidth());
+    set_resHeight(other.resHeight());
+}
 
-GU::PixelCoordinate::PixelCoordinate(const gu_pixel_coordinate& other): gu_pixel_coordinate { other.x, other.y, other.res_width, other.res_height } {}
+GU::PixelCoordinate::PixelCoordinate(const gu_pixel_coordinate& other)
+{
+    set_x(other.x);
+    set_y(other.y);
+    set_resWidth(other.res_width);
+    set_resHeight(other.res_height);
+}
 
 #if __cplusplus >= 201103L
 GU::PixelCoordinate::PixelCoordinate(PixelCoordinate&& other)

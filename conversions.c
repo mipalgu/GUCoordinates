@@ -165,7 +165,7 @@ bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_robot ro
 
 bool rr_coord_to_px_coord(const gu_relative_coordinate coord, const gu_robot robot, const int cameraOffset, gu_pixel_coordinate * out, pixels_u res_width, pixels_u res_height)
 {
-    gu_percent_coordinate temp = {};
+    gu_percent_coordinate temp;
     if (!rr_coord_to_pct_coord(coord, robot, cameraOffset, &temp))
     {
         return false;

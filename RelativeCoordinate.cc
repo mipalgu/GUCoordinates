@@ -63,13 +63,25 @@
 #include <optional>
 #endif
 
-GU::RelativeCoordinate::RelativeCoordinate(): gu_relative_coordinate() {}
+GU::RelativeCoordinate::RelativeCoordinate() {}
 
-GU::RelativeCoordinate::RelativeCoordinate(degrees_t t_direction, centimetres_u t_distance): gu_relative_coordinate { t_direction, t_distance } {} 
+GU::RelativeCoordinate::RelativeCoordinate(degrees_t t_direction, centimetres_u t_distance)
+{
+    set_direction(t_direction);
+    set_distance(t_distance);
+}
 
-GU::RelativeCoordinate::RelativeCoordinate(const RelativeCoordinate& other): gu_relative_coordinate { other.direction(), other.distance() } {}
+GU::RelativeCoordinate::RelativeCoordinate(const RelativeCoordinate& other)
+{
+    set_direction(other.direction());
+    set_distance(other.distance());
+}
 
-GU::RelativeCoordinate::RelativeCoordinate(const gu_relative_coordinate & other): gu_relative_coordinate { other.direction, other.distance } {}
+GU::RelativeCoordinate::RelativeCoordinate(const gu_relative_coordinate & other)
+{
+    set_direction(other.direction);
+    set_distance(other.distance);
+}
 
 #if __cplusplus >= 201103L
 GU::RelativeCoordinate::RelativeCoordinate(RelativeCoordinate&& other)

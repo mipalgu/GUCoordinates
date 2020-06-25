@@ -61,13 +61,28 @@
 #include <guunits/guunits.h>
 #include "robot.h"
 
-GU::NaoV5::NaoV5(): _headPitch(0.0f), _headYaw(0.0f) {}
+GU::NaoV5::NaoV5() {
+    set_headPitch(0.0f);
+    set_headYaw(0.0f);
+}
 
-GU::NaoV5::NaoV5(const degrees_f t_headPitch, const degrees_f t_headYaw): _headPitch(t_headPitch), _headYaw(t_headYaw) {}
+GU::NaoV5::NaoV5(const degrees_f t_headPitch, const degrees_f t_headYaw)
+{
+    set_headPitch(t_headPitch);
+    set_headYaw(t_headYaw);
+}
 
-GU::NaoV5::NaoV5(const NaoV5& other): _headPitch(other.headPitch()), _headYaw(other.headYaw()) {}
+GU::NaoV5::NaoV5(const NaoV5& other)
+{
+    set_headPitch(other.headPitch());
+    set_headYaw(other.headYaw());
+}
 
-GU::NaoV5::NaoV5(const ::wb_sensors_torsojointsensors& joints): _headPitch(rad_f_to_deg_f(f_to_rad_f(joints.HeadPitch()))), _headYaw(rad_f_to_deg_f(f_to_rad_f(joints.HeadYaw()))) {}
+GU::NaoV5::NaoV5(const ::wb_sensors_torsojointsensors& joints)
+{
+    set_headPitch(rad_f_to_deg_f(f_to_rad_f(joints.HeadPitch())));
+    set_headYaw(rad_f_to_deg_f(f_to_rad_f(joints.HeadYaw())));
+}
 
 #if __cplusplus >= 201103L
 GU::NaoV5::NaoV5(NaoV5&& other) {

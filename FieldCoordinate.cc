@@ -63,13 +63,25 @@
 #include <optional>
 #endif
 
-GU::FieldCoordinate::FieldCoordinate(): gu_field_coordinate() {}
+GU::FieldCoordinate::FieldCoordinate() {}
 
-GU::FieldCoordinate::FieldCoordinate(GU::CartesianCoordinate t_position, degrees_t t_heading): gu_field_coordinate { t_position, t_heading } {} 
+GU::FieldCoordinate::FieldCoordinate(GU::CartesianCoordinate t_position, degrees_t t_heading)
+{
+    set_position(t_position);
+    set_heading(t_heading);
+}
 
-GU::FieldCoordinate::FieldCoordinate(const FieldCoordinate& other): gu_field_coordinate { other.position(), other.heading() } {}
+GU::FieldCoordinate::FieldCoordinate(const FieldCoordinate& other)
+{
+    set_position(other.position());
+    set_heading(other.heading());
+}
 
-GU::FieldCoordinate::FieldCoordinate(const gu_field_coordinate & other): gu_field_coordinate { other.position, other.heading } {}
+GU::FieldCoordinate::FieldCoordinate(const gu_field_coordinate & other)
+{
+    set_position(other.position);
+    set_heading(other.heading);
+}
 
 #if __cplusplus >= 201103L
 GU::FieldCoordinate::FieldCoordinate(FieldCoordinate&& other)

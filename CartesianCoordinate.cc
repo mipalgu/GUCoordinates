@@ -63,13 +63,25 @@
 #include <optional>
 #endif
 
-GU::CartesianCoordinate::CartesianCoordinate(): gu_cartesian_coordinate() {}
+GU::CartesianCoordinate::CartesianCoordinate() {}
 
-GU::CartesianCoordinate::CartesianCoordinate(centimetres_t t_x, centimetres_t t_y): gu_cartesian_coordinate { t_x, t_y } {} 
+GU::CartesianCoordinate::CartesianCoordinate(centimetres_t t_x, centimetres_t t_y)
+{
+    set_x(t_x);
+    set_y(t_y);
+}
 
-GU::CartesianCoordinate::CartesianCoordinate(const CartesianCoordinate& other): gu_cartesian_coordinate { other.x(), other.y() } {}
+GU::CartesianCoordinate::CartesianCoordinate(const CartesianCoordinate& other)
+{
+    set_x(other.x());
+    set_y(other.y());
+}
 
-GU::CartesianCoordinate::CartesianCoordinate(const gu_cartesian_coordinate & other): gu_cartesian_coordinate { other.x, other.y } {}
+GU::CartesianCoordinate::CartesianCoordinate(const gu_cartesian_coordinate & other)
+{
+    set_x(other.x);
+    set_y(other.y);
+}
 
 #if __cplusplus >= 201103L
 GU::CartesianCoordinate::CartesianCoordinate(CartesianCoordinate&& other)

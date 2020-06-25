@@ -63,13 +63,25 @@
 #include <optional>
 #endif
 
-GU::PercentCoordinate::PercentCoordinate(): gu_percent_coordinate() {}
+GU::PercentCoordinate::PercentCoordinate() {}
 
-GU::PercentCoordinate::PercentCoordinate(percent_f t_x, percent_f t_y): gu_percent_coordinate { t_x, t_y } {} 
+GU::PercentCoordinate::PercentCoordinate(percent_f t_x, percent_f t_y)
+{
+    set_x(t_x);
+    set_y(t_y);
+}
 
-GU::PercentCoordinate::PercentCoordinate(const PercentCoordinate& other): gu_percent_coordinate { other.x(), other.y() } {}
+GU::PercentCoordinate::PercentCoordinate(const PercentCoordinate& other)
+{
+    set_x(other.x());
+    set_y(other.y());
+}
 
-GU::PercentCoordinate::PercentCoordinate(const gu_percent_coordinate & other): gu_percent_coordinate { other.x, other.y } {}
+GU::PercentCoordinate::PercentCoordinate(const gu_percent_coordinate & other)
+{
+    set_x(other.x);
+    set_y(other.y);
+}
 
 #if __cplusplus >= 201103L
 GU::PercentCoordinate::PercentCoordinate(PercentCoordinate&& other)

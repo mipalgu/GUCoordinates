@@ -63,13 +63,31 @@
 #include <optional>
 #endif
 
-GU::CameraCoordinate::CameraCoordinate(): gu_camera_coordinate() {}
+GU::CameraCoordinate::CameraCoordinate() {}
 
-GU::CameraCoordinate::CameraCoordinate(pixels_u t_x, pixels_u t_y, pixels_u t_resWidth, pixels_u t_resHeight): gu_camera_coordinate { t_x, t_y, t_resWidth, t_resHeight } {} 
+GU::CameraCoordinate::CameraCoordinate(pixels_u t_x, pixels_u t_y, pixels_u t_resWidth, pixels_u t_resHeight)
+{
+    set_x(t_x);
+    set_y(t_y);
+    set_resWidth(t_resWidth);
+    set_resHeight(t_resHeight);
+}
 
-GU::CameraCoordinate::CameraCoordinate(const CameraCoordinate& other): gu_camera_coordinate { other.x(), other.y(), other.resWidth(), other.resHeight() } {}
+GU::CameraCoordinate::CameraCoordinate(const CameraCoordinate& other)
+{
+    set_x(other.x());
+    set_y(other.y());
+    set_resWidth(other.resWidth());
+    set_resHeight(other.resHeight());
+}
 
-GU::CameraCoordinate::CameraCoordinate(const gu_camera_coordinate& other): gu_camera_coordinate { other.x, other.y, other.res_width, other.res_height } {}
+GU::CameraCoordinate::CameraCoordinate(const gu_camera_coordinate& other)
+{
+    set_x(other.x);
+    set_y(other.y);
+    set_resWidth(other.res_width);
+    set_resHeight(other.res_height);
+}
 
 #if __cplusplus >= 201103L
 GU::CameraCoordinate::CameraCoordinate(CameraCoordinate&& other)

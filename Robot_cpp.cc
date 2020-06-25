@@ -61,7 +61,7 @@
 
 #include <string.h>
 
-GU::Robot::Robot(): gu_robot() {}
+GU::Robot::Robot() {}
 
 GU::Robot::Robot(degrees_f t_headPitch, degrees_f t_headYaw, const gu_camera t_cameras[GU_ROBOT_NUM_CAMERAS], const centimetres_f t_cameraHeightOffsets[GU_ROBOT_NUM_CAMERAS], int t_numCameras)
 {

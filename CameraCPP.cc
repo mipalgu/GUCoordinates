@@ -58,13 +58,34 @@
 
 #include "Camera.hpp"
 
-GU::Camera::Camera(): gu_camera() {}
+GU::Camera::Camera() {}
 
-GU::Camera::Camera(centimetres_f t_height, centimetres_f t_centerOffset, degrees_f t_vDirection, degrees_f t_vFov, degrees_f t_hFov): gu_camera { t_height, t_centerOffset, t_vDirection, t_vFov, t_hFov } {} 
+GU::Camera::Camera(centimetres_f t_height, centimetres_f t_centerOffset, degrees_f t_vDirection, degrees_f t_vFov, degrees_f t_hFov)
+{
+    set_height(t_height);
+    set_centerOffset(t_centerOffset);
+    set_vDirection(t_vDirection);
+    set_vFov(t_vFov);
+    set_hFov(t_hFov);
+}
 
-GU::Camera::Camera(const Camera& other): gu_camera { other.height(), other.centerOffset(), other.vDirection(), other.vFov(), other.hFov() } {}
+GU::Camera::Camera(const Camera& other)
+{
+    set_height(other.height());
+    set_centerOffset(other.centerOffset());
+    set_vDirection(other.vDirection());
+    set_vFov(other.vFov());
+    set_hFov(other.hFov());
+}
 
-GU::Camera::Camera(const gu_camera& other): gu_camera { other.height, other.centerOffset, other.vDirection, other.vFov, other.hFov } {}
+GU::Camera::Camera(const gu_camera& other)
+{
+    set_height(other.height);
+    set_centerOffset(other.centerOffset);
+    set_vDirection(other.vDirection);
+    set_vFov(other.vFov);
+    set_hFov(other.hFov);
+}
 
 #if __cplusplus >= 201103L
 GU::Camera::Camera(Camera&& other)
