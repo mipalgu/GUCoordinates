@@ -84,6 +84,7 @@ DEFINE_FAKE_VALUE_FUNC(gu_cartesian_coordinate, rr_coord_to_cartesian_coord, con
 DEFINE_FAKE_VALUE_FUNC(gu_cartesian_coordinate, rr_coord_to_cartesian_coord_from_source, const gu_relative_coordinate, const gu_cartesian_coordinate)
 DEFINE_FAKE_VALUE_FUNC(gu_field_coordinate, rr_coord_to_field_coord, const gu_relative_coordinate, const degrees_t)
 DEFINE_FAKE_VALUE_FUNC(gu_field_coordinate, rr_coord_to_field_coord_from_source, const gu_relative_coordinate, const gu_field_coordinate, const degrees_t)
+DEFINE_FAKE_VALUE_FUNC(gu_cartesian_coordinate, rr_coord_to_cartesian_coord_from_field, const gu_relative_coordinate, const gu_field_coordinate)
 
 // Converting from field coordinates to relative coordinates.
 DEFINE_FAKE_VALUE_FUNC(gu_relative_coordinate, cartesian_coord_to_rr_coord, const gu_cartesian_coordinate)

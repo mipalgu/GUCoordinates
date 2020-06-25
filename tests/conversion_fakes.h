@@ -122,6 +122,9 @@ DECLARE_FAKE_VALUE_FUNC(gu_cartesian_coordinate, rr_coord_to_cartesian_coord, co
 #define rr_coord_to_cartesian_coord_from_source_result cartesian_result
 DECLARE_FAKE_VALUE_FUNC(gu_cartesian_coordinate, rr_coord_to_cartesian_coord_from_source, const gu_relative_coordinate, const gu_cartesian_coordinate)
 
+#define rr_coord_to_cartesian_coord_from_field_result cartesian_result
+DECLARE_FAKE_VALUE_FUNC(gu_cartesian_coordinate, rr_coord_to_cartesian_coord_from_field, const gu_relative_coordinate, const gu_field_coordinate)
+
 #define rr_coord_to_field_coord_result field_result
 DECLARE_FAKE_VALUE_FUNC(gu_field_coordinate, rr_coord_to_field_coord, const gu_relative_coordinate, const degrees_t)
 
