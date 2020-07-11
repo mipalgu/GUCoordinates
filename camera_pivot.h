@@ -71,13 +71,41 @@ extern "C" {
 #define GU_CAMERA_PIVOT_NUM_CAMERAS 2
 #endif
 
+/**
+ *  A `gu_camera_pivot` represents the pivot point which a `gu_camera` is
+ *  attached to.
+ *
+ *  If a camera is on the ground, then there is no pivot point. If the camera
+ *  is on the end of a stick then the pivot point is the bottom of the stick.
+ *  If the camera is on the head of a robot, then the pivot point is the
+ *  neck of the robot.
+ */
 typedef struct gu_camera_pivot
 {
 
+    /**
+     *  The vertical orientation of the pivot point.
+     */
     degrees_f pitch;
+
+    /**
+     *  The horizontal orientation of the pivot point.
+     */
     degrees_f yaw;
+
+    /**
+     *  The vertical distance from the ground to the pivot point.
+     */
     centimetres_f height;
+
+    /**
+     *  The `gu_camera`s attached to this pivot point.
+     */
     gu_camera cameras[GU_CAMERA_PIVOT_NUM_CAMERAS];
+
+    /**
+     *  The number of elements in `cameras`.
+     */
     int numCameras;
 
 } gu_camera_pivot;
