@@ -94,15 +94,15 @@
 #define GU_PEPPER_TOP_CAMERA gu_camera_make(115.3f, 8.68f, 0.0f, 44.3f, 55.2f)
 #define GU_PEPPER_BOTTOM_CAMERA gu_camera_make(105.15f, 9.36f, 40.0f, 44.3f, 55.2f)
 
-#define GU_NAO_V5_HEAD(p, y) (gu_camera_pivot) {.pitch = p, .yaw = y, .cameras = {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, .cameraHeightOffsets = {41.7f, 41.7f}, .numCameras = 2}
+#define GU_NAO_V5_HEAD(p, y) (gu_camera_pivot) {.pitch = p, .yaw = y, .height = 41.7f, .cameras = {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, .numCameras = 2}
 #define GU_NAO_V5_TOP_CAMERA_INDEX 0
 #define GU_NAO_V5_BOTTOM_CAMERA_INDEX 1 
 
-#define GU_PEPPER_HEAD(p, y) {p, y, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, {0.0f, 0.0f}, 2}
+#define GU_PEPPER_HEAD(p, y) {p, y, 0.0f, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, 2}
 
-#define GU_NAO_V5_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, { 41.7f, 41.7f }, 2 }, .position = { { x, y }, t } }
+#define GU_NAO_V5_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, 41.7f, {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, 2 }, .position = { { x, y }, t } }
 
-#define GU_PEPPER_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, { 0.0f, 0.0f }, 2 }, .position = { { x, y }, t } }
+#define GU_PEPPER_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, 0.0f, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, 2 }, .position = { { x, y }, t } }
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wglobal-constructors"
@@ -334,6 +334,7 @@ namespace CGTEST {
             {
                 ASSERT_TRUE(near(lhs.pitch(), rhs.pitch()));
                 ASSERT_TRUE(near(lhs.yaw(), rhs.yaw()));
+                ASSERT_TRUE(near(lhs.height(), rhs.height()));
                 ASSERT_EQ(lhs.numCameras(), rhs.numCameras());
                 for (int i = 0; i < lhs.numCameras(); i++)
                 {
@@ -344,7 +345,6 @@ namespace CGTEST {
                     ASSERT_TRUE(near(lcamera.vDirection(), rcamera.vDirection()));
                     ASSERT_TRUE(near(lcamera.vFov(), rcamera.vFov()));
                     ASSERT_TRUE(near(lcamera.hFov(), rcamera.hFov()));
-                    ASSERT_TRUE(near(lhs.cameraHeightOffset(i), rhs.cameraHeightOffset(i)));
                 }
             }
 
@@ -353,11 +353,13 @@ namespace CGTEST {
                 if (!(near(lhs.pitch(), rhs.pitch())
                         && near(lhs.yaw(), rhs.yaw())
                         && near(lhs.numCameras(), rhs.numCameras())
+                        && near(lhs.height(), rhs.height())
                    ))
                 {
                     ASSERT_FALSE(near(lhs.pitch(), rhs.pitch())
                         && near(lhs.yaw(), rhs.yaw())
                         && near(lhs.numCameras(), rhs.numCameras())
+                        && near(lhs.height(), rhs.height())
                         );
                     return;
                 }
@@ -371,7 +373,6 @@ namespace CGTEST {
                             && near(lcamera.vDirection(), rcamera.vDirection())
                             && near(lcamera.vFov(), rcamera.vFov())
                             && near(lcamera.hFov(), rcamera.hFov())
-                            && near(lhs.cameraHeightOffset(i), rhs.cameraHeightOffset(i))
                             );
                 }
             }

@@ -65,15 +65,12 @@ namespace CGTEST {
         protected:
 
         gu_camera cameras[GU_CAMERA_PIVOT_NUM_CAMERAS];
-        centimetres_f offsets[GU_CAMERA_PIVOT_NUM_CAMERAS];
         gu_camera_pivot empty_strct;
     
         void preamble()
         {
             cameras[0] = GU_NAO_V5_TOP_CAMERA;
             cameras[1] = GU_NAO_V5_BOTTOM_CAMERA;
-            offsets[0] = 0.0f;
-            offsets[1] = 0.0f;
             for (int i = 2; i < GU_CAMERA_PIVOT_NUM_CAMERAS; i++)
             {
                 cameras[i].height = 0.0f;
@@ -81,18 +78,17 @@ namespace CGTEST {
                 cameras[i].vDirection = 0.0f;
                 cameras[i].vFov = 0.0f;
                 cameras[i].hFov = 0.0f;
-                offsets[i] = 0.0f;
             }
             empty_strct.pitch = 0.0f;
             empty_strct.yaw = 0.0f;
+            empty_strct.height = 0.0f;
             memcpy(empty_strct.cameras, cameras, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(gu_camera));
-            memcpy(empty_strct.cameraHeightOffsets, offsets, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(centimetres_f));
             empty_strct.numCameras = 0;
         }
 
         GU::CameraPivot initial()
         {
-            return GU::CameraPivot(2.0f, 3.0f, cameras, offsets, 2);
+            return GU::CameraPivot(2.0f, 3.0f, 4.0f, cameras, 2);
         }
 
         GU::CameraPivot empty()
@@ -107,10 +103,10 @@ namespace CGTEST {
 
         void cchange(gu_camera_pivot & obj)
         {
-            obj.pitch = 1.0f; \
-            obj.yaw = 2.0f; \
-            memcpy(obj.cameras, cameras, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(gu_camera)); \
-            memcpy(obj.cameraHeightOffsets, offsets, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(centimetres_f)); \
+            obj.pitch = 1.0f;
+            obj.yaw = 2.0f;
+            obj.height = 3.0f;
+            memcpy(obj.cameras, cameras, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(gu_camera));
             obj.numCameras = 2;
         }
 
@@ -132,12 +128,12 @@ namespace CGTEST {
         ASSERT_EQ(nao.yaw(), 0.0f);
         nao.set_yaw(6.0f);
         ASSERT_EQ(nao.yaw(), 6.0f);
+        ASSERT_EQ(nao.height(), 41.7f);
+        nao.set_height(7.0f);
+        ASSERT_EQ(nao.height(), 7.0f);
         equals(nao.camera(0), nao_c.cameras[0]);
         nao.set_camera(0, nao_c.cameras[1]);
         equals(nao.camera(1), nao_c.cameras[1]);
-        ASSERT_EQ(nao.cameraHeightOffset(0), nao_c.cameraHeightOffsets[0]);
-        nao.set_cameraHeightOffset(0, nao_c.cameraHeightOffsets[1]);
-        ASSERT_EQ(nao.cameraHeightOffset(1), nao_c.cameraHeightOffsets[1]);
     }
 
 }  // namespace

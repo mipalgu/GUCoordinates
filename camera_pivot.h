@@ -61,6 +61,7 @@
 
 #include "camera.h"
 #include <stdbool.h>
+#include <guunits/guunits.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -75,8 +76,8 @@ typedef struct gu_camera_pivot
 
     degrees_f pitch;
     degrees_f yaw;
+    centimetres_f height;
     gu_camera cameras[GU_CAMERA_PIVOT_NUM_CAMERAS];
-    centimetres_f cameraHeightOffsets[GU_CAMERA_PIVOT_NUM_CAMERAS];
     int numCameras;
 
 } gu_camera_pivot;

@@ -63,12 +63,12 @@
 
 GU::CameraPivot::CameraPivot() {}
 
-GU::CameraPivot::CameraPivot(degrees_f t_pitch, degrees_f t_yaw, const gu_camera t_cameras[GU_CAMERA_PIVOT_NUM_CAMERAS], const centimetres_f t_cameraHeightOffsets[GU_CAMERA_PIVOT_NUM_CAMERAS], int t_numCameras)
+GU::CameraPivot::CameraPivot(const degrees_f t_pitch, const degrees_f t_yaw, const centimetres_f t_height, const gu_camera t_cameras[GU_CAMERA_PIVOT_NUM_CAMERAS], int t_numCameras)
 {
     set_pitch(t_pitch);
     set_yaw(t_yaw);
+    set_height(t_height);
     set_cameras(t_cameras);
-    set_cameraHeightOffsets(t_cameraHeightOffsets);
     set_numCameras(t_numCameras);
 }
 
@@ -76,8 +76,8 @@ GU::CameraPivot::CameraPivot(const CameraPivot& other)
 {
     set_pitch(other.pitch());
     set_yaw(other.yaw());
+    set_height(other.height());
     set_cameras(other.cameras());
-    set_cameraHeightOffsets(other.cameraHeightOffsets());
     set_numCameras(other.numCameras());
 } 
 
@@ -85,8 +85,8 @@ GU::CameraPivot::CameraPivot(const gu_camera_pivot& other)
 {
     set_pitch(other.pitch);
     set_yaw(other.yaw);
+    set_height(other.height);
     set_cameras(other.cameras);
-    set_cameraHeightOffsets(other.cameraHeightOffsets);
     set_numCameras(other.numCameras);
 }
 
@@ -95,15 +95,14 @@ GU::CameraPivot::CameraPivot(CameraPivot&& other)
 {
     set_pitch(other.pitch());
     set_yaw(other.yaw());
+    set_height(other.height());
     set_cameras(other.cameras());
-    set_cameraHeightOffsets(other.cameraHeightOffsets());
     set_numCameras(other.numCameras());
     other.set_pitch(0.0f);
     other.set_yaw(0.0f);
+    other.set_height(0.0f);
     static const gu_camera newCameras[GU_CAMERA_PIVOT_NUM_CAMERAS] = {};
-    static const centimetres_f newCameraHeightOffsets[GU_CAMERA_PIVOT_NUM_CAMERAS] = {};
     other.set_cameras(newCameras);
-    other.set_cameraHeightOffsets(newCameraHeightOffsets);
     other.set_numCameras(0);
 }
 #endif
@@ -118,8 +117,8 @@ GU::CameraPivot& GU::CameraPivot::operator=(const CameraPivot& other)
     }
     set_pitch(other.pitch());
     set_yaw(other.yaw());
+    set_height(other.height());
     set_cameras(other.cameras());
-    set_cameraHeightOffsets(other.cameraHeightOffsets());
     set_numCameras(other.numCameras());
     return *this;
 }
@@ -132,8 +131,8 @@ GU::CameraPivot& GU::CameraPivot::operator=(const gu_camera_pivot& other)
     }
     set_pitch(other.pitch);
     set_yaw(other.yaw);
+    set_height(other.height);
     set_cameras(other.cameras);
-    set_cameraHeightOffsets(other.cameraHeightOffsets);
     set_numCameras(other.numCameras);
     return *this;
 }
@@ -146,15 +145,14 @@ GU::CameraPivot& GU::CameraPivot::operator=(CameraPivot&& other)
     }
     set_pitch(other.pitch());
     set_yaw(other.yaw());
+    set_height(other.height());
     set_cameras(other.cameras());
-    set_cameraHeightOffsets(other.cameraHeightOffsets());
     set_numCameras(other.numCameras());
     other.set_pitch(0.0f);
     other.set_yaw(0.0f);
+    other.set_height(0.0f);
     static const gu_camera newCameras[GU_CAMERA_PIVOT_NUM_CAMERAS] = {};
-    static const centimetres_f newCameraHeightOffsets[GU_CAMERA_PIVOT_NUM_CAMERAS] = {};
     other.set_cameras(newCameras);
-    other.set_cameraHeightOffsets(newCameraHeightOffsets);
     other.set_numCameras(0);
     return *this;
 }
@@ -180,6 +178,17 @@ void GU::CameraPivot::set_yaw(const degrees_f newValue)
     gu_camera_pivot::yaw = newValue;
 }
 
+
+centimetres_f GU::CameraPivot::height() const
+{
+    return gu_camera_pivot::height;
+}
+
+void GU::CameraPivot::set_height(const centimetres_f newValue)
+{
+    gu_camera_pivot::height = newValue;
+}
+
 const gu_camera * GU::CameraPivot::cameras() const
 {
     return &gu_camera_pivot::cameras[0];
@@ -198,26 +207,6 @@ GU::Camera GU::CameraPivot::camera(const int index) const
 void GU::CameraPivot::set_camera(const int index, const GU::Camera newValue)
 {
     gu_camera_pivot::cameras[index] = newValue;
-}
-
-const centimetres_f * GU::CameraPivot::cameraHeightOffsets() const
-{
-    return gu_camera_pivot::cameraHeightOffsets;
-}
-
-void GU::CameraPivot::set_cameraHeightOffsets(const centimetres_f newValue[GU_CAMERA_PIVOT_NUM_CAMERAS])
-{
-    memcpy(gu_camera_pivot::cameraHeightOffsets, newValue, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(centimetres_f));
-}
-
-centimetres_f GU::CameraPivot::cameraHeightOffset(const int index) const
-{
-    return gu_camera_pivot::cameraHeightOffsets[index];
-}
-
-void GU::CameraPivot::set_cameraHeightOffset(const int index, const centimetres_f newValue)
-{
-    gu_camera_pivot::cameraHeightOffsets[index] = newValue;
 }
 
 int GU::CameraPivot::numCameras() const

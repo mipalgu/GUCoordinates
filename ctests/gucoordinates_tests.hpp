@@ -83,15 +83,15 @@
 #define GU_PEPPER_TOP_CAMERA gu_camera_make(115.3f, 8.68f, 0.0f, 44.3f, 55.2f)
 #define GU_PEPPER_BOTTOM_CAMERA gu_camera_make(105.15f, 9.36f, 40.0f, 44.3f, 55.2f)
 
-#define GU_NAO_V5_HEAD(p, y) (gu_camera_pivot) {.pitch = p, .yaw = y, .cameras = {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, .cameraHeightOffsets = {41.7f, 41.7f}, .numCameras = 2}
+#define GU_NAO_V5_HEAD(p, y) (gu_camera_pivot) {.pitch = p, .yaw = y, .height = 41.7f, .cameras = {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, .numCameras = 2}
 #define GU_NAO_V5_TOP_CAMERA_INDEX 0
 #define GU_NAO_V5_BOTTOM_CAMERA_INDEX 1 
 
-#define GU_PEPPER_HEAD(p, y) {p, y, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, {0.0f, 0.0f}, 2}
+#define GU_PEPPER_HEAD(p, y) {p, y, 0.0f, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, 2}
 
-#define GU_NAO_V5_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, { 41.7f, 41.7f }, 2 }, .position = { { x, y }, t } }
+#define GU_NAO_V5_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, 41.7f, {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, 2 }, .position = { { x, y }, t } }
 
-#define GU_PEPPER_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, { 0.0f, 0.0f }, 2 }, .position = { { x, y }, t } }
+#define GU_PEPPER_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, 0.0f, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, 2 }, .position = { { x, y }, t } }
 
 #include <math.h>
 

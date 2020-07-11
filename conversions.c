@@ -132,7 +132,7 @@ bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_camera_pi
     {
         return false;
     }
-    const centimetres_f actualCameraHeight = calculate_camera_height(camera_pivot, camera, camera_pivot.cameraHeightOffsets[cameraOffset]);
+    const centimetres_f actualCameraHeight = calculate_camera_height(camera_pivot, camera, camera_pivot.height);
     const float distance = cm_f_to_f(actualCameraHeight) * tanf(((float) M_PI_2) - rad_f_to_f(pitchRad)) / cosYaw;
     out->distance = f_to_cm_u(fabsf(distance)) - cm_f_to_cm_u(camera.centerOffset);
     out->direction = deg_f_to_deg_t(yaw);
@@ -150,7 +150,7 @@ bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_p
     }
     const radians_f yawRad = deg_t_to_rad_f(coord.direction);
     const float frontDistance = cm_u_to_f(coord.distance) * cosf(rad_f_to_f(yawRad)) + cm_f_to_f(camera.centerOffset);
-    const centimetres_f actualCameraHeight = calculate_camera_height(camera_pivot, camera, camera_pivot.cameraHeightOffsets[cameraOffset]);
+    const centimetres_f actualCameraHeight = calculate_camera_height(camera_pivot, camera, camera_pivot.height);
     const degrees_f totalPitch = 90.0f - rad_f_to_deg_f(f_to_rad_f(atan2f(frontDistance, cm_f_to_f(actualCameraHeight))));
     const degrees_f pitch = totalPitch - camera.vDirection - camera_pivot.pitch;
     const percent_f y = f_to_pct_f(deg_f_to_f(-pitch / (camera.vFov / 2.0f)));
