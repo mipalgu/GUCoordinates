@@ -119,6 +119,7 @@ bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_camera_pi
 {
     const gu_camera camera = camera_pivot.cameras[cameraOffset];
     const degrees_f pitchToObject = camera_pivot.pitch + camera.vDirection - f_to_deg_f(pct_f_to_f(coord.y)) * (camera.vFov / 2.0f);
+    // If the object is below/behind us or it is above the horizontal.
     if (pitchToObject >= 90.0f || pitchToObject <= 0.0f)
     {
         return false;
@@ -128,7 +129,7 @@ bool pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_camera_pi
     const radians_f yawRad = deg_f_to_rad_f(yaw);
     const float cosYaw = cosf(rad_f_to_f(yawRad));
     // Avoid division by zero later on.
-    if (cosYaw == 0.0f)
+    if (fabsf(cosYaw) < 0.00001f)
     {
         return false;
     }
@@ -144,23 +145,15 @@ bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_p
     const gu_camera camera = camera_pivot.cameras[cameraOffset];
     const degrees_f yaw = deg_t_to_deg_f(coord.direction) - camera_pivot.yaw;
     const percent_f x = f_to_pct_f(deg_f_to_f(-yaw / (camera.hFov / 2.0f)));
-    if (x < -1.0f || x > 1.0f)
-    {
-        return false;
-    }
     const radians_f yawRad = deg_t_to_rad_f(coord.direction);
     const float frontDistance = cm_u_to_f(coord.distance) * cosf(rad_f_to_f(yawRad)) + cm_f_to_f(camera.centerOffset);
     const centimetres_f actualCameraHeight = calculate_camera_height(camera_pivot, camera, camera_pivot.height);
     const degrees_f totalPitch = 90.0f - rad_f_to_deg_f(f_to_rad_f(atan2f(frontDistance, cm_f_to_f(actualCameraHeight))));
     const degrees_f pitch = totalPitch - camera.vDirection - camera_pivot.pitch;
     const percent_f y = f_to_pct_f(deg_f_to_f(-pitch / (camera.vFov / 2.0f)));
-    if (y < -1.0f || y > 1.0f)
-    {
-        return false;
-    }
     out->x = x;
     out->y = y;
-    return true;
+    return x >= -1.0f && x <= 1.0f && y >= -1.0f && y <= 1.0f;
 }
 
 bool rr_coord_to_px_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset, gu_pixel_coordinate * out, pixels_u res_width, pixels_u res_height)
