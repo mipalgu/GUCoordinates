@@ -138,6 +138,13 @@ namespace GU {
         PercentCoordinate unsafeClampedPercentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const percent_f) const;
         PercentCoordinate unsafeClampedPercentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const percent_f) const;
 
+        bool clampedCameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f, GU::CameraCoordinate &) const;
+        bool clampedCameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f, GU::CameraCoordinate &) const;
+        bool clampedPixelCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f, GU::PixelCoordinate &) const;
+        bool clampedPixelCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f, GU::PixelCoordinate &) const;
+        bool clampedPercentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const percent_f, GU::PercentCoordinate &) const;
+        bool clampedPercentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const percent_f, GU::PercentCoordinate &) const;
+
 #if __cplusplus >= 201703L
         std::optional<GU::CartesianCoordinate> cartesianCoordinateAt(const GU::CameraCoordinate &, const GU::CameraPivot &, const int) const;
         std::optional<GU::CartesianCoordinate> cartesianCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int) const;

@@ -158,6 +158,15 @@ namespace CGTEST {
     GETTER_IM_TEST_NAME_F(FieldCoordinate, unsafeClampedToleranceCameraCoordinateCartesianBool, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedCameraCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
     GETTER_IM_TEST_NAME_F(FieldCoordinate, unsafeClampedToleranceCameraCoordinateFieldBool, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedCameraCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
 
+    GETTER_BOOL_TEST_NAME_F(FieldCoordinate, clampedTolerancePercentCoordinateCartesianBool, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, clampedPercentCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f, temp))
+    GETTER_BOOL_TEST_NAME_F(FieldCoordinate, clampedTolerancePercentCoordinateFieldBool, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, clampedPercentCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f, temp))
+
+    GETTER_BOOL_IM_TEST_NAME_F(FieldCoordinate, clampedTolerancePixelCoordinateCartesianBool, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, clampedPixelCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f, temp))
+    GETTER_BOOL_IM_TEST_NAME_F(FieldCoordinate, clampedTolerancePixelCoordinateFieldBool, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, clampedPixelCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f, temp))
+
+    GETTER_BOOL_IM_TEST_NAME_F(FieldCoordinate, clampedToleranceCameraCoordinateCartesianBool, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, clampedCameraCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f, temp))
+    GETTER_BOOL_IM_TEST_NAME_F(FieldCoordinate, clampedToleranceCameraCoordinateFieldBool, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, clampedCameraCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f, temp))
+
     TEST_F(FieldCoordinateCPPTests, GettersSetters) {
         GU::FieldCoordinate coord = GU::FieldCoordinate(GU::CartesianCoordinate(90, 50), 100);
         equals(coord.position(), GU::CartesianCoordinate(90, 50));
