@@ -86,6 +86,10 @@ bool pct_coord_to_rr_coord(const gu_percent_coordinate, const gu_camera_pivot, g
 gu_percent_coordinate unsafe_rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int) __attribute__((const));
 bool rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int, gu_percent_coordinate *) __attribute__((pure, nonnull));
 
+gu_percent_coordinate unsafe_clamped_rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int) __attribute__((const));
+gu_percent_coordinate unsafe_clamped_tolerance_rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_f) __attribute__((const));
+bool clamped_tolerance_rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_f, gu_percent_coordinate *) __attribute__((pure, nonnull));
+
 // Converting from the robot relative coordinate system to the field coordinate systems.
 gu_cartesian_coordinate rr_coord_to_cartesian_coord(const gu_relative_coordinate) __attribute__((const));
 gu_cartesian_coordinate rr_coord_to_cartesian_coord_from_source(const gu_relative_coordinate, const gu_cartesian_coordinate) __attribute__((const));

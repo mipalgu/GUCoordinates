@@ -171,6 +171,36 @@ namespace CGTEST {
         ASSERT_LT(fabsf(output.y - 0.5f), 0.01f);
     }
 
+    TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercentClamped) {
+        const gu_camera topCamera = { 6.364f, 5.871f, 1.2f, 47.64f, 60.91f };
+        const gu_camera_pivot pivot = { 0.0f, 0.0f, 41.7f, {topCamera}, 1 };
+        const gu_relative_coordinate coord = { 30, 108 };
+        const gu_percent_coordinate out = unsafe_clamped_rr_coord_to_pct_coord(coord, pivot, 0);
+        ASSERT_GE(out.x, -1.0f);
+        ASSERT_GE(out.y, -1.0f);
+        ASSERT_LE(out.x, 1.0f);
+        ASSERT_LE(out.y, 1.0f);
+    }
+
+    TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercentClampedTolerance) {
+        const gu_camera topCamera = { 6.364f, 5.871f, 1.2f, 47.64f, 60.91f };
+        const gu_camera_pivot pivot = { 0.0f, 0.0f, 41.7f, {topCamera}, 1 };
+        const gu_relative_coordinate coord = { 30, 108 };
+        gu_percent_coordinate out = {};
+        const bool result = clamped_tolerance_rr_coord_to_pct_coord(coord, pivot, 0, 0.1f, &out);
+        ASSERT_TRUE(result);
+        ASSERT_GE(out.x, -1.0f);
+        ASSERT_GE(out.y, -1.0f);
+        ASSERT_LE(out.x, 1.0f);
+        ASSERT_LE(out.y, 1.0f);
+        const bool result2 = clamped_tolerance_rr_coord_to_pct_coord(coord, pivot, 0, 0.01f, &out);
+        ASSERT_FALSE(result2);
+        ASSERT_GE(out.x, -1.0f);
+        ASSERT_LT(out.y, -1.0f);
+        ASSERT_LE(out.x, 1.0f);
+        ASSERT_LE(out.y, 1.0f);
+    }
+
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToFieldCoordinate) {
         const gu_relative_coordinate coord = { .direction = 0, .distance = 1 };
         const gu_field_coordinate target = rr_coord_to_field_coord(coord, 40);

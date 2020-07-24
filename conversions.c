@@ -175,6 +175,55 @@ bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_p
     return out->x >= -1.0f && out->x <= 1.0f && out->y >= -1.0f && out->y <= 1.0f;
 }
 
+gu_percent_coordinate unsafe_clamped_rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset)
+{
+    gu_percent_coordinate out = unsafe_rr_coord_to_pct_coord(coord, camera_pivot, cameraOffset);
+    if (out.x < -1.0f)
+    {
+        out.x = -1.0f;
+    } 
+    else if (out.x > 1.0f) {
+        out.x = 1.0f;
+    }
+    if (out.y < 1.0f)
+    {
+        out.y = -1.0f;
+    }
+    else if (out.y > 1.0f) {
+        out.y = 1.0f;
+    }
+    return out;
+}
+
+gu_percent_coordinate unsafe_clamped_tolerance_rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset, const percent_f tolerance)
+{
+    gu_percent_coordinate temp = {};
+    (void) clamped_tolerance_rr_coord_to_pct_coord(coord, camera_pivot, cameraOffset, tolerance, &temp);
+    return temp;
+}
+
+bool clamped_tolerance_rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset, const percent_f tolerance, gu_percent_coordinate * out)
+{
+    *out = unsafe_rr_coord_to_pct_coord(coord, camera_pivot, cameraOffset);
+    const percent_f lowerBound = -1.0f - tolerance;
+    const percent_f upperBound = 1.0f + tolerance;
+    if (out->x < -1.0f && out->x >= lowerBound)
+    {
+        out->x = -1.0f;
+    } 
+    else if (out->x > 1.0f && out->x <= upperBound) {
+        out->x = 1.0f;
+    }
+    if (out->y < 1.0f && out->y >= lowerBound)
+    {
+        out->y = -1.0f;
+    }
+    else if (out->y > 1.0f && out->y <= upperBound) {
+        out->y = 1.0f;
+    }
+    return out->x >= -1.0f && out->x <= 1.0f && out->y >= -1.0f && out->y <= 1.0f;
+}
+
 gu_cartesian_coordinate rr_coord_to_cartesian_coord(const gu_relative_coordinate coord)
 {
     const float distance = cm_u_to_f(coord.distance);
