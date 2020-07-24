@@ -79,14 +79,12 @@ gu_percent_coordinate px_coord_to_pct_coord(const gu_pixel_coordinate) __attribu
 gu_pixel_coordinate pct_coord_to_px_coord(const gu_percent_coordinate, const pixels_u, const pixels_u) __attribute__((const));
 
 // Converting from image coordinate systems to the robot relative coordiante system.
-bool px_coord_to_rr_coord(const gu_pixel_coordinate, const gu_camera_pivot, gu_relative_coordinate *, const int) __attribute__((pure, nonnull));
 bool pct_coord_to_rr_coord(const gu_percent_coordinate, const gu_camera_pivot, gu_relative_coordinate *, const int) __attribute__ ((pure, nonnull));
 gu_relative_coordinate unsafe_pct_coord_to_rr_coord(const gu_percent_coordinate, const gu_camera_pivot, const int);
 
 // Converting from the robot relative coordinate system to the image coordinate systems.
 gu_percent_coordinate unsafe_rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int);
 bool rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int, gu_percent_coordinate *) __attribute__((pure, nonnull));
-bool rr_coord_to_px_coord(const gu_relative_coordinate, const gu_camera_pivot, const int, gu_pixel_coordinate *, pixels_u, pixels_u) __attribute__((pure, nonnull));
 
 // Converting from the robot relative coordinate system to the field coordinate systems.
 gu_cartesian_coordinate rr_coord_to_cartesian_coord(const gu_relative_coordinate) __attribute__((const));

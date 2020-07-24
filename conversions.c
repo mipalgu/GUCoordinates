@@ -108,12 +108,6 @@ gu_pixel_coordinate pct_coord_to_px_coord(const gu_percent_coordinate coord, con
     return newCoord;
 }
 
-
-bool px_coord_to_rr_coord(const gu_pixel_coordinate coord, const gu_camera_pivot camera_pivot, gu_relative_coordinate * out, const int cameraOffset)
-{
-    return pct_coord_to_rr_coord(px_coord_to_pct_coord(coord), camera_pivot, out, cameraOffset);
-}
-
 static centimetres_f calculate_camera_height(const gu_camera_pivot camera_pivot, const gu_camera camera, const centimetres_f cameraHeightOffset)
 {
     const centimetres_f totalHeight = cameraHeightOffset + camera.height;
@@ -179,21 +173,6 @@ bool rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_p
     out->x = temp.x;
     out->y = temp.y;
     return out->x >= -1.0f && out->x <= 1.0f && out->y >= -1.0f && out->y <= 1.0f;
-}
-
-bool rr_coord_to_px_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset, gu_pixel_coordinate * out, pixels_u res_width, pixels_u res_height)
-{
-    gu_percent_coordinate temp;
-    if (!rr_coord_to_pct_coord(coord, camera_pivot, cameraOffset, &temp))
-    {
-        return false;
-    }
-    gu_pixel_coordinate converted = pct_coord_to_px_coord(temp, res_width, res_height);
-    out->x = converted.x;
-    out->y = converted.y;
-    out->res_width = converted.res_width;
-    out->res_height = converted.res_height;
-    return true;
 }
 
 gu_cartesian_coordinate rr_coord_to_cartesian_coord(const gu_relative_coordinate coord)
