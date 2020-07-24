@@ -110,6 +110,12 @@ namespace GU {
         bool fieldCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int, const degrees_t, GU::FieldCoordinate &) const;
         bool fieldCoordinateAt(const GU::PercentCoordinate &, const GU::CameraPivot &, const int, const degrees_t, GU::FieldCoordinate &) const;
 
+        CameraCoordinate unsafeCameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        CameraCoordinate unsafeCameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PixelCoordinate unsafePixelCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PixelCoordinate unsafePixelCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PercentCoordinate unsafePercentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int) const;
+        PercentCoordinate unsafePercentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int) const;
 
         bool cameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, GU::CameraCoordinate &) const;
         bool cameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, GU::CameraCoordinate &) const;
