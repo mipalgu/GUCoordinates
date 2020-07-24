@@ -118,7 +118,7 @@ static centimetres_f calculate_camera_height(const gu_camera_pivot camera_pivot,
 
 gu_relative_coordinate unsafe_pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset)
 {
-    gu_relative_coordinate temp = {};
+    gu_relative_coordinate temp = { 0, 0 };
     (void) pct_coord_to_rr_coord(coord, camera_pivot, &temp, cameraOffset);
     return temp;
 }
@@ -197,7 +197,7 @@ gu_percent_coordinate unsafe_clamped_rr_coord_to_pct_coord(const gu_relative_coo
 
 gu_percent_coordinate unsafe_clamped_tolerance_rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset, const percent_f tolerance)
 {
-    gu_percent_coordinate temp = {};
+    gu_percent_coordinate temp = { 0.0f, 0.0f };
     (void) clamped_tolerance_rr_coord_to_pct_coord(coord, camera_pivot, cameraOffset, tolerance, &temp);
     return temp;
 }
