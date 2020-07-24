@@ -102,6 +102,18 @@ namespace GU {
         bool pixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, PixelCoordinate &) const;
         bool percentCoordinate(const GU::CameraPivot &, const int, PercentCoordinate & other) const;
 
+        CameraCoordinate unsafeCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PixelCoordinate unsafePixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PercentCoordinate unsafePercentCoordinate(const GU::CameraPivot &, const int) const;
+
+        CameraCoordinate unsafeClampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PixelCoordinate unsafeClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PercentCoordinate unsafeClampedPercentCoordinate(const GU::CameraPivot &, const int) const;
+
+        CameraCoordinate unsafeClampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
+        PixelCoordinate unsafeClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
+        PercentCoordinate unsafeClampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_f) const;
+
 #if __cplusplus >= 201703L
         std::optional<CameraCoordinate> cameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
         std::optional<PixelCoordinate> pixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;

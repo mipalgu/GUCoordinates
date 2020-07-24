@@ -104,6 +104,18 @@ namespace CGTEST {
     GETTER_TEST_F(RelativeCoordinate, FieldCoordinate, rr_coord_to_field_coord, fieldCoordinate(30))
     GETTER_TEST_F(RelativeCoordinate, RelativeCoordinate, cartesian_coord_to_rr_coord_from_source, relativeCoordinateTo(GU::RelativeCoordinate(30, 120)))
 
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeCameraCoordinate, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafeCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafePixelCoordinate, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafePixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_TEST_NAME_F(RelativeCoordinate, unsafePercentCoordinate, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafePercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedCameraCoordinate, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedPixelCoordinate, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_TEST_NAME_F(RelativeCoordinate, unsafeClampedPercentCoordinate, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedToleranceCameraCoordinate, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedTolerancePixelCoordinate, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
+    GETTER_TEST_NAME_F(RelativeCoordinate, unsafeClampedTolerancePercentCoordinate, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f))
+
     TEST_F(RelativeCoordinateCPPTests, GettersSetters) {
         GU::RelativeCoordinate coord = GU::RelativeCoordinate(90, 100);
         ASSERT_EQ(coord.direction(), 90);

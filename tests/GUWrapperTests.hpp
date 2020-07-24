@@ -115,6 +115,21 @@
 #define GETTER_TEST_F(className, resultType, call, get) \
     GETTER_TEST_NAME_F(className, resultType, resultType, call, get)
 
+#define GETTER_IM_TEST_NAME_F(className, testName, resultType, call, imType, imCall, get) \
+    TEST2_F(testclassname(className), testName) {\
+        const GU::imType imResult = GU::imType(imCall##_result); \
+        imCall##_fake.return_val = imResult; \
+        const GU::resultType result = GU::resultType(call##_result); \
+        call##_fake.return_val = result; \
+        equals(initial().get, result); \
+        ASSERT_EQ(call##_fake.call_count, 1); \
+        call##_reset(); \
+        imCall##_reset(); \
+    }
+
+#define GETTER_IM_TEST_F(className, resultType, call, imType, imCall, get) \
+    GETTER_IM_TEST_NAME_F(className, resultType, resultType, call, imType, imCall, get)
+
 #define GETTER_BOOL_TEST_NAME_F(className, testName, resultType, call, get) \
     TEST2_F(testclassname(className), testName) {\
         call##_fake.custom_fake = call##_custom_fake_true; \
