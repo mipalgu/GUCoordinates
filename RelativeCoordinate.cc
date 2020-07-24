@@ -264,6 +264,37 @@ std::optional<GU::PercentCoordinate> GU::RelativeCoordinate::percentCoordinate(c
     }
     return std::nullopt;
 }
+
+std::optional<GU::CameraCoordinate> GU::RelativeCoordinate::clampedCameraCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance) const
+{
+    const std::optional<GU::PixelCoordinate> p = clampedPixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, tolerance);
+    if (p.has_value())
+    {
+        return p.value().cameraCoordinate();
+    }
+    return std::nullopt;
+}
+
+std::optional<GU::PixelCoordinate> GU::RelativeCoordinate::clampedPixelCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance) const
+{
+    const std::optional<GU::PercentCoordinate> p = clampedPercentCoordinate(cameraPivot, cameraOffset, tolerance);
+    if (p.has_value())
+    {
+        return p.value().pixelCoordinate(resWidth, resHeight);
+    }
+    return std::nullopt;
+
+}
+
+std::optional<GU::PercentCoordinate> GU::RelativeCoordinate::clampedPercentCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset, const percent_f tolerance) const
+{
+    GU::PercentCoordinate temp;
+    const bool result = clampedPercentCoordinate(cameraPivot, cameraOffset, tolerance, temp);
+    if (result) {
+        return std::optional<GU::PercentCoordinate>(temp);
+    }
+    return std::nullopt;
+}
 #endif
 
 GU::RelativeCoordinate GU::RelativeCoordinate::relativeCoordinateTo(const RelativeCoordinate & coord) const

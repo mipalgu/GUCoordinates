@@ -122,6 +122,10 @@ namespace GU {
         std::optional<CameraCoordinate> cameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
         std::optional<PixelCoordinate> pixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
         std::optional<PercentCoordinate> percentCoordinate(const GU::CameraPivot &, const int) const;
+
+        std::optional<CameraCoordinate> clampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
+        std::optional<PixelCoordinate> clampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
+        std::optional<PercentCoordinate> clampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_f) const;
 #endif
 
         RelativeCoordinate relativeCoordinateTo(const RelativeCoordinate &) const;
