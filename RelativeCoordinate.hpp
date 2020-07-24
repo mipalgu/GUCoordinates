@@ -114,6 +114,10 @@ namespace GU {
         PixelCoordinate unsafeClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
         PercentCoordinate unsafeClampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_f) const;
 
+        bool clampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f, CameraCoordinate &) const;
+        bool clampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f, PixelCoordinate &) const;
+        bool clampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_f, PercentCoordinate &) const;
+
 #if __cplusplus >= 201703L
         std::optional<CameraCoordinate> cameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
         std::optional<PixelCoordinate> pixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;

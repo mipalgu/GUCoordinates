@@ -205,6 +205,35 @@ GU::PercentCoordinate GU::RelativeCoordinate::unsafeClampedPercentCoordinate(con
     return PercentCoordinate(unsafe_clamped_tolerance_rr_coord_to_pct_coord(*this, cameraPivot, cameraOffset, tolerance));
 }
 
+bool GU::RelativeCoordinate::clampedCameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance, GU::CameraCoordinate &other) const
+{
+    GU::PixelCoordinate temp;
+    if (!clampedPixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, tolerance, temp))
+        return false;
+    other = temp.cameraCoordinate();
+    return true;
+}
+
+bool GU::RelativeCoordinate::clampedPixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance, GU::PixelCoordinate &other) const
+{
+    GU::PercentCoordinate temp;
+    if (!clampedPercentCoordinate(cameraPivot, cameraOffset, tolerance, temp))
+        return false;
+    other = temp.pixelCoordinate(resWidth, resHeight);
+    return true;
+}
+
+bool GU::RelativeCoordinate::clampedPercentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const percent_f tolerance, GU::PercentCoordinate &other) const
+{
+    gu_percent_coordinate temp;
+    if (!clamped_tolerance_rr_coord_to_pct_coord(*this, cameraPivot, cameraOffset, tolerance, &temp))
+    {
+        return false;
+    }
+    other = temp;
+    return true;
+}
+
 #if __cplusplus >= 201703L
 std::optional<GU::CameraCoordinate> GU::RelativeCoordinate::cameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
