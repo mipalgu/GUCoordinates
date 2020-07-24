@@ -120,6 +120,52 @@ namespace CGTEST {
     GETTER_OPT_IM_TEST_NAME_F(CartesianCoordinate, CameraCoordinateCartesian, CameraCoordinate, rr_coord_to_pct_coord, px_coord_to_cam_coord, cameraCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
     GETTER_OPT_IM_TEST_NAME_F(CartesianCoordinate, CameraCoordinateField, CameraCoordinate, rr_coord_to_pct_coord, px_coord_to_cam_coord, cameraCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
 
+    GETTER_TEST_NAME_F(CartesianCoordinate, unsafePercentCoordinateCartesianBool, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafePercentCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+    GETTER_TEST_NAME_F(CartesianCoordinate, unsafePercentCoordinateFieldBool, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafePercentCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafePixelCoordinateCartesianBool, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafePixelCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafePixelCoordinateFieldBool, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafePixelCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafeCameraCoordinateCartesianBool, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafeCameraCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafeCameraCoordinateFieldBool, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafeCameraCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+
+    GETTER_TEST_NAME_F(CartesianCoordinate, unsafeClampedPercentCoordinateCartesianBool, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedPercentCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+    GETTER_TEST_NAME_F(CartesianCoordinate, unsafeClampedPercentCoordinateFieldBool, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedPercentCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafeClampedPixelCoordinateCartesianBool, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedPixelCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafeClampedPixelCoordinateFieldBool, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedPixelCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafeClampedCameraCoordinateCartesianBool, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedCameraCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafeClampedCameraCoordinateFieldBool, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedCameraCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+
+    GETTER_TEST_NAME_F(CartesianCoordinate, unsafeClampedTolerancePercentCoordinateCartesianBool, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPercentCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f))
+    GETTER_TEST_NAME_F(CartesianCoordinate, unsafeClampedTolerancePercentCoordinateFieldBool, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPercentCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f))
+
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafeClampedTolerancePixelCoordinateCartesianBool, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPixelCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafeClampedTolerancePixelCoordinateFieldBool, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPixelCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
+
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafeClampedToleranceCameraCoordinateCartesianBool, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedCameraCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
+    GETTER_IM_TEST_NAME_F(CartesianCoordinate, unsafeClampedToleranceCameraCoordinateFieldBool, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedCameraCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
+
+    GETTER_BOOL_TEST_NAME_F(CartesianCoordinate, clampedTolerancePercentCoordinateCartesianBool, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, clampedPercentCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f, temp))
+    GETTER_BOOL_TEST_NAME_F(CartesianCoordinate, clampedTolerancePercentCoordinateFieldBool, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, clampedPercentCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f, temp))
+
+    GETTER_BOOL_IM_TEST_NAME_F(CartesianCoordinate, clampedTolerancePixelCoordinateCartesianBool, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, clampedPixelCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f, temp))
+    GETTER_BOOL_IM_TEST_NAME_F(CartesianCoordinate, clampedTolerancePixelCoordinateFieldBool, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, clampedPixelCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f, temp))
+
+    GETTER_BOOL_IM_TEST_NAME_F(CartesianCoordinate, clampedToleranceCameraCoordinateCartesianBool, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, clampedCameraCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f, temp))
+    GETTER_BOOL_IM_TEST_NAME_F(CartesianCoordinate, clampedToleranceCameraCoordinateFieldBool, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, clampedCameraCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f, temp))
+
+    GETTER_OPT_TEST_NAME_F(CartesianCoordinate, optClampedTolerancePercentCoordinateCartesianBool, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, clampedPercentCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f))
+    GETTER_OPT_TEST_NAME_F(CartesianCoordinate, optClampedTolerancePercentCoordinateFieldBool, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, clampedPercentCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f))
+
+    GETTER_OPT_IM_TEST_NAME_F(CartesianCoordinate, optClampedTolerancePixelCoordinateCartesianBool, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, clampedPixelCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
+    GETTER_OPT_IM_TEST_NAME_F(CartesianCoordinate, optClampedTolerancePixelCoordinateFieldBool, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, clampedPixelCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
+
+    GETTER_OPT_IM_TEST_NAME_F(CartesianCoordinate, optClampedToleranceCameraCoordinateCartesianBool, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, clampedCameraCoordinateTo(GU::CartesianCoordinate(-3, 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
+    GETTER_OPT_IM_TEST_NAME_F(CartesianCoordinate, optClampedToleranceCameraCoordinateFieldBool, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, clampedCameraCoordinateTo(GU::FieldCoordinate(GU::CartesianCoordinate(23, 100), 12), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
+
+
     TEST_F(CartesianCoordinateCPPTests, GettersSetters) {
         GU::CartesianCoordinate coord = GU::CartesianCoordinate(90, 100);
         ASSERT_EQ(coord.x(), 90);
