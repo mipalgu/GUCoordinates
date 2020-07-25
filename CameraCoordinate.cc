@@ -164,6 +164,11 @@ bool GU::CameraCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivo
     return percentCoordinate().relativeCoordinate(cameraPivot, cameraOffset, other);
 }
 
+GU::RelativeCoordinate GU::CameraCoordinate::unsafeRelativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
+{
+    return percentCoordinate().unsafeRelativeCoordinate(cameraPivot, cameraOffset);
+}
+
 pixels_u GU::CameraCoordinate::x() const
 {
     return gu_camera_coordinate::x;
