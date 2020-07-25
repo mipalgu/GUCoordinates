@@ -97,6 +97,13 @@ namespace CGTEST {
 
     WRAPPER_TEST_Fs(FieldCoordinate, gu_field_coordinate)
 
+    GETTER_IM_TEST_NAME_F(FieldCoordinate, unsafeCartesianCoordinateCamera, CartesianCoordinate, rr_coord_to_cartesian_coord_from_field, RelativeCoordinate, unsafe_pct_coord_to_rr_coord, unsafeCartesianCoordinateAt(GU::CameraCoordinate(23, 52, 1920, 1080), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+    GETTER_IM_TEST_NAME_F(FieldCoordinate, unsafeCartesianCoordinatePixel, CartesianCoordinate, rr_coord_to_cartesian_coord_from_field, RelativeCoordinate, unsafe_pct_coord_to_rr_coord, unsafeCartesianCoordinateAt(GU::PixelCoordinate(42, -123, 1920, 1080), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+    GETTER_IM_TEST_NAME_F(FieldCoordinate, unsafeCartesianCoordinatePercent, CartesianCoordinate, rr_coord_to_cartesian_coord_from_field, RelativeCoordinate, unsafe_pct_coord_to_rr_coord, unsafeCartesianCoordinateAt(GU::PercentCoordinate(-0.24f, 0.5f), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+    GETTER_IM_TEST_NAME_F(FieldCoordinate, unsafeFieldCoordinateCamera, FieldCoordinate, rr_coord_to_field_coord_from_source, RelativeCoordinate, unsafe_pct_coord_to_rr_coord, unsafeFieldCoordinateAt(GU::CameraCoordinate(23, 52, 1920, 1080), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 70))
+    GETTER_IM_TEST_NAME_F(FieldCoordinate, unsafeFieldCoordinatePixel, FieldCoordinate, rr_coord_to_field_coord_from_source, RelativeCoordinate, unsafe_pct_coord_to_rr_coord, unsafeFieldCoordinateAt(GU::PixelCoordinate(42, -123, 1920, 1080), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 70))
+    GETTER_IM_TEST_NAME_F(FieldCoordinate, unsafeFieldCoordinatePercent, FieldCoordinate, rr_coord_to_field_coord_from_source, RelativeCoordinate, unsafe_pct_coord_to_rr_coord, unsafeFieldCoordinateAt(GU::PercentCoordinate(-0.24f, 0.5f), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 70))
+
     GETTER_BOOL_IM_TEST_NAME_F(FieldCoordinate, CartesianCoordinateCameraBool, CartesianCoordinate, pct_coord_to_rr_coord, rr_coord_to_cartesian_coord_from_field, cartesianCoordinateAt(GU::CameraCoordinate(23, 52, 1920, 1080), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))
     GETTER_BOOL_IM_TEST_NAME_F(FieldCoordinate, CartesianCoordinatePixelBool, CartesianCoordinate, pct_coord_to_rr_coord, rr_coord_to_cartesian_coord_from_field, cartesianCoordinateAt(GU::PixelCoordinate(42, -123, 1920, 1080), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))
     GETTER_BOOL_IM_TEST_NAME_F(FieldCoordinate, CartesianCoordinatePercentBool, CartesianCoordinate, pct_coord_to_rr_coord, rr_coord_to_cartesian_coord_from_field, cartesianCoordinateAt(GU::PercentCoordinate(-0.24f, 0.5f), nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, temp))

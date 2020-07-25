@@ -131,6 +131,36 @@ GU::FieldCoordinate& GU::FieldCoordinate::operator=(FieldCoordinate&& other)
 }
 #endif
 
+GU::CartesianCoordinate GU::FieldCoordinate::unsafeCartesianCoordinateAt(const GU::CameraCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+{
+    return cartesianCoordinateAt(target.unsafeRelativeCoordinate(cameraPivot, cameraOffset));
+}
+
+GU::CartesianCoordinate GU::FieldCoordinate::unsafeCartesianCoordinateAt(const GU::PixelCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+{
+    return cartesianCoordinateAt(target.unsafeRelativeCoordinate(cameraPivot, cameraOffset));
+}
+
+GU::CartesianCoordinate GU::FieldCoordinate::unsafeCartesianCoordinateAt(const GU::PercentCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+{
+    return cartesianCoordinateAt(target.unsafeRelativeCoordinate(cameraPivot, cameraOffset));
+}
+
+GU::FieldCoordinate GU::FieldCoordinate::unsafeFieldCoordinateAt(const GU::CameraCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset, const degrees_t targetHeading) const
+{
+    return fieldCoordinateAt(target.unsafeRelativeCoordinate(cameraPivot, cameraOffset), targetHeading);
+}
+
+GU::FieldCoordinate GU::FieldCoordinate::unsafeFieldCoordinateAt(const GU::PixelCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset, const degrees_t targetHeading) const
+{
+    return fieldCoordinateAt(target.unsafeRelativeCoordinate(cameraPivot, cameraOffset), targetHeading);
+}
+
+GU::FieldCoordinate GU::FieldCoordinate::unsafeFieldCoordinateAt(const GU::PercentCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset, const degrees_t targetHeading) const
+{
+    return fieldCoordinateAt(target.unsafeRelativeCoordinate(cameraPivot, cameraOffset), targetHeading);
+}
+
 bool GU::FieldCoordinate::cartesianCoordinateAt(const GU::CameraCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, GU::CartesianCoordinate & other) const
 {
     GU::RelativeCoordinate temp;
