@@ -102,6 +102,10 @@ namespace GU {
         RelativeCoordinate relativeCoordinateTo(const GU::CartesianCoordinate &) const;
         RelativeCoordinate relativeCoordinateTo(const GU::FieldCoordinate &) const;
 
+        CartesianCoordinate unsafeCartesianCoordinateAt(const GU::CameraCoordinate &, const GU::CameraPivot &, const int) const;
+        CartesianCoordinate unsafeCartesianCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int) const;
+        CartesianCoordinate unsafeCartesianCoordinateAt(const GU::PercentCoordinate &, const GU::CameraPivot &, const int) const;
+
         bool cartesianCoordinateAt(const GU::CameraCoordinate &, const GU::CameraPivot &, const int, GU::CartesianCoordinate &) const;
         bool cartesianCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int, GU::CartesianCoordinate &) const;
         bool cartesianCoordinateAt(const GU::PercentCoordinate &, const GU::CameraPivot &, const int, GU::CartesianCoordinate &) const;

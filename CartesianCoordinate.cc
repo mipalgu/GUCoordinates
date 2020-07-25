@@ -131,6 +131,21 @@ GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&
 }
 #endif
 
+GU::CartesianCoordinate GU::CartesianCoordinate::unsafeCartesianCoordinateAt(const GU::CameraCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+{
+    return cartesianCoordinateAt(target.unsafeRelativeCoordinate(cameraPivot, cameraOffset));
+}
+
+GU::CartesianCoordinate GU::CartesianCoordinate::unsafeCartesianCoordinateAt(const GU::PixelCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+{
+    return cartesianCoordinateAt(target.unsafeRelativeCoordinate(cameraPivot, cameraOffset));
+}
+
+GU::CartesianCoordinate GU::CartesianCoordinate::unsafeCartesianCoordinateAt(const GU::PercentCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+{
+    return cartesianCoordinateAt(target.unsafeRelativeCoordinate(cameraPivot, cameraOffset));
+}
+
 bool GU::CartesianCoordinate::cartesianCoordinateAt(const GU::CameraCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, GU::CartesianCoordinate & other) const
 {
     GU::RelativeCoordinate temp;
