@@ -164,6 +164,11 @@ bool GU::PixelCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot
     return percentCoordinate().relativeCoordinate(cameraPivot, cameraOffset, other);
 }
 
+GU::RelativeCoordinate GU::PixelCoordinate::unsafeRelativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
+{
+    return percentCoordinate().unsafeRelativeCoordinate(cameraPivot, cameraOffset);
+}
+
 #if __cplusplus >= 201703L
 std::optional<GU::RelativeCoordinate> GU::PixelCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
