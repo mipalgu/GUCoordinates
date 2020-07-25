@@ -96,6 +96,7 @@ namespace CGTEST {
     GETTER_TEST_F(PercentCoordinate, CameraCoordinate, px_coord_to_cam_coord, cameraCoordinate(1920, 1080))
     GETTER_TEST_F(PercentCoordinate, PixelCoordinate, pct_coord_to_px_coord, pixelCoordinate(1920, 1080))
     GETTER_OPT_TEST_F(PercentCoordinate, RelativeCoordinate, pct_coord_to_rr_coord, relativeCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+    GETTER_TEST_NAME_F(PercentCoordinate, unsafeRelativeCoordinate, RelativeCoordinate, unsafe_pct_coord_to_rr_coord, unsafeRelativeCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
 
     TEST_F(PercentCoordinateCPPTests, GettersSetters) {
         GU::PercentCoordinate coord = GU::PercentCoordinate(-1.0f, -1.0f);

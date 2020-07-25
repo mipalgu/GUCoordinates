@@ -72,6 +72,7 @@ extern "C" {
     FAKE(px_coord_to_cam_coord)                          \
     FAKE(px_coord_to_pct_coord)                          \
     FAKE(pct_coord_to_px_coord)                          \
+    FAKE(unsafe_pct_coord_to_rr_coord)                   \
     FAKE(pct_coord_to_rr_coord)                          \
     FAKE(rr_coord_to_pct_coord)                          \
     FAKE(unsafe_clamped_rr_coord_to_pct_coord)           \
@@ -103,6 +104,9 @@ DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, px_coord_to_pct_coord, const gu_p
 
 #define pct_coord_to_px_coord_result px_result
 DECLARE_FAKE_VALUE_FUNC(gu_pixel_coordinate, pct_coord_to_px_coord, const gu_percent_coordinate, const pixels_u, const pixels_u)
+
+#define unsafe_pct_coord_to_rr_coord_result rr_result
+DECLARE_FAKE_VALUE_FUNC(gu_relative_coordinate, unsafe_pct_coord_to_rr_coord, const gu_percent_coordinate, const gu_camera_pivot, const int)
 
 #define pct_coord_to_rr_coord_result false
 DECLARE_FAKE_VALUE_FUNC(bool, pct_coord_to_rr_coord, const gu_percent_coordinate, const gu_camera_pivot, gu_relative_coordinate *, const int)

@@ -73,6 +73,7 @@ DEFINE_FAKE_VALUE_FUNC(gu_camera_coordinate, px_coord_to_cam_coord, const gu_pix
 DEFINE_FAKE_VALUE_FUNC(gu_percent_coordinate, px_coord_to_pct_coord, const gu_pixel_coordinate)
 DEFINE_FAKE_VALUE_FUNC(gu_pixel_coordinate, pct_coord_to_px_coord, const gu_percent_coordinate, const pixels_u, const pixels_u)
 
+DEFINE_FAKE_VALUE_FUNC(gu_relative_coordinate, unsafe_pct_coord_to_rr_coord, const gu_percent_coordinate, const gu_camera_pivot, const int)
 DEFINE_FAKE_VALUE_FUNC(bool, pct_coord_to_rr_coord, const gu_percent_coordinate, const gu_camera_pivot, gu_relative_coordinate *, const int)
 
 DEFINE_FAKE_VALUE_FUNC(gu_percent_coordinate, unsafe_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int)
