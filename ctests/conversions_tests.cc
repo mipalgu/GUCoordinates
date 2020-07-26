@@ -129,46 +129,46 @@ namespace CGTEST {
     TEST_F(ConversionsTests, ConvertsFromPercentToRelativeCoordinate) {
         const gu_percent_coordinate centrePoint = { 0.0f, 0.0f};
         const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(5.0f, 0.0f);
-        gu_relative_coordinate coord;
-        ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, camera_pivot, &coord, 0));
-        ASSERT_EQ(coord.distance, 432);
-        ASSERT_EQ(coord.direction, 0);
+        const gu_optional_relative_coordinate result = pct_coord_to_rr_coord(centrePoint, camera_pivot, 0);
+        ASSERT_TRUE(result.has_value);
+        ASSERT_EQ(result.value.distance, 432);
+        ASSERT_EQ(result.value.direction, 0);
     }
 
     TEST_F(ConversionsTests, ConvertsFromPercentToRelativeCoordinate3) {
         const gu_percent_coordinate centrePoint = {0.0f, 0.5f};
         const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(15.0f, 0.0f);
-        gu_relative_coordinate coord;
-        ASSERT_TRUE(pct_coord_to_rr_coord(centrePoint, camera_pivot, &coord, 0));
-        ASSERT_EQ(coord.distance, 612);
-        ASSERT_EQ(coord.direction, 0);
+        const gu_optional_relative_coordinate result = pct_coord_to_rr_coord(centrePoint, camera_pivot, 0);
+        ASSERT_TRUE(result.has_value);
+        ASSERT_EQ(result.value.distance, 612);
+        ASSERT_EQ(result.value.direction, 0);
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercent) {
         const gu_relative_coordinate coord = { 0, 430 };
         const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(5.0f, 0.0f);
-        gu_percent_coordinate output;
-        ASSERT_TRUE(rr_coord_to_pct_coord(coord, camera_pivot, 0, &output));
-        ASSERT_TRUE(fabsf(output.x - 0.0f) < 0.01f);
-        ASSERT_TRUE(fabsf(output.y - 0.0f) < 0.01f);
+        const gu_optional_percent_coordinate result = rr_coord_to_pct_coord(coord, camera_pivot, 0);
+        ASSERT_TRUE(result.has_value);
+        ASSERT_TRUE(fabsf(result.value.x - 0.0f) < 0.01f);
+        ASSERT_TRUE(fabsf(result.value.y - 0.0f) < 0.01f);
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercent2) {
         const gu_relative_coordinate coord = { 0, 153 };
         const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(15.0f, 0.0f);
-        gu_percent_coordinate output;
-        ASSERT_TRUE(rr_coord_to_pct_coord(coord, camera_pivot, 0, &output));
-        ASSERT_LT(fabsf(output.x - 0.0f), 0.01f);
-        ASSERT_LT(fabsf(output.y - 0.0f), 0.01f);
+        const gu_optional_percent_coordinate result = rr_coord_to_pct_coord(coord, camera_pivot, 0);
+        ASSERT_TRUE(result.has_value);
+        ASSERT_LT(fabsf(result.value.x - 0.0f), 0.01f);
+        ASSERT_LT(fabsf(result.value.y - 0.0f), 0.01f);
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercent3) {
         const gu_relative_coordinate coord = { 0, 629};
         const gu_camera_pivot camera_pivot = GU_NAO_V5_HEAD(15.0f, 0.0f);
-        gu_percent_coordinate output;
-        ASSERT_TRUE(rr_coord_to_pct_coord(coord, camera_pivot, 0, &output));
-        ASSERT_LT(fabsf(output.x - 0.0f), 0.01f);
-        ASSERT_LT(fabsf(output.y - 0.5f), 0.01f);
+        const gu_optional_percent_coordinate result = rr_coord_to_pct_coord(coord, camera_pivot, 0);
+        ASSERT_TRUE(result.has_value);
+        ASSERT_LT(fabsf(result.value.x - 0.0f), 0.01f);
+        ASSERT_LT(fabsf(result.value.y - 0.5f), 0.01f);
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToPercentClamped) {
@@ -186,19 +186,18 @@ namespace CGTEST {
         const gu_camera topCamera = { 6.364f, 5.871f, 1.2f, 47.64f, 60.91f };
         const gu_camera_pivot pivot = { 0.0f, 0.0f, 41.7f, {topCamera}, 1 };
         const gu_relative_coordinate coord = { 30, 108 };
-        gu_percent_coordinate out = {};
-        const bool result = clamped_tolerance_rr_coord_to_pct_coord(coord, pivot, 0, 0.1f, &out);
-        ASSERT_TRUE(result);
-        ASSERT_GE(out.x, -1.0f);
-        ASSERT_GE(out.y, -1.0f);
-        ASSERT_LE(out.x, 1.0f);
-        ASSERT_LE(out.y, 1.0f);
-        const bool result2 = clamped_tolerance_rr_coord_to_pct_coord(coord, pivot, 0, 0.01f, &out);
-        ASSERT_FALSE(result2);
-        ASSERT_GE(out.x, -1.0f);
-        ASSERT_LT(out.y, -1.0f);
-        ASSERT_LE(out.x, 1.0f);
-        ASSERT_LE(out.y, 1.0f);
+        const gu_optional_percent_coordinate result = clamped_tolerance_rr_coord_to_pct_coord(coord, pivot, 0, 0.1f);
+        ASSERT_TRUE(result.has_value);
+        ASSERT_GE(result.value.x, -1.0f);
+        ASSERT_GE(result.value.y, -1.0f);
+        ASSERT_LE(result.value.x, 1.0f);
+        ASSERT_LE(result.value.y, 1.0f);
+        const gu_optional_percent_coordinate result2 = clamped_tolerance_rr_coord_to_pct_coord(coord, pivot, 0, 0.01f);
+        ASSERT_FALSE(result2.has_value);
+        ASSERT_GE(result2.value.x, -1.0f);
+        ASSERT_LT(result2.value.y, -1.0f);
+        ASSERT_LE(result2.value.x, 1.0f);
+        ASSERT_LE(result2.value.y, 1.0f);
     }
 
     TEST_F(ConversionsTests, ConvertsFromRelativeCoordinateToFieldCoordinate) {
