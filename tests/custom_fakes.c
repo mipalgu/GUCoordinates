@@ -70,38 +70,44 @@ const gu_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_
 #  endif
 #endif
 
-bool pct_coord_to_rr_coord_custom_fake_true(const gu_percent_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), gu_relative_coordinate * out, const int UNUSED(i))
+gu_optional_relative_coordinate pct_coord_to_rr_coord_custom_fake_true(const gu_percent_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i))
 {
     const gu_relative_coordinate temp = pct_coord_to_rr_coord_custom_fake_result;
-    *out = temp;
-    return true;
+    const gu_optional_relative_coordinate out = { true, temp };
+    return out;
 }
 
-bool pct_coord_to_rr_coord_custom_fake_false(const gu_percent_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), gu_relative_coordinate * UNUSED(o), const int UNUSED(i))
+gu_optional_realative_coordinate pct_coord_to_rr_coord_custom_fake_false(const gu_percent_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i))
 {
-    return false;
+    const gu_relative_coordinate temp = pct_coord_to_rr_coord_custom_fake_result;
+    const gu_optional_relative_coordinate out = { false, temp };
+    return out;
 }
 
-bool rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i), gu_percent_coordinate * out)
+gu_optional_percent_coordinate rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i))
 {
     const gu_percent_coordinate temp = rr_coord_to_pct_coord_custom_fake_result;
-    *out = temp;
-    return true;
+    const gu_optional_percent_coordinate out = { true, temp };
+    return out;
 }
 
-bool rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i), gu_percent_coordinate * UNUSED(o))
+gu_optional_percent_coordinate rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i))
 {
-    return false;
+    const gu_percent_coordinate temp = rr_coord_to_pct_coord_custom_fake_result;
+    const gu_optional_percent_coordinate out = { false, temp };
+    return out;
 }
 
-bool clamped_tolerance_rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i), const percent_f UNUSED(t), gu_percent_coordinate * out)
+gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i), const percent_f UNUSED(t))
 {
     const gu_percent_coordinate temp = clamped_tolerance_rr_coord_to_pct_coord_custom_fake_result;
-    *out = temp;
-    return true;
+    const gu_optional_percent_coordinate out = { true, temp };
+    return out;
 }
 
-bool clamped_tolerance_rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i), const percent_f UNUSED(t), gu_percent_coordinate * UNUSED(o))
+gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i), const percent_f UNUSED(t))
 {
-    return false;
+    const gu_percent_coordinate temp = clamped_tolerance_rr_coord_to_pct_coord_custom_fake_result;
+    const gu_optional_percent_coordinate out = { false, temp };
+    return out;
 }
