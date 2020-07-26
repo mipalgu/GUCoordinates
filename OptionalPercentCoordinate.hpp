@@ -1,8 +1,8 @@
 /*
- * PercentCoordinate.hpp 
- * guvision_utils 
+ * OptionalPercentCoordinate.hpp 
+ * gucoordinates 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 27/07/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,16 +56,11 @@
  *
  */
 
-#ifndef PERCENTCOORDINATE_HPP
-#define PERCENTCOORDINATE_HPP
+#ifndef GUCOORDINATES_OPTIONALPERCENTCOORDINATE_HPP
+#define GUCOORDINATES_OPTIONALPERCENTCOORDINATE_HPP
 
-#include "percent_coordinate.h"
-#include "RelativeCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "CameraCoordinate.hpp"
-#include "CameraPivot.hpp"
-
-#include "OptionalRelativeCoordinate.hpp"
+#include "optional_percent_coordinate.h"
+#include "PercentCoordinate.hpp"
 
 #include <cstdlib>
 
@@ -75,50 +70,42 @@
 
 namespace GU {
 
-    struct CameraCoordinate; // Forward Declaration.
-    struct PixelCoordinate; // Forward Declaration.
-    struct RelativeCoordinate; // Forward Declaration.
+    struct PercentCoordinate;
 
-    struct OptionalRelativeCoordinate;
+    struct OptionalPercentCoordinate: public gu_optional_percent_coordinate {
 
-    struct PercentCoordinate: public gu_percent_coordinate {
-
-        PercentCoordinate();
-        PercentCoordinate(percent_f, percent_f);
-        PercentCoordinate(const PercentCoordinate& other);
-        PercentCoordinate(const gu_percent_coordinate& other);
-#if __cplusplus >= 201103L
-        PercentCoordinate(PercentCoordinate&& other);
-#endif
-        ~PercentCoordinate();
-        PercentCoordinate& operator=(const PercentCoordinate& other);
-        PercentCoordinate& operator=(const gu_percent_coordinate& other);
-#if __cplusplus >= 201103L
-        PercentCoordinate& operator=(PercentCoordinate&& other);
-#endif
-
-        CameraCoordinate cameraCoordinate(const pixels_u, const pixels_u) const;
-        PixelCoordinate pixelCoordinate(const pixels_u, const pixels_u) const;
-        OptionalRelativeCoordinate rawRelativeCoordinate(const GU::CameraPivot &, const int) const;
-        RelativeCoordinate unsafeRelativeCoordinate(const GU::CameraPivot &, const int) const;
-
+        OptionalPercentCoordinate();
+        OptionalPercentCoordinate(const bool, const PercentCoordinate);
+        OptionalPercentCoordinate(const OptionalPercentCoordinate& other);
+        OptionalPercentCoordinate(const gu_optional_percent_coordinate& other);
 #if __cplusplus >= 201703L
-        std::optional<RelativeCoordinate> relativeCoordinate(const GU::CameraPivot &, const int) const;
+        OptionalPercentCoordinate(const std::optional<PercentCoordinate>& other);
+#endif
+#if __cplusplus >= 201103L
+        OptionalPercentCoordinate(OptionalPercentCoordinate&& other);
+#endif
+        ~OptionalPercentCoordinate();
+        OptionalPercentCoordinate& operator=(const OptionalPercentCoordinate& other);
+        OptionalPercentCoordinate& operator=(const gu_optional_percent_coordinate& other);
+#if __cplusplus >= 201703L
+        OptionalPercentCoordinate& operator=(const std::optional<PercentCoordinate>& other);
+#endif
+#if __cplusplus >= 201103L
+        OptionalPercentCoordinate& operator=(OptionalPercentCoordinate&& other);
 #endif
 
-        percent_f x() const;
-        void set_x(const percent_f);
-
-        percent_f y() const;
-        void set_y(const percent_f);
-
-        bool operator ==(const PercentCoordinate &other) const;
-        bool operator !=(const PercentCoordinate &other) const;
-        bool operator ==(const gu_percent_coordinate &other) const;
-        bool operator !=(const gu_percent_coordinate &other) const;
+        bool has_value() const;
+        void set_has_value(const bool);
+        
+        PercentCoordinate value() const;
+        void set_value(const PercentCoordinate);
+        
+#if __cplusplus >= 201703L
+        std::optional<PercentCoordinate> asOptional() const;
+#endif
 
     };
 
 }
 
-#endif  /* PERCENTCOORDINATE_HPP */
+#endif  /* GUCOORDINATES_OPTIONALPERCENTCOORDINATE_HPP */

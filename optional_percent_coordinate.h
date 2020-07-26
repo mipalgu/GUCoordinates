@@ -59,7 +59,6 @@
 #ifndef GUCOORDINATES_OPTIONAL_PERCENT_COORDINATE_H
 #define GUCOORDINATES_OPTIONAL_PERCENT_COORDINATE_H
 
-
 #include "percent_coordinate.h"
 
 #ifdef __cplusplus

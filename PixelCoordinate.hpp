@@ -64,6 +64,7 @@
 #include "PercentCoordinate.hpp"
 #include "RelativeCoordinate.hpp"
 #include "CameraPivot.hpp"
+#include "OptionalRelativeCoordinate.hpp"
 
 #include <cstdlib>
 
@@ -95,7 +96,7 @@ namespace GU {
 
         CameraCoordinate cameraCoordinate() const;
         PercentCoordinate percentCoordinate() const;
-        bool relativeCoordinate(const GU::CameraPivot &, const int, GU::RelativeCoordinate &) const;
+        OptionalRelativeCoordinate rawRelativeCoordinate(const GU::CameraPivot &, const int) const;
         RelativeCoordinate unsafeRelativeCoordinate(const GU::CameraPivot &, const int) const;
 
 #if __cplusplus >= 201703L

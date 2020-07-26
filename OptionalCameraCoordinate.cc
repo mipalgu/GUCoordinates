@@ -1,8 +1,8 @@
 /*
- * PercentCoordinate.hpp 
- * guvision_utils 
+ * OptionalCameraCoordinate.cc 
+ * gucoordinates 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 27/07/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,69 +56,93 @@
  *
  */
 
-#ifndef PERCENTCOORDINATE_HPP
-#define PERCENTCOORDINATE_HPP
+#include "OptionalCameraCoordinate.hpp"
 
-#include "percent_coordinate.h"
-#include "RelativeCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "CameraCoordinate.hpp"
-#include "CameraPivot.hpp"
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate() {}
 
-#include "OptionalRelativeCoordinate.hpp"
-
-#include <cstdlib>
-
-#if __cplusplus >= 201703L
-#include <optional>
-#endif
-
-namespace GU {
-
-    struct CameraCoordinate; // Forward Declaration.
-    struct PixelCoordinate; // Forward Declaration.
-    struct RelativeCoordinate; // Forward Declaration.
-
-    struct OptionalRelativeCoordinate;
-
-    struct PercentCoordinate: public gu_percent_coordinate {
-
-        PercentCoordinate();
-        PercentCoordinate(percent_f, percent_f);
-        PercentCoordinate(const PercentCoordinate& other);
-        PercentCoordinate(const gu_percent_coordinate& other);
-#if __cplusplus >= 201103L
-        PercentCoordinate(PercentCoordinate&& other);
-#endif
-        ~PercentCoordinate();
-        PercentCoordinate& operator=(const PercentCoordinate& other);
-        PercentCoordinate& operator=(const gu_percent_coordinate& other);
-#if __cplusplus >= 201103L
-        PercentCoordinate& operator=(PercentCoordinate&& other);
-#endif
-
-        CameraCoordinate cameraCoordinate(const pixels_u, const pixels_u) const;
-        PixelCoordinate pixelCoordinate(const pixels_u, const pixels_u) const;
-        OptionalRelativeCoordinate rawRelativeCoordinate(const GU::CameraPivot &, const int) const;
-        RelativeCoordinate unsafeRelativeCoordinate(const GU::CameraPivot &, const int) const;
-
-#if __cplusplus >= 201703L
-        std::optional<RelativeCoordinate> relativeCoordinate(const GU::CameraPivot &, const int) const;
-#endif
-
-        percent_f x() const;
-        void set_x(const percent_f);
-
-        percent_f y() const;
-        void set_y(const percent_f);
-
-        bool operator ==(const PercentCoordinate &other) const;
-        bool operator !=(const PercentCoordinate &other) const;
-        bool operator ==(const gu_percent_coordinate &other) const;
-        bool operator !=(const gu_percent_coordinate &other) const;
-
-    };
-
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const bool t_has_value, const GU::CameraCoordinate t_value)
+{
+    set_has_value(t_has_value);
+    set_value(t_value);
 }
 
-#endif  /* PERCENTCOORDINATE_HPP */
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const GU::OptionalCameraCoordinate& other)
+{
+    set_has_value(other.has_value());
+    set_value(other.value());
+}
+
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const gu_optional_camera_coordinate &other)
+{
+    set_has_value(other.has_value);
+    set_value(other.value);
+}
+
+#if __cplusplus >= 201103L
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate(GU::OptionalCameraCoordinate&& other)
+{
+    set_has_value(other.has_value());
+    other.set_has_value(0.0f);
+    set_value(other.value());
+    other.set_value(GU::CameraCoordinate());
+}
+#endif
+
+GU::OptionalCameraCoordinate::~OptionalCameraCoordinate() {}
+
+GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(const GU::OptionalCameraCoordinate& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_has_value(other.has_value());
+    set_value(other.value());
+    return *this;
+}
+
+GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(const gu_optional_camera_coordinate& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_has_value(other.has_value);
+    set_value(other.value);
+    return *this;
+}
+
+#if __cplusplus >= 201103L
+GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(GU::OptionalCameraCoordinate&& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_has_value(other.has_value());
+    other.set_has_value(false);
+    set_value(other.value());
+    other.set_value(GU::CameraCoordinate());
+    return *this;
+}
+#endif
+
+bool GU::OptionalCameraCoordinate::has_value() const
+{
+    return gu_optional_camera_coordinate::has_value;
+}
+
+void GU::OptionalCameraCoordinate::set_has_value(const bool newValue)
+{
+    gu_optional_camera_coordinate::has_value = newValue;
+}
+
+GU::CameraCoordinate GU::OptionalCameraCoordinate::value() const
+{
+    return gu_optional_camera_coordinate::value;
+}
+
+void GU::OptionalCameraCoordinate::set_value(const GU::CameraCoordinate newValue)
+{
+    gu_optional_camera_coordinate::value = newValue;
+}

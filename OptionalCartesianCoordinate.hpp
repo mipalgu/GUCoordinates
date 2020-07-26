@@ -1,8 +1,8 @@
 /*
- * PercentCoordinate.hpp 
- * guvision_utils 
+ * OptionalCartesianCoordinate.hpp 
+ * gucoordinates 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 27/07/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,69 +56,42 @@
  *
  */
 
-#ifndef PERCENTCOORDINATE_HPP
-#define PERCENTCOORDINATE_HPP
+#ifndef GUCOORDINATES_OPTIONALCARTESIANCOORDINATE_HPP
+#define GUCOORDINATES_OPTIONALCARTESIANCOORDINATE_HPP
 
-#include "percent_coordinate.h"
-#include "RelativeCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "CameraCoordinate.hpp"
-#include "CameraPivot.hpp"
-
-#include "OptionalRelativeCoordinate.hpp"
+#include "optional_cartesian_coordinate.h"
+#include "CartesianCoordinate.hpp"
 
 #include <cstdlib>
 
-#if __cplusplus >= 201703L
-#include <optional>
-#endif
-
 namespace GU {
 
-    struct CameraCoordinate; // Forward Declaration.
-    struct PixelCoordinate; // Forward Declaration.
-    struct RelativeCoordinate; // Forward Declaration.
+    struct CartesianCoordinate;
 
-    struct OptionalRelativeCoordinate;
+    struct OptionalCartesianCoordinate: public gu_optional_cartesian_coordinate {
 
-    struct PercentCoordinate: public gu_percent_coordinate {
-
-        PercentCoordinate();
-        PercentCoordinate(percent_f, percent_f);
-        PercentCoordinate(const PercentCoordinate& other);
-        PercentCoordinate(const gu_percent_coordinate& other);
+        OptionalCartesianCoordinate();
+        OptionalCartesianCoordinate(const bool, const CartesianCoordinate);
+        OptionalCartesianCoordinate(const OptionalCartesianCoordinate& other);
+        OptionalCartesianCoordinate(const gu_optional_cartesian_coordinate& other);
 #if __cplusplus >= 201103L
-        PercentCoordinate(PercentCoordinate&& other);
+        OptionalCartesianCoordinate(OptionalCartesianCoordinate&& other);
 #endif
-        ~PercentCoordinate();
-        PercentCoordinate& operator=(const PercentCoordinate& other);
-        PercentCoordinate& operator=(const gu_percent_coordinate& other);
+        ~OptionalCartesianCoordinate();
+        OptionalCartesianCoordinate& operator=(const OptionalCartesianCoordinate& other);
+        OptionalCartesianCoordinate& operator=(const gu_optional_cartesian_coordinate& other);
 #if __cplusplus >= 201103L
-        PercentCoordinate& operator=(PercentCoordinate&& other);
+        OptionalCartesianCoordinate& operator=(OptionalCartesianCoordinate&& other);
 #endif
 
-        CameraCoordinate cameraCoordinate(const pixels_u, const pixels_u) const;
-        PixelCoordinate pixelCoordinate(const pixels_u, const pixels_u) const;
-        OptionalRelativeCoordinate rawRelativeCoordinate(const GU::CameraPivot &, const int) const;
-        RelativeCoordinate unsafeRelativeCoordinate(const GU::CameraPivot &, const int) const;
-
-#if __cplusplus >= 201703L
-        std::optional<RelativeCoordinate> relativeCoordinate(const GU::CameraPivot &, const int) const;
-#endif
-
-        percent_f x() const;
-        void set_x(const percent_f);
-
-        percent_f y() const;
-        void set_y(const percent_f);
-
-        bool operator ==(const PercentCoordinate &other) const;
-        bool operator !=(const PercentCoordinate &other) const;
-        bool operator ==(const gu_percent_coordinate &other) const;
-        bool operator !=(const gu_percent_coordinate &other) const;
+        bool has_value() const;
+        void set_has_value(const bool);
+        
+        CartesianCoordinate value() const;
+        void set_value(const CartesianCoordinate);
 
     };
 
 }
 
-#endif  /* PERCENTCOORDINATE_HPP */
+#endif  /* GUCOORDINATES_OPTIONALCARTESIANCOORDINATE_HPP */

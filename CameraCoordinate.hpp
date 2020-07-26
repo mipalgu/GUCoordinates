@@ -66,6 +66,7 @@
 #include "CartesianCoordinate.hpp"
 #include "FieldCoordinate.hpp"
 #include "CameraPivot.hpp"
+#include "OptionalRelativeCoordinate.hpp"
 
 #include <cstdlib>
 
@@ -99,7 +100,7 @@ namespace GU {
 
         GU::PixelCoordinate pixelCoordinate() const;
         GU::PercentCoordinate percentCoordinate() const;
-        bool relativeCoordinate(const GU::CameraPivot &, const int, GU::RelativeCoordinate &) const;
+        GU::OptionalRelativeCoordinate rawRelativeCoordinate(const GU::CameraPivot &, const int) const;
         RelativeCoordinate unsafeRelativeCoordinate(const GU::CameraPivot &, const int) const;
 
 #if __cplusplus >= 201703L

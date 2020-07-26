@@ -159,9 +159,9 @@ GU::PercentCoordinate GU::CameraCoordinate::percentCoordinate() const
     return pixelCoordinate().percentCoordinate();
 }
 
-bool GU::CameraCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset, GU::RelativeCoordinate & other) const
+GU::OptionalRelativeCoordinate GU::CameraCoordinate::rawRelativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    return percentCoordinate().relativeCoordinate(cameraPivot, cameraOffset, other);
+    return percentCoordinate().rawRelativeCoordinate(cameraPivot, cameraOffset);
 }
 
 GU::RelativeCoordinate GU::CameraCoordinate::unsafeRelativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const

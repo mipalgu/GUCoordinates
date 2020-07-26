@@ -141,9 +141,9 @@ GU::CameraCoordinate GU::PercentCoordinate::cameraCoordinate(const pixels_u resW
     return pixelCoordinate(resWidth, resHeight).cameraCoordinate();
 }
 
-bool GU::PercentCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset, GU::RelativeCoordinate & other) const
+GU::OptionalRelativeCoordinate GU::PercentCoordinate::rawRelativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    return pct_coord_to_rr_coord(*this, cameraPivot, &other, cameraOffset);
+    return pct_coord_to_rr_coord(*this, cameraPivot, cameraOffset);
 }
 
 GU::RelativeCoordinate GU::PercentCoordinate::unsafeRelativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
@@ -154,12 +154,7 @@ GU::RelativeCoordinate GU::PercentCoordinate::unsafeRelativeCoordinate(const GU:
 #if __cplusplus >= 201703L
 std::optional<GU::RelativeCoordinate> GU::PercentCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    GU::RelativeCoordinate out;
-    if (relativeCoordinate(cameraPivot, cameraOffset, out))
-    {
-        return std::optional<GU::RelativeCoordinate>(out);
-    }
-    return std::nullopt;
+    return rawRelativeCoordinate(cameraPivot, cameraOffset).asOptional();
 }
 #endif
 

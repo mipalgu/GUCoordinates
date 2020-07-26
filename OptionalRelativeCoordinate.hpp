@@ -70,6 +70,8 @@
 
 namespace GU {
 
+    struct RelativeCoordinate;
+
     struct OptionalRelativeCoordinate: public gu_optional_relative_coordinate {
 
         OptionalRelativeCoordinate();

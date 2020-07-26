@@ -70,6 +70,10 @@
 #include "FieldCoordinate.hpp"
 #include "CameraPivot.hpp"
 
+#include "OptionalCameraCoordinate.hpp"
+#include "OptionalPixelCoordinate.hpp"
+#include "OptionalPercentCoordinate.hpp"
+
 #if __cplusplus >= 201703L
 #include <optional>
 #endif
@@ -98,9 +102,9 @@ namespace GU {
         RelativeCoordinate& operator=(RelativeCoordinate&& other);
 #endif
 
-        bool cameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, CameraCoordinate &) const;
-        bool pixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, PixelCoordinate &) const;
-        bool percentCoordinate(const GU::CameraPivot &, const int, PercentCoordinate & other) const;
+        OptionalCameraCoordinate rawCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        OptionalPixelCoordinate rawPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        OptionalPercentCoordinate rawPercentCoordinate(const GU::CameraPivot &, const int) const;
 
         CameraCoordinate unsafeCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
         PixelCoordinate unsafePixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
@@ -114,9 +118,9 @@ namespace GU {
         PixelCoordinate unsafeClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
         PercentCoordinate unsafeClampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_f) const;
 
-        bool clampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f, CameraCoordinate &) const;
-        bool clampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f, PixelCoordinate &) const;
-        bool clampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_f, PercentCoordinate &) const;
+        OptionalCameraCoordinate rawClampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
+        OptionalPixelCoordinate rawClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
+        OptionalPercentCoordinate rawClampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_f) const;
 
 #if __cplusplus >= 201703L
         std::optional<CameraCoordinate> cameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;

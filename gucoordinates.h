@@ -64,7 +64,11 @@
 #include "field_coordinate.h"
 #include "camera.h"
 #include "camera_pivot.h"
+#include "optional_camera_coordinate.h"
+#include "optional_pixel_coordinate.h"
+#include "optional_percent_coordinate.h"
 #include "optional_relative_coordinate.h"
+#include "optional_cartesian_coordinate.h"
 #include "optional_field_coordinate.h"
 #include "conversions.h"
 
@@ -77,6 +81,10 @@
 #include "FieldCoordinate.hpp"
 #include "Camera.hpp"
 #include "CameraPivot.hpp"
+#include "OptionalCameraCoordinate.hpp"
+#include "OptionalPixelCoordinate.hpp"
+#include "OptionalPercentCoordinate.hpp"
 #include "OptionalRelativeCoordinate.hpp"
+#include "OptionalCartesianCoordinate.hpp"
 #include "OptionalFieldCoordinate.hpp"
 #endif

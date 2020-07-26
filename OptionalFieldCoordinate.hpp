@@ -66,6 +66,8 @@
 
 namespace GU {
 
+    struct FieldCoordinate;
+
     struct OptionalFieldCoordinate: public gu_optional_field_coordinate {
 
         OptionalFieldCoordinate();

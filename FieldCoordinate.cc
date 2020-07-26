@@ -161,58 +161,40 @@ GU::FieldCoordinate GU::FieldCoordinate::unsafeFieldCoordinateAt(const GU::Perce
     return fieldCoordinateAt(target.unsafeRelativeCoordinate(cameraPivot, cameraOffset), targetHeading);
 }
 
-bool GU::FieldCoordinate::cartesianCoordinateAt(const GU::CameraCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, GU::CartesianCoordinate & other) const
+GU::OptionalCartesianCoordinate GU::FieldCoordinate::rawCartesianCoordinateAt(const GU::CameraCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    GU::RelativeCoordinate temp;
-    if (!target.relativeCoordinate(cameraPivot, cameraOffset, temp))
-        return false;
-    other = cartesianCoordinateAt(temp);
-    return true;
+    const GU::OptionalRelativeCoordinate temp = target.rawRelativeCoordinate(cameraPivot, cameraOffset);
+    return GU::OptionalCartesianCoordinate(temp.has_value(), cartesianCoordinateAt(temp.value()));
 }
 
-bool GU::FieldCoordinate::cartesianCoordinateAt(const GU::PixelCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, GU::CartesianCoordinate & other) const
+GU::OptionalCartesianCoordinate GU::FieldCoordinate::rawCartesianCoordinateAt(const GU::PixelCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    GU::RelativeCoordinate temp;
-    if (!target.relativeCoordinate(cameraPivot, cameraOffset, temp))
-        return false;
-    other = cartesianCoordinateAt(temp);
-    return true;
+    const GU::OptionalRelativeCoordinate temp = target.rawRelativeCoordinate(cameraPivot, cameraOffset);
+    return GU::OptionalCartesianCoordinate(temp.has_value(), cartesianCoordinateAt(temp.value()));
 }
 
-bool GU::FieldCoordinate::cartesianCoordinateAt(const GU::PercentCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, GU::CartesianCoordinate & other) const
+GU::OptionalCartesianCoordinate GU::FieldCoordinate::rawCartesianCoordinateAt(const GU::PercentCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    GU::RelativeCoordinate temp;
-    if (!target.relativeCoordinate(cameraPivot, cameraOffset, temp))
-        return false;
-    other = cartesianCoordinateAt(temp);
-    return true;
+    const GU::OptionalRelativeCoordinate temp = target.rawRelativeCoordinate(cameraPivot, cameraOffset);
+    return GU::OptionalCartesianCoordinate(temp.has_value(), cartesianCoordinateAt(temp.value()));
 }
 
-bool GU::FieldCoordinate::fieldCoordinateAt(const GU::CameraCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const degrees_t targetHeading, GU::FieldCoordinate & other) const
+GU::OptionalFieldCoordinate GU::FieldCoordinate::rawFieldCoordinateAt(const GU::CameraCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const degrees_t targetHeading) const
 {
-    GU::RelativeCoordinate temp;
-    if (!target.relativeCoordinate(cameraPivot, cameraOffset, temp))
-        return false;
-    other = fieldCoordinateAt(temp, targetHeading);
-    return true;
+    const GU::OptionalRelativeCoordinate temp = target.rawRelativeCoordinate(cameraPivot, cameraOffset);
+    return GU::OptionalFieldCoordinate(temp.has_value(), fieldCoordinateAt(temp.value(), targetHeading));
 }
 
-bool GU::FieldCoordinate::fieldCoordinateAt(const GU::PixelCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const degrees_t targetHeading, GU::FieldCoordinate & other) const
+GU::OptionalFieldCoordinate GU::FieldCoordinate::rawFieldCoordinateAt(const GU::PixelCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const degrees_t targetHeading) const
 {
-    GU::RelativeCoordinate temp;
-    if (!target.relativeCoordinate(cameraPivot, cameraOffset, temp))
-        return false;
-    other = fieldCoordinateAt(temp, targetHeading);
-    return true;
+    const GU::OptionalRelativeCoordinate temp = target.rawRelativeCoordinate(cameraPivot, cameraOffset);
+    return GU::OptionalFieldCoordinate(temp.has_value(), fieldCoordinateAt(temp.value(), targetHeading));
 }
 
-bool GU::FieldCoordinate::fieldCoordinateAt(const GU::PercentCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const degrees_t targetHeading, GU::FieldCoordinate & other) const
+GU::OptionalFieldCoordinate GU::FieldCoordinate::rawFieldCoordinateAt(const GU::PercentCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const degrees_t targetHeading) const
 {
-    GU::RelativeCoordinate temp;
-    if (!target.relativeCoordinate(cameraPivot, cameraOffset, temp))
-        return false;
-    other = fieldCoordinateAt(temp, targetHeading);
-    return true;
+    const GU::OptionalRelativeCoordinate temp = target.rawRelativeCoordinate(cameraPivot, cameraOffset);
+    return GU::OptionalFieldCoordinate(temp.has_value(), fieldCoordinateAt(temp.value(), targetHeading));
 }
 
 #if __cplusplus >= 201703L
@@ -375,64 +357,64 @@ GU::PercentCoordinate GU::FieldCoordinate::unsafeClampedPercentCoordinateTo(cons
     return relativeCoordinateTo(target).unsafeClampedPercentCoordinate(cameraPivot, cameraOffset, tolerance);
 }
 
-bool GU::FieldCoordinate::clampedCameraCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance, GU::CameraCoordinate &other) const
+GU::OptionalCameraCoordinate GU::FieldCoordinate::rawClampedCameraCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance) const
 {
-    return relativeCoordinateTo(target).clampedCameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, tolerance, other);
+    return relativeCoordinateTo(target).rawClampedCameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, tolerance);
 }
 
-bool GU::FieldCoordinate::clampedCameraCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance, GU::CameraCoordinate &other) const
+GU::OptionalCameraCoordinate GU::FieldCoordinate::rawClampedCameraCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance) const
 {
-    return relativeCoordinateTo(target).clampedCameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, tolerance, other);
+    return relativeCoordinateTo(target).rawClampedCameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, tolerance);
 }
 
-bool GU::FieldCoordinate::clampedPixelCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance, GU::PixelCoordinate &other) const
+GU::OptionalPixelCoordinate GU::FieldCoordinate::rawClampedPixelCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance) const
 {
-    return relativeCoordinateTo(target).clampedPixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, tolerance, other);
+    return relativeCoordinateTo(target).rawClampedPixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, tolerance);
 }
 
-bool GU::FieldCoordinate::clampedPixelCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance, GU::PixelCoordinate &other) const
+GU::OptionalPixelCoordinate GU::FieldCoordinate::rawClampedPixelCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_f tolerance) const
 {
-    return relativeCoordinateTo(target).clampedPixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, tolerance, other);
+    return relativeCoordinateTo(target).rawClampedPixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, tolerance);
 }
 
-bool GU::FieldCoordinate::clampedPercentCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const percent_f tolerance, GU::PercentCoordinate &other) const
+GU::OptionalPercentCoordinate GU::FieldCoordinate::rawClampedPercentCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const percent_f tolerance) const
 {
-    return relativeCoordinateTo(target).clampedPercentCoordinate(cameraPivot, cameraOffset, tolerance, other);
+    return relativeCoordinateTo(target).rawClampedPercentCoordinate(cameraPivot, cameraOffset, tolerance);
 }
 
-bool GU::FieldCoordinate::clampedPercentCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const percent_f tolerance, GU::PercentCoordinate &other) const
+GU::OptionalPercentCoordinate GU::FieldCoordinate::rawClampedPercentCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const percent_f tolerance) const
 {
-    return relativeCoordinateTo(target).clampedPercentCoordinate(cameraPivot, cameraOffset, tolerance, other);
+    return relativeCoordinateTo(target).rawClampedPercentCoordinate(cameraPivot, cameraOffset, tolerance);
 }
 
-bool GU::FieldCoordinate::percentCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, GU::PercentCoordinate & other) const
+GU::OptionalPercentCoordinate GU::FieldCoordinate::rawPercentCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    return relativeCoordinateTo(target).percentCoordinate(cameraPivot, cameraOffset, other);
+    return relativeCoordinateTo(target).rawPercentCoordinate(cameraPivot, cameraOffset);
 }
 
-bool GU::FieldCoordinate::percentCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, GU::PercentCoordinate & other) const
+GU::OptionalPercentCoordinate GU::FieldCoordinate::rawPercentCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    return relativeCoordinateTo(target).percentCoordinate(cameraPivot, cameraOffset, other);
+    return relativeCoordinateTo(target).rawPercentCoordinate(cameraPivot, cameraOffset);
 }
 
-bool GU::FieldCoordinate::pixelCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::PixelCoordinate & other) const
+GU::OptionalPixelCoordinate GU::FieldCoordinate::rawPixelCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
-    return relativeCoordinateTo(target).pixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, other);
+    return relativeCoordinateTo(target).rawPixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
-bool GU::FieldCoordinate::pixelCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::PixelCoordinate & other) const
+GU::OptionalPixelCoordinate GU::FieldCoordinate::rawPixelCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
-    return relativeCoordinateTo(target).pixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, other);
+    return relativeCoordinateTo(target).rawPixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
-bool GU::FieldCoordinate::cameraCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::CameraCoordinate & other) const
+GU::OptionalCameraCoordinate GU::FieldCoordinate::rawCameraCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
-    return relativeCoordinateTo(target).cameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, other);
+    return relativeCoordinateTo(target).rawCameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
-bool GU::FieldCoordinate::cameraCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, GU::CameraCoordinate & other) const
+GU::OptionalCameraCoordinate GU::FieldCoordinate::rawCameraCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
-    return relativeCoordinateTo(target).cameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, other);
+    return relativeCoordinateTo(target).rawCameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
 #if __cplusplus >= 201703L

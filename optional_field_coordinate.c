@@ -58,7 +58,6 @@
 
 #include "optional_field_coordinate.h"
 
-
 bool gu_optional_field_coordinate_equals(const gu_optional_field_coordinate lhs, const gu_optional_field_coordinate rhs)
 {
     return lhs.has_value == rhs.has_value

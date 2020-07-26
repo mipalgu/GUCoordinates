@@ -1,8 +1,8 @@
 /*
- * PercentCoordinate.hpp 
- * guvision_utils 
+ * OptionalPixelCoordinate.cc 
+ * gucoordinates 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 27/07/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,69 +56,93 @@
  *
  */
 
-#ifndef PERCENTCOORDINATE_HPP
-#define PERCENTCOORDINATE_HPP
+#include "OptionalPixelCoordinate.hpp"
 
-#include "percent_coordinate.h"
-#include "RelativeCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "CameraCoordinate.hpp"
-#include "CameraPivot.hpp"
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate() {}
 
-#include "OptionalRelativeCoordinate.hpp"
-
-#include <cstdlib>
-
-#if __cplusplus >= 201703L
-#include <optional>
-#endif
-
-namespace GU {
-
-    struct CameraCoordinate; // Forward Declaration.
-    struct PixelCoordinate; // Forward Declaration.
-    struct RelativeCoordinate; // Forward Declaration.
-
-    struct OptionalRelativeCoordinate;
-
-    struct PercentCoordinate: public gu_percent_coordinate {
-
-        PercentCoordinate();
-        PercentCoordinate(percent_f, percent_f);
-        PercentCoordinate(const PercentCoordinate& other);
-        PercentCoordinate(const gu_percent_coordinate& other);
-#if __cplusplus >= 201103L
-        PercentCoordinate(PercentCoordinate&& other);
-#endif
-        ~PercentCoordinate();
-        PercentCoordinate& operator=(const PercentCoordinate& other);
-        PercentCoordinate& operator=(const gu_percent_coordinate& other);
-#if __cplusplus >= 201103L
-        PercentCoordinate& operator=(PercentCoordinate&& other);
-#endif
-
-        CameraCoordinate cameraCoordinate(const pixels_u, const pixels_u) const;
-        PixelCoordinate pixelCoordinate(const pixels_u, const pixels_u) const;
-        OptionalRelativeCoordinate rawRelativeCoordinate(const GU::CameraPivot &, const int) const;
-        RelativeCoordinate unsafeRelativeCoordinate(const GU::CameraPivot &, const int) const;
-
-#if __cplusplus >= 201703L
-        std::optional<RelativeCoordinate> relativeCoordinate(const GU::CameraPivot &, const int) const;
-#endif
-
-        percent_f x() const;
-        void set_x(const percent_f);
-
-        percent_f y() const;
-        void set_y(const percent_f);
-
-        bool operator ==(const PercentCoordinate &other) const;
-        bool operator !=(const PercentCoordinate &other) const;
-        bool operator ==(const gu_percent_coordinate &other) const;
-        bool operator !=(const gu_percent_coordinate &other) const;
-
-    };
-
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const bool t_has_value, const GU::PixelCoordinate t_value)
+{
+    set_has_value(t_has_value);
+    set_value(t_value);
 }
 
-#endif  /* PERCENTCOORDINATE_HPP */
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const GU::OptionalPixelCoordinate& other)
+{
+    set_has_value(other.has_value());
+    set_value(other.value());
+}
+
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const gu_optional_pixel_coordinate &other)
+{
+    set_has_value(other.has_value);
+    set_value(other.value);
+}
+
+#if __cplusplus >= 201103L
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate(GU::OptionalPixelCoordinate&& other)
+{
+    set_has_value(other.has_value());
+    other.set_has_value(0.0f);
+    set_value(other.value());
+    other.set_value(GU::PixelCoordinate());
+}
+#endif
+
+GU::OptionalPixelCoordinate::~OptionalPixelCoordinate() {}
+
+GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(const GU::OptionalPixelCoordinate& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_has_value(other.has_value());
+    set_value(other.value());
+    return *this;
+}
+
+GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(const gu_optional_pixel_coordinate& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_has_value(other.has_value);
+    set_value(other.value);
+    return *this;
+}
+
+#if __cplusplus >= 201103L
+GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(GU::OptionalPixelCoordinate&& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_has_value(other.has_value());
+    other.set_has_value(false);
+    set_value(other.value());
+    other.set_value(GU::PixelCoordinate());
+    return *this;
+}
+#endif
+
+bool GU::OptionalPixelCoordinate::has_value() const
+{
+    return gu_optional_pixel_coordinate::has_value;
+}
+
+void GU::OptionalPixelCoordinate::set_has_value(const bool newValue)
+{
+    gu_optional_pixel_coordinate::has_value = newValue;
+}
+
+GU::PixelCoordinate GU::OptionalPixelCoordinate::value() const
+{
+    return gu_optional_pixel_coordinate::value;
+}
+
+void GU::OptionalPixelCoordinate::set_value(const GU::PixelCoordinate newValue)
+{
+    gu_optional_pixel_coordinate::value = newValue;
+}
