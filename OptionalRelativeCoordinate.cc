@@ -60,6 +60,12 @@
 
 GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate() {}
 
+GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const GU::RelativeCoordinate t_value)
+{
+    set_has_value(true);
+    set_value(t_value);
+}
+
 GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const bool t_has_value, const GU::RelativeCoordinate t_coordinate)
 {
     set_has_value(t_has_value);

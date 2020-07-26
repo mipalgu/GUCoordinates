@@ -60,6 +60,12 @@
 
 GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate() {}
 
+GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(const GU::CartesianCoordinate t_value)
+{
+    set_has_value(true);
+    set_value(t_value);
+}
+
 GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(const bool t_has_value, const GU::CartesianCoordinate t_value)
 {
     set_has_value(t_has_value);

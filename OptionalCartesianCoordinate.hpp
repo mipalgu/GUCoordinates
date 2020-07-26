@@ -71,6 +71,7 @@ namespace GU {
     struct OptionalCartesianCoordinate: public gu_optional_cartesian_coordinate {
 
         OptionalCartesianCoordinate();
+        OptionalCartesianCoordinate(const CartesianCoordinate);
         OptionalCartesianCoordinate(const bool, const CartesianCoordinate);
         OptionalCartesianCoordinate(const OptionalCartesianCoordinate& other);
         OptionalCartesianCoordinate(const gu_optional_cartesian_coordinate& other);

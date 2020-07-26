@@ -75,6 +75,7 @@ namespace GU {
     struct OptionalPercentCoordinate: public gu_optional_percent_coordinate {
 
         OptionalPercentCoordinate();
+        OptionalPercentCoordinate(const PercentCoordinate);
         OptionalPercentCoordinate(const bool, const PercentCoordinate);
         OptionalPercentCoordinate(const OptionalPercentCoordinate& other);
         OptionalPercentCoordinate(const gu_optional_percent_coordinate& other);

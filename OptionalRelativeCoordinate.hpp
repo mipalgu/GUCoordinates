@@ -75,6 +75,7 @@ namespace GU {
     struct OptionalRelativeCoordinate: public gu_optional_relative_coordinate {
 
         OptionalRelativeCoordinate();
+        OptionalRelativeCoordinate(const RelativeCoordinate);
         OptionalRelativeCoordinate(const bool, const RelativeCoordinate);
         OptionalRelativeCoordinate(const OptionalRelativeCoordinate& other);
         OptionalRelativeCoordinate(const gu_optional_relative_coordinate& other);

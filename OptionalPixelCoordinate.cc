@@ -60,6 +60,12 @@
 
 GU::OptionalPixelCoordinate::OptionalPixelCoordinate() {}
 
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const GU::PixelCoordinate t_value)
+{
+    set_has_value(true);
+    set_value(t_value);
+}
+
 GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const bool t_has_value, const GU::PixelCoordinate t_value)
 {
     set_has_value(t_has_value);

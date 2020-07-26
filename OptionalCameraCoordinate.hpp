@@ -71,6 +71,7 @@ namespace GU {
     struct OptionalCameraCoordinate: public gu_optional_camera_coordinate {
 
         OptionalCameraCoordinate();
+        OptionalCameraCoordinate(const CameraCoordinate);
         OptionalCameraCoordinate(const bool, const CameraCoordinate);
         OptionalCameraCoordinate(const OptionalCameraCoordinate& other);
         OptionalCameraCoordinate(const gu_optional_camera_coordinate& other);

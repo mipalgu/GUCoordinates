@@ -60,6 +60,12 @@
 
 GU::OptionalPercentCoordinate::OptionalPercentCoordinate() {}
 
+GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const GU::PercentCoordinate t_value)
+{
+    set_has_value(true);
+    set_value(t_value);
+}
+
 GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const bool t_has_value, const GU::PercentCoordinate t_coordinate)
 {
     set_has_value(t_has_value);

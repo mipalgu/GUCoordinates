@@ -71,6 +71,7 @@ namespace GU {
     struct OptionalFieldCoordinate: public gu_optional_field_coordinate {
 
         OptionalFieldCoordinate();
+        OptionalFieldCoordinate(const FieldCoordinate);
         OptionalFieldCoordinate(const bool, const FieldCoordinate);
         OptionalFieldCoordinate(const OptionalFieldCoordinate& other);
         OptionalFieldCoordinate(const gu_optional_field_coordinate& other);

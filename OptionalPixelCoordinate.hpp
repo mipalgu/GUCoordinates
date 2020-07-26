@@ -71,6 +71,7 @@ namespace GU {
     struct OptionalPixelCoordinate: public gu_optional_pixel_coordinate {
 
         OptionalPixelCoordinate();
+        OptionalPixelCoordinate(const PixelCoordinate);
         OptionalPixelCoordinate(const bool, const PixelCoordinate);
         OptionalPixelCoordinate(const OptionalPixelCoordinate& other);
         OptionalPixelCoordinate(const gu_optional_pixel_coordinate& other);

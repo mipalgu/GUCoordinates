@@ -60,6 +60,12 @@
 
 GU::OptionalFieldCoordinate::OptionalFieldCoordinate() {}
 
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const GU::FieldCoordinate t_value)
+{
+    set_has_value(true);
+    set_value(t_value);
+}
+
 GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const bool t_has_value, const GU::FieldCoordinate t_value)
 {
     set_has_value(t_has_value);

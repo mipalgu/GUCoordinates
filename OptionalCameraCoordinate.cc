@@ -60,6 +60,12 @@
 
 GU::OptionalCameraCoordinate::OptionalCameraCoordinate() {}
 
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const GU::CameraCoordinate t_value)
+{
+    set_has_value(true);
+    set_value(t_value);
+}
+
 GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const bool t_has_value, const GU::CameraCoordinate t_value)
 {
     set_has_value(t_has_value);
