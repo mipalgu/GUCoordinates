@@ -377,19 +377,97 @@ namespace CGTEST {
                 }
             }
 
-            template<typename Optional>
-            void equals(const Optional lhs, const Optional rhs)
+            void equals(const GU::OptionalCameraCoordinate lhs, const GU::OptionalCameraCoordinate rhs)
             {
                 ASSERT_EQ(lhs.has_value(), rhs.has_value());
                 equals(lhs.value(), rhs.value());
             }
 
-            template<typename Optional>
-            void nequals(const Optional lhs, const Optional rhs)
+            void nequals(const GU::OptionalCameraCoordinate lhs, const GU::OptionalCameraCoordinate rhs)
             {
                 if (lhs.has_value() != rhs.has_value())
                 {
-                    ASSERT_NEQ(lhs.has_value(), rhs.has_value());
+                    ASSERT_NE(lhs.has_value(), rhs.has_value());
+                    return;
+                }
+                nequals(lhs.value(), rhs.value());
+            }
+
+            void equals(const GU::OptionalPixelCoordinate lhs, const GU::OptionalPixelCoordinate rhs)
+            {
+                ASSERT_EQ(lhs.has_value(), rhs.has_value());
+                equals(lhs.value(), rhs.value());
+            }
+
+            void nequals(const GU::OptionalPixelCoordinate lhs, const GU::OptionalPixelCoordinate rhs)
+            {
+                if (lhs.has_value() != rhs.has_value())
+                {
+                    ASSERT_NE(lhs.has_value(), rhs.has_value());
+                    return;
+                }
+                nequals(lhs.value(), rhs.value());
+            }
+
+            void equals(const GU::OptionalPercentCoordinate lhs, const GU::OptionalPercentCoordinate rhs)
+            {
+                ASSERT_EQ(lhs.has_value(), rhs.has_value());
+                equals(lhs.value(), rhs.value());
+            }
+
+            void nequals(const GU::OptionalPercentCoordinate lhs, const GU::OptionalPercentCoordinate rhs)
+            {
+                if (lhs.has_value() != rhs.has_value())
+                {
+                    ASSERT_NE(lhs.has_value(), rhs.has_value());
+                    return;
+                }
+                nequals(lhs.value(), rhs.value());
+            }
+
+            void equals(const GU::OptionalRelativeCoordinate lhs, const GU::OptionalRelativeCoordinate rhs)
+            {
+                ASSERT_EQ(lhs.has_value(), rhs.has_value());
+                equals(lhs.value(), rhs.value());
+            }
+
+            void nequals(const GU::OptionalRelativeCoordinate lhs, const GU::OptionalRelativeCoordinate rhs)
+            {
+                if (lhs.has_value() != rhs.has_value())
+                {
+                    ASSERT_NE(lhs.has_value(), rhs.has_value());
+                    return;
+                }
+                nequals(lhs.value(), rhs.value());
+            }
+
+            void equals(const GU::OptionalCartesianCoordinate lhs, const GU::OptionalCartesianCoordinate rhs)
+            {
+                ASSERT_EQ(lhs.has_value(), rhs.has_value());
+                equals(lhs.value(), rhs.value());
+            }
+
+            void nequals(const GU::OptionalCartesianCoordinate lhs, const GU::OptionalCartesianCoordinate rhs)
+            {
+                if (lhs.has_value() != rhs.has_value())
+                {
+                    ASSERT_NE(lhs.has_value(), rhs.has_value());
+                    return;
+                }
+                nequals(lhs.value(), rhs.value());
+            }
+
+            void equals(const GU::OptionalFieldCoordinate lhs, const GU::OptionalFieldCoordinate rhs)
+            {
+                ASSERT_EQ(lhs.has_value(), rhs.has_value());
+                equals(lhs.value(), rhs.value());
+            }
+
+            void nequals(const GU::OptionalFieldCoordinate lhs, const GU::OptionalFieldCoordinate rhs)
+            {
+                if (lhs.has_value() != rhs.has_value())
+                {
+                    ASSERT_NE(lhs.has_value(), rhs.has_value());
                     return;
                 }
                 nequals(lhs.value(), rhs.value());
