@@ -80,7 +80,7 @@ gu_pixel_coordinate pct_coord_to_px_coord(const gu_percent_coordinate, const pix
 
 // Converting from image coordinate systems to the robot relative coordiante system.
 gu_relative_coordinate unsafe_pct_coord_to_rr_coord(const gu_percent_coordinate, const gu_camera_pivot, const int) __attribute__((const));
-bool pct_coord_to_rr_coord(const gu_percent_coordinate, const gu_camera_pivot, gu_relative_coordinate *, const int) __attribute__ ((pure, nonnull));
+bool pct_coord_to_rr_coord(const gu_percent_coordinate, const gu_camera_pivot, gu_relative_coordinate *, const int) __attribute__((pure, nonnull));
 
 // Converting from the robot relative coordinate system to the image coordinate systems.
 gu_percent_coordinate unsafe_rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int) __attribute__((const));
