@@ -118,7 +118,7 @@ namespace CGTEST {
 
     GETTER_BOOL_IM_TEST_NAME_F(RelativeCoordinate, clampedToleranceCameraCoordinate, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, clampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f, temp))
     GETTER_BOOL_IM_TEST_NAME_F(RelativeCoordinate, clampedTolerancePixelCoordinate, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, clampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f, temp))
-    GETTER_BOOL_TEST_NAME_F(RelativeCoordinate, clampedTolerancePercentCoordinate, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, clampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f, temp))
+    GETTER_TEST_NAME_F(RelativeCoordinate, clampedTolerancePercentCoordinate, OptionalPercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, rawClampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f))
     GETTER_OPT_IM_TEST_NAME_F(RelativeCoordinate, optClampedToleranceCameraCoordinate, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, clampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
     GETTER_OPT_IM_TEST_NAME_F(RelativeCoordinate, optClampedTolerancePixelCoordinate, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, clampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
     GETTER_OPT_TEST_NAME_F(RelativeCoordinate, optClampedTolerancePercentCoordinate, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, clampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f))
