@@ -65,12 +65,12 @@ const gu_relative_coordinate rr_result = {15, 100};
 const gu_cartesian_coordinate cartesian_result = {-36, 70};
 const gu_field_coordinate field_result = {{ -36, 70}, 32};
 
-const gu_optional_camera_coordinate opt_cam_result = { true, cam_result };
-const gu_optional_pixel_coordinate opt_px_result = { true, px_result };
-const gu_optional_percent_coordinate opt_pct_result = { true, pct_result };
-const gu_optional_relative_coordinate opt_rr_result = { true, rr_result };
-const gu_optional_cartesian_coordinate opt_cartesian_result = { true, cartesian_result };
-const gu_optional_field_coordinate opt_field_result = { true, field_result };
+const gu_optional_camera_coordinate opt_cam_result = { true, {19, 23, 1920, 1080} };
+const gu_optional_pixel_coordinate opt_px_result = { true, {-19, -23, 1920, 1080} };
+const gu_optional_percent_coordinate opt_pct_result = { true, {-0.19f, -0.23f} };
+const gu_optional_relative_coordinate opt_rr_result = { true, {15, 100} };
+const gu_optional_cartesian_coordinate opt_cartesian_result = { true, {-36, 70} };
+const gu_optional_field_coordinate opt_field_result = { true, {{-36, 70}, 32} };
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wcast-qual"

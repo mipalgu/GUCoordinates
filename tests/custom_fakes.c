@@ -77,7 +77,7 @@ gu_optional_relative_coordinate pct_coord_to_rr_coord_custom_fake_true(const gu_
     return out;
 }
 
-gu_optional_realative_coordinate pct_coord_to_rr_coord_custom_fake_false(const gu_percent_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i))
+gu_optional_relative_coordinate pct_coord_to_rr_coord_custom_fake_false(const gu_percent_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i))
 {
     const gu_relative_coordinate temp = pct_coord_to_rr_coord_custom_fake_result;
     const gu_optional_relative_coordinate out = { false, temp };

@@ -133,18 +133,17 @@
 #define GETTER_BOOL_TEST_NAME_F(className, testName, resultType, call, get) \
     TEST2_F(testclassname(className), testName) {\
         call##_fake.custom_fake = call##_custom_fake_true; \
-        const GU::resultType result = GU::resultType(call##_custom_fake_result); \
-        GU::resultType temp; \
-        if (initial().get) \
-        { \
-            equals(temp, result); \
-            ASSERT_EQ(call##_fake.call_count, 1); \
-            call##_reset(); \
-        } else { \
-            FAIL() << "Result is false from initial().get"; \
-        } \
+        const GU::Optional##resultType result = GU::Optional##resultType(true, call##_custom_fake_result); \
+        const GU::Optional##resultType temp = initial().get; \
+        ASSERT_TRUE(temp.has_value()); \
+        equals(temp.value(), result.value()); \
+        ASSERT_EQ(call##_fake.call_count, 1); \
+        call##_reset(); \
         call##_fake.custom_fake = call##_custom_fake_false; \
-        ASSERT_FALSE(initial().get); \
+        const GU::Optional##resultType temp2 = initial().get; \
+        ASSERT_FALSE(temp2.has_value()); \
+        ASSERT_EQ(call##_fake.call_count, 1); \
+        call##_reset(); \
     }
 
 #define GETTER_BOOL_TEST_F(className, resultType, call, get) \
@@ -154,20 +153,21 @@
     TEST2_F(testclassname(className), testName) {\
         failCall##_fake.custom_fake = failCall##_custom_fake_true; \
         resultCall##_fake.return_val = resultCall##_result; \
-        const GU::resultType result = GU::resultType(resultCall##_result); \
-        GU::resultType temp; \
-        if (initial().get) \
-        { \
-            equals(temp, result); \
-            ASSERT_EQ(failCall##_fake.call_count, 1); \
-            ASSERT_EQ(resultCall##_fake.call_count, 1); \
-        } else { \
-            FAIL() << "Result is false from initial().get"; \
-        } \
+        const GU::Optional##resultType result = GU::Optional##resultType(true, resultCall##_result); \
+        const GU::Optional##resultType temp = initial().get; \
+        ASSERT_TRUE(temp.has_value()); \
+        equals(temp.value(), result.value()); \
+        ASSERT_EQ(failCall##_fake.call_count, 1); \
+        ASSERT_EQ(resultCall##_fake.call_count, 1); \
         failCall##_reset(); \
         resultCall##_reset(); \
         failCall##_fake.custom_fake = failCall##_custom_fake_false; \
-        ASSERT_FALSE(initial().get); \
+        const GU::Optional##resultType temp2 = initial().get; \
+        ASSERT_FALSE(temp2.has_value()); \
+        ASSERT_EQ(failCall##_fake.call_count, 1); \
+        ASSERT_EQ(resultCall##_fake.call_count, 1); \
+        failCall##_reset(); \
+        resultCall##_reset(); \
     }
 
 #define GETTER_BOOL_IM_TEST_F(className, resultType, failCall, resultCall, get) \

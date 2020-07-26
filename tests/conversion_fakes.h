@@ -64,7 +64,7 @@ extern "C" {
 #endif
 
 #include "fff.h"
-#include "../conversions.h"
+#include "../gucoordinates.h"
 #include <stdbool.h>
 
 #define CONVERSION_FAKES(FAKE)                           \
