@@ -1,8 +1,8 @@
 /*
- * gucoordinates.h 
- * gucoordinates 
+ * OptionalRelativeCoordinate.hpp 
+ * gurobots 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 27/07/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,27 +56,54 @@
  *
  */
 
-#include "camera_coordinate.h"
-#include "pixel_coordinate.h"
-#include "percent_coordinate.h"
-#include "relative_coordinate.h"
-#include "cartesian_coordinate.h"
-#include "field_coordinate.h"
-#include "camera.h"
-#include "camera_pivot.h"
-#include "optional_relative_coordinate.h"
-#include "optional_field_coordinate.h"
-#include "conversions.h"
+#ifndef GUROBOTS_OPTIONALRELATIVECOORDINATE_HPP
+#define GUROBOTS_OPTIONALRELATIVECOORDINATE_HPP
 
-#ifdef __cplusplus
-#include "CameraCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "PercentCoordinate.hpp"
+#include "optional_relative_coordinate.h"
 #include "RelativeCoordinate.hpp"
-#include "CartesianCoordinate.hpp"
-#include "FieldCoordinate.hpp"
-#include "Camera.hpp"
-#include "CameraPivot.hpp"
-#include "OptionalRelativeCoordinate.hpp"
-#include "OptionalFieldCoordinate.hpp"
+
+#include <cstdlib>
+
+#if __cplusplus >= 201703L
+#include <optional>
 #endif
+
+namespace GU {
+
+    struct OptionalRelativeCoordinate: public gu_optional_relative_coordinate {
+
+        OptionalRelativeCoordinate();
+        OptionalRelativeCoordinate(const bool, const RelativeCoordinate);
+        OptionalRelativeCoordinate(const OptionalRelativeCoordinate& other);
+        OptionalRelativeCoordinate(const gu_optional_relative_coordinate& other);
+#if __cplusplus >= 201703L
+        OptionalRelativeCoordinate(const std::optional<RelativeCoordinate>& other);
+#endif
+#if __cplusplus >= 201103L
+        OptionalRelativeCoordinate(OptionalRelativeCoordinate&& other);
+#endif
+        ~OptionalRelativeCoordinate();
+        OptionalRelativeCoordinate& operator=(const OptionalRelativeCoordinate& other);
+        OptionalRelativeCoordinate& operator=(const gu_optional_relative_coordinate& other);
+#if __cplusplus >= 201703L
+        OptionalRelativeCoordinate& operator=(const std::optional<RelativeCoordinate>& other);
+#endif
+#if __cplusplus >= 201103L
+        OptionalRelativeCoordinate& operator=(OptionalRelativeCoordinate&& other);
+#endif
+
+        bool has_value() const;
+        void set_has_value(const bool);
+        
+        RelativeCoordinate value() const;
+        void set_value(const RelativeCoordinate);
+        
+#if __cplusplus >= 201703L
+        std::optional<RelativeCoordinate> asOptional() const;
+#endif
+
+    };
+
+}
+
+#endif  /* GUROBOTS_OPTIONALRELATIVECOORDINATE_HPP */

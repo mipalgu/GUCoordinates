@@ -1,8 +1,8 @@
 /*
- * gucoordinates.h 
- * gucoordinates 
+ * optional_field_coordinate.h 
+ * gurobots 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 29/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,27 +56,24 @@
  *
  */
 
-#include "camera_coordinate.h"
-#include "pixel_coordinate.h"
-#include "percent_coordinate.h"
-#include "relative_coordinate.h"
-#include "cartesian_coordinate.h"
+#ifndef GUROBOTS_OPTIONAL_FIELD_COORDINATE_H
+#define GUROBOTS_OPTIONAL_FIELD_COORDINATE_H
+
 #include "field_coordinate.h"
-#include "camera.h"
-#include "camera_pivot.h"
-#include "optional_relative_coordinate.h"
-#include "optional_field_coordinate.h"
-#include "conversions.h"
 
 #ifdef __cplusplus
-#include "CameraCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "PercentCoordinate.hpp"
-#include "RelativeCoordinate.hpp"
-#include "CartesianCoordinate.hpp"
-#include "FieldCoordinate.hpp"
-#include "Camera.hpp"
-#include "CameraPivot.hpp"
-#include "OptionalRelativeCoordinate.hpp"
-#include "OptionalFieldCoordinate.hpp"
+extern "C" {
 #endif
+
+typedef struct gu_optional_field_coordinate {
+    bool has_value;
+    gu_field_coordinate value;
+} gu_optional_field_coordinate;
+
+bool gu_optional_field_coordinate_equals(const gu_optional_field_coordinate lhs, const gu_optional_field_coordinate rhs);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  /* GUROBOTS_OPTIONAL_FIELD_COORDINATE_H */

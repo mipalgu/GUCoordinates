@@ -1,8 +1,8 @@
 /*
- * gucoordinates.h 
- * gucoordinates 
+ * optional_relative_coordinate.c 
+ * gurobots 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 28/06/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,27 +56,19 @@
  *
  */
 
-#include "camera_coordinate.h"
-#include "pixel_coordinate.h"
-#include "percent_coordinate.h"
-#include "relative_coordinate.h"
-#include "cartesian_coordinate.h"
-#include "field_coordinate.h"
-#include "camera.h"
-#include "camera_pivot.h"
 #include "optional_relative_coordinate.h"
-#include "optional_field_coordinate.h"
-#include "conversions.h"
 
-#ifdef __cplusplus
-#include "CameraCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "PercentCoordinate.hpp"
-#include "RelativeCoordinate.hpp"
-#include "CartesianCoordinate.hpp"
-#include "FieldCoordinate.hpp"
-#include "Camera.hpp"
-#include "CameraPivot.hpp"
-#include "OptionalRelativeCoordinate.hpp"
-#include "OptionalFieldCoordinate.hpp"
-#endif
+bool gu_optional_relative_coordinate_equals(const gu_optional_relative_coordinate lhs, const gu_optional_relative_coordinate rhs)
+{
+    return lhs.has_value == rhs.has_value
+        && gu_relative_coordinate_equals(lhs.value, rhs.value);
+}
+
+gu_optional_relative_coordinate wb_location_to_optional_relative_coordinate(const struct wb_location location)
+{
+    gu_optional_relative_coordinate temp;
+    temp.has_value = location.confidence > 50;
+    temp.value.direction = i16_to_deg_t(location.direction);
+    temp.value.distance = u16_to_cm_u(location.distance);
+    return temp;
+}

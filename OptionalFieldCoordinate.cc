@@ -1,8 +1,8 @@
 /*
- * gucoordinates.h 
- * gucoordinates 
+ * OptionalFieldCoordinate.cc 
+ * gurobots 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 27/07/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,27 +56,93 @@
  *
  */
 
-#include "camera_coordinate.h"
-#include "pixel_coordinate.h"
-#include "percent_coordinate.h"
-#include "relative_coordinate.h"
-#include "cartesian_coordinate.h"
-#include "field_coordinate.h"
-#include "camera.h"
-#include "camera_pivot.h"
-#include "optional_relative_coordinate.h"
-#include "optional_field_coordinate.h"
-#include "conversions.h"
-
-#ifdef __cplusplus
-#include "CameraCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "PercentCoordinate.hpp"
-#include "RelativeCoordinate.hpp"
-#include "CartesianCoordinate.hpp"
-#include "FieldCoordinate.hpp"
-#include "Camera.hpp"
-#include "CameraPivot.hpp"
-#include "OptionalRelativeCoordinate.hpp"
 #include "OptionalFieldCoordinate.hpp"
+
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate() {}
+
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const bool t_has_value, const GU::FieldCoordinate t_value)
+{
+    set_has_value(t_has_value);
+    set_value(t_value);
+}
+
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const GU::OptionalFieldCoordinate& other)
+{
+    set_has_value(other.has_value());
+    set_value(other.value());
+}
+
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const gu_optional_field_coordinate &other)
+{
+    set_has_value(other.has_value);
+    set_value(other.value);
+}
+
+#if __cplusplus >= 201103L
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate(GU::OptionalFieldCoordinate&& other)
+{
+    set_has_value(other.has_value());
+    other.set_has_value(0.0f);
+    set_value(other.value());
+    other.set_value(GU::FieldCoordinate());
+}
 #endif
+
+GU::OptionalFieldCoordinate::~OptionalFieldCoordinate() {}
+
+GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(const GU::OptionalFieldCoordinate& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_has_value(other.has_value());
+    set_value(other.value());
+    return *this;
+}
+
+GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(const gu_optional_field_coordinate& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_has_value(other.has_value);
+    set_value(other.value);
+    return *this;
+}
+
+#if __cplusplus >= 201103L
+GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(GU::OptionalFieldCoordinate&& other)
+{
+    if (&other == this)
+    {
+        return *this;
+    }
+    set_has_value(other.has_value());
+    other.set_has_value(false);
+    set_value(other.value());
+    other.set_value(GU::FieldCoordinate());
+    return *this;
+}
+#endif
+
+bool GU::OptionalFieldCoordinate::has_value() const
+{
+    return gu_optional_field_coordinate::has_value;
+}
+
+void GU::OptionalFieldCoordinate::set_has_value(const bool newValue)
+{
+    gu_optional_field_coordinate::has_value = newValue;
+}
+
+GU::FieldCoordinate GU::OptionalFieldCoordinate::value() const
+{
+    return gu_optional_field_coordinate::value;
+}
+
+void GU::OptionalFieldCoordinate::set_value(const GU::FieldCoordinate newValue)
+{
+    gu_optional_field_coordinate::value = newValue;
+}

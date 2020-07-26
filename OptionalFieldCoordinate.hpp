@@ -1,8 +1,8 @@
 /*
- * gucoordinates.h 
- * gucoordinates 
+ * OptionalFieldCoordinate.hpp 
+ * gurobots 
  *
- * Created by Callum McColl on 19/06/2020.
+ * Created by Callum McColl on 27/07/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,27 +56,40 @@
  *
  */
 
-#include "camera_coordinate.h"
-#include "pixel_coordinate.h"
-#include "percent_coordinate.h"
-#include "relative_coordinate.h"
-#include "cartesian_coordinate.h"
-#include "field_coordinate.h"
-#include "camera.h"
-#include "camera_pivot.h"
-#include "optional_relative_coordinate.h"
-#include "optional_field_coordinate.h"
-#include "conversions.h"
+#ifndef GUROBOTS_OPTIONALFIELDCOORDINATE_HPP
+#define GUROBOTS_OPTIONALFIELDCOORDINATE_HPP
 
-#ifdef __cplusplus
-#include "CameraCoordinate.hpp"
-#include "PixelCoordinate.hpp"
-#include "PercentCoordinate.hpp"
-#include "RelativeCoordinate.hpp"
-#include "CartesianCoordinate.hpp"
+#include "optional_field_coordinate.h"
 #include "FieldCoordinate.hpp"
-#include "Camera.hpp"
-#include "CameraPivot.hpp"
-#include "OptionalRelativeCoordinate.hpp"
-#include "OptionalFieldCoordinate.hpp"
+
+#include <cstdlib>
+
+namespace GU {
+
+    struct OptionalFieldCoordinate: public gu_optional_field_coordinate {
+
+        OptionalFieldCoordinate();
+        OptionalFieldCoordinate(const bool, const FieldCoordinate);
+        OptionalFieldCoordinate(const OptionalFieldCoordinate& other);
+        OptionalFieldCoordinate(const gu_optional_field_coordinate& other);
+#if __cplusplus >= 201103L
+        OptionalFieldCoordinate(OptionalFieldCoordinate&& other);
 #endif
+        ~OptionalFieldCoordinate();
+        OptionalFieldCoordinate& operator=(const OptionalFieldCoordinate& other);
+        OptionalFieldCoordinate& operator=(const gu_optional_field_coordinate& other);
+#if __cplusplus >= 201103L
+        OptionalFieldCoordinate& operator=(OptionalFieldCoordinate&& other);
+#endif
+
+        bool has_value() const;
+        void set_has_value(const bool);
+        
+        FieldCoordinate value() const;
+        void set_value(const FieldCoordinate);
+
+    };
+
+}
+
+#endif  /* GUROBOTS_OPTIONALFIELDCOORDINATE_HPP */
