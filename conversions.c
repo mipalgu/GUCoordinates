@@ -145,8 +145,8 @@ gu_optional_relative_coordinate pct_coord_to_rr_coord(const gu_percent_coordinat
     }
     const centimetres_f actualCameraHeight = calculate_camera_height(camera_pivot, camera, camera_pivot.height);
     const float distance = cm_f_to_f(actualCameraHeight) * tanf(((float) M_PI_2) - rad_f_to_f(pitchRad)) / cosYaw;
-    const centimetres_f outDistance = f_to_cm_f(fabsf(distance)) - camera.centerOffset;
-    const gu_relative_coordinate out = { cm_f_to_cm_u(outDistance), deg_f_to_deg_t(yaw)};
+    const centimetres_f outDistance = f_to_cm_f(distance) - camera.centerOffset;
+    const gu_relative_coordinate out = { deg_f_to_deg_t(yaw), cm_f_to_cm_u(fabsf(outDistance)) };
     const gu_optional_relative_coordinate result = { true, out };
     return result;
 }
