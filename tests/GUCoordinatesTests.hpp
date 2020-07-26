@@ -377,6 +377,24 @@ namespace CGTEST {
                 }
             }
 
+            template<typename Optional>
+            void equals(const Optional lhs, const Optional rhs)
+            {
+                ASSERT_EQ(lhs.has_value(), rhs.has_value());
+                equals(lhs.value(), rhs.value());
+            }
+
+            template<typename Optional>
+            void nequals(const Optional lhs, const Optional rhs)
+            {
+                if (lhs.has_value() != rhs.has_value())
+                {
+                    ASSERT_NEQ(lhs.has_value(), rhs.has_value());
+                    return;
+                }
+                nequals(lhs.value(), rhs.value());
+            }
+
     };
 
 }
