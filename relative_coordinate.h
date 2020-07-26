@@ -93,7 +93,7 @@ typedef struct gu_relative_coordinate
 
 } gu_relative_coordinate;
 
-bool gu_relative_coordinate_equals(const gu_relative_coordinate, const gu_relative_coordinate);
+bool gu_relative_coordinate_equals(const gu_relative_coordinate, const gu_relative_coordinate) __attribute__((const));
 
 #ifdef __cplusplus
 }

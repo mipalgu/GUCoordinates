@@ -96,7 +96,7 @@ typedef struct gu_cartesian_coordinate
 
 } gu_cartesian_coordinate;
 
-bool gu_cartesian_coordinate_equals(const gu_cartesian_coordinate, const gu_cartesian_coordinate);
+bool gu_cartesian_coordinate_equals(const gu_cartesian_coordinate, const gu_cartesian_coordinate) __attribute__((const));
 
 #ifdef __cplusplus
 }

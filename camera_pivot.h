@@ -110,7 +110,7 @@ typedef struct gu_camera_pivot
 
 } gu_camera_pivot;
 
-bool gu_camera_pivot_equals(const gu_camera_pivot, const gu_camera_pivot, const float);
+bool gu_camera_pivot_equals(const gu_camera_pivot, const gu_camera_pivot, const float) __attribute__((const));
 
 #ifdef __cplusplus
 }

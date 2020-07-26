@@ -70,7 +70,7 @@ typedef struct gu_optional_field_coordinate {
     gu_field_coordinate value;
 } gu_optional_field_coordinate;
 
-bool gu_optional_field_coordinate_equals(const gu_optional_field_coordinate lhs, const gu_optional_field_coordinate rhs);
+bool gu_optional_field_coordinate_equals(const gu_optional_field_coordinate lhs, const gu_optional_field_coordinate rhs) __attribute__((const));
 
 #ifdef __cplusplus
 }

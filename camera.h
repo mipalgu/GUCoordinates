@@ -111,9 +111,9 @@ typedef struct gu_camera
 
 } gu_camera;
 
-bool gu_camera_equals(const gu_camera, const gu_camera, const float);
+bool gu_camera_equals(const gu_camera, const gu_camera, const float) __attribute__((const));
 
-gu_camera gu_camera_make(const centimetres_f, const centimetres_f, const degrees_f, const degrees_f, const degrees_f);
+gu_camera gu_camera_make(const centimetres_f, const centimetres_f, const degrees_f, const degrees_f, const degrees_f) __attribute__((const));
 
 
 #ifdef __cplusplus

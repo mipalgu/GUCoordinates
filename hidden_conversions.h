@@ -59,10 +59,10 @@
 #ifndef HIDDEN_CONVERSIONS_H
 #define HIDDEN_CONVERSIONS_H
 
-radians_d angle_between_points(const gu_cartesian_coordinate p1, const gu_cartesian_coordinate p2);
-centimetres_d distance_between_points(const gu_cartesian_coordinate point1, const gu_cartesian_coordinate point2);
-degrees_d normalise_deg_d(degrees_d angle);
-degrees_t normalise_deg_t(degrees_t angle);
-radians_d normalise_rad_d(radians_d angle);
+radians_d angle_between_points(const gu_cartesian_coordinate p1, const gu_cartesian_coordinate p2) __attribute__((const));
+centimetres_d distance_between_points(const gu_cartesian_coordinate point1, const gu_cartesian_coordinate point2) __attribute__((const));
+degrees_d normalise_deg_d(degrees_d angle) __attribute__((const));
+degrees_t normalise_deg_t(degrees_t angle) __attribute__((const));
+radians_d normalise_rad_d(radians_d angle) __attribute__((const));
 
 #endif  /* HIDDEN_CONVERSIONS_H */

@@ -70,7 +70,7 @@ typedef struct gu_optional_cartesian_coordinate {
     gu_cartesian_coordinate value;
 } gu_optional_cartesian_coordinate;
 
-bool gu_optional_cartesian_coordinate_equals(const gu_optional_cartesian_coordinate lhs, const gu_optional_cartesian_coordinate rhs);
+bool gu_optional_cartesian_coordinate_equals(const gu_optional_cartesian_coordinate lhs, const gu_optional_cartesian_coordinate rhs) __attribute__((const));
 
 #ifdef __cplusplus
 }

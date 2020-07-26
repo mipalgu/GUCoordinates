@@ -113,7 +113,7 @@ typedef struct gu_field_coordinate
 
 } gu_field_coordinate;
 
-bool gu_field_coordinate_equals(const gu_field_coordinate, const gu_field_coordinate);
+bool gu_field_coordinate_equals(const gu_field_coordinate, const gu_field_coordinate) __attribute__((const));
 
 #ifdef __cplusplus
 }

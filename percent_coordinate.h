@@ -92,7 +92,7 @@ typedef struct gu_percent_coordinate {
 
 } gu_percent_coordinate;
 
-bool gu_percent_coordinate_equals(const gu_percent_coordinate, const gu_percent_coordinate, const percent_f);
+bool gu_percent_coordinate_equals(const gu_percent_coordinate, const gu_percent_coordinate, const percent_f) __attribute__((const));
 
 #ifdef __cplusplus
 }

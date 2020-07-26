@@ -102,7 +102,7 @@ typedef struct gu_pixel_coordinate {
 
 } gu_pixel_coordinate;
 
-bool gu_pixel_coordinate_equals(const gu_pixel_coordinate lhs, const gu_pixel_coordinate rhs);
+bool gu_pixel_coordinate_equals(const gu_pixel_coordinate lhs, const gu_pixel_coordinate rhs) __attribute__((const));
 
 #ifdef __cplusplus
 }
