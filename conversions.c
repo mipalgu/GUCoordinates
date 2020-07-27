@@ -184,7 +184,7 @@ gu_percent_coordinate unsafe_clamped_rr_coord_to_pct_coord(const gu_relative_coo
     else if (temp.x > 1.0f) {
         temp.x = 1.0f;
     }
-    if (temp.y < 1.0f)
+    if (temp.y < -1.0f)
     {
         temp.y = -1.0f;
     }
@@ -211,7 +211,7 @@ gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord(const gu_
     else if (temp.x > 1.0f && temp.x <= upperBound) {
         temp.x = 1.0f;
     }
-    if (temp.y < 1.0f && temp.y >= lowerBound)
+    if (temp.y < -1.0f && temp.y >= lowerBound)
     {
         temp.y = -1.0f;
     }
