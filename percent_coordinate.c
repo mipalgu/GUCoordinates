@@ -65,3 +65,27 @@ bool gu_percent_coordinate_equals(const gu_percent_coordinate lhs, const gu_perc
     const bool equalY = fabsf(pct_f_to_f(lhs.y) - pct_f_to_f(rhs.y)) <= pct_f_to_f(tolerance);
     return equalX && equalY;
 }
+
+percent_f gu_percent_coordinate_x_lower_bound(const gu_percent_coordinate coord)
+{
+    (void) coord;
+    return -1.0f;
+}
+
+percent_f gu_percent_coordinate_y_lower_bound(const gu_percent_coordinate coord)
+{
+    (void) coord;
+    return -1.0f;
+}
+
+percent_f gu_percent_coordinate_x_upper_bound(const gu_percent_coordinate coord)
+{
+    (void) coord;
+    return 1.0f;
+}
+
+percent_f gu_percent_coordinate_y_upper_bound(const gu_percent_coordinate coord)
+{
+    (void) coord;
+    return 1.0f;
+}

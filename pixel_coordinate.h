@@ -104,6 +104,11 @@ typedef struct gu_pixel_coordinate {
 
 bool gu_pixel_coordinate_equals(const gu_pixel_coordinate lhs, const gu_pixel_coordinate rhs) __attribute__((const));
 
+pixels_t gu_pixel_coordinate_x_lower_bound(const gu_pixel_coordinate) __attribute__((const));
+pixels_t gu_pixel_coordinate_y_lower_bound(const gu_pixel_coordinate) __attribute__((const));
+pixels_t gu_pixel_coordinate_x_upper_bound(const gu_pixel_coordinate) __attribute__((const));
+pixels_t gu_pixel_coordinate_y_upper_bound(const gu_pixel_coordinate) __attribute__((const));
+
 #ifdef __cplusplus
 }
 #endif

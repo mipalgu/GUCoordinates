@@ -102,6 +102,11 @@ typedef struct gu_camera_coordinate {
 
 bool gu_camera_coordinate_equals(const gu_camera_coordinate lhs, const gu_camera_coordinate rhs) __attribute__((const));
 
+pixels_t gu_camera_coordinate_x_lower_bound(const gu_camera_coordinate) __attribute__((const));
+pixels_t gu_camera_coordinate_y_lower_bound(const gu_camera_coordinate) __attribute__((const));
+pixels_t gu_camera_coordinate_x_upper_bound(const gu_camera_coordinate) __attribute__((const));
+pixels_t gu_camera_coordinate_y_upper_bound(const gu_camera_coordinate) __attribute__((const));
+
 #ifdef __cplusplus
 }
 #endif

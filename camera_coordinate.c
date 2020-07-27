@@ -66,4 +66,24 @@ bool gu_camera_coordinate_equals(const gu_camera_coordinate lhs, const gu_camera
         && lhs.res_height == rhs.res_height;
 }
 
+pixels_t gu_camera_coordinate_x_lower_bound(const gu_camera_coordinate coord)
+{
+    (void) coord;
+    return 0;
+}
 
+pixels_t gu_camera_coordinate_y_lower_bound(const gu_camera_coordinate coord)
+{
+    (void) coord;
+    return 0;
+}
+
+pixels_t gu_camera_coordinate_x_upper_bound(const gu_camera_coordinate coord)
+{
+    return px_u_to_px_t(coord.res_width - 1);
+}
+
+pixels_t gu_camera_coordinate_y_upper_bound(const gu_camera_coordinate coord)
+{
+    return px_u_to_px_t(coord.res_height - 1);
+}

@@ -59,10 +59,32 @@
 #include "pixel_coordinate.h"
 #include <stdbool.h>
 
+#include <math.h>
+
 bool gu_pixel_coordinate_equals(const gu_pixel_coordinate lhs, const gu_pixel_coordinate rhs)
 {
     return lhs.x == rhs.x
         && lhs.y == rhs.y
         && lhs.res_width == rhs.res_width
         && lhs.res_height == rhs.res_height;
+}
+
+pixels_t gu_pixel_coordinate_x_lower_bound(const gu_pixel_coordinate coord)
+{
+    return f_to_px_t(floorf(px_u_to_f(coord.res_width - 1) / 2.0f));
+}
+
+pixels_t gu_pixel_coordinate_y_lower_bound(const gu_pixel_coordinate coord)
+{
+    return f_to_px_t(floorf(px_u_to_f(coord.res_height - 1) / 2.0f));
+}
+
+pixels_t gu_pixel_coordinate_x_upper_bound(const gu_pixel_coordinate coord)
+{
+    return f_to_px_t(ceilf(px_u_to_f(coord.res_width - 1) / 2.0f));
+}
+
+pixels_t gu_pixel_coordinate_y_upper_bound(const gu_pixel_coordinate coord)
+{
+    return f_to_px_t(ceilf(px_u_to_f(coord.res_height - 1) / 2.0f));
 }

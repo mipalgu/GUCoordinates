@@ -94,6 +94,11 @@ typedef struct gu_percent_coordinate {
 
 bool gu_percent_coordinate_equals(const gu_percent_coordinate, const gu_percent_coordinate, const percent_f) __attribute__((const));
 
+percent_f gu_percent_coordinate_x_lower_bound(const gu_percent_coordinate) __attribute__((const));
+percent_f gu_percent_coordinate_y_lower_bound(const gu_percent_coordinate) __attribute__((const));
+percent_f gu_percent_coordinate_x_upper_bound(const gu_percent_coordinate) __attribute__((const));
+percent_f gu_percent_coordinate_y_upper_bound(const gu_percent_coordinate) __attribute__((const));
+
 #ifdef __cplusplus
 }
 #endif
