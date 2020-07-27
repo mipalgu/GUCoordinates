@@ -115,6 +115,12 @@ namespace GU {
         pixels_u resHeight() const;
         void set_resHeight(const pixels_u);
 
+        pixels_t xLowerBound() const;
+        pixels_t xUpperBound() const;
+
+        pixels_t yLowerBound() const;
+        pixels_t yUpperBound() const;
+
         bool operator ==(const PixelCoordinate &other) const;
         bool operator !=(const PixelCoordinate &other) const;
         bool operator ==(const gu_pixel_coordinate &other) const;

@@ -112,6 +112,12 @@ namespace GU {
         percent_f y() const;
         void set_y(const percent_f);
 
+        percent_f xLowerBound() const;
+        percent_f xUpperBound() const;
+
+        percent_f yLowerBound() const;
+        percent_f yUpperBound() const;
+
         bool operator ==(const PercentCoordinate &other) const;
         bool operator !=(const PercentCoordinate &other) const;
         bool operator ==(const gu_percent_coordinate &other) const;

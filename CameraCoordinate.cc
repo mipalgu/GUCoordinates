@@ -234,6 +234,26 @@ void GU::CameraCoordinate::set_resHeight(const pixels_u newValue)
     gu_camera_coordinate::res_height = newValue;
 }
 
+pixels_t GU::CameraCoordinate::xLowerBound() const
+{
+    return gu_camera_coordinate_x_lower_bound(*this);
+}
+
+pixels_t GU::CameraCoordinate::xUpperBound() const
+{
+    return gu_camera_coordinate_x_upper_bound(*this);
+}
+
+pixels_t GU::CameraCoordinate::yLowerBound() const
+{
+    return gu_camera_coordinate_y_lower_bound(*this);
+}
+
+pixels_t GU::CameraCoordinate::yUpperBound() const
+{
+    return gu_camera_coordinate_y_upper_bound(*this);
+}
+
 bool GU::CameraCoordinate::operator==(const CameraCoordinate &other) const
 {
     return gu_camera_coordinate_equals(*this, other);

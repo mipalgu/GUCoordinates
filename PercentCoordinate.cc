@@ -178,6 +178,26 @@ void GU::PercentCoordinate::set_y(const percent_f newValue)
     gu_percent_coordinate::y = newValue;
 }
 
+percent_f GU::PercentCoordinate::xLowerBound() const
+{
+    return gu_percent_coordinate_x_lower_bound(*this);
+}
+
+percent_f GU::PercentCoordinate::xUpperBound() const
+{
+    return gu_percent_coordinate_x_upper_bound(*this);
+}
+
+percent_f GU::PercentCoordinate::yLowerBound() const
+{
+    return gu_percent_coordinate_y_lower_bound(*this);
+}
+
+percent_f GU::PercentCoordinate::yUpperBound() const
+{
+    return gu_percent_coordinate_y_upper_bound(*this);
+}
+
 bool GU::PercentCoordinate::operator==(const PercentCoordinate &other) const
 {
     return gu_percent_coordinate_equals(*this, other, 0.0001f);
