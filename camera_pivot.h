@@ -86,17 +86,17 @@ typedef struct gu_camera_pivot
     /**
      *  The vertical orientation of the pivot point.
      */
-    degrees_f pitch;
+    degrees_d pitch;
 
     /**
      *  The horizontal orientation of the pivot point.
      */
-    degrees_f yaw;
+    degrees_d yaw;
 
     /**
      *  The vertical distance from the ground to the pivot point.
      */
-    centimetres_f height;
+    centimetres_d height;
 
     /**
      *  The `gu_camera`s attached to this pivot point.
@@ -110,7 +110,9 @@ typedef struct gu_camera_pivot
 
 } gu_camera_pivot;
 
-bool gu_camera_pivot_equals(const gu_camera_pivot, const gu_camera_pivot, const float) __attribute__((const));
+bool gu_camera_pivot_equals(const gu_camera_pivot, const gu_camera_pivot, const double) __attribute__((const));
+
+centimetres_d gu_camera_pivot_calculate_camera_height(const gu_camera_pivot, const int) __attribute__((const));
 
 #ifdef __cplusplus
 }

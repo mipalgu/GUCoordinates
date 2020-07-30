@@ -89,7 +89,7 @@ namespace GU {
     struct RelativeCoordinate: public gu_relative_coordinate {
 
         RelativeCoordinate();
-        RelativeCoordinate(degrees_t, centimetres_u);
+        RelativeCoordinate(degrees_d, millimetres_u);
         RelativeCoordinate(const RelativeCoordinate& other);
         RelativeCoordinate(const gu_relative_coordinate& other);
 #if __cplusplus >= 201103L
@@ -114,33 +114,33 @@ namespace GU {
         PixelCoordinate unsafeClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
         PercentCoordinate unsafeClampedPercentCoordinate(const GU::CameraPivot &, const int) const;
 
-        CameraCoordinate unsafeClampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
-        PixelCoordinate unsafeClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
-        PercentCoordinate unsafeClampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_f) const;
+        CameraCoordinate unsafeClampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
+        PixelCoordinate unsafeClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
+        PercentCoordinate unsafeClampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_d) const;
 
-        OptionalCameraCoordinate rawClampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
-        OptionalPixelCoordinate rawClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
-        OptionalPercentCoordinate rawClampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_f) const;
+        OptionalCameraCoordinate rawClampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
+        OptionalPixelCoordinate rawClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
+        OptionalPercentCoordinate rawClampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_d) const;
 
 #if __cplusplus >= 201703L
         std::optional<CameraCoordinate> cameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
         std::optional<PixelCoordinate> pixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
         std::optional<PercentCoordinate> percentCoordinate(const GU::CameraPivot &, const int) const;
 
-        std::optional<CameraCoordinate> clampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
-        std::optional<PixelCoordinate> clampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_f) const;
-        std::optional<PercentCoordinate> clampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_f) const;
+        std::optional<CameraCoordinate> clampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
+        std::optional<PixelCoordinate> clampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
+        std::optional<PercentCoordinate> clampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_d) const;
 #endif
 
         RelativeCoordinate relativeCoordinateTo(const RelativeCoordinate &) const;
         CartesianCoordinate cartesianCoordinate() const;
         FieldCoordinate fieldCoordinate(const degrees_t) const;
 
-        degrees_t direction() const;
-        void set_direction(const degrees_t);
+        degrees_d direction() const;
+        void set_direction(const degrees_d);
 
-        centimetres_u distance() const;
-        void set_distance(const centimetres_u);
+        millimetres_u distance() const;
+        void set_distance(const millimetres_u);
 
         bool operator ==(const RelativeCoordinate &other) const;
         bool operator !=(const RelativeCoordinate &other) const;

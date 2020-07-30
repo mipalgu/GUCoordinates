@@ -84,7 +84,7 @@ namespace GU {
     struct PercentCoordinate: public gu_percent_coordinate {
 
         PercentCoordinate();
-        PercentCoordinate(percent_f, percent_f);
+        PercentCoordinate(percent_d, percent_d);
         PercentCoordinate(const PercentCoordinate& other);
         PercentCoordinate(const gu_percent_coordinate& other);
 #if __cplusplus >= 201103L
@@ -106,17 +106,17 @@ namespace GU {
         std::optional<RelativeCoordinate> relativeCoordinate(const GU::CameraPivot &, const int) const;
 #endif
 
-        percent_f x() const;
-        void set_x(const percent_f);
+        percent_d x() const;
+        void set_x(const percent_d);
 
-        percent_f y() const;
-        void set_y(const percent_f);
+        percent_d y() const;
+        void set_y(const percent_d);
 
-        percent_f xLowerBound() const;
-        percent_f xUpperBound() const;
+        percent_d xLowerBound() const;
+        percent_d xUpperBound() const;
 
-        percent_f yLowerBound() const;
-        percent_f yUpperBound() const;
+        percent_d yLowerBound() const;
+        percent_d yUpperBound() const;
 
         bool operator ==(const PercentCoordinate &other) const;
         bool operator !=(const PercentCoordinate &other) const;

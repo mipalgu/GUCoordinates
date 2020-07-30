@@ -69,7 +69,7 @@ namespace GU {
     struct CameraPivot: public gu_camera_pivot {
 
         CameraPivot();
-        CameraPivot(const degrees_f, const degrees_f, const centimetres_f, const gu_camera[GU_CAMERA_PIVOT_NUM_CAMERAS], int);
+        CameraPivot(const degrees_d, const degrees_d, const centimetres_d, const gu_camera[GU_CAMERA_PIVOT_NUM_CAMERAS], int);
         CameraPivot(const CameraPivot& other);
         CameraPivot(const gu_camera_pivot& other);
 #if __cplusplus >= 201103L
@@ -82,14 +82,14 @@ namespace GU {
         CameraPivot& operator=(CameraPivot&& other);
 #endif
 
-        degrees_f pitch() const;
-        void set_pitch(const degrees_f);
+        degrees_d pitch() const;
+        void set_pitch(const degrees_d);
 
-        degrees_f yaw() const;
-        void set_yaw(const degrees_f);
+        degrees_d yaw() const;
+        void set_yaw(const degrees_d);
 
-        centimetres_f height() const;
-        void set_height(const centimetres_f);
+        centimetres_d height() const;
+        void set_height(const centimetres_d);
 
         const gu_camera * cameras() const;
         void set_cameras(const gu_camera[GU_CAMERA_PIVOT_NUM_CAMERAS]);

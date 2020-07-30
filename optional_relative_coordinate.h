@@ -73,7 +73,7 @@ typedef struct gu_optional_relative_coordinate {
     gu_relative_coordinate value;
 } gu_optional_relative_coordinate;
 
-bool gu_optional_relative_coordinate_equals(const gu_optional_relative_coordinate lhs, const gu_optional_relative_coordinate rhs) __attribute__((const));
+bool gu_optional_relative_coordinate_equals(const gu_optional_relative_coordinate, const gu_optional_relative_coordinate, const double) __attribute__((const));
 gu_optional_relative_coordinate wb_location_to_optional_relative_coordinate(const struct wb_location location) __attribute__((const));
 
 #ifdef __cplusplus

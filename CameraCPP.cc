@@ -60,7 +60,7 @@
 
 GU::Camera::Camera() {}
 
-GU::Camera::Camera(centimetres_f t_height, centimetres_f t_centerOffset, degrees_f t_vDirection, degrees_f t_vFov, degrees_f t_hFov)
+GU::Camera::Camera(centimetres_d t_height, centimetres_d t_centerOffset, degrees_d t_vDirection, degrees_d t_vFov, degrees_d t_hFov)
 {
     set_height(t_height);
     set_centerOffset(t_centerOffset);
@@ -95,11 +95,11 @@ GU::Camera::Camera(Camera&& other)
     set_vDirection(other.vDirection());
     set_vFov(other.vFov());
     set_hFov(other.hFov());
-    other.set_height(0.0f);
-    other.set_centerOffset(0.0f);
-    other.set_vDirection(0.0f);
-    other.set_vFov(0.0f);
-    other.set_hFov(0.0f);
+    other.set_height(0.0);
+    other.set_centerOffset(0.0);
+    other.set_vDirection(0.0);
+    other.set_vFov(0.0);
+    other.set_hFov(0.0);
 }
 #endif
 
@@ -144,11 +144,11 @@ GU::Camera& GU::Camera::operator=(Camera&& other)
     set_vDirection(other.vDirection());
     set_vFov(other.vFov());
     set_hFov(other.hFov());
-    other.set_height(0.0f);
-    other.set_centerOffset(0.0f);
-    other.set_vDirection(0.0f);
-    other.set_vFov(0.0f);
-    other.set_hFov(0.0f);
+    other.set_height(0.0);
+    other.set_centerOffset(0.0);
+    other.set_vDirection(0.0);
+    other.set_vFov(0.0);
+    other.set_hFov(0.0);
     return *this;
 }
 
@@ -162,68 +162,68 @@ GU::Camera& GU::Camera::operator=(gu_camera&& other)
     set_vDirection(other.vDirection);
     set_vFov(other.vFov);
     set_hFov(other.hFov);
-    other.height = 0.0f;
-    other.centerOffset = 0.0f;
-    other.vDirection = 0.0f;
-    other.vFov = 0.0f;
-    other.hFov = 0.0f;
+    other.height = 0.0;
+    other.centerOffset = 0.0;
+    other.vDirection = 0.0;
+    other.vFov = 0.0;
+    other.hFov = 0.0;
     return *this;
 }
 #endif
 
-centimetres_f GU::Camera::height() const
+centimetres_d GU::Camera::height() const
 {
     return gu_camera::height;
 }
 
-void GU::Camera::set_height(const centimetres_f newValue)
+void GU::Camera::set_height(const centimetres_d newValue)
 {
     gu_camera::height = newValue;
 }
 
-centimetres_f GU::Camera::centerOffset() const
+centimetres_d GU::Camera::centerOffset() const
 {
     return gu_camera::centerOffset;
 }
 
-void GU::Camera::set_centerOffset(const centimetres_f newValue)
+void GU::Camera::set_centerOffset(const centimetres_d newValue)
 {
     gu_camera::centerOffset = newValue;
 }
 
-degrees_f GU::Camera::vDirection() const
+degrees_d GU::Camera::vDirection() const
 {
     return gu_camera::vDirection;
 }
 
-void GU::Camera::set_vDirection(const degrees_f newValue)
+void GU::Camera::set_vDirection(const degrees_d newValue)
 {
     gu_camera::vDirection = newValue;
 }
 
-degrees_f GU::Camera::vFov() const
+degrees_d GU::Camera::vFov() const
 {
     return gu_camera::vFov;
 }
 
-void GU::Camera::set_vFov(const degrees_f newValue)
+void GU::Camera::set_vFov(const degrees_d newValue)
 {
     gu_camera::vFov = newValue;
 }
 
-degrees_f GU::Camera::hFov() const
+degrees_d GU::Camera::hFov() const
 {
     return gu_camera::hFov;
 }
 
-void GU::Camera::set_hFov(const degrees_f newValue)
+void GU::Camera::set_hFov(const degrees_d newValue)
 {
     gu_camera::hFov = newValue;
 }
 
 bool GU::Camera::operator==(const Camera &other) const
 {
-    return gu_camera_equals(*this, other, 0.0001f);
+    return gu_camera_equals(*this, other, 0.0001);
 }
 
 bool GU::Camera::operator!=(const Camera &other) const
@@ -233,7 +233,7 @@ bool GU::Camera::operator!=(const Camera &other) const
 
 bool GU::Camera::operator==(const gu_camera &other) const
 {
-    return gu_camera_equals(*this, other, 0.0001f);
+    return gu_camera_equals(*this, other, 0.0001);
 }
 
 bool GU::Camera::operator!=(const gu_camera &other) const

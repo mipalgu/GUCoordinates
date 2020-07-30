@@ -77,7 +77,7 @@ typedef struct gu_camera
      * on the head of the robot then its the length from the neck to the
      * camera.
      */
-    centimetres_f height;
+    centimetres_d height;
 
     /**
      * The distance the camera is from the center point. A positive value
@@ -89,7 +89,7 @@ typedef struct gu_camera
      * and distance calculations need to be calculated from the torso,
      * not the camera.
      */
-    centimetres_f centerOffset;
+    centimetres_d centerOffset;
 
     /**
      * The degree in which the camera is facing in the vertical direction.
@@ -97,23 +97,23 @@ typedef struct gu_camera
      * A positive value means that the camera is pointing more to the ground. A
      * negative value means that the camera is pointing more to the sky.
      */
-    degrees_f vDirection;
+    degrees_d vDirection;
 
     /**
      * The vertical field of view.
      */
-    degrees_f vFov;
+    degrees_d vFov;
 
     /**
      * The horizontal field of view.
      */
-    degrees_f hFov;
+    degrees_d hFov;
 
 } gu_camera;
 
-bool gu_camera_equals(const gu_camera, const gu_camera, const float) __attribute__((const));
+bool gu_camera_equals(const gu_camera, const gu_camera, const double) __attribute__((const));
 
-gu_camera gu_camera_make(const centimetres_f, const centimetres_f, const degrees_f, const degrees_f, const degrees_f) __attribute__((const));
+gu_camera gu_camera_make(const centimetres_d, const centimetres_d, const degrees_d, const degrees_d, const degrees_d) __attribute__((const));
 
 
 #ifdef __cplusplus

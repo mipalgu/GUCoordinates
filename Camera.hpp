@@ -68,7 +68,7 @@ namespace GU {
     struct Camera: public gu_camera {
 
         Camera();
-        Camera(centimetres_f, centimetres_f, degrees_f, degrees_f, degrees_f);
+        Camera(centimetres_d, centimetres_d, degrees_d, degrees_d, degrees_d);
         Camera(const Camera& other);
         Camera(const gu_camera& other);
 #if __cplusplus >= 201103L
@@ -85,20 +85,20 @@ namespace GU {
         Camera& operator=(gu_camera&& other);
 #endif
 
-        centimetres_f height() const;
-        void set_height(const centimetres_f);
+        centimetres_d height() const;
+        void set_height(const centimetres_d);
 
-        centimetres_f centerOffset() const;
-        void set_centerOffset(const centimetres_f);
+        centimetres_d centerOffset() const;
+        void set_centerOffset(const centimetres_d);
 
-        degrees_f vDirection() const;
-        void set_vDirection(const degrees_f);
+        degrees_d vDirection() const;
+        void set_vDirection(const degrees_d);
 
-        degrees_f vFov() const;
-        void set_vFov(const degrees_f);
+        degrees_d vFov() const;
+        void set_vFov(const degrees_d);
 
-        degrees_f hFov() const;
-        void set_hFov(const degrees_f);
+        degrees_d hFov() const;
+        void set_hFov(const degrees_d);
 
         bool operator ==(const Camera &other) const;
         bool operator !=(const Camera &other) const;

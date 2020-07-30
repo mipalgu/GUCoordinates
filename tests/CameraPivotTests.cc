@@ -73,22 +73,22 @@ namespace CGTEST {
             cameras[1] = GU_NAO_V5_BOTTOM_CAMERA;
             for (int i = 2; i < GU_CAMERA_PIVOT_NUM_CAMERAS; i++)
             {
-                cameras[i].height = 0.0f;
-                cameras[i].centerOffset = 0.0f;
-                cameras[i].vDirection = 0.0f;
-                cameras[i].vFov = 0.0f;
-                cameras[i].hFov = 0.0f;
+                cameras[i].height = 0.0;
+                cameras[i].centerOffset = 0.0;
+                cameras[i].vDirection = 0.0;
+                cameras[i].vFov = 0.0;
+                cameras[i].hFov = 0.0;
             }
-            empty_strct.pitch = 0.0f;
-            empty_strct.yaw = 0.0f;
-            empty_strct.height = 0.0f;
+            empty_strct.pitch = 0.0;
+            empty_strct.yaw = 0.0;
+            empty_strct.height = 0.0;
             memcpy(empty_strct.cameras, cameras, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(gu_camera));
             empty_strct.numCameras = 0;
         }
 
         GU::CameraPivot initial()
         {
-            return GU::CameraPivot(2.0f, 3.0f, 4.0f, cameras, 2);
+            return GU::CameraPivot(2.0, 3.0, 4.0, cameras, 2);
         }
 
         GU::CameraPivot empty()
@@ -98,14 +98,14 @@ namespace CGTEST {
 
         void change(GU::CameraPivot & obj)
         {
-            obj.set_pitch(1.0f);
+            obj.set_pitch(1.0);
         }
 
         void cchange(gu_camera_pivot & obj)
         {
-            obj.pitch = 1.0f;
-            obj.yaw = 2.0f;
-            obj.height = 3.0f;
+            obj.pitch = 1.0;
+            obj.yaw = 2.0;
+            obj.height = 3.0;
             memcpy(obj.cameras, cameras, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(gu_camera));
             obj.numCameras = 2;
         }
@@ -120,17 +120,17 @@ namespace CGTEST {
     WRAPPER_TEST_Fs(CameraPivot, gu_camera_pivot)
 
     TEST_F(CameraPivotCPPTests, GettersSetters) {
-        gu_camera_pivot nao_c = GU_NAO_V5_HEAD(0.0f, 0.0f);
+        gu_camera_pivot nao_c = GU_NAO_V5_HEAD(0.0, 0.0);
         GU::CameraPivot nao = nao_c;
-        ASSERT_EQ(nao.pitch(), 0.0f);
-        nao.set_pitch(5.0f);
-        ASSERT_EQ(nao.pitch(), 5.0f);
-        ASSERT_EQ(nao.yaw(), 0.0f);
-        nao.set_yaw(6.0f);
-        ASSERT_EQ(nao.yaw(), 6.0f);
-        ASSERT_EQ(nao.height(), 41.7f);
-        nao.set_height(7.0f);
-        ASSERT_EQ(nao.height(), 7.0f);
+        ASSERT_EQ(nao.pitch(), 0.0);
+        nao.set_pitch(5.0);
+        ASSERT_EQ(nao.pitch(), 5.0);
+        ASSERT_EQ(nao.yaw(), 0.0);
+        nao.set_yaw(6.0);
+        ASSERT_EQ(nao.yaw(), 6.0);
+        ASSERT_EQ(nao.height(), 41.7);
+        nao.set_height(7.0);
+        ASSERT_EQ(nao.height(), 7.0);
         equals(nao.camera(0), nao_c.cameras[0]);
         nao.set_camera(0, nao_c.cameras[1]);
         equals(nao.camera(1), nao_c.cameras[1]);

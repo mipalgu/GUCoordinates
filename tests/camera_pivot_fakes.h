@@ -69,7 +69,7 @@ extern "C" {
 #define CAMERA_PIVOT_FAKES(FAKE) \
     FAKE(gu_camera_pivot_equals)
 
-DECLARE_FAKE_VALUE_FUNC(bool, gu_camera_pivot_equals, const gu_camera_pivot, const gu_camera_pivot, const float)
+DECLARE_FAKE_VALUE_FUNC(bool, gu_camera_pivot_equals, const gu_camera_pivot, const gu_camera_pivot, const double)
 
 #ifdef __cplusplus
 }

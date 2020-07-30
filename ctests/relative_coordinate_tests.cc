@@ -68,11 +68,11 @@ namespace CGTEST {
         const gu_relative_coordinate rightNear = { -90, 10  };
         const gu_relative_coordinate rightFar = { -90, 100 };
         const gu_relative_coordinate inFront = { 0, 50 };
-        ASSERT_TRUE(gu_relative_coordinate_equals(leftNear, leftNear));
-        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, leftFar));
-        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, rightNear));
-        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, rightFar));
-        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, inFront));
+        ASSERT_TRUE(gu_relative_coordinate_equals(leftNear, leftNear, 0.00001));
+        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, leftFar, 0.00001));
+        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, rightNear, 0.00001));
+        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, rightFar, 0.00001));
+        ASSERT_FALSE(gu_relative_coordinate_equals(leftNear, inFront, 0.00001));
     }
 
 }  // namespace

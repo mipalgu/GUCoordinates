@@ -59,33 +59,33 @@
 #include "percent_coordinate.h"
 #include <math.h>
 
-bool gu_percent_coordinate_equals(const gu_percent_coordinate lhs, const gu_percent_coordinate rhs, const percent_f tolerance)
+bool gu_percent_coordinate_equals(const gu_percent_coordinate lhs, const gu_percent_coordinate rhs, const percent_d tolerance)
 {
-    const bool equalX = fabsf(pct_f_to_f(lhs.x) - pct_f_to_f(rhs.x)) <= pct_f_to_f(tolerance);
-    const bool equalY = fabsf(pct_f_to_f(lhs.y) - pct_f_to_f(rhs.y)) <= pct_f_to_f(tolerance);
+    const bool equalX = fabs(pct_d_to_d(lhs.x) - pct_d_to_d(rhs.x)) <= pct_d_to_d(tolerance);
+    const bool equalY = fabs(pct_d_to_d(lhs.y) - pct_d_to_d(rhs.y)) <= pct_d_to_d(tolerance);
     return equalX && equalY;
 }
 
-percent_f gu_percent_coordinate_x_lower_bound(const gu_percent_coordinate coord)
+percent_d gu_percent_coordinate_x_lower_bound(const gu_percent_coordinate coord)
 {
     (void) coord;
-    return -1.0f;
+    return -1.0;
 }
 
-percent_f gu_percent_coordinate_y_lower_bound(const gu_percent_coordinate coord)
+percent_d gu_percent_coordinate_y_lower_bound(const gu_percent_coordinate coord)
 {
     (void) coord;
-    return -1.0f;
+    return -1.0;
 }
 
-percent_f gu_percent_coordinate_x_upper_bound(const gu_percent_coordinate coord)
+percent_d gu_percent_coordinate_x_upper_bound(const gu_percent_coordinate coord)
 {
     (void) coord;
-    return 1.0f;
+    return 1.0;
 }
 
-percent_f gu_percent_coordinate_y_upper_bound(const gu_percent_coordinate coord)
+percent_d gu_percent_coordinate_y_upper_bound(const gu_percent_coordinate coord)
 {
     (void) coord;
-    return 1.0f;
+    return 1.0;
 }

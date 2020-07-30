@@ -112,25 +112,25 @@ namespace CGTEST {
     GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedPixelCoordinate, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
     GETTER_TEST_NAME_F(RelativeCoordinate, unsafeClampedPercentCoordinate, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
 
-    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedToleranceCameraCoordinate, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
-    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedTolerancePixelCoordinate, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
-    GETTER_TEST_NAME_F(RelativeCoordinate, unsafeClampedTolerancePercentCoordinate, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f))
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedToleranceCameraCoordinate, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedTolerancePixelCoordinate, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
+    GETTER_TEST_NAME_F(RelativeCoordinate, unsafeClampedTolerancePercentCoordinate, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1))
 
-    GETTER_BOOL_IM_TEST_NAME_F(RelativeCoordinate, clampedToleranceCameraCoordinate, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, rawClampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
-    GETTER_BOOL_IM_TEST_NAME_F(RelativeCoordinate, clampedTolerancePixelCoordinate, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, rawClampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
-    GETTER_BOOL_TEST_NAME_F(RelativeCoordinate, clampedTolerancePercentCoordinate, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, rawClampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f))
-    GETTER_OPT_IM_TEST_NAME_F(RelativeCoordinate, optClampedToleranceCameraCoordinate, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, clampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
-    GETTER_OPT_IM_TEST_NAME_F(RelativeCoordinate, optClampedTolerancePixelCoordinate, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, clampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1f))
-    GETTER_OPT_TEST_NAME_F(RelativeCoordinate, optClampedTolerancePercentCoordinate, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, clampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1f))
+    GETTER_BOOL_IM_TEST_NAME_F(RelativeCoordinate, clampedToleranceCameraCoordinate, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, rawClampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
+    GETTER_BOOL_IM_TEST_NAME_F(RelativeCoordinate, clampedTolerancePixelCoordinate, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, rawClampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
+    GETTER_BOOL_TEST_NAME_F(RelativeCoordinate, clampedTolerancePercentCoordinate, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, rawClampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1))
+    GETTER_OPT_IM_TEST_NAME_F(RelativeCoordinate, optClampedToleranceCameraCoordinate, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, clampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
+    GETTER_OPT_IM_TEST_NAME_F(RelativeCoordinate, optClampedTolerancePixelCoordinate, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, clampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
+    GETTER_OPT_TEST_NAME_F(RelativeCoordinate, optClampedTolerancePercentCoordinate, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, clampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1))
 
     TEST_F(RelativeCoordinateCPPTests, GettersSetters) {
-        GU::RelativeCoordinate coord = GU::RelativeCoordinate(90, 100);
-        ASSERT_EQ(coord.direction(), 90);
-        coord.set_direction(-90);
-        ASSERT_EQ(coord.direction(), -90);
+        GU::RelativeCoordinate coord = GU::RelativeCoordinate(90.0, 1000);
+        ASSERT_EQ(coord.direction(), 90.0);
+        coord.set_direction(-90.0);
+        ASSERT_EQ(coord.direction(), -90.0);
+        ASSERT_EQ(coord.distance(), 1000);
+        coord.set_distance(100);
         ASSERT_EQ(coord.distance(), 100);
-        coord.set_distance(10);
-        ASSERT_EQ(coord.distance(), 10);
     }
 
 }  // namespace

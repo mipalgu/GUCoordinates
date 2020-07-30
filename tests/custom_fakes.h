@@ -77,9 +77,9 @@ gu_optional_percent_coordinate rr_coord_to_pct_coord_custom_fake_true(const gu_r
 
 gu_optional_percent_coordinate rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate, const gu_camera_pivot, const int); 
 
-gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_f);
+gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_d);
 
-gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_f);
+gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_d);
 
 #ifdef __cplusplus
 }

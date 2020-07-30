@@ -58,9 +58,9 @@
 
 #include "custom_fakes.h"
 
-const gu_relative_coordinate pct_coord_to_rr_coord_custom_fake_result = { 10, 100 };
-const gu_percent_coordinate rr_coord_to_pct_coord_custom_fake_result = { -0.4f, -0.2f };
-const gu_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_result = { -0.2f, -0.4f };
+const gu_relative_coordinate pct_coord_to_rr_coord_custom_fake_result = { 10.0, 1000 };
+const gu_percent_coordinate rr_coord_to_pct_coord_custom_fake_result = { -0.4, -0.2 };
+const gu_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_result = { -0.2, -0.4 };
 
 #ifndef UNUSED
 #  ifdef __GNUC__
@@ -98,14 +98,14 @@ gu_optional_percent_coordinate rr_coord_to_pct_coord_custom_fake_false(const gu_
     return out;
 }
 
-gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i), const percent_f UNUSED(t))
+gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_true(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i), const percent_d UNUSED(t))
 {
     const gu_percent_coordinate temp = clamped_tolerance_rr_coord_to_pct_coord_custom_fake_result;
     const gu_optional_percent_coordinate out = { true, temp };
     return out;
 }
 
-gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i), const percent_f UNUSED(t))
+gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord_custom_fake_false(const gu_relative_coordinate UNUSED(c), const gu_camera_pivot UNUSED(p), const int UNUSED(i), const percent_d UNUSED(t))
 {
     const gu_percent_coordinate temp = clamped_tolerance_rr_coord_to_pct_coord_custom_fake_result;
     const gu_optional_percent_coordinate out = { false, temp };

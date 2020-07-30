@@ -70,7 +70,7 @@ typedef struct gu_optional_percent_coordinate {
     gu_percent_coordinate value;
 } gu_optional_percent_coordinate;
 
-bool gu_optional_percent_coordinate_equals(const gu_optional_percent_coordinate lhs, const gu_optional_percent_coordinate rhs, const percent_f tolerance) __attribute__((const));
+bool gu_optional_percent_coordinate_equals(const gu_optional_percent_coordinate lhs, const gu_optional_percent_coordinate rhs, const percent_d tolerance) __attribute__((const));
 
 #ifdef __cplusplus
 }

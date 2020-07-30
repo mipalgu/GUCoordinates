@@ -128,10 +128,10 @@ DECLARE_FAKE_VALUE_FUNC(gu_optional_percent_coordinate, rr_coord_to_pct_coord, c
 DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, unsafe_clamped_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int)
 
 #define unsafe_clamped_tolerance_rr_coord_to_pct_coord_result pct_result
-DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_f)
+DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_d)
 
 #define clamped_tolerance_rr_coord_to_pct_coord_result opt_pct_result
-DECLARE_FAKE_VALUE_FUNC(gu_optional_percent_coordinate, clamped_tolerance_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_f)
+DECLARE_FAKE_VALUE_FUNC(gu_optional_percent_coordinate, clamped_tolerance_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_d)
 
 // Converting from the robot relative coordinate system to the field coordinate systems.
 #define rr_coord_to_cartesian_coord_result cartesian_result

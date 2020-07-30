@@ -84,16 +84,16 @@ typedef struct gu_relative_coordinate
      * right. A value of zero indicates that the coordinate is pointing
      * straight ahead.
      */
-    degrees_t direction;
+    degrees_d direction;
 
     /**
      * The distance to the coordinate.
      */
-    centimetres_u distance;
+    millimetres_u distance;
 
 } gu_relative_coordinate;
 
-bool gu_relative_coordinate_equals(const gu_relative_coordinate, const gu_relative_coordinate) __attribute__((const));
+bool gu_relative_coordinate_equals(const gu_relative_coordinate, const gu_relative_coordinate, const double) __attribute__((const));
 
 #ifdef __cplusplus
 }

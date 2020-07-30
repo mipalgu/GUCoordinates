@@ -61,11 +61,11 @@
 #include <stdbool.h>
 #include <math.h>
 
-bool gu_camera_pivot_equals(const gu_camera_pivot lhs, const gu_camera_pivot rhs, const float tolerance)
+bool gu_camera_pivot_equals(const gu_camera_pivot lhs, const gu_camera_pivot rhs, const double tolerance)
 {
-    const bool headEqual = fabsf(deg_f_to_f(lhs.pitch) - deg_f_to_f(rhs.pitch)) <= tolerance
-        && fabsf(deg_f_to_f(lhs.yaw) - deg_f_to_f(rhs.yaw)) <= tolerance
-        && fabsf(cm_f_to_f(lhs.height) - cm_f_to_f(rhs.height)) <= tolerance;
+    const bool headEqual = fabs(deg_d_to_d(lhs.pitch) - deg_d_to_d(rhs.pitch)) <= tolerance
+        && fabs(deg_d_to_d(lhs.yaw) - deg_d_to_d(rhs.yaw)) <= tolerance
+        && fabs(cm_d_to_d(lhs.height) - cm_d_to_d(rhs.height)) <= tolerance;
     if (!headEqual || lhs.numCameras != rhs.numCameras)
     {
         return false;
@@ -78,4 +78,13 @@ bool gu_camera_pivot_equals(const gu_camera_pivot lhs, const gu_camera_pivot rhs
         }
     }
     return true;
+}
+
+centimetres_d gu_camera_pivot_calculate_camera_height(const gu_camera_pivot camera_pivot, const int cameraOffset)
+{
+    const gu_camera camera = camera_pivot.cameras[cameraOffset];
+    const centimetres_d totalHeight = camera_pivot.height + camera.height;
+    const double cosPitch = cos(deg_d_to_rad_d(camera_pivot.pitch));
+    const double sinPitch = sin(deg_d_to_rad_d(camera_pivot.pitch));
+    return (totalHeight - camera.height * d_to_cm_d(1.0 - cosPitch)) - camera.centerOffset * d_to_cm_d(sinPitch); 
 }

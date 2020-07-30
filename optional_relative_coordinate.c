@@ -58,10 +58,10 @@
 
 #include "optional_relative_coordinate.h"
 
-bool gu_optional_relative_coordinate_equals(const gu_optional_relative_coordinate lhs, const gu_optional_relative_coordinate rhs)
+bool gu_optional_relative_coordinate_equals(const gu_optional_relative_coordinate lhs, const gu_optional_relative_coordinate rhs, const double tolerance)
 {
     return lhs.has_value == rhs.has_value
-        && gu_relative_coordinate_equals(lhs.value, rhs.value);
+        && gu_relative_coordinate_equals(lhs.value, rhs.value, tolerance);
 }
 
 gu_optional_relative_coordinate wb_location_to_optional_relative_coordinate(const struct wb_location location)

@@ -88,21 +88,21 @@
 
 #include <math.h>
 
-#define GU_NAO_V5_TOP_CAMERA gu_camera_make(6.364f, 5.871f, 1.2f, 47.64f, 60.97f) 
-#define GU_NAO_V5_BOTTOM_CAMERA gu_camera_make(1.774f, 5.071f, 39.7f, 47.64f, 60.97f)
+#define GU_NAO_V5_TOP_CAMERA gu_camera_make(6.364, 5.871, 1.2, 47.64, 60.97) 
+#define GU_NAO_V5_BOTTOM_CAMERA gu_camera_make(1.774, 5.071, 39.7, 47.64, 60.97)
 
-#define GU_PEPPER_TOP_CAMERA gu_camera_make(115.3f, 8.68f, 0.0f, 44.3f, 55.2f)
-#define GU_PEPPER_BOTTOM_CAMERA gu_camera_make(105.15f, 9.36f, 40.0f, 44.3f, 55.2f)
+#define GU_PEPPER_TOP_CAMERA gu_camera_make(115.3, 8.68, 0.0, 44.3, 55.2)
+#define GU_PEPPER_BOTTOM_CAMERA gu_camera_make(105.15, 9.36, 40.0, 44.3, 55.2)
 
-#define GU_NAO_V5_HEAD(p, y) (gu_camera_pivot) {.pitch = p, .yaw = y, .height = 41.7f, .cameras = {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, .numCameras = 2}
+#define GU_NAO_V5_HEAD(p, y) (gu_camera_pivot) {.pitch = p, .yaw = y, .height = 41.7, .cameras = {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, .numCameras = 2}
 #define GU_NAO_V5_TOP_CAMERA_INDEX 0
 #define GU_NAO_V5_BOTTOM_CAMERA_INDEX 1 
 
-#define GU_PEPPER_HEAD(p, y) {p, y, 0.0f, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, 2}
+#define GU_PEPPER_HEAD(p, y) {p, y, 0.0, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, 2}
 
-#define GU_NAO_V5_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, 41.7f, {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, 2 }, .position = { { x, y }, t } }
+#define GU_NAO_V5_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, 41.7, {GU_NAO_V5_TOP_CAMERA, GU_NAO_V5_BOTTOM_CAMERA}, 2 }, .position = { { x, y }, t } }
 
-#define GU_PEPPER_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, 0.0f, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, 2 }, .position = { { x, y }, t } }
+#define GU_PEPPER_ROBOT(hp, hy, x, y, t) (gu_robot) { .head = { hp, hy, 0.0, {GU_PEPPER_TOP_CAMERA, GU_PEPPER_BOTTOM_CAMERA}, 2 }, .position = { { x, y }, t } }
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wglobal-constructors"
@@ -147,7 +147,7 @@ namespace CGTEST {
             virtual void SetUp() {
                 ALL_FAKES(RESET_FAKE);
                 FFF_RESET_HISTORY();
-                nao = GU_NAO_V5_HEAD(0.0f, 0.0f);
+                nao = GU_NAO_V5_HEAD(0.0, 0.0);
                 topCamera = GU_NAO_V5_TOP_CAMERA;
                 bottomCamera = GU_NAO_V5_BOTTOM_CAMERA;
             }
@@ -172,14 +172,18 @@ namespace CGTEST {
 #pragma clang diagnostic ignored "-Wself-assign"
                 obj = obj;
 #pragma clang diagnostic pop
+                SCOPED_TRACE("Equality operator");
                 equals(obj, obj);
+                SCOPED_TRACE("Copy constructor");
                 Class obj2 = Class(obj);
                 equals(obj, obj2);
+                SCOPED_TRACE("Assignment operator");
                 Class obj3 = obj2;
                 equals(obj, obj3);
                 change(obj);
                 nequals(obj, obj3);
                 equals(obj2, obj3);
+                SCOPED_TRACE("Assignment operator2");
                 Class obj4;
                 obj4 = obj3;
                 equals(obj4, obj3);
@@ -191,15 +195,18 @@ namespace CGTEST {
             void ro5_test() {
                 Class obj = initial();
                 Class obj2 = initial();
+                SCOPED_TRACE("Move Constructor");
                 Class obj3 = std::move(obj);
                 nequals(obj3, obj);
                 equals(obj3, obj2);
                 equals(obj, empty());
+                SCOPED_TRACE("Move assignment operator");
                 Class obj4;
                 obj4 = std::move(obj3);
                 nequals(obj4, obj3);
                 equals(obj4, obj2);
                 equals(obj3, empty());
+                SCOPED_TRACE("Move assignment operator2");
                 Class * obj5 = &obj4;
                 obj4 = std::move(*obj5);
                 nequals(obj4, obj3);
@@ -210,15 +217,15 @@ namespace CGTEST {
             }
 #endif
 
-            bool near(const float lhs, const float rhs) const
+            bool near(const double lhs, const double rhs) const
             {
-                const float tolerance = 0.00001f;
-                return fabsf(lhs - rhs) < tolerance;
+                const double tolerance = 0.00001;
+                return fabs(lhs - rhs) < tolerance;
             }
 
-            void assert_near(const float lhs, const float rhs, const float tolerance) const
+            void assert_near(const double lhs, const double rhs, const double tolerance) const
             {
-                ASSERT_LE(fabsf(lhs - rhs), tolerance);
+                ASSERT_LE(fabs(lhs - rhs), tolerance);
             }
 
             void equals(const GU::CameraCoordinate lhs, const GU::CameraCoordinate rhs)
@@ -299,7 +306,7 @@ namespace CGTEST {
             void nequals(const GU::RelativeCoordinate lhs, const GU::RelativeCoordinate rhs)
             {
                 ASSERT_FALSE(
-                        lhs.direction() == rhs.direction()
+                        near(lhs.direction(), rhs.direction())
                         && lhs.distance() == rhs.distance()
                     );
             }

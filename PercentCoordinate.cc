@@ -65,7 +65,7 @@
 
 GU::PercentCoordinate::PercentCoordinate() {}
 
-GU::PercentCoordinate::PercentCoordinate(percent_f t_x, percent_f t_y)
+GU::PercentCoordinate::PercentCoordinate(percent_d t_x, percent_d t_y)
 {
     set_x(t_x);
     set_y(t_y);
@@ -158,49 +158,49 @@ std::optional<GU::RelativeCoordinate> GU::PercentCoordinate::relativeCoordinate(
 }
 #endif
 
-percent_f GU::PercentCoordinate::x() const
+percent_d GU::PercentCoordinate::x() const
 {
     return gu_percent_coordinate::x;
 }
 
-void GU::PercentCoordinate::set_x(const percent_f newValue)
+void GU::PercentCoordinate::set_x(const percent_d newValue)
 {
     gu_percent_coordinate::x = newValue;
 }
 
-percent_f GU::PercentCoordinate::y() const
+percent_d GU::PercentCoordinate::y() const
 {
     return gu_percent_coordinate::y;
 }
 
-void GU::PercentCoordinate::set_y(const percent_f newValue)
+void GU::PercentCoordinate::set_y(const percent_d newValue)
 {
     gu_percent_coordinate::y = newValue;
 }
 
-percent_f GU::PercentCoordinate::xLowerBound() const
+percent_d GU::PercentCoordinate::xLowerBound() const
 {
     return gu_percent_coordinate_x_lower_bound(*this);
 }
 
-percent_f GU::PercentCoordinate::xUpperBound() const
+percent_d GU::PercentCoordinate::xUpperBound() const
 {
     return gu_percent_coordinate_x_upper_bound(*this);
 }
 
-percent_f GU::PercentCoordinate::yLowerBound() const
+percent_d GU::PercentCoordinate::yLowerBound() const
 {
     return gu_percent_coordinate_y_lower_bound(*this);
 }
 
-percent_f GU::PercentCoordinate::yUpperBound() const
+percent_d GU::PercentCoordinate::yUpperBound() const
 {
     return gu_percent_coordinate_y_upper_bound(*this);
 }
 
 bool GU::PercentCoordinate::operator==(const PercentCoordinate &other) const
 {
-    return gu_percent_coordinate_equals(*this, other, 0.0001f);
+    return gu_percent_coordinate_equals(*this, other, 0.0001);
 }
 
 bool GU::PercentCoordinate::operator!=(const PercentCoordinate &other) const
@@ -210,7 +210,7 @@ bool GU::PercentCoordinate::operator!=(const PercentCoordinate &other) const
 
 bool GU::PercentCoordinate::operator==(const gu_percent_coordinate &other) const
 {
-    return gu_percent_coordinate_equals(*this, other, 0.0001f);
+    return gu_percent_coordinate_equals(*this, other, 0.0001);
 }
 
 bool GU::PercentCoordinate::operator!=(const gu_percent_coordinate &other) const

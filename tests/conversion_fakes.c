@@ -60,14 +60,14 @@
 
 const gu_camera_coordinate cam_result = {19, 23, 1920, 1080};
 const gu_pixel_coordinate px_result = {-19, -23, 1920, 1080};
-const gu_percent_coordinate pct_result = {-0.19f, -0.23f};
-const gu_relative_coordinate rr_result = {15, 100};
+const gu_percent_coordinate pct_result = {-0.19, -0.23};
+const gu_relative_coordinate rr_result = {15.0, 1000};
 const gu_cartesian_coordinate cartesian_result = {-36, 70};
 const gu_field_coordinate field_result = {{ -36, 70}, 32};
 
 const gu_optional_camera_coordinate opt_cam_result = { true, {19, 23, 1920, 1080} };
 const gu_optional_pixel_coordinate opt_px_result = { true, {-19, -23, 1920, 1080} };
-const gu_optional_percent_coordinate opt_pct_result = { true, {-0.19f, -0.23f} };
+const gu_optional_percent_coordinate opt_pct_result = { true, {-0.19, -0.23} };
 const gu_optional_relative_coordinate opt_rr_result = { true, {15, 100} };
 const gu_optional_cartesian_coordinate opt_cartesian_result = { true, {-36, 70} };
 const gu_optional_field_coordinate opt_field_result = { true, {{-36, 70}, 32} };
@@ -86,8 +86,8 @@ DEFINE_FAKE_VALUE_FUNC(gu_optional_relative_coordinate, pct_coord_to_rr_coord, c
 DEFINE_FAKE_VALUE_FUNC(gu_percent_coordinate, unsafe_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int)
 DEFINE_FAKE_VALUE_FUNC(gu_optional_percent_coordinate, rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int)
 DEFINE_FAKE_VALUE_FUNC(gu_percent_coordinate, unsafe_clamped_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int)
-DEFINE_FAKE_VALUE_FUNC(gu_percent_coordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_f)
-DEFINE_FAKE_VALUE_FUNC(gu_optional_percent_coordinate, clamped_tolerance_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_f)
+DEFINE_FAKE_VALUE_FUNC(gu_percent_coordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_d)
+DEFINE_FAKE_VALUE_FUNC(gu_optional_percent_coordinate, clamped_tolerance_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_d)
 
 // Converting from the robot relative coordinate system to the field coordinate systems.
 DEFINE_FAKE_VALUE_FUNC(gu_cartesian_coordinate, rr_coord_to_cartesian_coord, const gu_relative_coordinate)

@@ -66,23 +66,23 @@ namespace CGTEST {
 
         GU::PercentCoordinate initial()
         {
-            return GU::PercentCoordinate(-1.0f, -1.0f);
+            return GU::PercentCoordinate(-1.0, -1.0);
         }
 
         GU::PercentCoordinate empty()
         {
-            return GU::PercentCoordinate(0.0f, 0.0f);
+            return GU::PercentCoordinate(0.0, 0.0);
         }
 
         void change(GU::PercentCoordinate &obj)
         {
-            obj.set_x(0.0f);
+            obj.set_x(0.0);
         }
 
         void cchange(gu_percent_coordinate &obj)
         {
-            obj.x = 1.0f;
-            obj.y = 2.0f;
+            obj.x = 1.0;
+            obj.y = 2.0;
         }
 
         gu_percent_coordinate cempty()
@@ -99,13 +99,13 @@ namespace CGTEST {
     GETTER_TEST_NAME_F(PercentCoordinate, unsafeRelativeCoordinate, RelativeCoordinate, unsafe_pct_coord_to_rr_coord, unsafeRelativeCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
 
     TEST_F(PercentCoordinateCPPTests, GettersSetters) {
-        GU::PercentCoordinate coord = GU::PercentCoordinate(-1.0f, -1.0f);
-        ASSERT_EQ(coord.x(), -1.0f);
-        coord.set_x(1.0f);
-        ASSERT_EQ(coord.x(), 1.0f);
-        ASSERT_EQ(coord.y(), -1.0f);
-        coord.set_y(1.0f);
-        ASSERT_EQ(coord.y(), 1.0f);
+        GU::PercentCoordinate coord = GU::PercentCoordinate(-1.0, -1.0);
+        ASSERT_EQ(coord.x(), -1.0);
+        coord.set_x(1.0);
+        ASSERT_EQ(coord.x(), 1.0);
+        ASSERT_EQ(coord.y(), -1.0);
+        coord.set_y(1.0);
+        ASSERT_EQ(coord.y(), 1.0);
     }
 
 }  // namespace

@@ -58,7 +58,7 @@
 
 #include "optional_percent_coordinate.h"
 
-bool gu_optional_percent_coordinate_equals(const gu_optional_percent_coordinate lhs, const gu_optional_percent_coordinate rhs, const percent_f tolerance)
+bool gu_optional_percent_coordinate_equals(const gu_optional_percent_coordinate lhs, const gu_optional_percent_coordinate rhs, const percent_d tolerance)
 {
     return lhs.has_value == rhs.has_value
         && gu_percent_coordinate_equals(lhs.value, rhs.value, tolerance);

@@ -61,16 +61,16 @@
 #include <stdbool.h>
 #include <math.h>
 
-bool gu_camera_equals(const gu_camera lhs, const gu_camera rhs, const float tolerance)
+bool gu_camera_equals(const gu_camera lhs, const gu_camera rhs, const double tolerance)
 {
-    return fabsf(cm_f_to_f(lhs.height) - cm_f_to_f(rhs.height)) <= tolerance
-        && fabsf(cm_f_to_f(lhs.centerOffset) - cm_f_to_f(rhs.centerOffset)) <= tolerance
-        && fabsf(deg_f_to_f(lhs.vDirection) - deg_f_to_f(rhs.vDirection)) <= tolerance
-        && fabsf(deg_f_to_f(lhs.vFov) - deg_f_to_f(rhs.vFov)) <= tolerance
-        && fabsf(deg_f_to_f(lhs.hFov) - deg_f_to_f(rhs.hFov)) <= tolerance;
+    return fabs(cm_d_to_d(lhs.height) - cm_d_to_d(rhs.height)) <= tolerance
+        && fabs(cm_d_to_d(lhs.centerOffset) - cm_d_to_d(rhs.centerOffset)) <= tolerance
+        && fabs(deg_d_to_d(lhs.vDirection) - deg_d_to_d(rhs.vDirection)) <= tolerance
+        && fabs(deg_d_to_d(lhs.vFov) - deg_d_to_d(rhs.vFov)) <= tolerance
+        && fabs(deg_d_to_d(lhs.hFov) - deg_d_to_d(rhs.hFov)) <= tolerance;
 }
 
-gu_camera gu_camera_make(const centimetres_f height, const centimetres_f centerOffset, const degrees_f vDirection, const degrees_f vFov, const degrees_f hFov)
+gu_camera gu_camera_make(const centimetres_d height, const centimetres_d centerOffset, const degrees_d vDirection, const degrees_d vFov, const degrees_d hFov)
 {
     gu_camera temp;
     temp.height = height;

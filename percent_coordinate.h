@@ -79,7 +79,7 @@ typedef struct gu_percent_coordinate {
      *
      *  -1.0f <= x <= 1.0f
      */
-    percent_f x;
+    percent_d x;
 
     /**
      * The y coordinate of the pixel within the image as a percentage.
@@ -88,16 +88,16 @@ typedef struct gu_percent_coordinate {
      *
      *  -1.0f <= x <= 1.0f
      */
-    percent_f y;
+    percent_d y;
 
 } gu_percent_coordinate;
 
-bool gu_percent_coordinate_equals(const gu_percent_coordinate, const gu_percent_coordinate, const percent_f) __attribute__((const));
+bool gu_percent_coordinate_equals(const gu_percent_coordinate, const gu_percent_coordinate, const percent_d) __attribute__((const));
 
-percent_f gu_percent_coordinate_x_lower_bound(const gu_percent_coordinate) __attribute__((const));
-percent_f gu_percent_coordinate_y_lower_bound(const gu_percent_coordinate) __attribute__((const));
-percent_f gu_percent_coordinate_x_upper_bound(const gu_percent_coordinate) __attribute__((const));
-percent_f gu_percent_coordinate_y_upper_bound(const gu_percent_coordinate) __attribute__((const));
+percent_d gu_percent_coordinate_x_lower_bound(const gu_percent_coordinate) __attribute__((const));
+percent_d gu_percent_coordinate_y_lower_bound(const gu_percent_coordinate) __attribute__((const));
+percent_d gu_percent_coordinate_x_upper_bound(const gu_percent_coordinate) __attribute__((const));
+percent_d gu_percent_coordinate_y_upper_bound(const gu_percent_coordinate) __attribute__((const));
 
 #ifdef __cplusplus
 }

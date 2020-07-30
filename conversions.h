@@ -90,8 +90,8 @@ gu_percent_coordinate unsafe_rr_coord_to_pct_coord(const gu_relative_coordinate,
 gu_optional_percent_coordinate rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int) __attribute__((const));
 
 gu_percent_coordinate unsafe_clamped_rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int) __attribute__((const));
-gu_percent_coordinate unsafe_clamped_tolerance_rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_f) __attribute__((const));
-gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_f) __attribute__((const));
+gu_percent_coordinate unsafe_clamped_tolerance_rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_d) __attribute__((const));
+gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord(const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_d) __attribute__((const));
 
 // Converting from the robot relative coordinate system to the field coordinate systems.
 gu_cartesian_coordinate rr_coord_to_cartesian_coord(const gu_relative_coordinate) __attribute__((const));

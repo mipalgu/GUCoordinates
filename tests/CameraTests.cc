@@ -66,26 +66,26 @@ namespace CGTEST {
 
         GU::Camera initial()
         {
-            return GU::Camera(1.0f, 1.5f, 2.0f, 3.0f, 4.0f);
+            return GU::Camera(1.0, 1.5, 2.0, 3.0, 4.0);
         }
 
         GU::Camera empty()
         {
-            return GU::Camera(0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+            return GU::Camera(0.0, 0.0, 0.0, 0.0, 0.0);
         }
 
         void change(GU::Camera &obj)
         {
-            obj.set_height(0.0f);
+            obj.set_height(0.0);
         }
 
         void cchange(gu_camera &obj)
         {
-            obj.height = 1.0f;
-            obj.centerOffset = 2.0f;
-            obj.vDirection = 3.0f;
-            obj.vFov = 4.0f;
-            obj.hFov = 5.0f;
+            obj.height = 1.0;
+            obj.centerOffset = 2.0;
+            obj.vDirection = 3.0;
+            obj.vFov = 4.0;
+            obj.hFov = 5.0;
         }
 
         gu_camera cempty()
@@ -98,22 +98,22 @@ namespace CGTEST {
     WRAPPER_TEST_Fs(Camera, gu_camera)
 
     TEST_F(CameraCPPTests, GettersSetters) {
-        GU::Camera camera = GU::Camera(1.0f, 1.5f, 2.0f, 3.0f, 4.0f);
-        ASSERT_EQ(camera.height(), 1.0f);
-        camera.set_height(-1.0f);
-        ASSERT_EQ(camera.height(), -1.0f);
-        ASSERT_EQ(camera.centerOffset(), 1.5f);
-        camera.set_centerOffset(-1.5f);
-        ASSERT_EQ(camera.centerOffset(), -1.5f);
-        ASSERT_EQ(camera.vDirection(), 2.0f);
-        camera.set_vDirection(-2.0f);
-        ASSERT_EQ(camera.vDirection(), -2.0f);
-        ASSERT_EQ(camera.vFov(), 3.0f);
-        camera.set_vFov(-3.0f);
-        ASSERT_EQ(camera.vFov(), -3.0f);
-        ASSERT_EQ(camera.hFov(), 4.0f);
-        camera.set_hFov(-4.0f);
-        ASSERT_EQ(camera.hFov(), -4.0f);
+        GU::Camera camera = GU::Camera(1.0, 1.5, 2.0, 3.0, 4.0);
+        ASSERT_EQ(camera.height(), 1.0);
+        camera.set_height(-1.0);
+        ASSERT_EQ(camera.height(), -1.0);
+        ASSERT_EQ(camera.centerOffset(), 1.5);
+        camera.set_centerOffset(-1.5);
+        ASSERT_EQ(camera.centerOffset(), -1.5);
+        ASSERT_EQ(camera.vDirection(), 2.0);
+        camera.set_vDirection(-2.0);
+        ASSERT_EQ(camera.vDirection(), -2.0);
+        ASSERT_EQ(camera.vFov(), 3.0);
+        camera.set_vFov(-3.0);
+        ASSERT_EQ(camera.vFov(), -3.0);
+        ASSERT_EQ(camera.hFov(), 4.0);
+        camera.set_hFov(-4.0);
+        ASSERT_EQ(camera.hFov(), -4.0);
     }
 
 }  // namespace

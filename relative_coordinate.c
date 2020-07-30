@@ -58,7 +58,10 @@
 
 #include "relative_coordinate.h"
 
-bool gu_relative_coordinate_equals(const gu_relative_coordinate lhs, const gu_relative_coordinate rhs)
+#include <math.h>
+
+bool gu_relative_coordinate_equals(const gu_relative_coordinate lhs, const gu_relative_coordinate rhs, const double tolerance)
 {
-    return lhs.direction == rhs.direction && lhs.distance == rhs.distance;
+    return fabs(lhs.direction - rhs.direction) <= tolerance
+        && lhs.distance == rhs.distance;
 }
