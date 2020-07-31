@@ -72,12 +72,9 @@ extern "C" {
     FAKE(px_coord_to_cam_coord)                          \
     FAKE(px_coord_to_pct_coord)                          \
     FAKE(pct_coord_to_px_coord)                          \
-    FAKE(unsafe_pct_coord_to_rr_coord)                   \
     FAKE(pct_coord_to_rr_coord)                          \
     FAKE(rr_coord_to_pct_coord)                          \
-    FAKE(unsafe_clamped_rr_coord_to_pct_coord)           \
-    FAKE(unsafe_clamped_tolerance_rr_coord_to_pct_coord) \
-    FAKE(clamped_tolerance_rr_coord_to_pct_coord)        \
+    FAKE(clamped_rr_coord_to_pct_coord)                  \
     FAKE(rr_coord_to_cartesian_coord)                    \
     FAKE(rr_coord_to_cartesian_coord_from_source)        \
     FAKE(rr_coord_to_field_coord)                        \
@@ -112,26 +109,14 @@ DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, px_coord_to_pct_coord, const gu_p
 #define pct_coord_to_px_coord_result px_result
 DECLARE_FAKE_VALUE_FUNC(gu_pixel_coordinate, pct_coord_to_px_coord, const gu_percent_coordinate, const pixels_u, const pixels_u)
 
-#define unsafe_pct_coord_to_rr_coord_result rr_result
-DECLARE_FAKE_VALUE_FUNC(gu_relative_coordinate, unsafe_pct_coord_to_rr_coord, const gu_percent_coordinate, const gu_camera_pivot, const int)
+#define pct_coord_to_rr_coord_result rr_result
+DECLARE_FAKE_VALUE_FUNC(gu_relative_coordinate, pct_coord_to_rr_coord, const gu_percent_coordinate, const gu_camera_pivot, const int)
 
-#define pct_coord_to_rr_coord_result opt_rr_result
-DECLARE_FAKE_VALUE_FUNC(gu_optional_relative_coordinate, pct_coord_to_rr_coord, const gu_percent_coordinate, const gu_camera_pivot, const int)
+#define rr_coord_to_pct_coord_result pct_result
+DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int)
 
-#define unsafe_rr_coord_to_pct_coord_result pct_result
-DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, unsafe_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int)
-
-#define rr_coord_to_pct_coord_result opt_pct_result
-DECLARE_FAKE_VALUE_FUNC(gu_optional_percent_coordinate, rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int)
-
-#define unsafe_clamped_rr_coord_to_pct_coord_result pct_result
-DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, unsafe_clamped_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int)
-
-#define unsafe_clamped_tolerance_rr_coord_to_pct_coord_result pct_result
-DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_d)
-
-#define clamped_tolerance_rr_coord_to_pct_coord_result opt_pct_result
-DECLARE_FAKE_VALUE_FUNC(gu_optional_percent_coordinate, clamped_tolerance_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int, const percent_d)
+#define clamped_rr_coord_to_pct_coord_result pct_result
+DECLARE_FAKE_VALUE_FUNC(gu_percent_coordinate, clamped_rr_coord_to_pct_coord, const gu_relative_coordinate, const gu_camera_pivot, const int)
 
 // Converting from the robot relative coordinate system to the field coordinate systems.
 #define rr_coord_to_cartesian_coord_result cartesian_result

@@ -100,12 +100,7 @@ namespace GU {
 
         GU::PixelCoordinate pixelCoordinate() const;
         GU::PercentCoordinate percentCoordinate() const;
-        GU::OptionalRelativeCoordinate rawRelativeCoordinate(const GU::CameraPivot &, const int) const;
-        RelativeCoordinate unsafeRelativeCoordinate(const GU::CameraPivot &, const int) const;
-
-#if __cplusplus >= 201703L
-        std::optional<RelativeCoordinate> relativeCoordinate(const GU::CameraPivot &, const int) const;
-#endif
+        RelativeCoordinate relativeCoordinate(const GU::CameraPivot &, const int) const;
 
         pixels_u x() const;
         void set_x(const pixels_u);

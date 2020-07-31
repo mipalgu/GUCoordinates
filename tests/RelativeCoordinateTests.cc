@@ -93,35 +93,18 @@ namespace CGTEST {
     };
 
     WRAPPER_TEST_Fs(RelativeCoordinate, gu_relative_coordinate)
-    GETTER_BOOL_TEST_F(RelativeCoordinate, PercentCoordinate, rr_coord_to_pct_coord, rawPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
-    GETTER_BOOL_IM_TEST_F(RelativeCoordinate, PixelCoordinate, rr_coord_to_pct_coord, pct_coord_to_px_coord, rawPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
-    GETTER_BOOL_IM_TEST_F(RelativeCoordinate, CameraCoordinate, rr_coord_to_pct_coord, px_coord_to_cam_coord, rawCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
-    GETTER_OPT_IM_TEST_F(RelativeCoordinate, CameraCoordinate, rr_coord_to_pct_coord, px_coord_to_cam_coord, cameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
-    GETTER_OPT_IM_TEST_F(RelativeCoordinate, PixelCoordinate, rr_coord_to_pct_coord, pct_coord_to_px_coord, pixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
-    GETTER_OPT_TEST_F(RelativeCoordinate, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
 
     GETTER_TEST_F(RelativeCoordinate, CartesianCoordinate, rr_coord_to_cartesian_coord, cartesianCoordinate())
     GETTER_TEST_F(RelativeCoordinate, FieldCoordinate, rr_coord_to_field_coord, fieldCoordinate(30))
     GETTER_TEST_F(RelativeCoordinate, RelativeCoordinate, cartesian_coord_to_rr_coord_from_source, relativeCoordinateTo(GU::RelativeCoordinate(30, 120)))
 
-    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeCameraCoordinate, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafeCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
-    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafePixelCoordinate, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafePixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
-    GETTER_TEST_NAME_F(RelativeCoordinate, unsafePercentCoordinate, PercentCoordinate, unsafe_rr_coord_to_pct_coord, unsafePercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, cameraCoordinate, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, rr_coord_to_pct_coord, cameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, pixelCoordinate, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, rr_coord_to_pct_coord, pixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_TEST_NAME_F(RelativeCoordinate, percentCoordinate, PercentCoordinate, rr_coord_to_pct_coord, percentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
 
-    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedCameraCoordinate, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
-    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedPixelCoordinate, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
-    GETTER_TEST_NAME_F(RelativeCoordinate, unsafeClampedPercentCoordinate, PercentCoordinate, unsafe_clamped_rr_coord_to_pct_coord, unsafeClampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
-
-    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedToleranceCameraCoordinate, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
-    GETTER_IM_TEST_NAME_F(RelativeCoordinate, unsafeClampedTolerancePixelCoordinate, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
-    GETTER_TEST_NAME_F(RelativeCoordinate, unsafeClampedTolerancePercentCoordinate, PercentCoordinate, unsafe_clamped_tolerance_rr_coord_to_pct_coord, unsafeClampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1))
-
-    GETTER_BOOL_IM_TEST_NAME_F(RelativeCoordinate, clampedToleranceCameraCoordinate, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, rawClampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
-    GETTER_BOOL_IM_TEST_NAME_F(RelativeCoordinate, clampedTolerancePixelCoordinate, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, rawClampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
-    GETTER_BOOL_TEST_NAME_F(RelativeCoordinate, clampedTolerancePercentCoordinate, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, rawClampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1))
-    GETTER_OPT_IM_TEST_NAME_F(RelativeCoordinate, optClampedToleranceCameraCoordinate, CameraCoordinate, clamped_tolerance_rr_coord_to_pct_coord, px_coord_to_cam_coord, clampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
-    GETTER_OPT_IM_TEST_NAME_F(RelativeCoordinate, optClampedTolerancePixelCoordinate, PixelCoordinate, clamped_tolerance_rr_coord_to_pct_coord, pct_coord_to_px_coord, clampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080, 0.1))
-    GETTER_OPT_TEST_NAME_F(RelativeCoordinate, optClampedTolerancePercentCoordinate, PercentCoordinate, clamped_tolerance_rr_coord_to_pct_coord, clampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 0.1))
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, clampedCameraCoordinate, CameraCoordinate, px_coord_to_cam_coord, PercentCoordinate, clamped_rr_coord_to_pct_coord, clampedCameraCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_IM_TEST_NAME_F(RelativeCoordinate, clampedPixelCoordinate, PixelCoordinate, pct_coord_to_px_coord, PercentCoordinate, clamped_rr_coord_to_pct_coord, clampedPixelCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX, 1920, 1080))
+    GETTER_TEST_NAME_F(RelativeCoordinate, clampedPercentCoordinate, PercentCoordinate, clamped_rr_coord_to_pct_coord, clampedPercentCoordinate(nao, GU_NAO_V5_BOTTOM_CAMERA_INDEX))
 
     TEST_F(RelativeCoordinateCPPTests, GettersSetters) {
         GU::RelativeCoordinate coord = GU::RelativeCoordinate(90.0, 1000);

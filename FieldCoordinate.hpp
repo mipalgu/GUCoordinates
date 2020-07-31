@@ -117,77 +117,26 @@ namespace GU {
         RelativeCoordinate relativeCoordinateTo(const GU::CartesianCoordinate &) const;
         RelativeCoordinate relativeCoordinateTo(const GU::FieldCoordinate &) const;
 
-        CartesianCoordinate unsafeCartesianCoordinateAt(const GU::CameraCoordinate &, const GU::CameraPivot &, const int) const;
-        CartesianCoordinate unsafeCartesianCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int) const;
-        CartesianCoordinate unsafeCartesianCoordinateAt(const GU::PercentCoordinate &, const GU::CameraPivot &, const int) const;
-        FieldCoordinate unsafeFieldCoordinateAt(const GU::CameraCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
-        FieldCoordinate unsafeFieldCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
-        FieldCoordinate unsafeFieldCoordinateAt(const GU::PercentCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
+        CartesianCoordinate cartesianCoordinateAt(const GU::CameraCoordinate &, const GU::CameraPivot &, const int) const;
+        CartesianCoordinate cartesianCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int) const;
+        CartesianCoordinate cartesianCoordinateAt(const GU::PercentCoordinate &, const GU::CameraPivot &, const int) const;
+        FieldCoordinate fieldCoordinateAt(const GU::CameraCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
+        FieldCoordinate fieldCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
+        FieldCoordinate fieldCoordinateAt(const GU::PercentCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
 
-        OptionalCartesianCoordinate rawCartesianCoordinateAt(const GU::CameraCoordinate &, const GU::CameraPivot &, const int) const;
-        OptionalCartesianCoordinate rawCartesianCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int) const;
-        OptionalCartesianCoordinate rawCartesianCoordinateAt(const GU::PercentCoordinate &, const GU::CameraPivot &, const int) const;
-        OptionalFieldCoordinate rawFieldCoordinateAt(const GU::CameraCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
-        OptionalFieldCoordinate rawFieldCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
-        OptionalFieldCoordinate rawFieldCoordinateAt(const GU::PercentCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
+        CameraCoordinate cameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        CameraCoordinate cameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PixelCoordinate pixelCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PixelCoordinate pixelCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PercentCoordinate percentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int) const;
+        PercentCoordinate percentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int) const;
 
-        CameraCoordinate unsafeCameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        CameraCoordinate unsafeCameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        PixelCoordinate unsafePixelCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        PixelCoordinate unsafePixelCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        PercentCoordinate unsafePercentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int) const;
-        PercentCoordinate unsafePercentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int) const;
-
-        OptionalCameraCoordinate rawCameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        OptionalCameraCoordinate rawCameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        OptionalPixelCoordinate rawPixelCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        OptionalPixelCoordinate rawPixelCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        OptionalPercentCoordinate rawPercentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int) const;
-        OptionalPercentCoordinate rawPercentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int) const;
-
-        CameraCoordinate unsafeClampedCameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        CameraCoordinate unsafeClampedCameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        PixelCoordinate unsafeClampedPixelCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        PixelCoordinate unsafeClampedPixelCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        PercentCoordinate unsafeClampedPercentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int) const;
-        PercentCoordinate unsafeClampedPercentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int) const;
-
-        CameraCoordinate unsafeClampedCameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        CameraCoordinate unsafeClampedCameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        PixelCoordinate unsafeClampedPixelCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        PixelCoordinate unsafeClampedPixelCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        PercentCoordinate unsafeClampedPercentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const percent_d) const;
-        PercentCoordinate unsafeClampedPercentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const percent_d) const;
-
-        OptionalCameraCoordinate rawClampedCameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        OptionalCameraCoordinate rawClampedCameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        OptionalPixelCoordinate rawClampedPixelCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        OptionalPixelCoordinate rawClampedPixelCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        OptionalPercentCoordinate rawClampedPercentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const percent_d) const;
-        OptionalPercentCoordinate rawClampedPercentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const percent_d) const;
-
-#if __cplusplus >= 201703L
-        std::optional<GU::CartesianCoordinate> cartesianCoordinateAt(const GU::CameraCoordinate &, const GU::CameraPivot &, const int) const;
-        std::optional<GU::CartesianCoordinate> cartesianCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int) const;
-        std::optional<GU::CartesianCoordinate> cartesianCoordinateAt(const GU::PercentCoordinate &, const GU::CameraPivot &, const int) const;
-        std::optional<GU::FieldCoordinate> fieldCoordinateAt(const GU::CameraCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
-        std::optional<GU::FieldCoordinate> fieldCoordinateAt(const GU::PixelCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
-        std::optional<GU::FieldCoordinate> fieldCoordinateAt(const GU::PercentCoordinate &, const GU::CameraPivot &, const int, const degrees_t) const;
-
-        std::optional<GU::CameraCoordinate> cameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        std::optional<GU::CameraCoordinate> cameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        std::optional<GU::PixelCoordinate> pixelCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        std::optional<GU::PixelCoordinate> pixelCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        std::optional<GU::PercentCoordinate> percentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int) const;
-        std::optional<GU::PercentCoordinate> percentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int) const;
-
-        std::optional<CameraCoordinate> clampedCameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        std::optional<CameraCoordinate> clampedCameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        std::optional<PixelCoordinate> clampedPixelCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        std::optional<PixelCoordinate> clampedPixelCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        std::optional<PercentCoordinate> clampedPercentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const percent_d) const;
-        std::optional<PercentCoordinate> clampedPercentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const percent_d) const;
-#endif
+        CameraCoordinate clampedCameraCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        CameraCoordinate clampedCameraCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PixelCoordinate clampedPixelCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PixelCoordinate clampedPixelCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PercentCoordinate clampedPercentCoordinateTo(const GU::CartesianCoordinate &, const GU::CameraPivot &, const int) const;
+        PercentCoordinate clampedPercentCoordinateTo(const GU::FieldCoordinate &, const GU::CameraPivot &, const int) const;
 
         CartesianCoordinate position() const;
         void set_position(const CartesianCoordinate);

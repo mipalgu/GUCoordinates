@@ -112,12 +112,7 @@ gu_pixel_coordinate pct_coord_to_px_coord(const gu_percent_coordinate coord, con
     return newCoord;
 }
 
-gu_relative_coordinate unsafe_pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset)
-{
-    return pct_coord_to_rr_coord(coord, camera_pivot, cameraOffset).value;
-}
-
-gu_optional_relative_coordinate pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset)
+gu_relative_coordinate pct_coord_to_rr_coord(const gu_percent_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset)
 {
     const gu_camera camera = camera_pivot.cameras[cameraOffset];
     const degrees_d pitchToObject = camera_pivot.pitch + camera.vDirection - d_to_deg_d(pct_d_to_d(coord.y)) * (camera.vFov / 2.0);
@@ -126,8 +121,7 @@ gu_optional_relative_coordinate pct_coord_to_rr_coord(const gu_percent_coordinat
     if (pitchToObject >= 90.0)
     {
         const gu_relative_coordinate out = { yaw, 0 };
-        const gu_optional_relative_coordinate result = { false, out };
-        return result;
+        return out;
     }
     const radians_d pitchRad = deg_d_to_rad_d(pitchToObject);
     const radians_d yawRad = deg_d_to_rad_d(yaw);
@@ -136,18 +130,16 @@ gu_optional_relative_coordinate pct_coord_to_rr_coord(const gu_percent_coordinat
     if (pitchToObject <= 0.0 || fabs(cosYaw) < 0.00001)
     {
         const gu_relative_coordinate out = { yaw, RELATIVE_COORD_MAX_DISTANCE };
-        const gu_optional_relative_coordinate result = { false, out };
-        return result;
+        return out;
     }
     const centimetres_d actualCameraHeight = gu_camera_pivot_calculate_camera_height(camera_pivot, cameraOffset);
     const double distance = cm_d_to_d(actualCameraHeight) * tan((M_PI_2) - rad_d_to_d(pitchRad)) / cosYaw;
     const centimetres_d outDistance = d_to_cm_d(distance) - camera.centerOffset;
     const gu_relative_coordinate out = { yaw, cm_d_to_mm_u(fabs(outDistance)) };
-    const gu_optional_relative_coordinate result = { true, out };
-    return result;
+    return out;
 }
 
-gu_percent_coordinate unsafe_rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset)
+gu_percent_coordinate rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset)
 {
     const gu_camera camera = camera_pivot.cameras[cameraOffset];
     const degrees_d yaw = coord.direction - camera_pivot.yaw;
@@ -162,17 +154,9 @@ gu_percent_coordinate unsafe_rr_coord_to_pct_coord(const gu_relative_coordinate 
     return temp;
 }
 
-gu_optional_percent_coordinate rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset)
+gu_percent_coordinate clamped_rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset)
 {
-    const gu_percent_coordinate temp = unsafe_rr_coord_to_pct_coord(coord, camera_pivot, cameraOffset);
-    const bool has_value = temp.x >= -1.0 && temp.x <= 1.0 && temp.y >= -1.0 && temp.y <= 1.0;
-    const gu_optional_percent_coordinate result = { has_value, temp };
-    return result;
-}
-
-gu_percent_coordinate unsafe_clamped_rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset)
-{
-    gu_percent_coordinate temp = unsafe_rr_coord_to_pct_coord(coord, camera_pivot, cameraOffset);
+    gu_percent_coordinate temp = rr_coord_to_pct_coord(coord, camera_pivot, cameraOffset);
     if (temp.x < -1.0)
     {
         temp.x = -1.0;
@@ -188,36 +172,6 @@ gu_percent_coordinate unsafe_clamped_rr_coord_to_pct_coord(const gu_relative_coo
         temp.y = 1.0;
     }
     return temp;
-}
-
-gu_percent_coordinate unsafe_clamped_tolerance_rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset, const percent_d tolerance)
-{
-    return clamped_tolerance_rr_coord_to_pct_coord(coord, camera_pivot, cameraOffset, tolerance).value;
-}
-
-gu_optional_percent_coordinate clamped_tolerance_rr_coord_to_pct_coord(const gu_relative_coordinate coord, const gu_camera_pivot camera_pivot, const int cameraOffset, const percent_d tolerance)
-{
-    gu_percent_coordinate temp = unsafe_rr_coord_to_pct_coord(coord, camera_pivot, cameraOffset);
-    const percent_d lowerBound = -1.0 - tolerance;
-    const percent_d upperBound = 1.0 + tolerance;
-    if (temp.x < -1.0 && temp.x >= lowerBound)
-    {
-        temp.x = -1.0;
-    } 
-    else if (temp.x > 1.0 && temp.x <= upperBound) {
-        temp.x = 1.0;
-    }
-    if (temp.y < -1.0 && temp.y >= lowerBound)
-    {
-        temp.y = -1.0;
-    }
-    else if (temp.y > 1.0 && temp.y <= upperBound) {
-        temp.y = 1.0;
-    }
-    const bool has_value = temp.x >= -1.0 && temp.x <= 1.0 && temp.y >= -1.0 && temp.y <= 1.0;
-    printf("temp: (%lf, %lf), has_value: %d\n", temp.x, temp.y, has_value);
-    const gu_optional_percent_coordinate result = { has_value, temp };
-    return result;
 }
 
 gu_cartesian_coordinate rr_coord_to_cartesian_coord(const gu_relative_coordinate coord)

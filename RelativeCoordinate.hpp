@@ -102,35 +102,13 @@ namespace GU {
         RelativeCoordinate& operator=(RelativeCoordinate&& other);
 #endif
 
-        OptionalCameraCoordinate rawCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        OptionalPixelCoordinate rawPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        OptionalPercentCoordinate rawPercentCoordinate(const GU::CameraPivot &, const int) const;
+        CameraCoordinate cameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PixelCoordinate pixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PercentCoordinate percentCoordinate(const GU::CameraPivot &, const int) const;
 
-        CameraCoordinate unsafeCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        PixelCoordinate unsafePixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        PercentCoordinate unsafePercentCoordinate(const GU::CameraPivot &, const int) const;
-
-        CameraCoordinate unsafeClampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        PixelCoordinate unsafeClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        PercentCoordinate unsafeClampedPercentCoordinate(const GU::CameraPivot &, const int) const;
-
-        CameraCoordinate unsafeClampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        PixelCoordinate unsafeClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        PercentCoordinate unsafeClampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_d) const;
-
-        OptionalCameraCoordinate rawClampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        OptionalPixelCoordinate rawClampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        OptionalPercentCoordinate rawClampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_d) const;
-
-#if __cplusplus >= 201703L
-        std::optional<CameraCoordinate> cameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        std::optional<PixelCoordinate> pixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
-        std::optional<PercentCoordinate> percentCoordinate(const GU::CameraPivot &, const int) const;
-
-        std::optional<CameraCoordinate> clampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        std::optional<PixelCoordinate> clampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u, const percent_d) const;
-        std::optional<PercentCoordinate> clampedPercentCoordinate(const GU::CameraPivot &, const int, const percent_d) const;
-#endif
+        CameraCoordinate clampedCameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PixelCoordinate clampedPixelCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;
+        PercentCoordinate clampedPercentCoordinate(const GU::CameraPivot &, const int) const;
 
         RelativeCoordinate relativeCoordinateTo(const RelativeCoordinate &) const;
         CartesianCoordinate cartesianCoordinate() const;

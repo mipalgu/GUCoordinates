@@ -25,88 +25,115 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F2E9415C24A045B300041D08 /* PixelCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PixelCoordinate.cc; sourceTree = SOURCE_ROOT; };
-		F2E9415D24A045B300041D08 /* PixelCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PixelCoordinate.hpp; sourceTree = SOURCE_ROOT; };
-		F2E9415E24A045B300041D08 /* relative_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = relative_coordinate.h; sourceTree = SOURCE_ROOT; };
-		F2E9415F24A045B300041D08 /* field_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = field_coordinate.c; sourceTree = SOURCE_ROOT; };
-		F2E9416024A045B300041D08 /* pixel_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pixel_coordinate.h; sourceTree = SOURCE_ROOT; };
-		F2E9416124A045B400041D08 /* conversions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = conversions.h; sourceTree = SOURCE_ROOT; };
-		F2E9416224A045B400041D08 /* camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = SOURCE_ROOT; };
-		F2E9416324A045B400041D08 /* percent_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = percent_coordinate.c; sourceTree = SOURCE_ROOT; };
-		F2E9416424A045B400041D08 /* CartesianCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CartesianCoordinate.hpp; sourceTree = SOURCE_ROOT; };
-		F2E9416524A045B400041D08 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = SOURCE_ROOT; };
-		F2E9416624A045B400041D08 /* CameraCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CameraCoordinate.hpp; sourceTree = SOURCE_ROOT; };
-		F2E9416724A045B400041D08 /* CameraCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CameraCoordinate.cc; sourceTree = SOURCE_ROOT; };
-		F2E9416824A045B400041D08 /* PercentCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PercentCoordinate.hpp; sourceTree = SOURCE_ROOT; };
-		F2E9416924A045B400041D08 /* cartesian_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cartesian_coordinate.h; sourceTree = SOURCE_ROOT; };
-		F2E9416A24A045B400041D08 /* field_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = field_coordinate.h; sourceTree = SOURCE_ROOT; };
-		F2E9416B24A045B400041D08 /* hidden_conversions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hidden_conversions.h; sourceTree = SOURCE_ROOT; };
-		F2E9416C24A045B400041D08 /* FieldCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FieldCoordinate.cc; sourceTree = SOURCE_ROOT; };
-		F2E9416D24A045B400041D08 /* GUCoordinates.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GUCoordinates.hpp; sourceTree = SOURCE_ROOT; };
-		F2E9416E24A045B400041D08 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile; sourceTree = SOURCE_ROOT; };
-		F2E9416F24A045B400041D08 /* PercentCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PercentCoordinate.cc; sourceTree = SOURCE_ROOT; };
-		F2E9417024A045B400041D08 /* Robot.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Robot.hpp; sourceTree = SOURCE_ROOT; };
-		F2E9417124A045B400041D08 /* robot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = robot.h; sourceTree = SOURCE_ROOT; };
-		F2E9417224A045B400041D08 /* Robot_cpp.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Robot_cpp.cc; sourceTree = SOURCE_ROOT; };
-		F2E9417324A045B400041D08 /* gucoordinates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gucoordinates.h; sourceTree = SOURCE_ROOT; };
-		F2E9417424A045B400041D08 /* pixel_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pixel_coordinate.c; sourceTree = SOURCE_ROOT; };
-		F2E9417524A045B400041D08 /* FieldCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FieldCoordinate.hpp; sourceTree = SOURCE_ROOT; };
-		F2E9417624A045B400041D08 /* CartesianCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CartesianCoordinate.cc; sourceTree = SOURCE_ROOT; };
-		F2E9417724A045B400041D08 /* RelativeCoordinate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RelativeCoordinate.cc; sourceTree = SOURCE_ROOT; };
-		F2E9417824A045B400041D08 /* percent_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = percent_coordinate.h; sourceTree = SOURCE_ROOT; };
-		F2E9417924A045B400041D08 /* cartesian_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cartesian_coordinate.c; sourceTree = SOURCE_ROOT; };
-		F2E9417A24A045B400041D08 /* relative_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = relative_coordinate.c; sourceTree = SOURCE_ROOT; };
-		F2E9417B24A045B500041D08 /* CameraCPP.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CameraCPP.cc; sourceTree = SOURCE_ROOT; };
-		F2E9417C24A045B500041D08 /* camera_coordinate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = camera_coordinate.c; sourceTree = SOURCE_ROOT; };
-		F2E9417D24A045B500041D08 /* robot.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = robot.c; sourceTree = SOURCE_ROOT; };
-		F2E9417E24A045B500041D08 /* conversions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = conversions.c; sourceTree = SOURCE_ROOT; };
-		F2E9417F24A045B500041D08 /* RelativeCoordinate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RelativeCoordinate.hpp; sourceTree = SOURCE_ROOT; };
-		F2E9418024A045B500041D08 /* camera_coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = camera_coordinate.h; sourceTree = SOURCE_ROOT; };
-		F2E9418124A045B500041D08 /* camera.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = camera.c; sourceTree = SOURCE_ROOT; };
-		F2E9418324A0470900041D08 /* relative_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = relative_coordinate_tests.cc; path = ctests/relative_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9418424A0470900041D08 /* pixel_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pixel_coordinate_tests.cc; path = ctests/pixel_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9418524A0470900041D08 /* conversions_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = conversions_tests.cc; path = ctests/conversions_tests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9418624A0470900041D08 /* camera_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera_coordinate_tests.cc; path = ctests/camera_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9418724A0470900041D08 /* percent_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = percent_coordinate_tests.cc; path = ctests/percent_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9418824A0470900041D08 /* camera_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera_tests.cc; path = ctests/camera_tests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9418924A0470900041D08 /* robot_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = robot_tests.cc; path = ctests/robot_tests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9418B24A0474400041D08 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Makefile; path = tests/Makefile; sourceTree = SOURCE_ROOT; };
-		F2E9418C24A0474400041D08 /* camera_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = camera_fakes.c; path = tests/camera_fakes.c; sourceTree = SOURCE_ROOT; };
-		F2E9418D24A0474400041D08 /* percent_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = percent_coordinate_fakes.h; path = tests/percent_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
-		F2E9418E24A0474400041D08 /* cartesian_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cartesian_coordinate_fakes.c; path = tests/cartesian_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
-		F2E9418F24A0474400041D08 /* FieldCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FieldCoordinateTests.cc; path = tests/FieldCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9419024A0474400041D08 /* CameraTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CameraTests.cc; path = tests/CameraTests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9419124A0474400041D08 /* field_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = field_coordinate_fakes.h; path = tests/field_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
-		F2E9419224A0474400041D08 /* robot_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = robot_fakes.h; path = tests/robot_fakes.h; sourceTree = SOURCE_ROOT; };
-		F2E9419324A0474400041D08 /* RobotTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RobotTests.cc; path = tests/RobotTests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9419424A0474400041D08 /* CameraCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CameraCoordinateTests.cc; path = tests/CameraCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9419524A0474400041D08 /* CartesianCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CartesianCoordinateTests.cc; path = tests/CartesianCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9419624A0474400041D08 /* conversion_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = conversion_fakes.h; path = tests/conversion_fakes.h; sourceTree = SOURCE_ROOT; };
-		F2E9419724A0474400041D08 /* relative_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = relative_coordinate_fakes.h; path = tests/relative_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
-		F2E9419824A0474400041D08 /* PixelCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PixelCoordinateTests.cc; path = tests/PixelCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9419924A0474400041D08 /* fff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fff.h; path = tests/fff.h; sourceTree = SOURCE_ROOT; };
-		F2E9419A24A0474400041D08 /* cartesian_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cartesian_coordinate_fakes.h; path = tests/cartesian_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
-		F2E9419B24A0474400041D08 /* percent_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = percent_coordinate_fakes.c; path = tests/percent_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
-		F2E9419C24A0474400041D08 /* PercentCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PercentCoordinateTests.cc; path = tests/PercentCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
-		F2E9419D24A0474400041D08 /* pixel_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = pixel_coordinate_fakes.c; path = tests/pixel_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
-		F2E9419E24A0474400041D08 /* camera_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = camera_fakes.h; path = tests/camera_fakes.h; sourceTree = SOURCE_ROOT; };
-		F2E9419F24A0474400041D08 /* field_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = field_coordinate_fakes.c; path = tests/field_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
-		F2E941A024A0474400041D08 /* GUCoordinatesTests.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GUCoordinatesTests.hpp; path = tests/GUCoordinatesTests.hpp; sourceTree = SOURCE_ROOT; };
-		F2E941A124A0474400041D08 /* camera_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = camera_coordinate_fakes.c; path = tests/camera_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
-		F2E941A224A0474400041D08 /* RelativeCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RelativeCoordinateTests.cc; path = tests/RelativeCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
-		F2E941A324A0474400041D08 /* camera_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = camera_coordinate_fakes.h; path = tests/camera_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
-		F2E941A424A0474400041D08 /* robot_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = robot_fakes.c; path = tests/robot_fakes.c; sourceTree = SOURCE_ROOT; };
-		F2E941A524A0474400041D08 /* fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fakes.h; path = tests/fakes.h; sourceTree = SOURCE_ROOT; };
-		F2E941A624A0474400041D08 /* relative_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = relative_coordinate_fakes.c; path = tests/relative_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
-		F2E941A724A0474400041D08 /* fff.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = fff.c; path = tests/fff.c; sourceTree = SOURCE_ROOT; };
-		F2E941A824A0474400041D08 /* pixel_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pixel_coordinate_fakes.h; path = tests/pixel_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
-		F2E941A924A0474400041D08 /* conversion_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = conversion_fakes.c; path = tests/conversion_fakes.c; sourceTree = SOURCE_ROOT; };
-		F2E941AA24A0475200041D08 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Makefile; path = ctests/Makefile; sourceTree = SOURCE_ROOT; };
+		F283FDBB24D3D57200F57B49 /* OptionalPercentCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OptionalPercentCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDBC24D3D57200F57B49 /* OptionalCartesianCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OptionalCartesianCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDBD24D3D57200F57B49 /* pixel_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pixel_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDBE24D3D57200F57B49 /* optional_cartesian_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = optional_cartesian_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDBF24D3D57200F57B49 /* CameraPivot.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraPivot.cc; sourceTree = SOURCE_ROOT; };
+		F283FDC024D3D57200F57B49 /* optional_percent_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optional_percent_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDC124D3D57200F57B49 /* FieldCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FieldCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDC224D3D57200F57B49 /* OptionalRelativeCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OptionalRelativeCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDC324D3D57200F57B49 /* optional_camera_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optional_camera_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDC424D3D57200F57B49 /* OptionalCameraCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OptionalCameraCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDC524D3D57200F57B49 /* CameraPivot.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CameraPivot.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDC624D3D57300F57B49 /* cartesian_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cartesian_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDC724D3D57300F57B49 /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = SOURCE_ROOT; };
+		F283FDC824D3D57300F57B49 /* hidden_conversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hidden_conversions.h; sourceTree = SOURCE_ROOT; };
+		F283FDC924D3D57300F57B49 /* gucoordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gucoordinates.h; sourceTree = SOURCE_ROOT; };
+		F283FDCA24D3D57300F57B49 /* OptionalRelativeCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OptionalRelativeCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDCB24D3D57300F57B49 /* CameraCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CameraCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDCC24D3D57300F57B49 /* RelativeCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RelativeCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDCD24D3D57300F57B49 /* optional_percent_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = optional_percent_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDCE24D3D57300F57B49 /* optional_relative_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = optional_relative_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDCF24D3D57300F57B49 /* field_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = field_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDD024D3D57300F57B49 /* CameraCPP.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraCPP.cc; sourceTree = SOURCE_ROOT; };
+		F283FDD124D3D57300F57B49 /* camera_pivot.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = camera_pivot.c; sourceTree = SOURCE_ROOT; };
+		F283FDD224D3D57300F57B49 /* CartesianCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CartesianCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDD324D3D57300F57B49 /* pixel_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pixel_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDD424D3D57300F57B49 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDD524D3D57300F57B49 /* PixelCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PixelCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDD624D3D57300F57B49 /* OptionalPixelCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OptionalPixelCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDD724D3D57300F57B49 /* conversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conversions.h; sourceTree = SOURCE_ROOT; };
+		F283FDD824D3D57300F57B49 /* RelativeCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RelativeCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDD924D3D57300F57B49 /* camera_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = camera_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDDA24D3D57400F57B49 /* field_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = field_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDDB24D3D57400F57B49 /* OptionalCartesianCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OptionalCartesianCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDDC24D3D57400F57B49 /* PercentCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PercentCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDDD24D3D57400F57B49 /* optional_camera_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = optional_camera_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDDE24D3D57400F57B49 /* CameraCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDDF24D3D57400F57B49 /* camera_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDE024D3D57400F57B49 /* OptionalFieldCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OptionalFieldCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDE124D3D57400F57B49 /* OptionalPercentCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OptionalPercentCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDE224D3D57400F57B49 /* cartesian_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cartesian_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDE324D3D57400F57B49 /* optional_field_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = optional_field_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDE424D3D57400F57B49 /* optional_field_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optional_field_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDE524D3D57400F57B49 /* CartesianCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CartesianCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDE624D3D57400F57B49 /* optional_pixel_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = optional_pixel_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDE724D3D57500F57B49 /* optional_pixel_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optional_pixel_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDE824D3D57500F57B49 /* camera.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = camera.c; sourceTree = SOURCE_ROOT; };
+		F283FDE924D3D57500F57B49 /* percent_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = percent_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDEA24D3D57500F57B49 /* camera_pivot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera_pivot.h; sourceTree = SOURCE_ROOT; };
+		F283FDEB24D3D57500F57B49 /* PercentCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PercentCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDEC24D3D57500F57B49 /* relative_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = relative_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDED24D3D57500F57B49 /* FieldCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FieldCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDEE24D3D57500F57B49 /* OptionalCameraCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OptionalCameraCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDEF24D3D57500F57B49 /* OptionalFieldCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OptionalFieldCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDF024D3D57500F57B49 /* percent_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = percent_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDF124D3D57500F57B49 /* PixelCoordinate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PixelCoordinate.cc; sourceTree = SOURCE_ROOT; };
+		F283FDF224D3D57500F57B49 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile; sourceTree = SOURCE_ROOT; };
+		F283FDF324D3D57500F57B49 /* conversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = conversions.c; sourceTree = SOURCE_ROOT; };
+		F283FDF424D3D57500F57B49 /* OptionalPixelCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OptionalPixelCoordinate.hpp; sourceTree = SOURCE_ROOT; };
+		F283FDF524D3D57500F57B49 /* optional_relative_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optional_relative_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDF624D3D57500F57B49 /* optional_cartesian_coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optional_cartesian_coordinate.h; sourceTree = SOURCE_ROOT; };
+		F283FDF724D3D57600F57B49 /* relative_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = relative_coordinate.c; sourceTree = SOURCE_ROOT; };
+		F283FDF824D3D58A00F57B49 /* relative_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = relative_coordinate_tests.cc; path = ctests/relative_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
+		F283FDF924D3D58A00F57B49 /* pixel_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pixel_coordinate_tests.cc; path = ctests/pixel_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
+		F283FDFA24D3D58A00F57B49 /* camera_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera_coordinate_tests.cc; path = ctests/camera_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
+		F283FDFB24D3D58A00F57B49 /* camera_pivot_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera_pivot_tests.cc; path = ctests/camera_pivot_tests.cc; sourceTree = SOURCE_ROOT; };
+		F283FDFC24D3D58A00F57B49 /* conversions_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = conversions_tests.cc; path = ctests/conversions_tests.cc; sourceTree = SOURCE_ROOT; };
+		F283FDFD24D3D58A00F57B49 /* camera_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera_tests.cc; path = ctests/camera_tests.cc; sourceTree = SOURCE_ROOT; };
+		F283FDFE24D3D58A00F57B49 /* field_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = field_coordinate_tests.cc; path = ctests/field_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
+		F283FDFF24D3D58A00F57B49 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile; path = ctests/Makefile; sourceTree = SOURCE_ROOT; };
+		F283FE0024D3D58A00F57B49 /* percent_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = percent_coordinate_tests.cc; path = ctests/percent_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
+		F283FE0124D3D58A00F57B49 /* cartesian_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cartesian_coordinate_tests.cc; path = ctests/cartesian_coordinate_tests.cc; sourceTree = SOURCE_ROOT; };
+		F283FE0224D3D58A00F57B49 /* gucoordinates_tests.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = gucoordinates_tests.hpp; path = ctests/gucoordinates_tests.hpp; sourceTree = SOURCE_ROOT; };
+		F283FE0324D3D5AF00F57B49 /* field_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = field_coordinate_fakes.h; path = tests/field_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F283FE0424D3D5AF00F57B49 /* camera_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = camera_fakes.h; path = tests/camera_fakes.h; sourceTree = SOURCE_ROOT; };
+		F283FE0524D3D5AF00F57B49 /* camera_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = camera_coordinate_fakes.h; path = tests/camera_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F283FE0624D3D5AF00F57B49 /* fff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fff.h; path = tests/fff.h; sourceTree = SOURCE_ROOT; };
+		F283FE0724D3D5AF00F57B49 /* CartesianCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CartesianCoordinateTests.cc; path = tests/CartesianCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F283FE0824D3D5AF00F57B49 /* custom_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = custom_fakes.h; path = tests/custom_fakes.h; sourceTree = SOURCE_ROOT; };
+		F283FE0924D3D5AF00F57B49 /* FieldCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FieldCoordinateTests.cc; path = tests/FieldCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F283FE0A24D3D5AF00F57B49 /* fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fakes.h; path = tests/fakes.h; sourceTree = SOURCE_ROOT; };
+		F283FE0B24D3D5AF00F57B49 /* GUCoordinatesTests.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GUCoordinatesTests.hpp; path = tests/GUCoordinatesTests.hpp; sourceTree = SOURCE_ROOT; };
+		F283FE0C24D3D5AF00F57B49 /* CameraCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CameraCoordinateTests.cc; path = tests/CameraCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F283FE0D24D3D5AF00F57B49 /* conversion_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = conversion_fakes.h; path = tests/conversion_fakes.h; sourceTree = SOURCE_ROOT; };
+		F283FE0E24D3D5AF00F57B49 /* percent_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = percent_coordinate_fakes.c; path = tests/percent_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
+		F283FE0F24D3D5AF00F57B49 /* custom_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = custom_fakes.c; path = tests/custom_fakes.c; sourceTree = SOURCE_ROOT; };
+		F283FE1024D3D5AF00F57B49 /* relative_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = relative_coordinate_fakes.h; path = tests/relative_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F283FE1124D3D5AF00F57B49 /* percent_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = percent_coordinate_fakes.h; path = tests/percent_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F283FE1224D3D5AF00F57B49 /* PixelCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PixelCoordinateTests.cc; path = tests/PixelCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F283FE1324D3D5AF00F57B49 /* fff.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = fff.c; path = tests/fff.c; sourceTree = SOURCE_ROOT; };
+		F283FE1424D3D5AF00F57B49 /* conversion_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = conversion_fakes.c; path = tests/conversion_fakes.c; sourceTree = SOURCE_ROOT; };
+		F283FE1524D3D5AF00F57B49 /* camera_pivot_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = camera_pivot_fakes.c; path = tests/camera_pivot_fakes.c; sourceTree = SOURCE_ROOT; };
+		F283FE1624D3D5AF00F57B49 /* field_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = field_coordinate_fakes.c; path = tests/field_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
+		F283FE1724D3D5AF00F57B49 /* pixel_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = pixel_coordinate_fakes.c; path = tests/pixel_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
+		F283FE1824D3D5AF00F57B49 /* cartesian_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cartesian_coordinate_fakes.c; path = tests/cartesian_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
+		F283FE1924D3D5AF00F57B49 /* RelativeCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RelativeCoordinateTests.cc; path = tests/RelativeCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F283FE1A24D3D5AF00F57B49 /* PercentCoordinateTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PercentCoordinateTests.cc; path = tests/PercentCoordinateTests.cc; sourceTree = SOURCE_ROOT; };
+		F283FE1B24D3D5AF00F57B49 /* CameraPivotTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CameraPivotTests.cc; path = tests/CameraPivotTests.cc; sourceTree = SOURCE_ROOT; };
+		F283FE1C24D3D5AF00F57B49 /* GUWrapperTests.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GUWrapperTests.hpp; path = tests/GUWrapperTests.hpp; sourceTree = SOURCE_ROOT; };
+		F283FE1D24D3D5AF00F57B49 /* camera_pivot_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = camera_pivot_fakes.h; path = tests/camera_pivot_fakes.h; sourceTree = SOURCE_ROOT; };
+		F283FE1E24D3D5AF00F57B49 /* cartesian_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cartesian_coordinate_fakes.h; path = tests/cartesian_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F283FE1F24D3D5AF00F57B49 /* pixel_coordinate_fakes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pixel_coordinate_fakes.h; path = tests/pixel_coordinate_fakes.h; sourceTree = SOURCE_ROOT; };
+		F283FE2024D3D5AF00F57B49 /* camera_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = camera_fakes.c; path = tests/camera_fakes.c; sourceTree = SOURCE_ROOT; };
+		F283FE2124D3D5B000F57B49 /* CameraTests.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CameraTests.cc; path = tests/CameraTests.cc; sourceTree = SOURCE_ROOT; };
+		F283FE2224D3D5B000F57B49 /* camera_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = camera_coordinate_fakes.c; path = tests/camera_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
+		F283FE2324D3D5B000F57B49 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Makefile; path = tests/Makefile; sourceTree = SOURCE_ROOT; };
+		F283FE2424D3D5B000F57B49 /* relative_coordinate_fakes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = relative_coordinate_fakes.c; path = tests/relative_coordinate_fakes.c; sourceTree = SOURCE_ROOT; };
 		F2E9420924A0536200041D08 /* tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E9420B24A0536200041D08 /* tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tests.swift; sourceTree = "<group>"; };
 		F2E9420D24A0536200041D08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2E9421124A05D5800041D08 /* NaoV5.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NaoV5.hpp; sourceTree = SOURCE_ROOT; };
-		F2E9421224A05E0000041D08 /* NaoV5.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NaoV5.cc; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,46 +161,67 @@
 		F2E9415724A0452D00041D08 /* gucoordinates */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9417C24A045B500041D08 /* camera_coordinate.c */,
-				F2E9418024A045B500041D08 /* camera_coordinate.h */,
-				F2E9418124A045B500041D08 /* camera.c */,
-				F2E9416224A045B400041D08 /* camera.h */,
-				F2E9416524A045B400041D08 /* Camera.hpp */,
-				F2E9416724A045B400041D08 /* CameraCoordinate.cc */,
-				F2E9416624A045B400041D08 /* CameraCoordinate.hpp */,
-				F2E9417B24A045B500041D08 /* CameraCPP.cc */,
-				F2E9417924A045B400041D08 /* cartesian_coordinate.c */,
-				F2E9416924A045B400041D08 /* cartesian_coordinate.h */,
-				F2E9417624A045B400041D08 /* CartesianCoordinate.cc */,
-				F2E9416424A045B400041D08 /* CartesianCoordinate.hpp */,
-				F2E9417E24A045B500041D08 /* conversions.c */,
-				F2E9416124A045B400041D08 /* conversions.h */,
-				F2E9415F24A045B300041D08 /* field_coordinate.c */,
-				F2E9416A24A045B400041D08 /* field_coordinate.h */,
-				F2E9416C24A045B400041D08 /* FieldCoordinate.cc */,
-				F2E9417524A045B400041D08 /* FieldCoordinate.hpp */,
-				F2E9417324A045B400041D08 /* gucoordinates.h */,
-				F2E9416D24A045B400041D08 /* GUCoordinates.hpp */,
-				F2E9416B24A045B400041D08 /* hidden_conversions.h */,
-				F2E9416E24A045B400041D08 /* Makefile */,
-				F2E9416324A045B400041D08 /* percent_coordinate.c */,
-				F2E9417824A045B400041D08 /* percent_coordinate.h */,
-				F2E9416F24A045B400041D08 /* PercentCoordinate.cc */,
-				F2E9416824A045B400041D08 /* PercentCoordinate.hpp */,
-				F2E9417424A045B400041D08 /* pixel_coordinate.c */,
-				F2E9416024A045B300041D08 /* pixel_coordinate.h */,
-				F2E9415C24A045B300041D08 /* PixelCoordinate.cc */,
-				F2E9415D24A045B300041D08 /* PixelCoordinate.hpp */,
-				F2E9417A24A045B400041D08 /* relative_coordinate.c */,
-				F2E9415E24A045B300041D08 /* relative_coordinate.h */,
-				F2E9417724A045B400041D08 /* RelativeCoordinate.cc */,
-				F2E9417F24A045B500041D08 /* RelativeCoordinate.hpp */,
-				F2E9417224A045B400041D08 /* Robot_cpp.cc */,
-				F2E9417D24A045B500041D08 /* robot.c */,
-				F2E9417124A045B400041D08 /* robot.h */,
-				F2E9417024A045B400041D08 /* Robot.hpp */,
-				F2E9421124A05D5800041D08 /* NaoV5.hpp */,
-				F2E9421224A05E0000041D08 /* NaoV5.cc */,
+				F283FDD924D3D57300F57B49 /* camera_coordinate.c */,
+				F283FDDF24D3D57400F57B49 /* camera_coordinate.h */,
+				F283FDD124D3D57300F57B49 /* camera_pivot.c */,
+				F283FDEA24D3D57500F57B49 /* camera_pivot.h */,
+				F283FDE824D3D57500F57B49 /* camera.c */,
+				F283FDC724D3D57300F57B49 /* camera.h */,
+				F283FDD424D3D57300F57B49 /* Camera.hpp */,
+				F283FDDE24D3D57400F57B49 /* CameraCoordinate.cc */,
+				F283FDCB24D3D57300F57B49 /* CameraCoordinate.hpp */,
+				F283FDD024D3D57300F57B49 /* CameraCPP.cc */,
+				F283FDBF24D3D57200F57B49 /* CameraPivot.cc */,
+				F283FDC524D3D57200F57B49 /* CameraPivot.hpp */,
+				F283FDE224D3D57400F57B49 /* cartesian_coordinate.c */,
+				F283FDC624D3D57300F57B49 /* cartesian_coordinate.h */,
+				F283FDE524D3D57400F57B49 /* CartesianCoordinate.cc */,
+				F283FDD224D3D57300F57B49 /* CartesianCoordinate.hpp */,
+				F283FDF324D3D57500F57B49 /* conversions.c */,
+				F283FDD724D3D57300F57B49 /* conversions.h */,
+				F283FDCF24D3D57300F57B49 /* field_coordinate.c */,
+				F283FDDA24D3D57400F57B49 /* field_coordinate.h */,
+				F283FDC124D3D57200F57B49 /* FieldCoordinate.cc */,
+				F283FDED24D3D57500F57B49 /* FieldCoordinate.hpp */,
+				F283FDC924D3D57300F57B49 /* gucoordinates.h */,
+				F283FDC824D3D57300F57B49 /* hidden_conversions.h */,
+				F283FDF224D3D57500F57B49 /* Makefile */,
+				F283FDDD24D3D57400F57B49 /* optional_camera_coordinate.c */,
+				F283FDC324D3D57200F57B49 /* optional_camera_coordinate.h */,
+				F283FDBE24D3D57200F57B49 /* optional_cartesian_coordinate.c */,
+				F283FDF624D3D57500F57B49 /* optional_cartesian_coordinate.h */,
+				F283FDE324D3D57400F57B49 /* optional_field_coordinate.c */,
+				F283FDE424D3D57400F57B49 /* optional_field_coordinate.h */,
+				F283FDCD24D3D57300F57B49 /* optional_percent_coordinate.c */,
+				F283FDC024D3D57200F57B49 /* optional_percent_coordinate.h */,
+				F283FDE624D3D57400F57B49 /* optional_pixel_coordinate.c */,
+				F283FDE724D3D57500F57B49 /* optional_pixel_coordinate.h */,
+				F283FDCE24D3D57300F57B49 /* optional_relative_coordinate.c */,
+				F283FDF524D3D57500F57B49 /* optional_relative_coordinate.h */,
+				F283FDC424D3D57200F57B49 /* OptionalCameraCoordinate.cc */,
+				F283FDEE24D3D57500F57B49 /* OptionalCameraCoordinate.hpp */,
+				F283FDBC24D3D57200F57B49 /* OptionalCartesianCoordinate.cc */,
+				F283FDDB24D3D57400F57B49 /* OptionalCartesianCoordinate.hpp */,
+				F283FDE024D3D57400F57B49 /* OptionalFieldCoordinate.cc */,
+				F283FDEF24D3D57500F57B49 /* OptionalFieldCoordinate.hpp */,
+				F283FDE124D3D57400F57B49 /* OptionalPercentCoordinate.cc */,
+				F283FDBB24D3D57200F57B49 /* OptionalPercentCoordinate.hpp */,
+				F283FDD624D3D57300F57B49 /* OptionalPixelCoordinate.cc */,
+				F283FDF424D3D57500F57B49 /* OptionalPixelCoordinate.hpp */,
+				F283FDCA24D3D57300F57B49 /* OptionalRelativeCoordinate.cc */,
+				F283FDC224D3D57200F57B49 /* OptionalRelativeCoordinate.hpp */,
+				F283FDF024D3D57500F57B49 /* percent_coordinate.c */,
+				F283FDE924D3D57500F57B49 /* percent_coordinate.h */,
+				F283FDDC24D3D57400F57B49 /* PercentCoordinate.cc */,
+				F283FDEB24D3D57500F57B49 /* PercentCoordinate.hpp */,
+				F283FDD324D3D57300F57B49 /* pixel_coordinate.c */,
+				F283FDBD24D3D57200F57B49 /* pixel_coordinate.h */,
+				F283FDF124D3D57500F57B49 /* PixelCoordinate.cc */,
+				F283FDD524D3D57300F57B49 /* PixelCoordinate.hpp */,
+				F283FDF724D3D57600F57B49 /* relative_coordinate.c */,
+				F283FDEC24D3D57500F57B49 /* relative_coordinate.h */,
+				F283FDCC24D3D57300F57B49 /* RelativeCoordinate.cc */,
+				F283FDD824D3D57300F57B49 /* RelativeCoordinate.hpp */,
 			);
 			path = gucoordinates;
 			sourceTree = "<group>";
@@ -181,14 +229,17 @@
 		F2E9418224A046EB00041D08 /* gucoordinates_ctests */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9418624A0470900041D08 /* camera_coordinate_tests.cc */,
-				F2E9418824A0470900041D08 /* camera_tests.cc */,
-				F2E9418524A0470900041D08 /* conversions_tests.cc */,
-				F2E941AA24A0475200041D08 /* Makefile */,
-				F2E9418724A0470900041D08 /* percent_coordinate_tests.cc */,
-				F2E9418424A0470900041D08 /* pixel_coordinate_tests.cc */,
-				F2E9418324A0470900041D08 /* relative_coordinate_tests.cc */,
-				F2E9418924A0470900041D08 /* robot_tests.cc */,
+				F283FDFA24D3D58A00F57B49 /* camera_coordinate_tests.cc */,
+				F283FDFB24D3D58A00F57B49 /* camera_pivot_tests.cc */,
+				F283FDFD24D3D58A00F57B49 /* camera_tests.cc */,
+				F283FE0124D3D58A00F57B49 /* cartesian_coordinate_tests.cc */,
+				F283FDFC24D3D58A00F57B49 /* conversions_tests.cc */,
+				F283FDFE24D3D58A00F57B49 /* field_coordinate_tests.cc */,
+				F283FE0224D3D58A00F57B49 /* gucoordinates_tests.hpp */,
+				F283FDFF24D3D58A00F57B49 /* Makefile */,
+				F283FE0024D3D58A00F57B49 /* percent_coordinate_tests.cc */,
+				F283FDF924D3D58A00F57B49 /* pixel_coordinate_tests.cc */,
+				F283FDF824D3D58A00F57B49 /* relative_coordinate_tests.cc */,
 			);
 			path = gucoordinates_ctests;
 			sourceTree = "<group>";
@@ -196,37 +247,40 @@
 		F2E9418A24A0472100041D08 /* gucoordinates_tests */ = {
 			isa = PBXGroup;
 			children = (
-				F2E941A124A0474400041D08 /* camera_coordinate_fakes.c */,
-				F2E941A324A0474400041D08 /* camera_coordinate_fakes.h */,
-				F2E9418C24A0474400041D08 /* camera_fakes.c */,
-				F2E9419E24A0474400041D08 /* camera_fakes.h */,
-				F2E9419424A0474400041D08 /* CameraCoordinateTests.cc */,
-				F2E9419024A0474400041D08 /* CameraTests.cc */,
-				F2E9418E24A0474400041D08 /* cartesian_coordinate_fakes.c */,
-				F2E9419A24A0474400041D08 /* cartesian_coordinate_fakes.h */,
-				F2E9419524A0474400041D08 /* CartesianCoordinateTests.cc */,
-				F2E941A924A0474400041D08 /* conversion_fakes.c */,
-				F2E9419624A0474400041D08 /* conversion_fakes.h */,
-				F2E941A524A0474400041D08 /* fakes.h */,
-				F2E941A724A0474400041D08 /* fff.c */,
-				F2E9419924A0474400041D08 /* fff.h */,
-				F2E9419F24A0474400041D08 /* field_coordinate_fakes.c */,
-				F2E9419124A0474400041D08 /* field_coordinate_fakes.h */,
-				F2E9418F24A0474400041D08 /* FieldCoordinateTests.cc */,
-				F2E941A024A0474400041D08 /* GUCoordinatesTests.hpp */,
-				F2E9418B24A0474400041D08 /* Makefile */,
-				F2E9419B24A0474400041D08 /* percent_coordinate_fakes.c */,
-				F2E9418D24A0474400041D08 /* percent_coordinate_fakes.h */,
-				F2E9419C24A0474400041D08 /* PercentCoordinateTests.cc */,
-				F2E9419D24A0474400041D08 /* pixel_coordinate_fakes.c */,
-				F2E941A824A0474400041D08 /* pixel_coordinate_fakes.h */,
-				F2E9419824A0474400041D08 /* PixelCoordinateTests.cc */,
-				F2E941A624A0474400041D08 /* relative_coordinate_fakes.c */,
-				F2E9419724A0474400041D08 /* relative_coordinate_fakes.h */,
-				F2E941A224A0474400041D08 /* RelativeCoordinateTests.cc */,
-				F2E941A424A0474400041D08 /* robot_fakes.c */,
-				F2E9419224A0474400041D08 /* robot_fakes.h */,
-				F2E9419324A0474400041D08 /* RobotTests.cc */,
+				F283FE2224D3D5B000F57B49 /* camera_coordinate_fakes.c */,
+				F283FE0524D3D5AF00F57B49 /* camera_coordinate_fakes.h */,
+				F283FE2024D3D5AF00F57B49 /* camera_fakes.c */,
+				F283FE0424D3D5AF00F57B49 /* camera_fakes.h */,
+				F283FE1524D3D5AF00F57B49 /* camera_pivot_fakes.c */,
+				F283FE1D24D3D5AF00F57B49 /* camera_pivot_fakes.h */,
+				F283FE0C24D3D5AF00F57B49 /* CameraCoordinateTests.cc */,
+				F283FE1B24D3D5AF00F57B49 /* CameraPivotTests.cc */,
+				F283FE2124D3D5B000F57B49 /* CameraTests.cc */,
+				F283FE1824D3D5AF00F57B49 /* cartesian_coordinate_fakes.c */,
+				F283FE1E24D3D5AF00F57B49 /* cartesian_coordinate_fakes.h */,
+				F283FE0724D3D5AF00F57B49 /* CartesianCoordinateTests.cc */,
+				F283FE1424D3D5AF00F57B49 /* conversion_fakes.c */,
+				F283FE0D24D3D5AF00F57B49 /* conversion_fakes.h */,
+				F283FE0F24D3D5AF00F57B49 /* custom_fakes.c */,
+				F283FE0824D3D5AF00F57B49 /* custom_fakes.h */,
+				F283FE0A24D3D5AF00F57B49 /* fakes.h */,
+				F283FE1324D3D5AF00F57B49 /* fff.c */,
+				F283FE0624D3D5AF00F57B49 /* fff.h */,
+				F283FE1624D3D5AF00F57B49 /* field_coordinate_fakes.c */,
+				F283FE0324D3D5AF00F57B49 /* field_coordinate_fakes.h */,
+				F283FE0924D3D5AF00F57B49 /* FieldCoordinateTests.cc */,
+				F283FE0B24D3D5AF00F57B49 /* GUCoordinatesTests.hpp */,
+				F283FE1C24D3D5AF00F57B49 /* GUWrapperTests.hpp */,
+				F283FE2324D3D5B000F57B49 /* Makefile */,
+				F283FE0E24D3D5AF00F57B49 /* percent_coordinate_fakes.c */,
+				F283FE1124D3D5AF00F57B49 /* percent_coordinate_fakes.h */,
+				F283FE1A24D3D5AF00F57B49 /* PercentCoordinateTests.cc */,
+				F283FE1724D3D5AF00F57B49 /* pixel_coordinate_fakes.c */,
+				F283FE1F24D3D5AF00F57B49 /* pixel_coordinate_fakes.h */,
+				F283FE1224D3D5AF00F57B49 /* PixelCoordinateTests.cc */,
+				F283FE2424D3D5B000F57B49 /* relative_coordinate_fakes.c */,
+				F283FE1024D3D5AF00F57B49 /* relative_coordinate_fakes.h */,
+				F283FE1924D3D5AF00F57B49 /* RelativeCoordinateTests.cc */,
 			);
 			path = gucoordinates_tests;
 			sourceTree = "<group>";

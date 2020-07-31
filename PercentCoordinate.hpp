@@ -69,10 +69,6 @@
 
 #include <cstdlib>
 
-#if __cplusplus >= 201703L
-#include <optional>
-#endif
-
 namespace GU {
 
     struct CameraCoordinate; // Forward Declaration.
@@ -99,12 +95,7 @@ namespace GU {
 
         CameraCoordinate cameraCoordinate(const pixels_u, const pixels_u) const;
         PixelCoordinate pixelCoordinate(const pixels_u, const pixels_u) const;
-        OptionalRelativeCoordinate rawRelativeCoordinate(const GU::CameraPivot &, const int) const;
-        RelativeCoordinate unsafeRelativeCoordinate(const GU::CameraPivot &, const int) const;
-
-#if __cplusplus >= 201703L
-        std::optional<RelativeCoordinate> relativeCoordinate(const GU::CameraPivot &, const int) const;
-#endif
+        RelativeCoordinate relativeCoordinate(const GU::CameraPivot &, const int) const;
 
         percent_d x() const;
         void set_x(const percent_d);

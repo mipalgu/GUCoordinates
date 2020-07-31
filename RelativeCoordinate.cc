@@ -131,145 +131,35 @@ GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(RelativeCoordinate&& o
 }
 #endif
 
-GU::OptionalCameraCoordinate GU::RelativeCoordinate::rawCameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::CameraCoordinate GU::RelativeCoordinate::cameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
-    const GU::OptionalPercentCoordinate temp = rawPercentCoordinate(cameraPivot, cameraOffset);
-    return GU::OptionalCameraCoordinate(temp.has_value(), temp.value().cameraCoordinate(resWidth, resHeight));
+    return percentCoordinate(cameraPivot, cameraOffset).cameraCoordinate(resWidth, resHeight);
 }
 
-GU::OptionalPixelCoordinate GU::RelativeCoordinate::rawPixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::PixelCoordinate GU::RelativeCoordinate::pixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
-    const GU::OptionalPercentCoordinate temp = rawPercentCoordinate(cameraPivot, cameraOffset);
-    return GU::OptionalPixelCoordinate(temp.has_value(), temp.value().pixelCoordinate(resWidth, resHeight));
-}
-    
-GU::OptionalPercentCoordinate GU::RelativeCoordinate::rawPercentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset) const
-{
-    return rr_coord_to_pct_coord(*this, cameraPivot, cameraOffset);
+    return percentCoordinate(cameraPivot, cameraOffset).pixelCoordinate(resWidth, resHeight);
 }
 
-GU::CameraCoordinate GU::RelativeCoordinate::unsafeCameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::PercentCoordinate GU::RelativeCoordinate::percentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset) const
 {
-    return unsafePercentCoordinate(cameraPivot, cameraOffset).cameraCoordinate(resWidth, resHeight);
+    return GU::PercentCoordinate(rr_coord_to_pct_coord(*this, cameraPivot, cameraOffset));
 }
 
-GU::PixelCoordinate GU::RelativeCoordinate::unsafePixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::CameraCoordinate GU::RelativeCoordinate::clampedCameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
-    return unsafePercentCoordinate(cameraPivot, cameraOffset).pixelCoordinate(resWidth, resHeight);
+    return clampedPercentCoordinate(cameraPivot, cameraOffset).cameraCoordinate(resWidth, resHeight);
 }
 
-GU::PercentCoordinate GU::RelativeCoordinate::unsafePercentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+GU::PixelCoordinate GU::RelativeCoordinate::clampedPixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
 {
-    return GU::PercentCoordinate(unsafe_rr_coord_to_pct_coord(*this, cameraPivot, cameraOffset));
+    return clampedPercentCoordinate(cameraPivot, cameraOffset).pixelCoordinate(resWidth, resHeight);
 }
 
-GU::CameraCoordinate GU::RelativeCoordinate::unsafeClampedCameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::PercentCoordinate GU::RelativeCoordinate::clampedPercentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset) const
 {
-    return unsafeClampedPercentCoordinate(cameraPivot, cameraOffset).cameraCoordinate(resWidth, resHeight);
+    return GU::PercentCoordinate(clamped_rr_coord_to_pct_coord(*this, cameraPivot, cameraOffset));
 }
-
-GU::PixelCoordinate GU::RelativeCoordinate::unsafeClampedPixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
-{
-    return unsafeClampedPercentCoordinate(cameraPivot, cameraOffset).pixelCoordinate(resWidth, resHeight);
-}
-
-GU::PercentCoordinate GU::RelativeCoordinate::unsafeClampedPercentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset) const
-{
-    return GU::PercentCoordinate(unsafe_clamped_rr_coord_to_pct_coord(*this, cameraPivot, cameraOffset));
-}
-
-GU::CameraCoordinate GU::RelativeCoordinate::unsafeClampedCameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_d tolerance) const
-{
-    return unsafeClampedPercentCoordinate(cameraPivot, cameraOffset, tolerance).cameraCoordinate(resWidth, resHeight);
-}
-
-GU::PixelCoordinate GU::RelativeCoordinate::unsafeClampedPixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_d tolerance) const
-{
-    return unsafeClampedPercentCoordinate(cameraPivot, cameraOffset, tolerance).pixelCoordinate(resWidth, resHeight);
-}
-
-GU::PercentCoordinate GU::RelativeCoordinate::unsafeClampedPercentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const percent_d tolerance) const
-{
-    return PercentCoordinate(unsafe_clamped_tolerance_rr_coord_to_pct_coord(*this, cameraPivot, cameraOffset, tolerance));
-}
-
-GU::OptionalCameraCoordinate GU::RelativeCoordinate::rawClampedCameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_d tolerance) const
-{
-    const GU::OptionalPercentCoordinate temp = rawClampedPercentCoordinate(cameraPivot, cameraOffset, tolerance);
-    return GU::OptionalCameraCoordinate(temp.has_value(), temp.value().cameraCoordinate(resWidth, resHeight));
-}
-
-GU::OptionalPixelCoordinate GU::RelativeCoordinate::rawClampedPixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_d tolerance) const
-{
-    const GU::OptionalPercentCoordinate temp = rawClampedPercentCoordinate(cameraPivot, cameraOffset, tolerance);
-    return GU::OptionalPixelCoordinate(temp.has_value(), temp.value().pixelCoordinate(resWidth, resHeight));
-}
-
-GU::OptionalPercentCoordinate GU::RelativeCoordinate::rawClampedPercentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const percent_d tolerance) const
-{
-    return clamped_tolerance_rr_coord_to_pct_coord(*this, cameraPivot, cameraOffset, tolerance);
-}
-
-#if __cplusplus >= 201703L
-std::optional<GU::CameraCoordinate> GU::RelativeCoordinate::cameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
-{
-    const std::optional<GU::PixelCoordinate> p = pixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
-    if (p.has_value())
-    {
-        return p.value().cameraCoordinate();
-    }
-    return std::nullopt;
-}
-
-std::optional<GU::PixelCoordinate> GU::RelativeCoordinate::pixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
-{
-    const std::optional<GU::PercentCoordinate> p = percentCoordinate(cameraPivot, cameraOffset);
-    if (p.has_value())
-    {
-        return p.value().pixelCoordinate(resWidth, resHeight);
-    }
-    return std::nullopt;
-}
-
-std::optional<GU::PercentCoordinate> GU::RelativeCoordinate::percentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset) const
-{
-    GU::OptionalPercentCoordinate result = rawPercentCoordinate(cameraPivot, cameraOffset);
-    if (result.has_value()) {
-        return std::optional<GU::PercentCoordinate>(result.value());
-    }
-    return std::nullopt;
-}
-
-std::optional<GU::CameraCoordinate> GU::RelativeCoordinate::clampedCameraCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_d tolerance) const
-{
-    const std::optional<GU::PixelCoordinate> p = clampedPixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight, tolerance);
-    if (p.has_value())
-    {
-        return p.value().cameraCoordinate();
-    }
-    return std::nullopt;
-}
-
-std::optional<GU::PixelCoordinate> GU::RelativeCoordinate::clampedPixelCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight, const percent_d tolerance) const
-{
-    const std::optional<GU::PercentCoordinate> p = clampedPercentCoordinate(cameraPivot, cameraOffset, tolerance);
-    if (p.has_value())
-    {
-        return p.value().pixelCoordinate(resWidth, resHeight);
-    }
-    return std::nullopt;
-
-}
-
-std::optional<GU::PercentCoordinate> GU::RelativeCoordinate::clampedPercentCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset, const percent_d tolerance) const
-{
-    const GU::OptionalPercentCoordinate result = rawClampedPercentCoordinate(cameraPivot, cameraOffset, tolerance);
-    if (result.has_value()) {
-        return std::optional<GU::PercentCoordinate>(result.value());
-    }
-    return std::nullopt;
-}
-#endif
 
 GU::RelativeCoordinate GU::RelativeCoordinate::relativeCoordinateTo(const RelativeCoordinate & coord) const
 {

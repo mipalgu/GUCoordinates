@@ -159,45 +159,15 @@ GU::PercentCoordinate GU::CameraCoordinate::percentCoordinate() const
     return pixelCoordinate().percentCoordinate();
 }
 
-GU::OptionalRelativeCoordinate GU::CameraCoordinate::rawRelativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
+GU::RelativeCoordinate GU::CameraCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
 {
-    return percentCoordinate().rawRelativeCoordinate(cameraPivot, cameraOffset);
-}
-
-GU::RelativeCoordinate GU::CameraCoordinate::unsafeRelativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
-{
-    return percentCoordinate().unsafeRelativeCoordinate(cameraPivot, cameraOffset);
+    return percentCoordinate().relativeCoordinate(cameraPivot, cameraOffset);
 }
 
 pixels_u GU::CameraCoordinate::x() const
 {
     return gu_camera_coordinate::x;
 }
-
-#if __cplusplus >= 201703L
-std::optional<GU::RelativeCoordinate> GU::CameraCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
-{
-    return percentCoordinate().relativeCoordinate(cameraPivot, cameraOffset);
-}
-#endif
-
-/*
-std::optional<GU::CartesianCoordinate> GU::CameraCoordinate::cartesianCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
-{
-    const std::optional<GU::RelativeCoordinate> result = relativeCoordinate(cameraPivot, cameraOffset);
-    if (!result.has_value())
-        return std::nullopt;
-    return result.value().cartesianCoordinate();
-}
-
-std::optional<GU::FieldCoordinate> GU::CameraCoordinate::fieldCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
-{
-    const std::optional<GU::FieldCoordinate> result = relativeCoordinate(cameraPivot, cameraOffset);
-    if (!result.has_value())
-        return std::nullopt;
-    return result.value().cartesianCoordinate();
-}
-*/
 
 void GU::CameraCoordinate::set_x(const pixels_u newValue)
 {
