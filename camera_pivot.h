@@ -63,6 +63,9 @@
 #include <stdbool.h>
 #include <guunits/guunits.h>
 
+#include "percent_coordinate.h"
+#include "relative_coordinate.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -113,6 +116,8 @@ typedef struct gu_camera_pivot
 bool gu_camera_pivot_equals(const gu_camera_pivot, const gu_camera_pivot, const double) __attribute__((const));
 
 centimetres_d gu_camera_pivot_calculate_camera_height(const gu_camera_pivot, const int) __attribute__((const));
+bool gu_camera_pivot_object_on_ground(const gu_camera_pivot, const int, const gu_percent_coordinate) __attribute__((const));
+bool gu_camera_pivot_can_see_object(const gu_camera_pivot, const int, const gu_relative_coordinate) __attribute__((const));
 
 #ifdef __cplusplus
 }

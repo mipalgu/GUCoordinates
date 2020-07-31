@@ -88,3 +88,26 @@ centimetres_d gu_camera_pivot_calculate_camera_height(const gu_camera_pivot came
     const double sinPitch = sin(deg_d_to_rad_d(camera_pivot.pitch));
     return (totalHeight - camera.height * d_to_cm_d(1.0 - cosPitch)) - camera.centerOffset * d_to_cm_d(sinPitch); 
 }
+
+
+
+bool gu_camera_pivot_object_on_ground(const gu_camera_pivot camera_pivot, const int cameraOffset, const gu_percent_coordinate coord)
+{
+    const gu_camera camera = camera_pivot.cameras[cameraOffset];
+    const degrees_d pitchToObject = camera_pivot.pitch + camera.vDirection - d_to_deg_d(pct_d_to_d(coord.y)) * (camera.vFov / 2.0);
+    return pitchToObject > 0.0 && pitchToObject < 90.0;
+}
+
+bool gu_camera_pivot_can_see_object(const gu_camera_pivot camera_pivot, const int cameraOffset, const gu_relative_coordinate coord)
+{
+    const gu_camera camera = camera_pivot.cameras[cameraOffset];
+    const degrees_d yaw = coord.direction - camera_pivot.yaw;
+    const radians_d yawRad = deg_d_to_rad_d(coord.direction);
+    const double frontDistance = cm_d_to_d(mm_u_to_cm_d(coord.distance)) * cos(rad_d_to_d(yawRad)) + cm_d_to_d(camera.centerOffset);
+    const centimetres_d actualCameraHeight = gu_camera_pivot_calculate_camera_height(camera_pivot, cameraOffset);
+    const degrees_d totalPitch = 90.0 - rad_d_to_deg_d(d_to_rad_d(atan2(frontDistance, cm_d_to_d(actualCameraHeight))));
+    const degrees_d pitch = totalPitch - camera.vDirection - camera_pivot.pitch;
+    const degrees_d yawBound = camera.hFov / 2.0;
+    const degrees_d pitchBound = camera.vFov / 2.0;
+    return yaw >= -yawBound && yaw <= yawBound && pitch >= -pitchBound && pitch <= pitchBound;
+}
