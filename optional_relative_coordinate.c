@@ -63,12 +63,3 @@ bool gu_optional_relative_coordinate_equals(const gu_optional_relative_coordinat
     return lhs.has_value == rhs.has_value
         && gu_relative_coordinate_equals(lhs.value, rhs.value, tolerance);
 }
-
-gu_optional_relative_coordinate wb_location_to_optional_relative_coordinate(const struct wb_location location)
-{
-    gu_optional_relative_coordinate temp;
-    temp.has_value = location.confidence > 50;
-    temp.value.direction = i16_to_deg_t(location.direction);
-    temp.value.distance = u16_to_cm_u(location.distance);
-    return temp;
-}
