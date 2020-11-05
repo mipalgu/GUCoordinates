@@ -176,11 +176,11 @@ gu_percent_coordinate clamped_rr_coord_to_pct_coord(const gu_relative_coordinate
 
 gu_cartesian_coordinate rr_coord_to_cartesian_coord(const gu_relative_coordinate coord)
 {
-    const double distance = cm_d_to_d(mm_u_to_cm_d(coord.distance));
+    const double distance = mm_u_to_d(coord.distance);
     const double rads = rad_d_to_d(deg_d_to_rad_d(coord.direction));
     const gu_cartesian_coordinate out = {
-        d_to_cm_t(distance * cos(rads)),
-        d_to_cm_t(distance * sin(rads))
+        d_to_mm_t(distance * cos(rads)),
+        d_to_mm_t(distance * sin(rads))
     };
     return out;
 }
@@ -226,10 +226,10 @@ gu_relative_coordinate cartesian_coord_to_rr_coord(const gu_cartesian_coordinate
 gu_relative_coordinate cartesian_coord_to_rr_coord_from_source(const gu_cartesian_coordinate source, const gu_cartesian_coordinate target)
 {
     const radians_d angle = angle_between_points(source, target);
-    const centimetres_d distance = distance_between_points(source, target);
+    const millimetres_d distance = distance_between_points(source, target);
     const gu_relative_coordinate out = {
         rad_d_to_deg_d(angle),
-        cm_d_to_mm_u(fabs(distance))
+        mm_d_to_mm_u(fabs(distance))
     };
     return out;
 }
@@ -243,29 +243,29 @@ gu_relative_coordinate field_coord_to_rr_coord_to_target(const gu_field_coordina
 
 radians_d angle_between_points(const gu_cartesian_coordinate p1, const gu_cartesian_coordinate p2)
 {
-    const centimetres_t dx = p2.x - p1.x;
-    const centimetres_t dy = p2.y - p1.y;
+    const millimetres_t dx = p2.x - p1.x;
+    const millimetres_t dy = p2.y - p1.y;
     if (0 == dx) {
         if (0 == dy) {
             return 0.0;
         }
         return dy > 0 ? d_to_rad_d(90.0) : d_to_rad_d(-90.0);
     }
-    return d_to_rad_d(atan2(cm_t_to_d(dy), cm_t_to_d(dx)));
+    return d_to_rad_d(atan2(mm_t_to_d(dy), mm_t_to_d(dx)));
 }
 
-centimetres_d distance_between_points(const gu_cartesian_coordinate point1, const gu_cartesian_coordinate point2)
+millimetres_d distance_between_points(const gu_cartesian_coordinate point1, const gu_cartesian_coordinate point2)
 {
     const gu_cartesian_coordinate dpoint = { point2.x - point1.x, point2.y - point1.y };
     // Horizontal Lines
     if (0 == dpoint.x) {
-        return fabs(cm_t_to_d(dpoint.y));
+        return fabs(mm_t_to_d(dpoint.y));
     }
     // Veritcal Lines
     if (0 == dpoint.y) {
-        return fabs(cm_t_to_d(dpoint.x));
+        return fabs(mm_t_to_d(dpoint.x));
     }
-    return d_to_cm_d(sqrt(cm_t_to_d(dpoint.x * dpoint.x) + cm_t_to_d(dpoint.y * dpoint.y)));
+    return d_to_mm_d(sqrt(mm_t_to_d(dpoint.x * dpoint.x) + mm_t_to_d(dpoint.y * dpoint.y)));
 }
 
 degrees_d normalise_deg_d(degrees_d angle) {

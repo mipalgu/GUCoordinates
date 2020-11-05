@@ -86,12 +86,12 @@ typedef struct gu_cartesian_coordinate
     /**
      * The x coordinate of the position in centimetres.
      */
-    centimetres_t x;
+    millimetres_t x;
 
     /**
      * The y coordinate of the position in centimetres.
      */
-    centimetres_t y;
+    millimetres_t y;
 
 
 } gu_cartesian_coordinate;
