@@ -237,7 +237,7 @@ gu_relative_coordinate cartesian_coord_to_rr_coord_from_source(const gu_cartesia
 gu_relative_coordinate field_coord_to_rr_coord_to_target(const gu_field_coordinate source, const gu_cartesian_coordinate target)
 {
     gu_relative_coordinate out = cartesian_coord_to_rr_coord_from_source(source.position, target);
-    out.direction = normalise_deg_t(deg_d_to_deg_t(out.direction - deg_t_to_deg_d(source.heading)));
+    out.direction = normalise_deg_d(out.direction - deg_t_to_deg_d(source.heading));
     return out;
 }
 
