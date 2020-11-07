@@ -211,7 +211,7 @@ gu_field_coordinate rr_coord_to_field_coord(const gu_relative_coordinate coord, 
 gu_field_coordinate rr_coord_to_field_coord_from_source(const gu_relative_coordinate coord, const gu_field_coordinate source, const degrees_t heading)
 {
     gu_relative_coordinate temp = coord;
-    temp.direction = source.heading + temp.direction;
+    temp.direction = deg_t_to_deg_d(source.heading) + temp.direction;
     const gu_cartesian_coordinate position = rr_coord_to_cartesian_coord_from_source(temp, source.position);
     const gu_field_coordinate out = { .position = position, .heading = heading };
     return out;
