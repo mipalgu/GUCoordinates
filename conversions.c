@@ -195,7 +195,7 @@ gu_cartesian_coordinate rr_coord_to_cartesian_coord_from_source(const gu_relativ
 
 gu_cartesian_coordinate rr_coord_to_cartesian_coord_from_field(const gu_relative_coordinate coord, const gu_field_coordinate source)
 {
-    const gu_relative_coordinate offset = { coord.direction + source.heading, coord.distance };
+    const gu_relative_coordinate offset = { coord.direction + deg_t_to_deg_d(source.heading), coord.distance };
     return rr_coord_to_cartesian_coord_from_source(offset, source.position);
 }
 
