@@ -76,13 +76,19 @@ namespace GU {
         OptionalPixelCoordinate(const OptionalPixelCoordinate& other);
         OptionalPixelCoordinate(const gu_optional_pixel_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalPixelCoordinate(OptionalPixelCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
         ~OptionalPixelCoordinate();
         OptionalPixelCoordinate& operator=(const OptionalPixelCoordinate& other);
         OptionalPixelCoordinate& operator=(const gu_optional_pixel_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalPixelCoordinate& operator=(OptionalPixelCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
 
         bool has_value() const;

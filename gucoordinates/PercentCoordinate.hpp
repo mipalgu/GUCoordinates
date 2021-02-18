@@ -84,13 +84,19 @@ namespace GU {
         PercentCoordinate(const PercentCoordinate& other);
         PercentCoordinate(const gu_percent_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         PercentCoordinate(PercentCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
         ~PercentCoordinate();
         PercentCoordinate& operator=(const PercentCoordinate& other);
         PercentCoordinate& operator=(const gu_percent_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         PercentCoordinate& operator=(PercentCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
 
         CameraCoordinate cameraCoordinate(const pixels_u, const pixels_u) const;

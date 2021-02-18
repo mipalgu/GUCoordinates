@@ -76,13 +76,19 @@ namespace GU {
         OptionalFieldCoordinate(const OptionalFieldCoordinate& other);
         OptionalFieldCoordinate(const gu_optional_field_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalFieldCoordinate(OptionalFieldCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
         ~OptionalFieldCoordinate();
         OptionalFieldCoordinate& operator=(const OptionalFieldCoordinate& other);
         OptionalFieldCoordinate& operator=(const gu_optional_field_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalFieldCoordinate& operator=(OptionalFieldCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
 
         bool has_value() const;

@@ -95,13 +95,19 @@ namespace GU {
         CartesianCoordinate(const CartesianCoordinate& other);
         CartesianCoordinate(const gu_cartesian_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         CartesianCoordinate(CartesianCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
         ~CartesianCoordinate();
         CartesianCoordinate& operator=(const CartesianCoordinate& other);
         CartesianCoordinate& operator=(const gu_cartesian_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         CartesianCoordinate& operator=(CartesianCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
 
         CartesianCoordinate cartesianCoordinateAt(const GU::RelativeCoordinate &) const;

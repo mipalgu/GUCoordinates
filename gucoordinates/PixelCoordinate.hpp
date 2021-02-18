@@ -85,13 +85,19 @@ namespace GU {
         PixelCoordinate(const PixelCoordinate& other);
         PixelCoordinate(const gu_pixel_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         PixelCoordinate(PixelCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
         ~PixelCoordinate();
         PixelCoordinate& operator=(const PixelCoordinate& other);
         PixelCoordinate& operator=(const gu_pixel_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         PixelCoordinate& operator=(PixelCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
 
         CameraCoordinate cameraCoordinate() const;

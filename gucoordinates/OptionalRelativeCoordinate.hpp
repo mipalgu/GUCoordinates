@@ -83,7 +83,10 @@ namespace GU {
         OptionalRelativeCoordinate(const std::optional<RelativeCoordinate>& other);
 #endif
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalRelativeCoordinate(OptionalRelativeCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
         ~OptionalRelativeCoordinate();
         OptionalRelativeCoordinate& operator=(const OptionalRelativeCoordinate& other);
@@ -92,7 +95,10 @@ namespace GU {
         OptionalRelativeCoordinate& operator=(const std::optional<RelativeCoordinate>& other);
 #endif
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalRelativeCoordinate& operator=(OptionalRelativeCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
 
         bool has_value() const;

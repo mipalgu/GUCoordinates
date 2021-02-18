@@ -76,13 +76,19 @@ namespace GU {
         OptionalCameraCoordinate(const OptionalCameraCoordinate& other);
         OptionalCameraCoordinate(const gu_optional_camera_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalCameraCoordinate(OptionalCameraCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
         ~OptionalCameraCoordinate();
         OptionalCameraCoordinate& operator=(const OptionalCameraCoordinate& other);
         OptionalCameraCoordinate& operator=(const gu_optional_camera_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalCameraCoordinate& operator=(OptionalCameraCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
 
         bool has_value() const;

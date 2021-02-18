@@ -76,13 +76,19 @@ namespace GU {
         OptionalCartesianCoordinate(const OptionalCartesianCoordinate& other);
         OptionalCartesianCoordinate(const gu_optional_cartesian_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalCartesianCoordinate(OptionalCartesianCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
         ~OptionalCartesianCoordinate();
         OptionalCartesianCoordinate& operator=(const OptionalCartesianCoordinate& other);
         OptionalCartesianCoordinate& operator=(const gu_optional_cartesian_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalCartesianCoordinate& operator=(OptionalCartesianCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
 
         bool has_value() const;

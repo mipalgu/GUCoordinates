@@ -93,13 +93,19 @@ namespace GU {
         RelativeCoordinate(const RelativeCoordinate& other);
         RelativeCoordinate(const gu_relative_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         RelativeCoordinate(RelativeCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
         ~RelativeCoordinate();
         RelativeCoordinate& operator=(const RelativeCoordinate& other);
         RelativeCoordinate& operator=(const gu_relative_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         RelativeCoordinate& operator=(RelativeCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
 
         CameraCoordinate cameraCoordinate(const GU::CameraPivot &, const int, const pixels_u, const pixels_u) const;

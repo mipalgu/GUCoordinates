@@ -81,8 +81,11 @@ namespace GU {
         Camera& operator=(const Camera& other);
         Camera& operator=(const gu_camera& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         Camera& operator=(Camera&& other);
         Camera& operator=(gu_camera&& other);
+#pragma clang diagnostic pop
 #endif
 
         centimetres_d height() const;

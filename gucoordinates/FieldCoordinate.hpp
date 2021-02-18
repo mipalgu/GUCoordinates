@@ -103,13 +103,19 @@ namespace GU {
         FieldCoordinate(const FieldCoordinate& other);
         FieldCoordinate(const gu_field_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         FieldCoordinate(FieldCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
         ~FieldCoordinate();
         FieldCoordinate& operator=(const FieldCoordinate& other);
         FieldCoordinate& operator=(const gu_field_coordinate& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         FieldCoordinate& operator=(FieldCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
 
         CartesianCoordinate cartesianCoordinateAt(const GU::RelativeCoordinate &) const;

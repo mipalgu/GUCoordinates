@@ -83,7 +83,10 @@ namespace GU {
         OptionalPercentCoordinate(const std::optional<PercentCoordinate>& other);
 #endif
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalPercentCoordinate(OptionalPercentCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
         ~OptionalPercentCoordinate();
         OptionalPercentCoordinate& operator=(const OptionalPercentCoordinate& other);
@@ -92,7 +95,10 @@ namespace GU {
         OptionalPercentCoordinate& operator=(const std::optional<PercentCoordinate>& other);
 #endif
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         OptionalPercentCoordinate& operator=(OptionalPercentCoordinate&& other);
+#pragma clang diagnostic pop
 #endif
 
         bool has_value() const;

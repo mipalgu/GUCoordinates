@@ -73,13 +73,19 @@ namespace GU {
         CameraPivot(const CameraPivot& other);
         CameraPivot(const gu_camera_pivot& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         CameraPivot(CameraPivot&& other);
+#pragma clang diagnostic pop
 #endif
         ~CameraPivot();
         CameraPivot& operator=(const CameraPivot& other);
         CameraPivot& operator=(const gu_camera_pivot& other);
 #if __cplusplus >= 201103L
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
         CameraPivot& operator=(CameraPivot&& other);
+#pragma clang diagnostic pop
 #endif
 
         degrees_d pitch() const;
