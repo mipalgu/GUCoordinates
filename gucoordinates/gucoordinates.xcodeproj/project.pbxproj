@@ -36,7 +36,6 @@
 		F23D94F925E1EADB0022999C /* camera.h in Headers */ = {isa = PBXBuildFile; fileRef = F23D94C125E1EADA0022999C /* camera.h */; };
 		F23D94FA25E1EADB0022999C /* pixel_coordinate.c in Sources */ = {isa = PBXBuildFile; fileRef = F23D94C225E1EADA0022999C /* pixel_coordinate.c */; };
 		F23D94FB25E1EADB0022999C /* optional_percent_coordinate.c in Sources */ = {isa = PBXBuildFile; fileRef = F23D94C325E1EADA0022999C /* optional_percent_coordinate.c */; };
-		F23D94FC25E1EADB0022999C /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = F23D94C425E1EADA0022999C /* Makefile */; };
 		F23D94FD25E1EADB0022999C /* optional_cartesian_coordinate.c in Sources */ = {isa = PBXBuildFile; fileRef = F23D94C525E1EADA0022999C /* optional_cartesian_coordinate.c */; };
 		F23D94FE25E1EADB0022999C /* percent_coordinate.c in Sources */ = {isa = PBXBuildFile; fileRef = F23D94C625E1EADA0022999C /* percent_coordinate.c */; };
 		F23D94FF25E1EADB0022999C /* OptionalCartesianCoordinate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F23D94C725E1EADA0022999C /* OptionalCartesianCoordinate.hpp */; };
@@ -67,7 +66,6 @@
 		F23D954525E1ECC60022999C /* PercentCoordinateTests.cc in Sources */ = {isa = PBXBuildFile; fileRef = F23D952525E1ECC50022999C /* PercentCoordinateTests.cc */; };
 		F23D954625E1ECC60022999C /* camera_fakes.c in Sources */ = {isa = PBXBuildFile; fileRef = F23D952725E1ECC50022999C /* camera_fakes.c */; };
 		F23D954725E1ECC60022999C /* fff.c in Sources */ = {isa = PBXBuildFile; fileRef = F23D952925E1ECC50022999C /* fff.c */; };
-		F23D954825E1ECC60022999C /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = F23D952C25E1ECC50022999C /* Makefile */; };
 		F23D954925E1ECC60022999C /* custom_fakes.c in Sources */ = {isa = PBXBuildFile; fileRef = F23D952D25E1ECC50022999C /* custom_fakes.c */; };
 		F23D954A25E1ECC60022999C /* field_coordinate_fakes.c in Sources */ = {isa = PBXBuildFile; fileRef = F23D952F25E1ECC50022999C /* field_coordinate_fakes.c */; };
 		F23D954B25E1ECC60022999C /* PixelCoordinateTests.cc in Sources */ = {isa = PBXBuildFile; fileRef = F23D953025E1ECC50022999C /* PixelCoordinateTests.cc */; };
@@ -165,7 +163,6 @@
 		F23D95F925E1EFDB0022999C /* conversions_tests.cc in Sources */ = {isa = PBXBuildFile; fileRef = F23D95EE25E1EFDB0022999C /* conversions_tests.cc */; };
 		F23D95FA25E1EFDB0022999C /* camera_coordinate_tests.cc in Sources */ = {isa = PBXBuildFile; fileRef = F23D95EF25E1EFDB0022999C /* camera_coordinate_tests.cc */; };
 		F23D95FB25E1EFDB0022999C /* camera_pivot_tests.cc in Sources */ = {isa = PBXBuildFile; fileRef = F23D95F025E1EFDB0022999C /* camera_pivot_tests.cc */; };
-		F23D95FC25E1EFDB0022999C /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = F23D95F125E1EFDB0022999C /* Makefile */; };
 		F23D95FD25E1EFDB0022999C /* field_coordinate_tests.cc in Sources */ = {isa = PBXBuildFile; fileRef = F23D95F225E1EFDB0022999C /* field_coordinate_tests.cc */; };
 		F23D95FE25E1EFDB0022999C /* relative_coordinate_tests.cc in Sources */ = {isa = PBXBuildFile; fileRef = F23D95F425E1EFDB0022999C /* relative_coordinate_tests.cc */; };
 		F23D95FF25E1EFDB0022999C /* percent_coordinate_tests.cc in Sources */ = {isa = PBXBuildFile; fileRef = F23D95F525E1EFDB0022999C /* percent_coordinate_tests.cc */; };
@@ -314,7 +311,6 @@
 		F23D94C125E1EADA0022999C /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = "<group>"; };
 		F23D94C225E1EADA0022999C /* pixel_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pixel_coordinate.c; sourceTree = "<group>"; };
 		F23D94C325E1EADA0022999C /* optional_percent_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = optional_percent_coordinate.c; sourceTree = "<group>"; };
-		F23D94C425E1EADA0022999C /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		F23D94C525E1EADA0022999C /* optional_cartesian_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = optional_cartesian_coordinate.c; sourceTree = "<group>"; };
 		F23D94C625E1EADA0022999C /* percent_coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = percent_coordinate.c; sourceTree = "<group>"; };
 		F23D94C725E1EADA0022999C /* OptionalCartesianCoordinate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OptionalCartesianCoordinate.hpp; sourceTree = "<group>"; };
@@ -352,7 +348,6 @@
 		F23D952925E1ECC50022999C /* fff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fff.c; sourceTree = "<group>"; };
 		F23D952A25E1ECC50022999C /* cartesian_coordinate_fakes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cartesian_coordinate_fakes.h; sourceTree = "<group>"; };
 		F23D952B25E1ECC50022999C /* conversion_fakes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conversion_fakes.h; sourceTree = "<group>"; };
-		F23D952C25E1ECC50022999C /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		F23D952D25E1ECC50022999C /* custom_fakes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = custom_fakes.c; sourceTree = "<group>"; };
 		F23D952E25E1ECC50022999C /* camera_fakes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera_fakes.h; sourceTree = "<group>"; };
 		F23D952F25E1ECC50022999C /* field_coordinate_fakes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = field_coordinate_fakes.c; sourceTree = "<group>"; };
@@ -387,7 +382,6 @@
 		F23D95EE25E1EFDB0022999C /* conversions_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = conversions_tests.cc; sourceTree = "<group>"; };
 		F23D95EF25E1EFDB0022999C /* camera_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = camera_coordinate_tests.cc; sourceTree = "<group>"; };
 		F23D95F025E1EFDB0022999C /* camera_pivot_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = camera_pivot_tests.cc; sourceTree = "<group>"; };
-		F23D95F125E1EFDB0022999C /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		F23D95F225E1EFDB0022999C /* field_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = field_coordinate_tests.cc; sourceTree = "<group>"; };
 		F23D95F325E1EFDB0022999C /* gucoordinates_tests.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = gucoordinates_tests.hpp; sourceTree = "<group>"; };
 		F23D95F425E1EFDB0022999C /* relative_coordinate_tests.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = relative_coordinate_tests.cc; sourceTree = "<group>"; };
@@ -499,7 +493,6 @@
 				F23D94AA25E1EAD90022999C /* FieldCoordinate.hpp */,
 				F23D94B525E1EADA0022999C /* gucoordinates.h */,
 				F23D94BA25E1EADA0022999C /* hidden_conversions.h */,
-				F23D94C425E1EADA0022999C /* Makefile */,
 				F23D94D825E1EADB0022999C /* optional_camera_coordinate.c */,
 				F23D94A725E1EAD90022999C /* optional_camera_coordinate.h */,
 				F23D94C525E1EADA0022999C /* optional_cartesian_coordinate.c */,
@@ -562,7 +555,6 @@
 				F23D953B25E1ECC60022999C /* FieldCoordinateTests.cc */,
 				F23D954325E1ECC60022999C /* GUCoordinatesTests.hpp */,
 				F23D953E25E1ECC60022999C /* GUWrapperTests.hpp */,
-				F23D952C25E1ECC50022999C /* Makefile */,
 				F23D953925E1ECC60022999C /* percent_coordinate_fakes.c */,
 				F23D953A25E1ECC60022999C /* percent_coordinate_fakes.h */,
 				F23D952525E1ECC50022999C /* PercentCoordinateTests.cc */,
@@ -593,7 +585,6 @@
 				F23D95EE25E1EFDB0022999C /* conversions_tests.cc */,
 				F23D95F225E1EFDB0022999C /* field_coordinate_tests.cc */,
 				F23D95F325E1EFDB0022999C /* gucoordinates_tests.hpp */,
-				F23D95F125E1EFDB0022999C /* Makefile */,
 				F23D95F525E1EFDB0022999C /* percent_coordinate_tests.cc */,
 				F23D95EB25E1EFDA0022999C /* pixel_coordinate_tests.cc */,
 				F23D95F425E1EFDB0022999C /* relative_coordinate_tests.cc */,
@@ -847,7 +838,6 @@
 				F23D950C25E1EADB0022999C /* PercentCoordinate.cc in Sources */,
 				F23D94E825E1EADB0022999C /* optional_relative_coordinate.c in Sources */,
 				F23D94FE25E1EADB0022999C /* percent_coordinate.c in Sources */,
-				F23D94FC25E1EADB0022999C /* Makefile in Sources */,
 				F23D94EB25E1EADB0022999C /* field_coordinate.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -858,7 +848,6 @@
 			files = (
 				F23D955425E1ECC60022999C /* FieldCoordinateTests.cc in Sources */,
 				F23D954E25E1ECC60022999C /* CartesianCoordinateTests.cc in Sources */,
-				F23D954825E1ECC60022999C /* Makefile in Sources */,
 				F23D954925E1ECC60022999C /* custom_fakes.c in Sources */,
 				F23D954C25E1ECC60022999C /* conversion_fakes.c in Sources */,
 				F23D955025E1ECC60022999C /* CameraCoordinateTests.cc in Sources */,
@@ -1049,7 +1038,6 @@
 				F23D961025E1F0F30022999C /* optional_camera_coordinate.c in Sources */,
 				F23D960D25E1F0F30022999C /* pixel_coordinate.c in Sources */,
 				F23D960E25E1F0F30022999C /* relative_coordinate.c in Sources */,
-				F23D95FC25E1EFDB0022999C /* Makefile in Sources */,
 				F23D95FA25E1EFDB0022999C /* camera_coordinate_tests.cc in Sources */,
 				F23D960F25E1F0F30022999C /* percent_coordinate.c in Sources */,
 			);
