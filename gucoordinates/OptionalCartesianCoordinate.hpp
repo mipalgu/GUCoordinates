@@ -65,40 +65,13 @@
 #include <cstdlib>
 #include <gu_util.h>
 
+#include "OptionalCoordinate.hpp"
+
 namespace GU {
 
     struct CartesianCoordinate;
 
-    struct OptionalCartesianCoordinate: public gu_optional_cartesian_coordinate {
-
-        OptionalCartesianCoordinate() NOEXCEPT;
-        OptionalCartesianCoordinate(const CartesianCoordinate) NOEXCEPT;
-        OptionalCartesianCoordinate(const bool, const CartesianCoordinate) NOEXCEPT;
-        OptionalCartesianCoordinate(const OptionalCartesianCoordinate& other) NOEXCEPT;
-        OptionalCartesianCoordinate(const gu_optional_cartesian_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalCartesianCoordinate(OptionalCartesianCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-        ~OptionalCartesianCoordinate() NOEXCEPT;
-        OptionalCartesianCoordinate& operator=(const OptionalCartesianCoordinate& other) NOEXCEPT;
-        OptionalCartesianCoordinate& operator=(const gu_optional_cartesian_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalCartesianCoordinate& operator=(OptionalCartesianCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-
-        bool has_value() const NOEXCEPT;
-        void set_has_value(const bool) NOEXCEPT;
-        
-        CartesianCoordinate value() const NOEXCEPT;
-        void set_value(const CartesianCoordinate) NOEXCEPT;
-
-    };
+    typedef OptionalCoordinate<gu_optional_cartesian_coordinate, CartesianCoordinate> OptionalCartesianCoordinate;
 
 }
 

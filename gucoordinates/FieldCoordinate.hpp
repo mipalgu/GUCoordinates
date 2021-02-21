@@ -91,13 +91,6 @@ namespace GU {
     struct RelativeCoordinate;
     struct CartesianCoordinate;
 
-    struct OptionalCameraCoordinate;
-    struct OptionalPixelCoordinate;
-    struct OptionalPercentCoordinate;
-    struct OptionalRelativeCoordinate;
-    struct OptionalCartesianCoordinate;
-    struct OptionalFieldCoordinate;
-
     struct FieldCoordinate: public gu_field_coordinate {
 
         FieldCoordinate() NOEXCEPT;

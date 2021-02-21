@@ -65,40 +65,13 @@
 #include <cstdlib>
 #include <gu_util.h>
 
+#include "OptionalCoordinate.hpp"
+
 namespace GU {
 
     struct PixelCoordinate;
 
-    struct OptionalPixelCoordinate: public gu_optional_pixel_coordinate {
-
-        OptionalPixelCoordinate() NOEXCEPT;
-        OptionalPixelCoordinate(const PixelCoordinate) NOEXCEPT;
-        OptionalPixelCoordinate(const bool, const PixelCoordinate) NOEXCEPT;
-        OptionalPixelCoordinate(const OptionalPixelCoordinate& other) NOEXCEPT;
-        OptionalPixelCoordinate(const gu_optional_pixel_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalPixelCoordinate(OptionalPixelCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-        ~OptionalPixelCoordinate() NOEXCEPT;
-        OptionalPixelCoordinate& operator=(const OptionalPixelCoordinate& other) NOEXCEPT;
-        OptionalPixelCoordinate& operator=(const gu_optional_pixel_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalPixelCoordinate& operator=(OptionalPixelCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-
-        bool has_value() const NOEXCEPT;
-        void set_has_value(const bool) NOEXCEPT;
-        
-        PixelCoordinate value() const NOEXCEPT;
-        void set_value(const PixelCoordinate) NOEXCEPT;
-
-    };
+    typedef OptionalCoordinate<gu_optional_pixel_coordinate, PixelCoordinate> OptionalPixelCoordinate;
 
 }
 

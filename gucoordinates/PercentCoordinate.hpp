@@ -76,8 +76,6 @@ namespace GU {
     struct PixelCoordinate; // Forward Declaration.
     struct RelativeCoordinate; // Forward Declaration.
 
-    struct OptionalRelativeCoordinate;
-
     struct PercentCoordinate: public gu_percent_coordinate {
 
         PercentCoordinate() NOEXCEPT;

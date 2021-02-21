@@ -70,50 +70,13 @@
 
 #include <gu_util.h>
 
+#include "OptionalCoordinate.hpp"
+
 namespace GU {
 
     struct RelativeCoordinate;
 
-    struct OptionalRelativeCoordinate: public gu_optional_relative_coordinate {
-
-        OptionalRelativeCoordinate() NOEXCEPT;
-        OptionalRelativeCoordinate(const RelativeCoordinate) NOEXCEPT;
-        OptionalRelativeCoordinate(const bool, const RelativeCoordinate) NOEXCEPT;
-        OptionalRelativeCoordinate(const OptionalRelativeCoordinate& other) NOEXCEPT;
-        OptionalRelativeCoordinate(const gu_optional_relative_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201703L
-        OptionalRelativeCoordinate(const std::optional<RelativeCoordinate>& other) NOEXCEPT;
-#endif
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalRelativeCoordinate(OptionalRelativeCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-        ~OptionalRelativeCoordinate() NOEXCEPT;
-        OptionalRelativeCoordinate& operator=(const OptionalRelativeCoordinate& other) NOEXCEPT;
-        OptionalRelativeCoordinate& operator=(const gu_optional_relative_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201703L
-        OptionalRelativeCoordinate& operator=(const std::optional<RelativeCoordinate>& other) NOEXCEPT;
-#endif
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalRelativeCoordinate& operator=(OptionalRelativeCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-
-        bool has_value() const NOEXCEPT;
-        void set_has_value(const bool) NOEXCEPT;
-        
-        RelativeCoordinate value() const NOEXCEPT;
-        void set_value(const RelativeCoordinate) NOEXCEPT;
-        
-#if __cplusplus >= 201703L
-        std::optional<RelativeCoordinate> asOptional() const NOEXCEPT;
-#endif
-
-    };
+    typedef OptionalCoordinate<gu_optional_relative_coordinate, RelativeCoordinate> OptionalRelativeCoordinate;
 
 }
 

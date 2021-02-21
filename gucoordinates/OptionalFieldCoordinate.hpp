@@ -65,40 +65,13 @@
 #include <cstdlib>
 #include <gu_util.h>
 
+#include "OptionalCoordinate.hpp"
+
 namespace GU {
 
     struct FieldCoordinate;
 
-    struct OptionalFieldCoordinate: public gu_optional_field_coordinate {
-
-        OptionalFieldCoordinate() NOEXCEPT;
-        OptionalFieldCoordinate(const FieldCoordinate) NOEXCEPT;
-        OptionalFieldCoordinate(const bool, const FieldCoordinate) NOEXCEPT;
-        OptionalFieldCoordinate(const OptionalFieldCoordinate& other) NOEXCEPT;
-        OptionalFieldCoordinate(const gu_optional_field_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalFieldCoordinate(OptionalFieldCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-        ~OptionalFieldCoordinate() NOEXCEPT;
-        OptionalFieldCoordinate& operator=(const OptionalFieldCoordinate& other) NOEXCEPT;
-        OptionalFieldCoordinate& operator=(const gu_optional_field_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalFieldCoordinate& operator=(OptionalFieldCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-
-        bool has_value() const NOEXCEPT;
-        void set_has_value(const bool) NOEXCEPT;
-        
-        FieldCoordinate value() const NOEXCEPT;
-        void set_value(const FieldCoordinate) NOEXCEPT;
-
-    };
+    typedef OptionalCoordinate<gu_optional_field_coordinate, FieldCoordinate> OptionalFieldCoordinate;
 
 }
 

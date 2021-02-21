@@ -65,40 +65,13 @@
 #include <cstdlib>
 #include <gu_util.h>
 
+#include "OptionalCoordinate.hpp"
+
 namespace GU {
 
     struct CameraCoordinate;
 
-    struct OptionalCameraCoordinate: public gu_optional_camera_coordinate {
-
-        OptionalCameraCoordinate() NOEXCEPT;
-        OptionalCameraCoordinate(const CameraCoordinate) NOEXCEPT;
-        OptionalCameraCoordinate(const bool, const CameraCoordinate) NOEXCEPT;
-        OptionalCameraCoordinate(const OptionalCameraCoordinate& other) NOEXCEPT;
-        OptionalCameraCoordinate(const gu_optional_camera_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalCameraCoordinate(OptionalCameraCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-        ~OptionalCameraCoordinate() NOEXCEPT;
-        OptionalCameraCoordinate& operator=(const OptionalCameraCoordinate& other) NOEXCEPT;
-        OptionalCameraCoordinate& operator=(const gu_optional_camera_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalCameraCoordinate& operator=(OptionalCameraCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-
-        bool has_value() const NOEXCEPT;
-        void set_has_value(const bool) NOEXCEPT;
-        
-        CameraCoordinate value() const NOEXCEPT;
-        void set_value(const CameraCoordinate) NOEXCEPT;
-
-    };
+    typedef OptionalCoordinate<gu_optional_camera_coordinate, CameraCoordinate> OptionalCameraCoordinate;
 
 }
 

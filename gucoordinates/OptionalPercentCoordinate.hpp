@@ -63,57 +63,15 @@
 #include "PercentCoordinate.hpp"
 
 #include <cstdlib>
-
-#if __cplusplus >= 201703L
-#include <optional>
-#endif
-
 #include <gu_util.h>
+
+#include "OptionalCoordinate.hpp"
 
 namespace GU {
 
     struct PercentCoordinate;
 
-    struct OptionalPercentCoordinate: public gu_optional_percent_coordinate {
-
-        OptionalPercentCoordinate() NOEXCEPT;
-        OptionalPercentCoordinate(const PercentCoordinate) NOEXCEPT;
-        OptionalPercentCoordinate(const bool, const PercentCoordinate) NOEXCEPT;
-        OptionalPercentCoordinate(const OptionalPercentCoordinate& other) NOEXCEPT;
-        OptionalPercentCoordinate(const gu_optional_percent_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201703L
-        OptionalPercentCoordinate(const std::optional<PercentCoordinate>& other) NOEXCEPT;
-#endif
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalPercentCoordinate(OptionalPercentCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-        ~OptionalPercentCoordinate() NOEXCEPT;
-        OptionalPercentCoordinate& operator=(const OptionalPercentCoordinate& other) NOEXCEPT;
-        OptionalPercentCoordinate& operator=(const gu_optional_percent_coordinate& other) NOEXCEPT;
-#if __cplusplus >= 201703L
-        OptionalPercentCoordinate& operator=(const std::optional<PercentCoordinate>& other) NOEXCEPT;
-#endif
-#if __cplusplus >= 201103L
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalPercentCoordinate& operator=(OptionalPercentCoordinate&& other) NOEXCEPT;
-#pragma clang diagnostic pop
-#endif
-
-        bool has_value() const NOEXCEPT;
-        void set_has_value(const bool) NOEXCEPT;
-        
-        PercentCoordinate value() const NOEXCEPT;
-        void set_value(const PercentCoordinate) NOEXCEPT;
-        
-#if __cplusplus >= 201703L
-        std::optional<PercentCoordinate> asOptional() const NOEXCEPT;
-#endif
-
-    };
+    typedef OptionalCoordinate<gu_optional_percent_coordinate, PercentCoordinate> OptionalPercentCoordinate;
 
 }
 
