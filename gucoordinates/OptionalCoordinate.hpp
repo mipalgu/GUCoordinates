@@ -59,6 +59,10 @@
 #ifndef GUCOORDINATES_OPTIONALCOORDINATE_HPP
 #define GUCOORDINATES_OPTIONALCOORDINATE_HPP
 
+#if __cplusplus >= 201703L
+#include <optional>
+#endif
+
 namespace GU {
 
     template <class Raw, class Wrapped>
