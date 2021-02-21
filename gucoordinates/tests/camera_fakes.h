@@ -68,9 +68,11 @@ extern "C" {
 #include "../camera.h"
 
 #define CAMERA_FAKES(FAKE) \
-    FAKE(gu_camera_equals)
+    FAKE(gu_camera_equals) \
+    FAKE(gu_camera_make)
 
 DECLARE_FAKE_VALUE_FUNC(bool, gu_camera_equals, const gu_camera, const gu_camera, const double)
+DECLARE_FAKE_VALUE_FUNC(gu_camera, gu_camera_make, const centimetres_d, const centimetres_d, const degrees_d, const degrees_d, const degrees_d)
 
 #ifdef __cplusplus
 }

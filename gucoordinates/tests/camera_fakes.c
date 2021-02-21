@@ -61,4 +61,5 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wcast-qual"
 DEFINE_FAKE_VALUE_FUNC(bool, gu_camera_equals, const gu_camera, const gu_camera, const double)
+DEFINE_FAKE_VALUE_FUNC(gu_camera, gu_camera_make, const centimetres_d, const centimetres_d, const degrees_d, const degrees_d, const degrees_d)
 #pragma clang diagnostic pop

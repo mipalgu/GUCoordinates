@@ -67,9 +67,17 @@ extern "C" {
 #include "../pixel_coordinate.h"
 
 #define PIXEL_COORDINATE_FAKES(FAKE) \
-    FAKE(gu_pixel_coordinate_equals)
+    FAKE(gu_pixel_coordinate_equals) \
+    FAKE(gu_pixel_coordinate_x_lower_bound) \
+    FAKE(gu_pixel_coordinate_y_lower_bound) \
+    FAKE(gu_pixel_coordinate_x_upper_bound) \
+    FAKE(gu_pixel_coordinate_y_upper_bound)
 
 DECLARE_FAKE_VALUE_FUNC(bool, gu_pixel_coordinate_equals, const gu_pixel_coordinate, const gu_pixel_coordinate)
+DECLARE_FAKE_VALUE_FUNC(pixels_t, gu_pixel_coordinate_x_lower_bound, const gu_pixel_coordinate)
+DECLARE_FAKE_VALUE_FUNC(pixels_t, gu_pixel_coordinate_y_lower_bound, const gu_pixel_coordinate)
+DECLARE_FAKE_VALUE_FUNC(pixels_t, gu_pixel_coordinate_x_upper_bound, const gu_pixel_coordinate)
+DECLARE_FAKE_VALUE_FUNC(pixels_t, gu_pixel_coordinate_y_upper_bound, const gu_pixel_coordinate)
 
 #ifdef __cplusplus
 }

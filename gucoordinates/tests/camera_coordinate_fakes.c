@@ -61,4 +61,8 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wcast-qual"
 DEFINE_FAKE_VALUE_FUNC(bool, gu_camera_coordinate_equals, const gu_camera_coordinate, const gu_camera_coordinate)
+DEFINE_FAKE_VALUE_FUNC(pixels_t, gu_camera_coordinate_x_lower_bound, const gu_camera_coordinate)
+DEFINE_FAKE_VALUE_FUNC(pixels_t, gu_camera_coordinate_y_lower_bound, const gu_camera_coordinate)
+DEFINE_FAKE_VALUE_FUNC(pixels_t, gu_camera_coordinate_x_upper_bound, const gu_camera_coordinate)
+DEFINE_FAKE_VALUE_FUNC(pixels_t, gu_camera_coordinate_y_upper_bound, const gu_camera_coordinate)
 #pragma clang diagnostic pop

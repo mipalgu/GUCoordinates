@@ -67,9 +67,17 @@ extern "C" {
 #include "../percent_coordinate.h"
 
 #define PERCENT_COORDINATE_FAKES(FAKE) \
-    FAKE(gu_percent_coordinate_equals)
+    FAKE(gu_percent_coordinate_equals) \
+    FAKE(gu_percent_coordinate_x_lower_bound) \
+    FAKE(gu_percent_coordinate_y_lower_bound) \
+    FAKE(gu_percent_coordinate_x_upper_bound) \
+    FAKE(gu_percent_coordinate_y_upper_bound)
 
 DECLARE_FAKE_VALUE_FUNC(bool, gu_percent_coordinate_equals, const gu_percent_coordinate, const gu_percent_coordinate, const percent_d)
+DECLARE_FAKE_VALUE_FUNC(percent_d, gu_percent_coordinate_x_lower_bound, const gu_percent_coordinate)
+DECLARE_FAKE_VALUE_FUNC(percent_d, gu_percent_coordinate_y_lower_bound, const gu_percent_coordinate)
+DECLARE_FAKE_VALUE_FUNC(percent_d, gu_percent_coordinate_x_upper_bound, const gu_percent_coordinate)
+DECLARE_FAKE_VALUE_FUNC(percent_d, gu_percent_coordinate_y_upper_bound, const gu_percent_coordinate)
 
 #ifdef __cplusplus
 }

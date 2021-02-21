@@ -70,11 +70,11 @@ namespace CGTEST {
         const gu_pixel_coordinate bottomLeftEdge = { -959, -539, 1920, 1080 };
         const gu_pixel_coordinate bottomRightEdge = { 960, -539, 1920, 1080 };
         const gu_pixel_coordinate middle = { 0, 0, 1920, 1080 };
-        percent_equal({-1.0, 1.0}, px_coord_to_pct_coord(topLeftEdge));
-        percent_equal({1.0, 1.0}, px_coord_to_pct_coord(topRightEdge));
-        percent_equal({-1.0, -1.0}, px_coord_to_pct_coord(bottomLeftEdge));
-        percent_equal({1.0, -1.0}, px_coord_to_pct_coord(bottomRightEdge));
-        percent_near({0.0, 0.0}, px_coord_to_pct_coord(middle));
+        percent_equal((gu_percent_coordinate) {-1.0, 1.0}, px_coord_to_pct_coord(topLeftEdge));
+        percent_equal((gu_percent_coordinate) {1.0, 1.0}, px_coord_to_pct_coord(topRightEdge));
+        percent_equal((gu_percent_coordinate) {-1.0, -1.0}, px_coord_to_pct_coord(bottomLeftEdge));
+        percent_equal((gu_percent_coordinate) {1.0, -1.0}, px_coord_to_pct_coord(bottomRightEdge));
+        percent_near((gu_percent_coordinate) {0.0, 0.0}, px_coord_to_pct_coord(middle));
     }
 
     TEST_F(ConversionsTests, ConvertsToCorrectPixelCoordinate) {
@@ -83,11 +83,11 @@ namespace CGTEST {
         const gu_percent_coordinate bottomLeftEdge = { -1.0, -1.0 };
         const gu_percent_coordinate bottomRightEdge = { 1.0, -1.0 };
         const gu_percent_coordinate middle = { 0, 0 };
-        pixel_equal({ -959, 540, 1920, 1080 }, pct_coord_to_px_coord(topLeftEdge, 1920, 1080));
-        pixel_equal({ 960, 540, 1920, 1080 }, pct_coord_to_px_coord(topRightEdge, 1920, 1080));
-        pixel_equal({ -959, -539, 1920, 1080 }, pct_coord_to_px_coord(bottomLeftEdge, 1920, 1080));
-        pixel_equal({ 960, -539, 1920, 1080 }, pct_coord_to_px_coord(bottomRightEdge, 1920, 1080));
-        pixel_equal({ 1, 1, 1920, 1080 }, pct_coord_to_px_coord(middle, 1920, 1080));
+        pixel_equal((gu_pixel_coordinate) { -959, 540, 1920, 1080 }, pct_coord_to_px_coord(topLeftEdge, 1920, 1080));
+        pixel_equal((gu_pixel_coordinate) { 960, 540, 1920, 1080 }, pct_coord_to_px_coord(topRightEdge, 1920, 1080));
+        pixel_equal((gu_pixel_coordinate) { -959, -539, 1920, 1080 }, pct_coord_to_px_coord(bottomLeftEdge, 1920, 1080));
+        pixel_equal((gu_pixel_coordinate) { 960, -539, 1920, 1080 }, pct_coord_to_px_coord(bottomRightEdge, 1920, 1080));
+        pixel_equal((gu_pixel_coordinate) { 1, 1, 1920, 1080 }, pct_coord_to_px_coord(middle, 1920, 1080));
     }
 
     TEST_F(ConversionsTests, ConvertsFromCameraToPixelCoordinate) {
