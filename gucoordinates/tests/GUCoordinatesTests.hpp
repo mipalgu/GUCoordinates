@@ -341,7 +341,7 @@ namespace CGTEST {
 
             void equals(const GU::CameraPivot lhs, const GU::CameraPivot rhs)
             {
-                ASSERT_TRUE(near(lhs.pitch(), rhs.pitch()));
+                ASSERT_TRUE(near(lhs.pitch(), rhs.pitch())) << lhs.pitch() << ", " << rhs.pitch();
                 ASSERT_TRUE(near(lhs.yaw(), rhs.yaw()));
                 ASSERT_TRUE(near(lhs.height(), rhs.height()));
                 ASSERT_EQ(lhs.numCameras(), rhs.numCameras());
