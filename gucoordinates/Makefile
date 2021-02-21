@@ -25,7 +25,7 @@ CXXSTDFL=-std=c++98
 .endif
 .endif
 
-ALL_TARGETS=test host-local atom-local atom1-local geode-local doc
+ALL_TARGETS=test host-local atom-local atom1-local geode-local xc doc
 
 C_SRCS!=ls *.c
 CC_SRCS!=ls *.cc
