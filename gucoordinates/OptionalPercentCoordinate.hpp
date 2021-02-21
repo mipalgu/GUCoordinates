@@ -32,25 +32,25 @@
  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
  * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES NOEXCEPT; LOSS OF USE, DATA, OR
+ * PROFITS NOEXCEPT; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * -----------------------------------------------------------------------
- * This program is free software; you can redistribute it and/or
+ * This program is free software NOEXCEPT; you can redistribute it and/or
  * modify it under the above terms or under the terms of the GNU
- * General Public License as published by the Free Software Foundation;
+ * General Public License as published by the Free Software Foundation NOEXCEPT;
  * either version 2 of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * but WITHOUT ANY WARRANTY NOEXCEPT; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see http://www.gnu.org/licenses/
+ * along with this program NOEXCEPT; if not, see http://www.gnu.org/licenses/
  * or write to the Free Software Foundation, Inc., 51 Franklin Street,
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
@@ -68,47 +68,49 @@
 #include <optional>
 #endif
 
+#include <gu_util.h>
+
 namespace GU {
 
     struct PercentCoordinate;
 
     struct OptionalPercentCoordinate: public gu_optional_percent_coordinate {
 
-        OptionalPercentCoordinate();
-        OptionalPercentCoordinate(const PercentCoordinate);
-        OptionalPercentCoordinate(const bool, const PercentCoordinate);
-        OptionalPercentCoordinate(const OptionalPercentCoordinate& other);
-        OptionalPercentCoordinate(const gu_optional_percent_coordinate& other);
+        OptionalPercentCoordinate() NOEXCEPT;
+        OptionalPercentCoordinate(const PercentCoordinate) NOEXCEPT;
+        OptionalPercentCoordinate(const bool, const PercentCoordinate) NOEXCEPT;
+        OptionalPercentCoordinate(const OptionalPercentCoordinate& other) NOEXCEPT;
+        OptionalPercentCoordinate(const gu_optional_percent_coordinate& other) NOEXCEPT;
 #if __cplusplus >= 201703L
-        OptionalPercentCoordinate(const std::optional<PercentCoordinate>& other);
+        OptionalPercentCoordinate(const std::optional<PercentCoordinate>& other) NOEXCEPT;
 #endif
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalPercentCoordinate(OptionalPercentCoordinate&& other);
+        OptionalPercentCoordinate(OptionalPercentCoordinate&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
-        ~OptionalPercentCoordinate();
-        OptionalPercentCoordinate& operator=(const OptionalPercentCoordinate& other);
-        OptionalPercentCoordinate& operator=(const gu_optional_percent_coordinate& other);
+        ~OptionalPercentCoordinate() NOEXCEPT;
+        OptionalPercentCoordinate& operator=(const OptionalPercentCoordinate& other) NOEXCEPT;
+        OptionalPercentCoordinate& operator=(const gu_optional_percent_coordinate& other) NOEXCEPT;
 #if __cplusplus >= 201703L
-        OptionalPercentCoordinate& operator=(const std::optional<PercentCoordinate>& other);
+        OptionalPercentCoordinate& operator=(const std::optional<PercentCoordinate>& other) NOEXCEPT;
 #endif
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalPercentCoordinate& operator=(OptionalPercentCoordinate&& other);
+        OptionalPercentCoordinate& operator=(OptionalPercentCoordinate&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
 
-        bool has_value() const;
-        void set_has_value(const bool);
+        bool has_value() const NOEXCEPT;
+        void set_has_value(const bool) NOEXCEPT;
         
-        PercentCoordinate value() const;
-        void set_value(const PercentCoordinate);
+        PercentCoordinate value() const NOEXCEPT;
+        void set_value(const PercentCoordinate) NOEXCEPT;
         
 #if __cplusplus >= 201703L
-        std::optional<PercentCoordinate> asOptional() const;
+        std::optional<PercentCoordinate> asOptional() const NOEXCEPT;
 #endif
 
     };

@@ -58,34 +58,34 @@
 
 #include "OptionalCartesianCoordinate.hpp"
 
-GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate() {}
+GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate() NOEXCEPT {}
 
-GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(const GU::CartesianCoordinate t_value)
+GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(const GU::CartesianCoordinate t_value) NOEXCEPT
 {
     set_has_value(true);
     set_value(t_value);
 }
 
-GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(const bool t_has_value, const GU::CartesianCoordinate t_value)
+GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(const bool t_has_value, const GU::CartesianCoordinate t_value) NOEXCEPT
 {
     set_has_value(t_has_value);
     set_value(t_value);
 }
 
-GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(const GU::OptionalCartesianCoordinate& other)
+GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(const GU::OptionalCartesianCoordinate& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     set_value(other.value());
 }
 
-GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(const gu_optional_cartesian_coordinate &other)
+GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(const gu_optional_cartesian_coordinate &other) NOEXCEPT
 {
     set_has_value(other.has_value);
     set_value(other.value);
 }
 
 #if __cplusplus >= 201103L
-GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(GU::OptionalCartesianCoordinate&& other)
+GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(GU::OptionalCartesianCoordinate&& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     other.set_has_value(0.0f);
@@ -94,9 +94,9 @@ GU::OptionalCartesianCoordinate::OptionalCartesianCoordinate(GU::OptionalCartesi
 }
 #endif
 
-GU::OptionalCartesianCoordinate::~OptionalCartesianCoordinate() {}
+GU::OptionalCartesianCoordinate::~OptionalCartesianCoordinate() NOEXCEPT {}
 
-GU::OptionalCartesianCoordinate& GU::OptionalCartesianCoordinate::operator=(const GU::OptionalCartesianCoordinate& other)
+GU::OptionalCartesianCoordinate& GU::OptionalCartesianCoordinate::operator=(const GU::OptionalCartesianCoordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -107,7 +107,7 @@ GU::OptionalCartesianCoordinate& GU::OptionalCartesianCoordinate::operator=(cons
     return *this;
 }
 
-GU::OptionalCartesianCoordinate& GU::OptionalCartesianCoordinate::operator=(const gu_optional_cartesian_coordinate& other)
+GU::OptionalCartesianCoordinate& GU::OptionalCartesianCoordinate::operator=(const gu_optional_cartesian_coordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -119,7 +119,7 @@ GU::OptionalCartesianCoordinate& GU::OptionalCartesianCoordinate::operator=(cons
 }
 
 #if __cplusplus >= 201103L
-GU::OptionalCartesianCoordinate& GU::OptionalCartesianCoordinate::operator=(GU::OptionalCartesianCoordinate&& other)
+GU::OptionalCartesianCoordinate& GU::OptionalCartesianCoordinate::operator=(GU::OptionalCartesianCoordinate&& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -133,22 +133,22 @@ GU::OptionalCartesianCoordinate& GU::OptionalCartesianCoordinate::operator=(GU::
 }
 #endif
 
-bool GU::OptionalCartesianCoordinate::has_value() const
+bool GU::OptionalCartesianCoordinate::has_value() const NOEXCEPT
 {
     return gu_optional_cartesian_coordinate::has_value;
 }
 
-void GU::OptionalCartesianCoordinate::set_has_value(const bool newValue)
+void GU::OptionalCartesianCoordinate::set_has_value(const bool newValue) NOEXCEPT
 {
     gu_optional_cartesian_coordinate::has_value = newValue;
 }
 
-GU::CartesianCoordinate GU::OptionalCartesianCoordinate::value() const
+GU::CartesianCoordinate GU::OptionalCartesianCoordinate::value() const NOEXCEPT
 {
     return gu_optional_cartesian_coordinate::value;
 }
 
-void GU::OptionalCartesianCoordinate::set_value(const GU::CartesianCoordinate newValue)
+void GU::OptionalCartesianCoordinate::set_value(const GU::CartesianCoordinate newValue) NOEXCEPT
 {
     gu_optional_cartesian_coordinate::value = newValue;
 }

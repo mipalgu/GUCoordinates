@@ -58,34 +58,34 @@
 
 #include "OptionalFieldCoordinate.hpp"
 
-GU::OptionalFieldCoordinate::OptionalFieldCoordinate() {}
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate() NOEXCEPT {}
 
-GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const GU::FieldCoordinate t_value)
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const GU::FieldCoordinate t_value) NOEXCEPT
 {
     set_has_value(true);
     set_value(t_value);
 }
 
-GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const bool t_has_value, const GU::FieldCoordinate t_value)
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const bool t_has_value, const GU::FieldCoordinate t_value) NOEXCEPT
 {
     set_has_value(t_has_value);
     set_value(t_value);
 }
 
-GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const GU::OptionalFieldCoordinate& other)
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const GU::OptionalFieldCoordinate& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     set_value(other.value());
 }
 
-GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const gu_optional_field_coordinate &other)
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate(const gu_optional_field_coordinate &other) NOEXCEPT
 {
     set_has_value(other.has_value);
     set_value(other.value);
 }
 
 #if __cplusplus >= 201103L
-GU::OptionalFieldCoordinate::OptionalFieldCoordinate(GU::OptionalFieldCoordinate&& other)
+GU::OptionalFieldCoordinate::OptionalFieldCoordinate(GU::OptionalFieldCoordinate&& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     other.set_has_value(0.0f);
@@ -94,9 +94,9 @@ GU::OptionalFieldCoordinate::OptionalFieldCoordinate(GU::OptionalFieldCoordinate
 }
 #endif
 
-GU::OptionalFieldCoordinate::~OptionalFieldCoordinate() {}
+GU::OptionalFieldCoordinate::~OptionalFieldCoordinate() NOEXCEPT {}
 
-GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(const GU::OptionalFieldCoordinate& other)
+GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(const GU::OptionalFieldCoordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -107,7 +107,7 @@ GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(const GU::Op
     return *this;
 }
 
-GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(const gu_optional_field_coordinate& other)
+GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(const gu_optional_field_coordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -119,7 +119,7 @@ GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(const gu_opt
 }
 
 #if __cplusplus >= 201103L
-GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(GU::OptionalFieldCoordinate&& other)
+GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(GU::OptionalFieldCoordinate&& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -133,22 +133,22 @@ GU::OptionalFieldCoordinate& GU::OptionalFieldCoordinate::operator=(GU::Optional
 }
 #endif
 
-bool GU::OptionalFieldCoordinate::has_value() const
+bool GU::OptionalFieldCoordinate::has_value() const NOEXCEPT
 {
     return gu_optional_field_coordinate::has_value;
 }
 
-void GU::OptionalFieldCoordinate::set_has_value(const bool newValue)
+void GU::OptionalFieldCoordinate::set_has_value(const bool newValue) NOEXCEPT
 {
     gu_optional_field_coordinate::has_value = newValue;
 }
 
-GU::FieldCoordinate GU::OptionalFieldCoordinate::value() const
+GU::FieldCoordinate GU::OptionalFieldCoordinate::value() const NOEXCEPT
 {
     return gu_optional_field_coordinate::value;
 }
 
-void GU::OptionalFieldCoordinate::set_value(const GU::FieldCoordinate newValue)
+void GU::OptionalFieldCoordinate::set_value(const GU::FieldCoordinate newValue) NOEXCEPT
 {
     gu_optional_field_coordinate::value = newValue;
 }

@@ -58,34 +58,34 @@
 
 #include "OptionalRelativeCoordinate.hpp"
 
-GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate() {}
+GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate() NOEXCEPT {}
 
-GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const GU::RelativeCoordinate t_value)
+GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const GU::RelativeCoordinate t_value) NOEXCEPT
 {
     set_has_value(true);
     set_value(t_value);
 }
 
-GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const bool t_has_value, const GU::RelativeCoordinate t_coordinate)
+GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const bool t_has_value, const GU::RelativeCoordinate t_coordinate) NOEXCEPT
 {
     set_has_value(t_has_value);
     set_value(t_coordinate);
 }
 
-GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const GU::OptionalRelativeCoordinate& other)
+GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const GU::OptionalRelativeCoordinate& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     set_value(other.value());
 }
 
-GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const gu_optional_relative_coordinate &other)
+GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const gu_optional_relative_coordinate &other) NOEXCEPT
 {
     set_has_value(other.has_value);
     set_value(other.value);
 }
 
 #if __cplusplus >= 201703L
-GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const std::optional<GU::RelativeCoordinate>& other)
+GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const std::optional<GU::RelativeCoordinate>& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     if (!other.has_value())
@@ -98,7 +98,7 @@ GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(const std::optional<G
 #endif
 
 #if __cplusplus >= 201103L
-GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(GU::OptionalRelativeCoordinate&& other)
+GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(GU::OptionalRelativeCoordinate&& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     other.set_has_value(0.0f);
@@ -107,9 +107,9 @@ GU::OptionalRelativeCoordinate::OptionalRelativeCoordinate(GU::OptionalRelativeC
 }
 #endif
 
-GU::OptionalRelativeCoordinate::~OptionalRelativeCoordinate() {}
+GU::OptionalRelativeCoordinate::~OptionalRelativeCoordinate() NOEXCEPT {}
 
-GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(const GU::OptionalRelativeCoordinate& other)
+GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(const GU::OptionalRelativeCoordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -120,7 +120,7 @@ GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(const 
     return *this;
 }
 
-GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(const gu_optional_relative_coordinate& other)
+GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(const gu_optional_relative_coordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -132,7 +132,7 @@ GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(const 
 }
 
 #if __cplusplus >= 201703L
-GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(const std::optional<GU::RelativeCoordinate>& other)
+GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(const std::optional<GU::RelativeCoordinate>& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     if (!other.has_value())
@@ -146,7 +146,7 @@ GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(const 
 #endif
 
 #if __cplusplus >= 201103L
-GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(GU::OptionalRelativeCoordinate&& other)
+GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(GU::OptionalRelativeCoordinate&& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -160,28 +160,28 @@ GU::OptionalRelativeCoordinate& GU::OptionalRelativeCoordinate::operator=(GU::Op
 }
 #endif
 
-bool GU::OptionalRelativeCoordinate::has_value() const
+bool GU::OptionalRelativeCoordinate::has_value() const NOEXCEPT
 {
     return gu_optional_relative_coordinate::has_value;
 }
 
-void GU::OptionalRelativeCoordinate::set_has_value(const bool newValue)
+void GU::OptionalRelativeCoordinate::set_has_value(const bool newValue) NOEXCEPT
 {
     gu_optional_relative_coordinate::has_value = newValue;
 }
 
-GU::RelativeCoordinate GU::OptionalRelativeCoordinate::value() const
+GU::RelativeCoordinate GU::OptionalRelativeCoordinate::value() const NOEXCEPT
 {
     return gu_optional_relative_coordinate::value;
 }
 
-void GU::OptionalRelativeCoordinate::set_value(const GU::RelativeCoordinate newValue)
+void GU::OptionalRelativeCoordinate::set_value(const GU::RelativeCoordinate newValue) NOEXCEPT
 {
     gu_optional_relative_coordinate::value = newValue;
 }
 
 #if __cplusplus >= 201703L
-std::optional<GU::RelativeCoordinate> GU::OptionalRelativeCoordinate::asOptional() const
+std::optional<GU::RelativeCoordinate> GU::OptionalRelativeCoordinate::asOptional() const NOEXCEPT
 {
     if (has_value())
         return std::optional<GU::RelativeCoordinate>(value());

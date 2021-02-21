@@ -69,6 +69,7 @@
 #include "OptionalRelativeCoordinate.hpp"
 
 #include <cstdlib>
+#include <gu_util.h>
 
 #if __cplusplus >= 201703L
 #include <optional>
@@ -84,52 +85,52 @@ namespace GU {
 
     struct CameraCoordinate: public gu_camera_coordinate {
 
-        CameraCoordinate();
-        CameraCoordinate(pixels_u, pixels_u, pixels_u, pixels_u);
-        CameraCoordinate(const CameraCoordinate& other);
-        CameraCoordinate(const gu_camera_coordinate& other);
+        CameraCoordinate() NOEXCEPT;
+        CameraCoordinate(pixels_u, pixels_u, pixels_u, pixels_u) NOEXCEPT;
+        CameraCoordinate(const CameraCoordinate& other) NOEXCEPT;
+        CameraCoordinate(const gu_camera_coordinate& other) NOEXCEPT;
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        CameraCoordinate(CameraCoordinate&& other);
+        CameraCoordinate(CameraCoordinate&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
-        ~CameraCoordinate();
-        CameraCoordinate& operator=(const CameraCoordinate& other);
-        CameraCoordinate& operator=(const gu_camera_coordinate& other);
+        ~CameraCoordinate() NOEXCEPT;
+        CameraCoordinate& operator=(const CameraCoordinate& other) NOEXCEPT;
+        CameraCoordinate& operator=(const gu_camera_coordinate& other) NOEXCEPT;
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        CameraCoordinate& operator=(CameraCoordinate&& other);
+        CameraCoordinate& operator=(CameraCoordinate&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
 
-        GU::PixelCoordinate pixelCoordinate() const;
-        GU::PercentCoordinate percentCoordinate() const;
-        RelativeCoordinate relativeCoordinate(const GU::CameraPivot &, const int) const;
+        GU::PixelCoordinate pixelCoordinate() const NOEXCEPT;
+        GU::PercentCoordinate percentCoordinate() const NOEXCEPT;
+        RelativeCoordinate relativeCoordinate(const GU::CameraPivot &, const int) const NOEXCEPT;
 
-        pixels_u x() const;
-        void set_x(const pixels_u);
+        pixels_u x() const NOEXCEPT;
+        void set_x(const pixels_u) NOEXCEPT;
 
-        pixels_u y() const;
-        void set_y(const pixels_u);
+        pixels_u y() const NOEXCEPT;
+        void set_y(const pixels_u) NOEXCEPT;
 
-        pixels_u resWidth() const;
-        void set_resWidth(const pixels_u);
+        pixels_u resWidth() const NOEXCEPT;
+        void set_resWidth(const pixels_u) NOEXCEPT;
 
-        pixels_u resHeight() const;
-        void set_resHeight(const pixels_u);
+        pixels_u resHeight() const NOEXCEPT;
+        void set_resHeight(const pixels_u) NOEXCEPT;
 
-        pixels_t xLowerBound() const;
-        pixels_t xUpperBound() const;
+        pixels_t xLowerBound() const NOEXCEPT;
+        pixels_t xUpperBound() const NOEXCEPT;
 
-        pixels_t yLowerBound() const;
-        pixels_t yUpperBound() const;
+        pixels_t yLowerBound() const NOEXCEPT;
+        pixels_t yUpperBound() const NOEXCEPT;
 
-        bool operator ==(const CameraCoordinate &other) const;
-        bool operator !=(const CameraCoordinate &other) const;
-        bool operator ==(const gu_camera_coordinate &other) const;
-        bool operator !=(const gu_camera_coordinate &other) const;
+        bool operator ==(const CameraCoordinate &other) const NOEXCEPT;
+        bool operator !=(const CameraCoordinate &other) const NOEXCEPT;
+        bool operator ==(const gu_camera_coordinate &other) const NOEXCEPT;
+        bool operator !=(const gu_camera_coordinate &other) const NOEXCEPT;
 
     };
 

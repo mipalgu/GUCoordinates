@@ -63,9 +63,9 @@
 #include <optional>
 #endif
 
-GU::CameraCoordinate::CameraCoordinate() {}
+GU::CameraCoordinate::CameraCoordinate() NOEXCEPT {}
 
-GU::CameraCoordinate::CameraCoordinate(pixels_u t_x, pixels_u t_y, pixels_u t_resWidth, pixels_u t_resHeight)
+GU::CameraCoordinate::CameraCoordinate(pixels_u t_x, pixels_u t_y, pixels_u t_resWidth, pixels_u t_resHeight) NOEXCEPT
 {
     set_x(t_x);
     set_y(t_y);
@@ -73,7 +73,7 @@ GU::CameraCoordinate::CameraCoordinate(pixels_u t_x, pixels_u t_y, pixels_u t_re
     set_resHeight(t_resHeight);
 }
 
-GU::CameraCoordinate::CameraCoordinate(const CameraCoordinate& other)
+GU::CameraCoordinate::CameraCoordinate(const CameraCoordinate& other) NOEXCEPT
 {
     set_x(other.x());
     set_y(other.y());
@@ -81,7 +81,7 @@ GU::CameraCoordinate::CameraCoordinate(const CameraCoordinate& other)
     set_resHeight(other.resHeight());
 }
 
-GU::CameraCoordinate::CameraCoordinate(const gu_camera_coordinate& other)
+GU::CameraCoordinate::CameraCoordinate(const gu_camera_coordinate& other) NOEXCEPT
 {
     set_x(other.x);
     set_y(other.y);
@@ -90,7 +90,7 @@ GU::CameraCoordinate::CameraCoordinate(const gu_camera_coordinate& other)
 }
 
 #if __cplusplus >= 201103L
-GU::CameraCoordinate::CameraCoordinate(CameraCoordinate&& other)
+GU::CameraCoordinate::CameraCoordinate(CameraCoordinate&& other) NOEXCEPT
 {
     set_x(other.x());
     set_y(other.y());
@@ -103,9 +103,9 @@ GU::CameraCoordinate::CameraCoordinate(CameraCoordinate&& other)
 }
 #endif
 
-GU::CameraCoordinate::~CameraCoordinate() {}
+GU::CameraCoordinate::~CameraCoordinate() NOEXCEPT {}
 
-GU::CameraCoordinate& GU::CameraCoordinate::operator=(const CameraCoordinate& other)
+GU::CameraCoordinate& GU::CameraCoordinate::operator=(const CameraCoordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -118,7 +118,7 @@ GU::CameraCoordinate& GU::CameraCoordinate::operator=(const CameraCoordinate& ot
     return *this;
 }
 
-GU::CameraCoordinate& GU::CameraCoordinate::operator=(const gu_camera_coordinate& other)
+GU::CameraCoordinate& GU::CameraCoordinate::operator=(const gu_camera_coordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -132,7 +132,7 @@ GU::CameraCoordinate& GU::CameraCoordinate::operator=(const gu_camera_coordinate
 }
 
 #if __cplusplus >= 201103L
-GU::CameraCoordinate& GU::CameraCoordinate::operator=(CameraCoordinate&& other)
+GU::CameraCoordinate& GU::CameraCoordinate::operator=(CameraCoordinate&& other) NOEXCEPT
 {
     if (&other == this) {
         return *this;
@@ -149,97 +149,97 @@ GU::CameraCoordinate& GU::CameraCoordinate::operator=(CameraCoordinate&& other)
 }
 #endif
 
-GU::PixelCoordinate GU::CameraCoordinate::pixelCoordinate() const
+GU::PixelCoordinate GU::CameraCoordinate::pixelCoordinate() const NOEXCEPT
 {
     return cam_coord_to_px_coord(*this);
 }
 
-GU::PercentCoordinate GU::CameraCoordinate::percentCoordinate() const
+GU::PercentCoordinate GU::CameraCoordinate::percentCoordinate() const NOEXCEPT
 {
     return pixelCoordinate().percentCoordinate();
 }
 
-GU::RelativeCoordinate GU::CameraCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
+GU::RelativeCoordinate GU::CameraCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const NOEXCEPT
 {
     return percentCoordinate().relativeCoordinate(cameraPivot, cameraOffset);
 }
 
-pixels_u GU::CameraCoordinate::x() const
+pixels_u GU::CameraCoordinate::x() const NOEXCEPT
 {
     return gu_camera_coordinate::x;
 }
 
-void GU::CameraCoordinate::set_x(const pixels_u newValue)
+void GU::CameraCoordinate::set_x(const pixels_u newValue) NOEXCEPT
 {
     gu_camera_coordinate::x = newValue;
 }
 
-pixels_u GU::CameraCoordinate::y() const
+pixels_u GU::CameraCoordinate::y() const NOEXCEPT
 {
     return gu_camera_coordinate::y;
 }
 
-void GU::CameraCoordinate::set_y(const pixels_u newValue)
+void GU::CameraCoordinate::set_y(const pixels_u newValue) NOEXCEPT
 {
     gu_camera_coordinate::y = newValue;
 }
 
-pixels_u GU::CameraCoordinate::resWidth() const
+pixels_u GU::CameraCoordinate::resWidth() const NOEXCEPT
 {
     return gu_camera_coordinate::res_width;
 }
 
-void GU::CameraCoordinate::set_resWidth(const pixels_u newValue)
+void GU::CameraCoordinate::set_resWidth(const pixels_u newValue) NOEXCEPT
 {
     gu_camera_coordinate::res_width = newValue;
 }
 
-pixels_u GU::CameraCoordinate::resHeight() const
+pixels_u GU::CameraCoordinate::resHeight() const NOEXCEPT
 {
     return gu_camera_coordinate::res_height;
 }
 
-void GU::CameraCoordinate::set_resHeight(const pixels_u newValue)
+void GU::CameraCoordinate::set_resHeight(const pixels_u newValue) NOEXCEPT
 {
     gu_camera_coordinate::res_height = newValue;
 }
 
-pixels_t GU::CameraCoordinate::xLowerBound() const
+pixels_t GU::CameraCoordinate::xLowerBound() const NOEXCEPT
 {
     return gu_camera_coordinate_x_lower_bound(*this);
 }
 
-pixels_t GU::CameraCoordinate::xUpperBound() const
+pixels_t GU::CameraCoordinate::xUpperBound() const NOEXCEPT
 {
     return gu_camera_coordinate_x_upper_bound(*this);
 }
 
-pixels_t GU::CameraCoordinate::yLowerBound() const
+pixels_t GU::CameraCoordinate::yLowerBound() const NOEXCEPT
 {
     return gu_camera_coordinate_y_lower_bound(*this);
 }
 
-pixels_t GU::CameraCoordinate::yUpperBound() const
+pixels_t GU::CameraCoordinate::yUpperBound() const NOEXCEPT
 {
     return gu_camera_coordinate_y_upper_bound(*this);
 }
 
-bool GU::CameraCoordinate::operator==(const CameraCoordinate &other) const
+bool GU::CameraCoordinate::operator==(const CameraCoordinate &other) const NOEXCEPT
 {
     return gu_camera_coordinate_equals(*this, other);
 }
 
-bool GU::CameraCoordinate::operator!=(const CameraCoordinate &other) const
+bool GU::CameraCoordinate::operator!=(const CameraCoordinate &other) const NOEXCEPT
 {
     return !(*this == other);
 }
 
-bool GU::CameraCoordinate::operator==(const gu_camera_coordinate &other) const
+bool GU::CameraCoordinate::operator==(const gu_camera_coordinate &other) const NOEXCEPT
 {
     return gu_camera_coordinate_equals(*this, other);
 }
 
-bool GU::CameraCoordinate::operator!=(const gu_camera_coordinate &other) const
+bool GU::CameraCoordinate::operator!=(const gu_camera_coordinate &other) const NOEXCEPT
 {
     return !(*this == other);
 }

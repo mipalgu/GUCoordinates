@@ -32,25 +32,25 @@
  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
  * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES NOEXCEPT; LOSS OF USE, DATA, OR
+ * PROFITS NOEXCEPT; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * -----------------------------------------------------------------------
- * This program is free software; you can redistribute it and/or
+ * This program is free software NOEXCEPT; you can redistribute it and/or
  * modify it under the above terms or under the terms of the GNU
- * General Public License as published by the Free Software Foundation;
+ * General Public License as published by the Free Software Foundation NOEXCEPT;
  * either version 2 of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * but WITHOUT ANY WARRANTY NOEXCEPT; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see http://www.gnu.org/licenses/
+ * along with this program NOEXCEPT; if not, see http://www.gnu.org/licenses/
  * or write to the Free Software Foundation, Inc., 51 Franklin Street,
  * Fifth Floor, Boston, MA  02110-1301, USA.
  *
@@ -63,6 +63,7 @@
 #include "FieldCoordinate.hpp"
 
 #include <cstdlib>
+#include <gu_util.h>
 
 namespace GU {
 
@@ -70,32 +71,32 @@ namespace GU {
 
     struct OptionalFieldCoordinate: public gu_optional_field_coordinate {
 
-        OptionalFieldCoordinate();
-        OptionalFieldCoordinate(const FieldCoordinate);
-        OptionalFieldCoordinate(const bool, const FieldCoordinate);
-        OptionalFieldCoordinate(const OptionalFieldCoordinate& other);
-        OptionalFieldCoordinate(const gu_optional_field_coordinate& other);
+        OptionalFieldCoordinate() NOEXCEPT;
+        OptionalFieldCoordinate(const FieldCoordinate) NOEXCEPT;
+        OptionalFieldCoordinate(const bool, const FieldCoordinate) NOEXCEPT;
+        OptionalFieldCoordinate(const OptionalFieldCoordinate& other) NOEXCEPT;
+        OptionalFieldCoordinate(const gu_optional_field_coordinate& other) NOEXCEPT;
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalFieldCoordinate(OptionalFieldCoordinate&& other);
+        OptionalFieldCoordinate(OptionalFieldCoordinate&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
-        ~OptionalFieldCoordinate();
-        OptionalFieldCoordinate& operator=(const OptionalFieldCoordinate& other);
-        OptionalFieldCoordinate& operator=(const gu_optional_field_coordinate& other);
+        ~OptionalFieldCoordinate() NOEXCEPT;
+        OptionalFieldCoordinate& operator=(const OptionalFieldCoordinate& other) NOEXCEPT;
+        OptionalFieldCoordinate& operator=(const gu_optional_field_coordinate& other) NOEXCEPT;
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalFieldCoordinate& operator=(OptionalFieldCoordinate&& other);
+        OptionalFieldCoordinate& operator=(OptionalFieldCoordinate&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
 
-        bool has_value() const;
-        void set_has_value(const bool);
+        bool has_value() const NOEXCEPT;
+        void set_has_value(const bool) NOEXCEPT;
         
-        FieldCoordinate value() const;
-        void set_value(const FieldCoordinate);
+        FieldCoordinate value() const NOEXCEPT;
+        void set_value(const FieldCoordinate) NOEXCEPT;
 
     };
 

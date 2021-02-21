@@ -58,34 +58,34 @@
 
 #include "OptionalCameraCoordinate.hpp"
 
-GU::OptionalCameraCoordinate::OptionalCameraCoordinate() {}
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate() NOEXCEPT {}
 
-GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const GU::CameraCoordinate t_value)
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const GU::CameraCoordinate t_value) NOEXCEPT
 {
     set_has_value(true);
     set_value(t_value);
 }
 
-GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const bool t_has_value, const GU::CameraCoordinate t_value)
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const bool t_has_value, const GU::CameraCoordinate t_value) NOEXCEPT
 {
     set_has_value(t_has_value);
     set_value(t_value);
 }
 
-GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const GU::OptionalCameraCoordinate& other)
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const GU::OptionalCameraCoordinate& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     set_value(other.value());
 }
 
-GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const gu_optional_camera_coordinate &other)
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate(const gu_optional_camera_coordinate &other) NOEXCEPT
 {
     set_has_value(other.has_value);
     set_value(other.value);
 }
 
 #if __cplusplus >= 201103L
-GU::OptionalCameraCoordinate::OptionalCameraCoordinate(GU::OptionalCameraCoordinate&& other)
+GU::OptionalCameraCoordinate::OptionalCameraCoordinate(GU::OptionalCameraCoordinate&& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     other.set_has_value(0.0f);
@@ -94,9 +94,9 @@ GU::OptionalCameraCoordinate::OptionalCameraCoordinate(GU::OptionalCameraCoordin
 }
 #endif
 
-GU::OptionalCameraCoordinate::~OptionalCameraCoordinate() {}
+GU::OptionalCameraCoordinate::~OptionalCameraCoordinate() NOEXCEPT {}
 
-GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(const GU::OptionalCameraCoordinate& other)
+GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(const GU::OptionalCameraCoordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -107,7 +107,7 @@ GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(const GU::
     return *this;
 }
 
-GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(const gu_optional_camera_coordinate& other)
+GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(const gu_optional_camera_coordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -119,7 +119,7 @@ GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(const gu_o
 }
 
 #if __cplusplus >= 201103L
-GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(GU::OptionalCameraCoordinate&& other)
+GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(GU::OptionalCameraCoordinate&& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -133,22 +133,22 @@ GU::OptionalCameraCoordinate& GU::OptionalCameraCoordinate::operator=(GU::Option
 }
 #endif
 
-bool GU::OptionalCameraCoordinate::has_value() const
+bool GU::OptionalCameraCoordinate::has_value() const NOEXCEPT
 {
     return gu_optional_camera_coordinate::has_value;
 }
 
-void GU::OptionalCameraCoordinate::set_has_value(const bool newValue)
+void GU::OptionalCameraCoordinate::set_has_value(const bool newValue) NOEXCEPT
 {
     gu_optional_camera_coordinate::has_value = newValue;
 }
 
-GU::CameraCoordinate GU::OptionalCameraCoordinate::value() const
+GU::CameraCoordinate GU::OptionalCameraCoordinate::value() const NOEXCEPT
 {
     return gu_optional_camera_coordinate::value;
 }
 
-void GU::OptionalCameraCoordinate::set_value(const GU::CameraCoordinate newValue)
+void GU::OptionalCameraCoordinate::set_value(const GU::CameraCoordinate newValue) NOEXCEPT
 {
     gu_optional_camera_coordinate::value = newValue;
 }

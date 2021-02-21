@@ -58,34 +58,34 @@
 
 #include "OptionalPercentCoordinate.hpp"
 
-GU::OptionalPercentCoordinate::OptionalPercentCoordinate() {}
+GU::OptionalPercentCoordinate::OptionalPercentCoordinate() NOEXCEPT {}
 
-GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const GU::PercentCoordinate t_value)
+GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const GU::PercentCoordinate t_value) NOEXCEPT
 {
     set_has_value(true);
     set_value(t_value);
 }
 
-GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const bool t_has_value, const GU::PercentCoordinate t_coordinate)
+GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const bool t_has_value, const GU::PercentCoordinate t_coordinate) NOEXCEPT
 {
     set_has_value(t_has_value);
     set_value(t_coordinate);
 }
 
-GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const GU::OptionalPercentCoordinate& other)
+GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const GU::OptionalPercentCoordinate& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     set_value(other.value());
 }
 
-GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const gu_optional_percent_coordinate &other)
+GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const gu_optional_percent_coordinate &other) NOEXCEPT
 {
     set_has_value(other.has_value);
     set_value(other.value);
 }
 
 #if __cplusplus >= 201703L
-GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const std::optional<GU::PercentCoordinate>& other)
+GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const std::optional<GU::PercentCoordinate>& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     if (!other.has_value())
@@ -98,7 +98,7 @@ GU::OptionalPercentCoordinate::OptionalPercentCoordinate(const std::optional<GU:
 #endif
 
 #if __cplusplus >= 201103L
-GU::OptionalPercentCoordinate::OptionalPercentCoordinate(GU::OptionalPercentCoordinate&& other)
+GU::OptionalPercentCoordinate::OptionalPercentCoordinate(GU::OptionalPercentCoordinate&& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     other.set_has_value(0.0f);
@@ -107,9 +107,9 @@ GU::OptionalPercentCoordinate::OptionalPercentCoordinate(GU::OptionalPercentCoor
 }
 #endif
 
-GU::OptionalPercentCoordinate::~OptionalPercentCoordinate() {}
+GU::OptionalPercentCoordinate::~OptionalPercentCoordinate() NOEXCEPT {}
 
-GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(const GU::OptionalPercentCoordinate& other)
+GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(const GU::OptionalPercentCoordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -120,7 +120,7 @@ GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(const GU
     return *this;
 }
 
-GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(const gu_optional_percent_coordinate& other)
+GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(const gu_optional_percent_coordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -132,7 +132,7 @@ GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(const gu
 }
 
 #if __cplusplus >= 201703L
-GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(const std::optional<GU::PercentCoordinate>& other)
+GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(const std::optional<GU::PercentCoordinate>& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     if (!other.has_value())
@@ -146,7 +146,7 @@ GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(const st
 #endif
 
 #if __cplusplus >= 201103L
-GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(GU::OptionalPercentCoordinate&& other)
+GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(GU::OptionalPercentCoordinate&& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -160,28 +160,28 @@ GU::OptionalPercentCoordinate& GU::OptionalPercentCoordinate::operator=(GU::Opti
 }
 #endif
 
-bool GU::OptionalPercentCoordinate::has_value() const
+bool GU::OptionalPercentCoordinate::has_value() const NOEXCEPT
 {
     return gu_optional_percent_coordinate::has_value;
 }
 
-void GU::OptionalPercentCoordinate::set_has_value(const bool newValue)
+void GU::OptionalPercentCoordinate::set_has_value(const bool newValue) NOEXCEPT
 {
     gu_optional_percent_coordinate::has_value = newValue;
 }
 
-GU::PercentCoordinate GU::OptionalPercentCoordinate::value() const
+GU::PercentCoordinate GU::OptionalPercentCoordinate::value() const NOEXCEPT
 {
     return gu_optional_percent_coordinate::value;
 }
 
-void GU::OptionalPercentCoordinate::set_value(const GU::PercentCoordinate newValue)
+void GU::OptionalPercentCoordinate::set_value(const GU::PercentCoordinate newValue) NOEXCEPT
 {
     gu_optional_percent_coordinate::value = newValue;
 }
 
 #if __cplusplus >= 201703L
-std::optional<GU::PercentCoordinate> GU::OptionalPercentCoordinate::asOptional() const
+std::optional<GU::PercentCoordinate> GU::OptionalPercentCoordinate::asOptional() const NOEXCEPT
 {
     if (has_value())
         return std::optional<GU::PercentCoordinate>(value());

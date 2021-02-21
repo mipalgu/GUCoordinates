@@ -63,28 +63,28 @@
 #include <optional>
 #endif
 
-GU::RelativeCoordinate::RelativeCoordinate() {}
+GU::RelativeCoordinate::RelativeCoordinate() NOEXCEPT {}
 
-GU::RelativeCoordinate::RelativeCoordinate(degrees_d t_direction, millimetres_u t_distance)
+GU::RelativeCoordinate::RelativeCoordinate(degrees_d t_direction, millimetres_u t_distance) NOEXCEPT
 {
     set_direction(t_direction);
     set_distance(t_distance);
 }
 
-GU::RelativeCoordinate::RelativeCoordinate(const RelativeCoordinate& other)
+GU::RelativeCoordinate::RelativeCoordinate(const RelativeCoordinate& other) NOEXCEPT
 {
     set_direction(other.direction());
     set_distance(other.distance());
 }
 
-GU::RelativeCoordinate::RelativeCoordinate(const gu_relative_coordinate & other)
+GU::RelativeCoordinate::RelativeCoordinate(const gu_relative_coordinate & other) NOEXCEPT
 {
     set_direction(other.direction);
     set_distance(other.distance);
 }
 
 #if __cplusplus >= 201103L
-GU::RelativeCoordinate::RelativeCoordinate(RelativeCoordinate&& other)
+GU::RelativeCoordinate::RelativeCoordinate(RelativeCoordinate&& other) NOEXCEPT
 {
     set_direction(other.direction());
     set_distance(other.distance());
@@ -93,9 +93,9 @@ GU::RelativeCoordinate::RelativeCoordinate(RelativeCoordinate&& other)
 }
 #endif
 
-GU::RelativeCoordinate::~RelativeCoordinate() {}
+GU::RelativeCoordinate::~RelativeCoordinate() NOEXCEPT {}
 
-GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(const RelativeCoordinate& other)
+GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(const RelativeCoordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -106,7 +106,7 @@ GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(const RelativeCoordina
     return *this;
 }
 
-GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(const gu_relative_coordinate& other)
+GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(const gu_relative_coordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -118,7 +118,7 @@ GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(const gu_relative_coor
 }
 
 #if __cplusplus >= 201103L
-GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(RelativeCoordinate&& other)
+GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(RelativeCoordinate&& other) NOEXCEPT
 {
     if (&other == this) {
         return *this;
@@ -131,87 +131,87 @@ GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(RelativeCoordinate&& o
 }
 #endif
 
-GU::CameraCoordinate GU::RelativeCoordinate::cameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::CameraCoordinate GU::RelativeCoordinate::cameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return percentCoordinate(cameraPivot, cameraOffset).cameraCoordinate(resWidth, resHeight);
 }
 
-GU::PixelCoordinate GU::RelativeCoordinate::pixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::PixelCoordinate GU::RelativeCoordinate::pixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return percentCoordinate(cameraPivot, cameraOffset).pixelCoordinate(resWidth, resHeight);
 }
 
-GU::PercentCoordinate GU::RelativeCoordinate::percentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+GU::PercentCoordinate GU::RelativeCoordinate::percentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset) const NOEXCEPT
 {
     return GU::PercentCoordinate(rr_coord_to_pct_coord(*this, cameraPivot, cameraOffset));
 }
 
-GU::CameraCoordinate GU::RelativeCoordinate::clampedCameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::CameraCoordinate GU::RelativeCoordinate::clampedCameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return clampedPercentCoordinate(cameraPivot, cameraOffset).cameraCoordinate(resWidth, resHeight);
 }
 
-GU::PixelCoordinate GU::RelativeCoordinate::clampedPixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::PixelCoordinate GU::RelativeCoordinate::clampedPixelCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return clampedPercentCoordinate(cameraPivot, cameraOffset).pixelCoordinate(resWidth, resHeight);
 }
 
-GU::PercentCoordinate GU::RelativeCoordinate::clampedPercentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+GU::PercentCoordinate GU::RelativeCoordinate::clampedPercentCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset) const NOEXCEPT
 {
     return GU::PercentCoordinate(clamped_rr_coord_to_pct_coord(*this, cameraPivot, cameraOffset));
 }
 
-GU::RelativeCoordinate GU::RelativeCoordinate::relativeCoordinateTo(const RelativeCoordinate & coord) const
+GU::RelativeCoordinate GU::RelativeCoordinate::relativeCoordinateTo(const RelativeCoordinate & coord) const NOEXCEPT
 {
     return cartesianCoordinate().relativeCoordinateTo(coord.cartesianCoordinate());
 }
 
-GU::CartesianCoordinate GU::RelativeCoordinate::cartesianCoordinate() const
+GU::CartesianCoordinate GU::RelativeCoordinate::cartesianCoordinate() const NOEXCEPT
 {
     return rr_coord_to_cartesian_coord(*this);
 }
 
-GU::FieldCoordinate GU::RelativeCoordinate::fieldCoordinate(const degrees_t heading) const
+GU::FieldCoordinate GU::RelativeCoordinate::fieldCoordinate(const degrees_t heading) const NOEXCEPT
 {
     return rr_coord_to_field_coord(*this, heading);
 }
 
-degrees_d GU::RelativeCoordinate::direction() const
+degrees_d GU::RelativeCoordinate::direction() const NOEXCEPT
 {
     return gu_relative_coordinate::direction;
 }
 
-void GU::RelativeCoordinate::set_direction(const degrees_d newValue)
+void GU::RelativeCoordinate::set_direction(const degrees_d newValue) NOEXCEPT
 {
     gu_relative_coordinate::direction = newValue;
 }
 
-millimetres_u GU::RelativeCoordinate::distance() const
+millimetres_u GU::RelativeCoordinate::distance() const NOEXCEPT
 {
     return gu_relative_coordinate::distance;
 }
 
-void GU::RelativeCoordinate::set_distance(const millimetres_u newValue)
+void GU::RelativeCoordinate::set_distance(const millimetres_u newValue) NOEXCEPT
 {
     gu_relative_coordinate::distance = newValue;
 }
 
-bool GU::RelativeCoordinate::operator==(const RelativeCoordinate &other) const
+bool GU::RelativeCoordinate::operator==(const RelativeCoordinate &other) const NOEXCEPT
 {
     return gu_relative_coordinate_equals(*this, other, 0.00001);
 }
 
-bool GU::RelativeCoordinate::operator!=(const RelativeCoordinate &other) const
+bool GU::RelativeCoordinate::operator!=(const RelativeCoordinate &other) const NOEXCEPT
 {
     return !(*this == other);
 }
 
-bool GU::RelativeCoordinate::operator==(const gu_relative_coordinate &other) const
+bool GU::RelativeCoordinate::operator==(const gu_relative_coordinate &other) const NOEXCEPT
 {
     return gu_relative_coordinate_equals(*this, other, 0.00001);
 }
 
-bool GU::RelativeCoordinate::operator!=(const gu_relative_coordinate &other) const
+bool GU::RelativeCoordinate::operator!=(const gu_relative_coordinate &other) const NOEXCEPT
 {
     return !(*this == other);
 }

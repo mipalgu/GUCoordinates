@@ -63,28 +63,28 @@
 #include <optional>
 #endif
 
-GU::CartesianCoordinate::CartesianCoordinate() {}
+GU::CartesianCoordinate::CartesianCoordinate() NOEXCEPT {}
 
-GU::CartesianCoordinate::CartesianCoordinate(centimetres_t t_x, centimetres_t t_y)
+GU::CartesianCoordinate::CartesianCoordinate(centimetres_t t_x, centimetres_t t_y) NOEXCEPT
 {
     set_x(t_x);
     set_y(t_y);
 }
 
-GU::CartesianCoordinate::CartesianCoordinate(const CartesianCoordinate& other)
+GU::CartesianCoordinate::CartesianCoordinate(const CartesianCoordinate& other) NOEXCEPT
 {
     set_x(other.x());
     set_y(other.y());
 }
 
-GU::CartesianCoordinate::CartesianCoordinate(const gu_cartesian_coordinate & other)
+GU::CartesianCoordinate::CartesianCoordinate(const gu_cartesian_coordinate & other) NOEXCEPT
 {
     set_x(other.x);
     set_y(other.y);
 }
 
 #if __cplusplus >= 201103L
-GU::CartesianCoordinate::CartesianCoordinate(CartesianCoordinate&& other)
+GU::CartesianCoordinate::CartesianCoordinate(CartesianCoordinate&& other) NOEXCEPT
 {
     set_x(other.x());
     set_y(other.y());
@@ -93,9 +93,9 @@ GU::CartesianCoordinate::CartesianCoordinate(CartesianCoordinate&& other)
 }
 #endif
 
-GU::CartesianCoordinate::~CartesianCoordinate() {}
+GU::CartesianCoordinate::~CartesianCoordinate() NOEXCEPT {}
 
-GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(const CartesianCoordinate& other)
+GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(const CartesianCoordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -106,7 +106,7 @@ GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(const CartesianCoord
     return *this;
 }
 
-GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(const gu_cartesian_coordinate& other)
+GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(const gu_cartesian_coordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -118,7 +118,7 @@ GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(const gu_cartesian_c
 }
 
 #if __cplusplus >= 201103L
-GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&& other)
+GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&& other) NOEXCEPT
 {
     if (&other == this) {
         return *this;
@@ -131,132 +131,132 @@ GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&
 }
 #endif
 
-GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::CameraCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::CameraCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const NOEXCEPT
 {
     return cartesianCoordinateAt(target.relativeCoordinate(cameraPivot, cameraOffset));
 }
 
-GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::PixelCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::PixelCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const NOEXCEPT
 {
     return cartesianCoordinateAt(target.relativeCoordinate(cameraPivot, cameraOffset));
 }
 
-GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::PercentCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const
+GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::PercentCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const NOEXCEPT
 {
     return cartesianCoordinateAt(target.relativeCoordinate(cameraPivot, cameraOffset));
 }
 
-GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::RelativeCoordinate & target) const
+GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::RelativeCoordinate & target) const NOEXCEPT
 {
     return rr_coord_to_cartesian_coord_from_source(target, *this);
 }
 
-GU::RelativeCoordinate GU::CartesianCoordinate::relativeCoordinateTo(const GU::CartesianCoordinate & target) const
+GU::RelativeCoordinate GU::CartesianCoordinate::relativeCoordinateTo(const GU::CartesianCoordinate & target) const NOEXCEPT
 {
     return cartesian_coord_to_rr_coord_from_source(*this, target);
 }
 
-GU::RelativeCoordinate GU::CartesianCoordinate::relativeCoordinateTo(const GU::FieldCoordinate & target) const
+GU::RelativeCoordinate GU::CartesianCoordinate::relativeCoordinateTo(const GU::FieldCoordinate & target) const NOEXCEPT
 {
     return relativeCoordinateTo(target.position());
 }
 
-GU::CameraCoordinate GU::CartesianCoordinate::cameraCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::CameraCoordinate GU::CartesianCoordinate::cameraCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return relativeCoordinateTo(target).cameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
-GU::CameraCoordinate GU::CartesianCoordinate::cameraCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::CameraCoordinate GU::CartesianCoordinate::cameraCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return relativeCoordinateTo(target).cameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
-GU::PixelCoordinate GU::CartesianCoordinate::pixelCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::PixelCoordinate GU::CartesianCoordinate::pixelCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return relativeCoordinateTo(target).pixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
-GU::PixelCoordinate GU::CartesianCoordinate::pixelCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::PixelCoordinate GU::CartesianCoordinate::pixelCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return relativeCoordinateTo(target).pixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
-GU::PercentCoordinate GU::CartesianCoordinate::percentCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const
+GU::PercentCoordinate GU::CartesianCoordinate::percentCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const NOEXCEPT
 {
     return relativeCoordinateTo(target).percentCoordinate(cameraPivot, cameraOffset);
 }
 
-GU::PercentCoordinate GU::CartesianCoordinate::percentCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const
+GU::PercentCoordinate GU::CartesianCoordinate::percentCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const NOEXCEPT
 {
     return relativeCoordinateTo(target).percentCoordinate(cameraPivot, cameraOffset);
 }
 
-GU::CameraCoordinate GU::CartesianCoordinate::clampedCameraCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::CameraCoordinate GU::CartesianCoordinate::clampedCameraCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return relativeCoordinateTo(target).clampedCameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
-GU::CameraCoordinate GU::CartesianCoordinate::clampedCameraCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::CameraCoordinate GU::CartesianCoordinate::clampedCameraCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return relativeCoordinateTo(target).clampedCameraCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
-GU::PixelCoordinate GU::CartesianCoordinate::clampedPixelCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::PixelCoordinate GU::CartesianCoordinate::clampedPixelCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return relativeCoordinateTo(target).clampedPixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
-GU::PixelCoordinate GU::CartesianCoordinate::clampedPixelCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const
+GU::PixelCoordinate GU::CartesianCoordinate::clampedPixelCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return relativeCoordinateTo(target).clampedPixelCoordinate(cameraPivot, cameraOffset, resWidth, resHeight);
 }
 
-GU::PercentCoordinate GU::CartesianCoordinate::clampedPercentCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const
+GU::PercentCoordinate GU::CartesianCoordinate::clampedPercentCoordinateTo(const GU::CartesianCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const NOEXCEPT
 {
     return relativeCoordinateTo(target).clampedPercentCoordinate(cameraPivot, cameraOffset);
 }
 
-GU::PercentCoordinate GU::CartesianCoordinate::clampedPercentCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const
+GU::PercentCoordinate GU::CartesianCoordinate::clampedPercentCoordinateTo(const GU::FieldCoordinate & target, const GU::CameraPivot & cameraPivot, const int cameraOffset) const NOEXCEPT
 {
     return relativeCoordinateTo(target).clampedPercentCoordinate(cameraPivot, cameraOffset);
 }
 
-centimetres_t GU::CartesianCoordinate::x() const
+centimetres_t GU::CartesianCoordinate::x() const NOEXCEPT
 {
     return gu_cartesian_coordinate::x;
 }
 
-void GU::CartesianCoordinate::set_x(const centimetres_t newValue)
+void GU::CartesianCoordinate::set_x(const centimetres_t newValue) NOEXCEPT
 {
     gu_cartesian_coordinate::x = newValue;
 }
 
-centimetres_t GU::CartesianCoordinate::y() const
+centimetres_t GU::CartesianCoordinate::y() const NOEXCEPT
 {
     return gu_cartesian_coordinate::y;
 }
 
-void GU::CartesianCoordinate::set_y(const centimetres_t newValue)
+void GU::CartesianCoordinate::set_y(const centimetres_t newValue) NOEXCEPT
 {
     gu_cartesian_coordinate::y = newValue;
 }
 
-bool GU::CartesianCoordinate::operator==(const CartesianCoordinate &other) const
+bool GU::CartesianCoordinate::operator==(const CartesianCoordinate &other) const NOEXCEPT
 {
     return gu_cartesian_coordinate_equals(*this, other);
 }
 
-bool GU::CartesianCoordinate::operator!=(const CartesianCoordinate &other) const
+bool GU::CartesianCoordinate::operator!=(const CartesianCoordinate &other) const NOEXCEPT
 {
     return !(*this == other);
 }
 
-bool GU::CartesianCoordinate::operator==(const gu_cartesian_coordinate &other) const
+bool GU::CartesianCoordinate::operator==(const gu_cartesian_coordinate &other) const NOEXCEPT
 {
     return gu_cartesian_coordinate_equals(*this, other);
 }
 
-bool GU::CartesianCoordinate::operator!=(const gu_cartesian_coordinate &other) const
+bool GU::CartesianCoordinate::operator!=(const gu_cartesian_coordinate &other) const NOEXCEPT
 {
     return !(*this == other);
 }

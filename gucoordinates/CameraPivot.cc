@@ -61,9 +61,9 @@
 
 #include <string.h>
 
-GU::CameraPivot::CameraPivot() {}
+GU::CameraPivot::CameraPivot() NOEXCEPT {}
 
-GU::CameraPivot::CameraPivot(const degrees_d t_pitch, const degrees_d t_yaw, const centimetres_d t_height, const gu_camera t_cameras[GU_CAMERA_PIVOT_NUM_CAMERAS], int t_numCameras)
+GU::CameraPivot::CameraPivot(const degrees_d t_pitch, const degrees_d t_yaw, const centimetres_d t_height, const gu_camera t_cameras[GU_CAMERA_PIVOT_NUM_CAMERAS], int t_numCameras) NOEXCEPT
 {
     set_pitch(t_pitch);
     set_yaw(t_yaw);
@@ -72,7 +72,7 @@ GU::CameraPivot::CameraPivot(const degrees_d t_pitch, const degrees_d t_yaw, con
     set_numCameras(t_numCameras);
 }
 
-GU::CameraPivot::CameraPivot(const CameraPivot& other)
+GU::CameraPivot::CameraPivot(const CameraPivot& other) NOEXCEPT
 {
     set_pitch(other.pitch());
     set_yaw(other.yaw());
@@ -81,7 +81,7 @@ GU::CameraPivot::CameraPivot(const CameraPivot& other)
     set_numCameras(other.numCameras());
 } 
 
-GU::CameraPivot::CameraPivot(const gu_camera_pivot& other)
+GU::CameraPivot::CameraPivot(const gu_camera_pivot& other) NOEXCEPT
 {
     set_pitch(other.pitch);
     set_yaw(other.yaw);
@@ -91,7 +91,7 @@ GU::CameraPivot::CameraPivot(const gu_camera_pivot& other)
 }
 
 #if __cplusplus >= 201103L
-GU::CameraPivot::CameraPivot(CameraPivot&& other)
+GU::CameraPivot::CameraPivot(CameraPivot&& other) NOEXCEPT
 {
     set_pitch(other.pitch());
     set_yaw(other.yaw());
@@ -107,9 +107,9 @@ GU::CameraPivot::CameraPivot(CameraPivot&& other)
 }
 #endif
 
-GU::CameraPivot::~CameraPivot() {}
+GU::CameraPivot::~CameraPivot() NOEXCEPT {}
 
-GU::CameraPivot& GU::CameraPivot::operator=(const CameraPivot& other)
+GU::CameraPivot& GU::CameraPivot::operator=(const CameraPivot& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -123,7 +123,7 @@ GU::CameraPivot& GU::CameraPivot::operator=(const CameraPivot& other)
     return *this;
 }
 
-GU::CameraPivot& GU::CameraPivot::operator=(const gu_camera_pivot& other)
+GU::CameraPivot& GU::CameraPivot::operator=(const gu_camera_pivot& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -138,7 +138,7 @@ GU::CameraPivot& GU::CameraPivot::operator=(const gu_camera_pivot& other)
 }
 
 #if __cplusplus >= 201103L
-GU::CameraPivot& GU::CameraPivot::operator=(CameraPivot&& other)
+GU::CameraPivot& GU::CameraPivot::operator=(CameraPivot&& other) NOEXCEPT
 {
     if (&other == this) {
         return *this;
@@ -158,83 +158,83 @@ GU::CameraPivot& GU::CameraPivot::operator=(CameraPivot&& other)
 }
 #endif
 
-degrees_d GU::CameraPivot::pitch() const
+degrees_d GU::CameraPivot::pitch() const NOEXCEPT
 {
     return gu_camera_pivot::pitch;
 }
 
-void GU::CameraPivot::set_pitch(const degrees_d newValue)
+void GU::CameraPivot::set_pitch(const degrees_d newValue) NOEXCEPT
 {
     gu_camera_pivot::pitch = newValue;
 }
 
-degrees_d GU::CameraPivot::yaw() const
+degrees_d GU::CameraPivot::yaw() const NOEXCEPT
 {
     return gu_camera_pivot::yaw;
 }
 
-void GU::CameraPivot::set_yaw(const degrees_d newValue)
+void GU::CameraPivot::set_yaw(const degrees_d newValue) NOEXCEPT
 {
     gu_camera_pivot::yaw = newValue;
 }
 
 
-centimetres_d GU::CameraPivot::height() const
+centimetres_d GU::CameraPivot::height() const NOEXCEPT
 {
     return gu_camera_pivot::height;
 }
 
-void GU::CameraPivot::set_height(const centimetres_d newValue)
+void GU::CameraPivot::set_height(const centimetres_d newValue) NOEXCEPT
 {
     gu_camera_pivot::height = newValue;
 }
 
-const gu_camera * GU::CameraPivot::cameras() const
+const gu_camera * GU::CameraPivot::cameras() const NOEXCEPT
 {
     return &gu_camera_pivot::cameras[0];
 }
 
-void GU::CameraPivot::set_cameras(const gu_camera newValue[GU_CAMERA_PIVOT_NUM_CAMERAS])
+void GU::CameraPivot::set_cameras(const gu_camera newValue[GU_CAMERA_PIVOT_NUM_CAMERAS]) NOEXCEPT
 {
     memcpy(gu_camera_pivot::cameras, newValue, GU_CAMERA_PIVOT_NUM_CAMERAS * sizeof(gu_camera));
 }
 
-GU::Camera GU::CameraPivot::camera(const int index) const
+GU::Camera GU::CameraPivot::camera(const int index) const NOEXCEPT
 {
     return gu_camera_pivot::cameras[index];
 }
 
-void GU::CameraPivot::set_camera(const int index, const GU::Camera newValue)
+void GU::CameraPivot::set_camera(const int index, const GU::Camera newValue) NOEXCEPT
 {
     gu_camera_pivot::cameras[index] = newValue;
 }
 
-int GU::CameraPivot::numCameras() const
+int GU::CameraPivot::numCameras() const NOEXCEPT
 {
     return gu_camera_pivot::numCameras;
 }
 
-void GU::CameraPivot::set_numCameras(const int newValue)
+void GU::CameraPivot::set_numCameras(const int newValue) NOEXCEPT
 {
     gu_camera_pivot::numCameras = newValue;
 }
 
-bool GU::CameraPivot::operator==(const CameraPivot &other) const
+bool GU::CameraPivot::operator==(const CameraPivot &other) const NOEXCEPT
 {
     return gu_camera_pivot_equals(*this, other, 0.0001);
 }
 
-bool GU::CameraPivot::operator!=(const CameraPivot &other) const
+bool GU::CameraPivot::operator!=(const CameraPivot &other) const NOEXCEPT
 {
     return !(*this == other);
 }
 
-bool GU::CameraPivot::operator==(const gu_camera_pivot &other) const
+bool GU::CameraPivot::operator==(const gu_camera_pivot &other) const NOEXCEPT
 {
     return gu_camera_pivot_equals(*this, other, 0.0001);
 }
 
-bool GU::CameraPivot::operator!=(const gu_camera_pivot &other) const
+bool GU::CameraPivot::operator!=(const gu_camera_pivot &other) const NOEXCEPT
 {
     return !(*this == other);
 }

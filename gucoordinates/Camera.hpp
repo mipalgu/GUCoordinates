@@ -60,53 +60,53 @@
 #define CAMERA_HPP
 
 #include "camera.h"
-
 #include <cstdlib>
+#include <gu_util.h>
 
 namespace GU {
 
     struct Camera: public gu_camera {
 
-        Camera();
-        Camera(centimetres_d, centimetres_d, degrees_d, degrees_d, degrees_d);
-        Camera(const Camera& other);
-        Camera(const gu_camera& other);
+        Camera() NOEXCEPT;
+        Camera(centimetres_d, centimetres_d, degrees_d, degrees_d, degrees_d) NOEXCEPT;
+        Camera(const Camera& other) NOEXCEPT;
+        Camera(const gu_camera& other) NOEXCEPT;
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        Camera(Camera&& other);
+        Camera(Camera&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
-        ~Camera();
-        Camera& operator=(const Camera& other);
-        Camera& operator=(const gu_camera& other);
+        ~Camera() NOEXCEPT;
+        Camera& operator=(const Camera& other) NOEXCEPT;
+        Camera& operator=(const gu_camera& other) NOEXCEPT;
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        Camera& operator=(Camera&& other);
-        Camera& operator=(gu_camera&& other);
+        Camera& operator=(Camera&& other) NOEXCEPT;
+        Camera& operator=(gu_camera&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
 
-        centimetres_d height() const;
-        void set_height(const centimetres_d);
+        centimetres_d height() const NOEXCEPT;
+        void set_height(const centimetres_d) NOEXCEPT;
 
-        centimetres_d centerOffset() const;
-        void set_centerOffset(const centimetres_d);
+        centimetres_d centerOffset() const NOEXCEPT;
+        void set_centerOffset(const centimetres_d) NOEXCEPT;
 
-        degrees_d vDirection() const;
-        void set_vDirection(const degrees_d);
+        degrees_d vDirection() const NOEXCEPT;
+        void set_vDirection(const degrees_d) NOEXCEPT;
 
-        degrees_d vFov() const;
-        void set_vFov(const degrees_d);
+        degrees_d vFov() const NOEXCEPT;
+        void set_vFov(const degrees_d) NOEXCEPT;
 
-        degrees_d hFov() const;
-        void set_hFov(const degrees_d);
+        degrees_d hFov() const NOEXCEPT;
+        void set_hFov(const degrees_d) NOEXCEPT;
 
-        bool operator ==(const Camera &other) const;
-        bool operator !=(const Camera &other) const;
-        bool operator ==(const gu_camera &other) const;
-        bool operator !=(const gu_camera &other) const;
+        bool operator ==(const Camera &other) const NOEXCEPT;
+        bool operator !=(const Camera &other) const NOEXCEPT;
+        bool operator ==(const gu_camera &other) const NOEXCEPT;
+        bool operator !=(const gu_camera &other) const NOEXCEPT;
 
     };
 

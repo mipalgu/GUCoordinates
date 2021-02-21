@@ -58,9 +58,9 @@
 
 #include "Camera.hpp"
 
-GU::Camera::Camera() {}
+GU::Camera::Camera() NOEXCEPT {}
 
-GU::Camera::Camera(centimetres_d t_height, centimetres_d t_centerOffset, degrees_d t_vDirection, degrees_d t_vFov, degrees_d t_hFov)
+GU::Camera::Camera(centimetres_d t_height, centimetres_d t_centerOffset, degrees_d t_vDirection, degrees_d t_vFov, degrees_d t_hFov) NOEXCEPT
 {
     set_height(t_height);
     set_centerOffset(t_centerOffset);
@@ -69,7 +69,7 @@ GU::Camera::Camera(centimetres_d t_height, centimetres_d t_centerOffset, degrees
     set_hFov(t_hFov);
 }
 
-GU::Camera::Camera(const Camera& other)
+GU::Camera::Camera(const Camera& other) NOEXCEPT
 {
     set_height(other.height());
     set_centerOffset(other.centerOffset());
@@ -78,7 +78,7 @@ GU::Camera::Camera(const Camera& other)
     set_hFov(other.hFov());
 }
 
-GU::Camera::Camera(const gu_camera& other)
+GU::Camera::Camera(const gu_camera& other) NOEXCEPT
 {
     set_height(other.height);
     set_centerOffset(other.centerOffset);
@@ -88,7 +88,7 @@ GU::Camera::Camera(const gu_camera& other)
 }
 
 #if __cplusplus >= 201103L
-GU::Camera::Camera(Camera&& other)
+GU::Camera::Camera(Camera&& other) NOEXCEPT
 {
     set_height(other.height());
     set_centerOffset(other.centerOffset());
@@ -103,9 +103,9 @@ GU::Camera::Camera(Camera&& other)
 }
 #endif
 
-GU::Camera::~Camera() {}
+GU::Camera::~Camera() NOEXCEPT {}
 
-GU::Camera& GU::Camera::operator=(const Camera& other)
+GU::Camera& GU::Camera::operator=(const Camera& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -119,7 +119,7 @@ GU::Camera& GU::Camera::operator=(const Camera& other)
     return *this;
 }
 
-GU::Camera& GU::Camera::operator=(const gu_camera& other)
+GU::Camera& GU::Camera::operator=(const gu_camera& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -134,7 +134,7 @@ GU::Camera& GU::Camera::operator=(const gu_camera& other)
 }
 
 #if __cplusplus >= 201103L
-GU::Camera& GU::Camera::operator=(Camera&& other)
+GU::Camera& GU::Camera::operator=(Camera&& other) NOEXCEPT
 {
     if (&other == this) {
         return *this;
@@ -152,7 +152,7 @@ GU::Camera& GU::Camera::operator=(Camera&& other)
     return *this;
 }
 
-GU::Camera& GU::Camera::operator=(gu_camera&& other)
+GU::Camera& GU::Camera::operator=(gu_camera&& other) NOEXCEPT
 {
     if (&other == this) {
         return *this;
@@ -171,72 +171,72 @@ GU::Camera& GU::Camera::operator=(gu_camera&& other)
 }
 #endif
 
-centimetres_d GU::Camera::height() const
+centimetres_d GU::Camera::height() const NOEXCEPT
 {
     return gu_camera::height;
 }
 
-void GU::Camera::set_height(const centimetres_d newValue)
+void GU::Camera::set_height(const centimetres_d newValue) NOEXCEPT
 {
     gu_camera::height = newValue;
 }
 
-centimetres_d GU::Camera::centerOffset() const
+centimetres_d GU::Camera::centerOffset() const NOEXCEPT
 {
     return gu_camera::centerOffset;
 }
 
-void GU::Camera::set_centerOffset(const centimetres_d newValue)
+void GU::Camera::set_centerOffset(const centimetres_d newValue) NOEXCEPT
 {
     gu_camera::centerOffset = newValue;
 }
 
-degrees_d GU::Camera::vDirection() const
+degrees_d GU::Camera::vDirection() const NOEXCEPT
 {
     return gu_camera::vDirection;
 }
 
-void GU::Camera::set_vDirection(const degrees_d newValue)
+void GU::Camera::set_vDirection(const degrees_d newValue) NOEXCEPT
 {
     gu_camera::vDirection = newValue;
 }
 
-degrees_d GU::Camera::vFov() const
+degrees_d GU::Camera::vFov() const NOEXCEPT
 {
     return gu_camera::vFov;
 }
 
-void GU::Camera::set_vFov(const degrees_d newValue)
+void GU::Camera::set_vFov(const degrees_d newValue) NOEXCEPT
 {
     gu_camera::vFov = newValue;
 }
 
-degrees_d GU::Camera::hFov() const
+degrees_d GU::Camera::hFov() const NOEXCEPT
 {
     return gu_camera::hFov;
 }
 
-void GU::Camera::set_hFov(const degrees_d newValue)
+void GU::Camera::set_hFov(const degrees_d newValue) NOEXCEPT
 {
     gu_camera::hFov = newValue;
 }
 
-bool GU::Camera::operator==(const Camera &other) const
+bool GU::Camera::operator==(const Camera &other) const NOEXCEPT
 {
     return gu_camera_equals(*this, other, 0.0001);
 }
 
-bool GU::Camera::operator!=(const Camera &other) const
+bool GU::Camera::operator!=(const Camera &other) const NOEXCEPT
 {
     return !(*this == other);
 }
 
-bool GU::Camera::operator==(const gu_camera &other) const
+bool GU::Camera::operator==(const gu_camera &other) const NOEXCEPT
 {
     return gu_camera_equals(*this, other, 0.0001);
 }
 
-bool GU::Camera::operator!=(const gu_camera &other) const
+bool GU::Camera::operator!=(const gu_camera &other) const NOEXCEPT
 {
     return !(*this == other);
 }

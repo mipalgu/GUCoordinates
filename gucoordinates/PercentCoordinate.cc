@@ -63,28 +63,28 @@
 #include <optional>
 #endif
 
-GU::PercentCoordinate::PercentCoordinate() {}
+GU::PercentCoordinate::PercentCoordinate() NOEXCEPT {}
 
-GU::PercentCoordinate::PercentCoordinate(percent_d t_x, percent_d t_y)
+GU::PercentCoordinate::PercentCoordinate(percent_d t_x, percent_d t_y) NOEXCEPT
 {
     set_x(t_x);
     set_y(t_y);
 }
 
-GU::PercentCoordinate::PercentCoordinate(const PercentCoordinate& other)
+GU::PercentCoordinate::PercentCoordinate(const PercentCoordinate& other) NOEXCEPT
 {
     set_x(other.x());
     set_y(other.y());
 }
 
-GU::PercentCoordinate::PercentCoordinate(const gu_percent_coordinate & other)
+GU::PercentCoordinate::PercentCoordinate(const gu_percent_coordinate & other) NOEXCEPT
 {
     set_x(other.x);
     set_y(other.y);
 }
 
 #if __cplusplus >= 201103L
-GU::PercentCoordinate::PercentCoordinate(PercentCoordinate&& other)
+GU::PercentCoordinate::PercentCoordinate(PercentCoordinate&& other) NOEXCEPT
 {
     set_x(other.x());
     set_y(other.y());
@@ -93,9 +93,9 @@ GU::PercentCoordinate::PercentCoordinate(PercentCoordinate&& other)
 }
 #endif
 
-GU::PercentCoordinate::~PercentCoordinate() {}
+GU::PercentCoordinate::~PercentCoordinate() NOEXCEPT {}
 
-GU::PercentCoordinate& GU::PercentCoordinate::operator=(const PercentCoordinate& other)
+GU::PercentCoordinate& GU::PercentCoordinate::operator=(const PercentCoordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -106,7 +106,7 @@ GU::PercentCoordinate& GU::PercentCoordinate::operator=(const PercentCoordinate&
     return *this;
 }
 
-GU::PercentCoordinate& GU::PercentCoordinate::operator=(const gu_percent_coordinate& other)
+GU::PercentCoordinate& GU::PercentCoordinate::operator=(const gu_percent_coordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -118,7 +118,7 @@ GU::PercentCoordinate& GU::PercentCoordinate::operator=(const gu_percent_coordin
 }
 
 #if __cplusplus >= 201103L
-GU::PercentCoordinate& GU::PercentCoordinate::operator=(PercentCoordinate&& other)
+GU::PercentCoordinate& GU::PercentCoordinate::operator=(PercentCoordinate&& other) NOEXCEPT
 {
     if (&other == this) {
         return *this;
@@ -131,77 +131,77 @@ GU::PercentCoordinate& GU::PercentCoordinate::operator=(PercentCoordinate&& othe
 }
 #endif
 
-GU::PixelCoordinate GU::PercentCoordinate::pixelCoordinate(const pixels_u resWidth, const pixels_u resHeight) const
+GU::PixelCoordinate GU::PercentCoordinate::pixelCoordinate(const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return pct_coord_to_px_coord(*this, resWidth, resHeight);
 }
 
-GU::CameraCoordinate GU::PercentCoordinate::cameraCoordinate(const pixels_u resWidth, const pixels_u resHeight) const
+GU::CameraCoordinate GU::PercentCoordinate::cameraCoordinate(const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {
     return pixelCoordinate(resWidth, resHeight).cameraCoordinate();
 }
 
-GU::RelativeCoordinate GU::PercentCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const
+GU::RelativeCoordinate GU::PercentCoordinate::relativeCoordinate(const GU::CameraPivot & cameraPivot, const int cameraOffset) const NOEXCEPT
 {
     return pct_coord_to_rr_coord(*this, cameraPivot, cameraOffset);
 }
 
-percent_d GU::PercentCoordinate::x() const
+percent_d GU::PercentCoordinate::x() const NOEXCEPT
 {
     return gu_percent_coordinate::x;
 }
 
-void GU::PercentCoordinate::set_x(const percent_d newValue)
+void GU::PercentCoordinate::set_x(const percent_d newValue) NOEXCEPT
 {
     gu_percent_coordinate::x = newValue;
 }
 
-percent_d GU::PercentCoordinate::y() const
+percent_d GU::PercentCoordinate::y() const NOEXCEPT
 {
     return gu_percent_coordinate::y;
 }
 
-void GU::PercentCoordinate::set_y(const percent_d newValue)
+void GU::PercentCoordinate::set_y(const percent_d newValue) NOEXCEPT
 {
     gu_percent_coordinate::y = newValue;
 }
 
-percent_d GU::PercentCoordinate::xLowerBound() const
+percent_d GU::PercentCoordinate::xLowerBound() const NOEXCEPT
 {
     return gu_percent_coordinate_x_lower_bound(*this);
 }
 
-percent_d GU::PercentCoordinate::xUpperBound() const
+percent_d GU::PercentCoordinate::xUpperBound() const NOEXCEPT
 {
     return gu_percent_coordinate_x_upper_bound(*this);
 }
 
-percent_d GU::PercentCoordinate::yLowerBound() const
+percent_d GU::PercentCoordinate::yLowerBound() const NOEXCEPT
 {
     return gu_percent_coordinate_y_lower_bound(*this);
 }
 
-percent_d GU::PercentCoordinate::yUpperBound() const
+percent_d GU::PercentCoordinate::yUpperBound() const NOEXCEPT
 {
     return gu_percent_coordinate_y_upper_bound(*this);
 }
 
-bool GU::PercentCoordinate::operator==(const PercentCoordinate &other) const
+bool GU::PercentCoordinate::operator==(const PercentCoordinate &other) const NOEXCEPT
 {
     return gu_percent_coordinate_equals(*this, other, 0.0001);
 }
 
-bool GU::PercentCoordinate::operator!=(const PercentCoordinate &other) const
+bool GU::PercentCoordinate::operator!=(const PercentCoordinate &other) const NOEXCEPT
 {
     return !(*this == other);
 }
 
-bool GU::PercentCoordinate::operator==(const gu_percent_coordinate &other) const
+bool GU::PercentCoordinate::operator==(const gu_percent_coordinate &other) const NOEXCEPT
 {
     return gu_percent_coordinate_equals(*this, other, 0.0001);
 }
 
-bool GU::PercentCoordinate::operator!=(const gu_percent_coordinate &other) const
+bool GU::PercentCoordinate::operator!=(const gu_percent_coordinate &other) const NOEXCEPT
 {
     return !(*this == other);
 }

@@ -58,34 +58,34 @@
 
 #include "OptionalPixelCoordinate.hpp"
 
-GU::OptionalPixelCoordinate::OptionalPixelCoordinate() {}
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate() NOEXCEPT {}
 
-GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const GU::PixelCoordinate t_value)
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const GU::PixelCoordinate t_value) NOEXCEPT
 {
     set_has_value(true);
     set_value(t_value);
 }
 
-GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const bool t_has_value, const GU::PixelCoordinate t_value)
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const bool t_has_value, const GU::PixelCoordinate t_value) NOEXCEPT
 {
     set_has_value(t_has_value);
     set_value(t_value);
 }
 
-GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const GU::OptionalPixelCoordinate& other)
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const GU::OptionalPixelCoordinate& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     set_value(other.value());
 }
 
-GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const gu_optional_pixel_coordinate &other)
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate(const gu_optional_pixel_coordinate &other) NOEXCEPT
 {
     set_has_value(other.has_value);
     set_value(other.value);
 }
 
 #if __cplusplus >= 201103L
-GU::OptionalPixelCoordinate::OptionalPixelCoordinate(GU::OptionalPixelCoordinate&& other)
+GU::OptionalPixelCoordinate::OptionalPixelCoordinate(GU::OptionalPixelCoordinate&& other) NOEXCEPT
 {
     set_has_value(other.has_value());
     other.set_has_value(0.0f);
@@ -94,9 +94,9 @@ GU::OptionalPixelCoordinate::OptionalPixelCoordinate(GU::OptionalPixelCoordinate
 }
 #endif
 
-GU::OptionalPixelCoordinate::~OptionalPixelCoordinate() {}
+GU::OptionalPixelCoordinate::~OptionalPixelCoordinate() NOEXCEPT {}
 
-GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(const GU::OptionalPixelCoordinate& other)
+GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(const GU::OptionalPixelCoordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -107,7 +107,7 @@ GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(const GU::Op
     return *this;
 }
 
-GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(const gu_optional_pixel_coordinate& other)
+GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(const gu_optional_pixel_coordinate& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -119,7 +119,7 @@ GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(const gu_opt
 }
 
 #if __cplusplus >= 201103L
-GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(GU::OptionalPixelCoordinate&& other)
+GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(GU::OptionalPixelCoordinate&& other) NOEXCEPT
 {
     if (&other == this)
     {
@@ -133,22 +133,22 @@ GU::OptionalPixelCoordinate& GU::OptionalPixelCoordinate::operator=(GU::Optional
 }
 #endif
 
-bool GU::OptionalPixelCoordinate::has_value() const
+bool GU::OptionalPixelCoordinate::has_value() const NOEXCEPT
 {
     return gu_optional_pixel_coordinate::has_value;
 }
 
-void GU::OptionalPixelCoordinate::set_has_value(const bool newValue)
+void GU::OptionalPixelCoordinate::set_has_value(const bool newValue) NOEXCEPT
 {
     gu_optional_pixel_coordinate::has_value = newValue;
 }
 
-GU::PixelCoordinate GU::OptionalPixelCoordinate::value() const
+GU::PixelCoordinate GU::OptionalPixelCoordinate::value() const NOEXCEPT
 {
     return gu_optional_pixel_coordinate::value;
 }
 
-void GU::OptionalPixelCoordinate::set_value(const GU::PixelCoordinate newValue)
+void GU::OptionalPixelCoordinate::set_value(const GU::PixelCoordinate newValue) NOEXCEPT
 {
     gu_optional_pixel_coordinate::value = newValue;
 }

@@ -63,53 +63,54 @@
 #include "Camera.hpp"
 
 #include <cstdlib>
+#include <gu_util.h>
 
 namespace GU {
 
     struct CameraPivot: public gu_camera_pivot {
 
-        CameraPivot();
-        CameraPivot(const degrees_d, const degrees_d, const centimetres_d, const gu_camera[GU_CAMERA_PIVOT_NUM_CAMERAS], int);
-        CameraPivot(const CameraPivot& other);
-        CameraPivot(const gu_camera_pivot& other);
+        CameraPivot() NOEXCEPT;
+        CameraPivot(const degrees_d, const degrees_d, const centimetres_d, const gu_camera[GU_CAMERA_PIVOT_NUM_CAMERAS], int) NOEXCEPT;
+        CameraPivot(const CameraPivot& other) NOEXCEPT;
+        CameraPivot(const gu_camera_pivot& other) NOEXCEPT;
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        CameraPivot(CameraPivot&& other);
+        CameraPivot(CameraPivot&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
-        ~CameraPivot();
-        CameraPivot& operator=(const CameraPivot& other);
-        CameraPivot& operator=(const gu_camera_pivot& other);
+        ~CameraPivot() NOEXCEPT;
+        CameraPivot& operator=(const CameraPivot& other) NOEXCEPT;
+        CameraPivot& operator=(const gu_camera_pivot& other) NOEXCEPT;
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        CameraPivot& operator=(CameraPivot&& other);
+        CameraPivot& operator=(CameraPivot&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
 
-        degrees_d pitch() const;
-        void set_pitch(const degrees_d);
+        degrees_d pitch() const NOEXCEPT;
+        void set_pitch(const degrees_d) NOEXCEPT;
 
-        degrees_d yaw() const;
-        void set_yaw(const degrees_d);
+        degrees_d yaw() const NOEXCEPT;
+        void set_yaw(const degrees_d) NOEXCEPT;
 
-        centimetres_d height() const;
-        void set_height(const centimetres_d);
+        centimetres_d height() const NOEXCEPT;
+        void set_height(const centimetres_d) NOEXCEPT;
 
-        const gu_camera * cameras() const;
-        void set_cameras(const gu_camera[GU_CAMERA_PIVOT_NUM_CAMERAS]);
+        const gu_camera * cameras() const NOEXCEPT;
+        void set_cameras(const gu_camera[GU_CAMERA_PIVOT_NUM_CAMERAS]) NOEXCEPT;
 
-        Camera camera(const int) const;
-        void set_camera(const int, const Camera);
+        Camera camera(const int) const NOEXCEPT;
+        void set_camera(const int, const Camera) NOEXCEPT;
 
-        int numCameras() const;
-        void set_numCameras(const int);
+        int numCameras() const NOEXCEPT;
+        void set_numCameras(const int) NOEXCEPT;
 
-        bool operator ==(const CameraPivot &other) const;
-        bool operator !=(const CameraPivot &other) const;
-        bool operator ==(const gu_camera_pivot &other) const;
-        bool operator !=(const gu_camera_pivot &other) const;
+        bool operator ==(const CameraPivot &other) const NOEXCEPT;
+        bool operator !=(const CameraPivot &other) const NOEXCEPT;
+        bool operator ==(const gu_camera_pivot &other) const NOEXCEPT;
+        bool operator !=(const gu_camera_pivot &other) const NOEXCEPT;
 
     };
 
