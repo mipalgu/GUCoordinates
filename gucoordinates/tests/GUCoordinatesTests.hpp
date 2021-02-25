@@ -221,7 +221,7 @@ namespace CGTEST {
 
             bool near(const double lhs, const double rhs) const
             {
-                const double tolerance = 0.00001;
+                const double tolerance = 0.001;
                 return fabs(lhs - rhs) < tolerance;
             }
 
