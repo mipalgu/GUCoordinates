@@ -1,12 +1,12 @@
 WFLAGS=-Wall -Weverything -Wno-unknown-pragmas -Wno-unknown-warning-option -Wno-global-constructors -Werror -Wno-padded -Wno-weak-vtables -Wno-c99-extensions -Wno-variadic-macros -Wno-used-but-marked-unused ${EXTRA_WFLAGS} -Wno-poison-system-directories -Wno-suggest-override -Wno-suggest-destructor-override
-.ifdef STD
-.  if ${STD} == 03 || ${STD} == 98
-CXXSTDFL=-std=c++${STD}
+.ifdef CPP_STD
+.  if ${CPP_STD} == 03 || ${CPP_STD} == 98
+CXXCPP_STDFL=-std=c++${CPP_STD}
 .  else
-.    include "../../../../mk/c++${STD}.mk"
+.    include "../../../../mk/c++${CPP_STD}.mk"
 .  endif
 .else
-CXXSTDFL=-std=c++98
+CXXCPP_STDFL=-std=c++98
 .endif
 
 ALL_TARGETS=build-test
