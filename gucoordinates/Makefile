@@ -20,8 +20,7 @@ PKGCONFIG_DESCRIPTION=Utilities for converting between coordinate systems.
 
 
 
-.include "../../../mk/cxxstd.mk"
-
+.include "../../../mk/testdir.mk"
 .include "../../../mk/mipal.mk"
 # vim:ft=make
 #
