@@ -73,6 +73,7 @@
 #include "conversions.h"
 
 #ifdef __cplusplus
+extern "C++" {
 #include "CameraCoordinate.hpp"
 #include "PixelCoordinate.hpp"
 #include "PercentCoordinate.hpp"
@@ -87,4 +88,5 @@
 #include "OptionalRelativeCoordinate.hpp"
 #include "OptionalCartesianCoordinate.hpp"
 #include "OptionalFieldCoordinate.hpp"
+}
 #endif
