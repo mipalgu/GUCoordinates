@@ -3,7 +3,7 @@
 # Callum McColl, 2019-06-05 11:58
 #
 
-ALL_TARGETS=test host-local atom-local atom1-local geode-local xc doc
+ALL_TARGETS?=test host-local atom-local atom1-local geode-local xc doc
 
 C_SRCS!=ls *.c
 CC_SRCS!=ls *.cc
