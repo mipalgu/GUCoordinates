@@ -10,3 +10,4 @@ SPECIFIC_LIBS=-lguunits
 WFLAGS=
 
 .include "../../../../mk/gtest.mk"
+.include "../../../../mk/mipal.mk"

@@ -8,3 +8,4 @@ CXXFLAGS+=-I../../../../../Common -I../../../../gusimplewhiteboard
 SPECIFIC_LIBS+=-lguunits
 
 .include "../../../../mk/gtest.mk"
+.include "../../../../mk/mipal.mk"
