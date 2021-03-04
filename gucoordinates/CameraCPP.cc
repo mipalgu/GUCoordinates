@@ -87,22 +87,6 @@ GU::Camera::Camera(const gu_camera& other) NOEXCEPT
     set_hFov(other.hFov);
 }
 
-#if __cplusplus >= 201103L
-GU::Camera::Camera(Camera&& other) NOEXCEPT
-{
-    set_height(other.height());
-    set_centerOffset(other.centerOffset());
-    set_vDirection(other.vDirection());
-    set_vFov(other.vFov());
-    set_hFov(other.hFov());
-    other.set_height(0.0);
-    other.set_centerOffset(0.0);
-    other.set_vDirection(0.0);
-    other.set_vFov(0.0);
-    other.set_hFov(0.0);
-}
-#endif
-
 GU::Camera::~Camera() NOEXCEPT {}
 
 GU::Camera& GU::Camera::operator=(const Camera& other) NOEXCEPT
@@ -132,44 +116,6 @@ GU::Camera& GU::Camera::operator=(const gu_camera& other) NOEXCEPT
     set_hFov(other.hFov);
     return *this;
 }
-
-#if __cplusplus >= 201103L
-GU::Camera& GU::Camera::operator=(Camera&& other) NOEXCEPT
-{
-    if (&other == this) {
-        return *this;
-    }
-    set_height(other.height());
-    set_centerOffset(other.centerOffset());
-    set_vDirection(other.vDirection());
-    set_vFov(other.vFov());
-    set_hFov(other.hFov());
-    other.set_height(0.0);
-    other.set_centerOffset(0.0);
-    other.set_vDirection(0.0);
-    other.set_vFov(0.0);
-    other.set_hFov(0.0);
-    return *this;
-}
-
-GU::Camera& GU::Camera::operator=(gu_camera&& other) NOEXCEPT
-{
-    if (&other == this) {
-        return *this;
-    }
-    set_height(other.height);
-    set_centerOffset(other.centerOffset);
-    set_vDirection(other.vDirection);
-    set_vFov(other.vFov);
-    set_hFov(other.hFov);
-    other.height = 0.0;
-    other.centerOffset = 0.0;
-    other.vDirection = 0.0;
-    other.vFov = 0.0;
-    other.hFov = 0.0;
-    return *this;
-}
-#endif
 
 centimetres_d GU::Camera::height() const NOEXCEPT
 {

@@ -110,13 +110,7 @@ namespace GU {
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalCoordinate(OptionalCoordinate<Raw, Wrapped>&& other) NOEXCEPT
-        {
-            set_has_value(other.has_value());
-            other.set_has_value(0.0f);
-            set_value(other.value());
-            other.set_value(Wrapped());
-        }
+        OptionalCoordinate(OptionalCoordinate<Raw, Wrapped>&& other) NOEXCEPT = default;
 #pragma clang diagnostic pop
 #endif
 
@@ -161,18 +155,7 @@ namespace GU {
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        OptionalCoordinate<Raw, Wrapped>& operator=(OptionalCoordinate<Raw, Wrapped>&& other) NOEXCEPT
-        {
-            if (&other == this)
-            {
-                return *this;
-            }
-            set_has_value(other.has_value());
-            other.set_has_value(false);
-            set_value(other.value());
-            other.set_value(Wrapped());
-            return *this;
-        }
+        OptionalCoordinate<Raw, Wrapped>& operator=(OptionalCoordinate<Raw, Wrapped>&& other) NOEXCEPT = default;
 #pragma clang diagnostic pop
 #endif
 

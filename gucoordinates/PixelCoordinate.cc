@@ -89,20 +89,6 @@ GU::PixelCoordinate::PixelCoordinate(const gu_pixel_coordinate& other) NOEXCEPT
     set_resHeight(other.res_height);
 }
 
-#if __cplusplus >= 201103L
-GU::PixelCoordinate::PixelCoordinate(PixelCoordinate&& other) NOEXCEPT
-{
-    set_x(other.x());
-    set_y(other.y());
-    set_resWidth(other.resWidth());
-    set_resHeight(other.resHeight());
-    other.set_x(0);
-    other.set_y(0);
-    other.set_resWidth(0);
-    other.set_resHeight(0);
-}
-#endif
-
 GU::PixelCoordinate::~PixelCoordinate() NOEXCEPT {}
 
 GU::PixelCoordinate& GU::PixelCoordinate::operator=(const PixelCoordinate& other) NOEXCEPT
@@ -130,24 +116,6 @@ GU::PixelCoordinate& GU::PixelCoordinate::operator=(const gu_pixel_coordinate& o
     set_resHeight(other.res_height);
     return *this;
 }
-
-#if __cplusplus >= 201103L
-GU::PixelCoordinate& GU::PixelCoordinate::operator=(PixelCoordinate&& other) NOEXCEPT
-{
-    if (&other == this) {
-        return *this;
-    }
-    set_x(other.x());
-    set_y(other.y());
-    set_resWidth(other.resWidth());
-    set_resHeight(other.resHeight());
-    other.set_x(0);
-    other.set_y(0);
-    other.set_resWidth(0);
-    other.set_resHeight(0);
-    return *this;
-}
-#endif
 
 GU::CameraCoordinate GU::PixelCoordinate::cameraCoordinate() const NOEXCEPT
 {

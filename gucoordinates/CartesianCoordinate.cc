@@ -83,16 +83,6 @@ GU::CartesianCoordinate::CartesianCoordinate(const gu_cartesian_coordinate & oth
     set_y(other.y);
 }
 
-#if __cplusplus >= 201103L
-GU::CartesianCoordinate::CartesianCoordinate(CartesianCoordinate&& other) NOEXCEPT
-{
-    set_x(other.x());
-    set_y(other.y());
-    other.set_x(0);
-    other.set_y(0);
-}
-#endif
-
 GU::CartesianCoordinate::~CartesianCoordinate() NOEXCEPT {}
 
 GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(const CartesianCoordinate& other) NOEXCEPT
@@ -116,20 +106,6 @@ GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(const gu_cartesian_c
     set_y(other.y);
     return *this;
 }
-
-#if __cplusplus >= 201103L
-GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&& other) NOEXCEPT
-{
-    if (&other == this) {
-        return *this;
-    }
-    set_x(other.x());
-    set_y(other.y());
-    other.set_x(0);
-    other.set_y(0);
-    return *this;
-}
-#endif
 
 GU::CartesianCoordinate GU::CartesianCoordinate::cartesianCoordinateAt(const GU::CameraCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const NOEXCEPT
 {

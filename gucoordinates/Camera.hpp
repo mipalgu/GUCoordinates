@@ -74,7 +74,7 @@ namespace GU {
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        Camera(Camera&& other) NOEXCEPT;
+        Camera(Camera&& other) NOEXCEPT = default;
 #pragma clang diagnostic pop
 #endif
         ~Camera() NOEXCEPT;
@@ -83,8 +83,7 @@ namespace GU {
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        Camera& operator=(Camera&& other) NOEXCEPT;
-        Camera& operator=(gu_camera&& other) NOEXCEPT;
+        Camera& operator=(Camera&& other) NOEXCEPT = default;
 #pragma clang diagnostic pop
 #endif
 

@@ -83,16 +83,6 @@ GU::PercentCoordinate::PercentCoordinate(const gu_percent_coordinate & other) NO
     set_y(other.y);
 }
 
-#if __cplusplus >= 201103L
-GU::PercentCoordinate::PercentCoordinate(PercentCoordinate&& other) NOEXCEPT
-{
-    set_x(other.x());
-    set_y(other.y());
-    other.set_x(0);
-    other.set_y(0);
-}
-#endif
-
 GU::PercentCoordinate::~PercentCoordinate() NOEXCEPT {}
 
 GU::PercentCoordinate& GU::PercentCoordinate::operator=(const PercentCoordinate& other) NOEXCEPT
@@ -116,20 +106,6 @@ GU::PercentCoordinate& GU::PercentCoordinate::operator=(const gu_percent_coordin
     set_y(other.y);
     return *this;
 }
-
-#if __cplusplus >= 201103L
-GU::PercentCoordinate& GU::PercentCoordinate::operator=(PercentCoordinate&& other) NOEXCEPT
-{
-    if (&other == this) {
-        return *this;
-    }
-    set_x(other.x());
-    set_y(other.y());
-    other.set_x(0);
-    other.set_y(0);
-    return *this;
-}
-#endif
 
 GU::PixelCoordinate GU::PercentCoordinate::pixelCoordinate(const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {

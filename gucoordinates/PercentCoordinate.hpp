@@ -85,7 +85,7 @@ namespace GU {
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        PercentCoordinate(PercentCoordinate&& other) NOEXCEPT;
+        PercentCoordinate(PercentCoordinate&& other) NOEXCEPT = default;
 #pragma clang diagnostic pop
 #endif
         ~PercentCoordinate() NOEXCEPT;
@@ -94,7 +94,7 @@ namespace GU {
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        PercentCoordinate& operator=(PercentCoordinate&& other) NOEXCEPT;
+        PercentCoordinate& operator=(PercentCoordinate&& other) NOEXCEPT = default;
 #pragma clang diagnostic pop
 #endif
 

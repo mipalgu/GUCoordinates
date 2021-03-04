@@ -100,7 +100,7 @@ namespace GU {
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        FieldCoordinate(FieldCoordinate&& other) NOEXCEPT;
+        FieldCoordinate(FieldCoordinate&& other) NOEXCEPT = default;
 #pragma clang diagnostic pop
 #endif
         ~FieldCoordinate() NOEXCEPT;
@@ -109,7 +109,7 @@ namespace GU {
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        FieldCoordinate& operator=(FieldCoordinate&& other) NOEXCEPT;
+        FieldCoordinate& operator=(FieldCoordinate&& other) NOEXCEPT = default;
 #pragma clang diagnostic pop
 #endif
 

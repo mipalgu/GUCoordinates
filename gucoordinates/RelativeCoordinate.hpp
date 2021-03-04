@@ -97,7 +97,7 @@ namespace GU {
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        RelativeCoordinate(RelativeCoordinate&& other) NOEXCEPT;
+        RelativeCoordinate(RelativeCoordinate&& other) NOEXCEPT = default;
 #pragma clang diagnostic pop
 #endif
         ~RelativeCoordinate() NOEXCEPT;
@@ -106,7 +106,7 @@ namespace GU {
 #if __cplusplus >= 201103L
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
-        RelativeCoordinate& operator=(RelativeCoordinate&& other) NOEXCEPT;
+        RelativeCoordinate& operator=(RelativeCoordinate&& other) NOEXCEPT = default;
 #pragma clang diagnostic pop
 #endif
 
