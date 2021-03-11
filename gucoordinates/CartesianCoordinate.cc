@@ -88,8 +88,6 @@ GU::CartesianCoordinate::CartesianCoordinate(CartesianCoordinate&& other) NOEXCE
 {
     set_x(other.x());
     set_y(other.y());
-    other.set_x(0);
-    other.set_y(0);
 }
 #endif
 
@@ -125,8 +123,6 @@ GU::CartesianCoordinate& GU::CartesianCoordinate::operator=(CartesianCoordinate&
     }
     set_x(other.x());
     set_y(other.y());
-    other.set_x(0);
-    other.set_y(0);
     return *this;
 }
 #endif

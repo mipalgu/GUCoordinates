@@ -88,8 +88,6 @@ GU::PercentCoordinate::PercentCoordinate(PercentCoordinate&& other) NOEXCEPT
 {
     set_x(other.x());
     set_y(other.y());
-    other.set_x(0);
-    other.set_y(0);
 }
 #endif
 
@@ -125,8 +123,6 @@ GU::PercentCoordinate& GU::PercentCoordinate::operator=(PercentCoordinate&& othe
     }
     set_x(other.x());
     set_y(other.y());
-    other.set_x(0);
-    other.set_y(0);
     return *this;
 }
 #endif

@@ -88,8 +88,6 @@ GU::FieldCoordinate::FieldCoordinate(FieldCoordinate&& other) NOEXCEPT
 {
     set_position(other.position());
     set_heading(other.heading());
-    other.set_position(GU::CartesianCoordinate(0, 0));
-    other.set_heading(0);
 }
 #endif
 
@@ -125,8 +123,6 @@ GU::FieldCoordinate& GU::FieldCoordinate::operator=(FieldCoordinate&& other) NOE
     }
     set_position(other.position());
     set_heading(other.heading());
-    other.set_position(GU::CartesianCoordinate(0, 0));
-    other.set_heading(0);
     return *this;
 }
 #endif

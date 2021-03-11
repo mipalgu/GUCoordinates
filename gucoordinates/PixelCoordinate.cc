@@ -96,10 +96,6 @@ GU::PixelCoordinate::PixelCoordinate(PixelCoordinate&& other) NOEXCEPT
     set_y(other.y());
     set_resWidth(other.resWidth());
     set_resHeight(other.resHeight());
-    other.set_x(0);
-    other.set_y(0);
-    other.set_resWidth(0);
-    other.set_resHeight(0);
 }
 #endif
 
@@ -141,10 +137,6 @@ GU::PixelCoordinate& GU::PixelCoordinate::operator=(PixelCoordinate&& other) NOE
     set_y(other.y());
     set_resWidth(other.resWidth());
     set_resHeight(other.resHeight());
-    other.set_x(0);
-    other.set_y(0);
-    other.set_resWidth(0);
-    other.set_resHeight(0);
     return *this;
 }
 #endif

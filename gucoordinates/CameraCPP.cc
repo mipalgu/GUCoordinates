@@ -95,11 +95,6 @@ GU::Camera::Camera(Camera&& other) NOEXCEPT
     set_vDirection(other.vDirection());
     set_vFov(other.vFov());
     set_hFov(other.hFov());
-    other.set_height(0.0);
-    other.set_centerOffset(0.0);
-    other.set_vDirection(0.0);
-    other.set_vFov(0.0);
-    other.set_hFov(0.0);
 }
 #endif
 
@@ -144,11 +139,6 @@ GU::Camera& GU::Camera::operator=(Camera&& other) NOEXCEPT
     set_vDirection(other.vDirection());
     set_vFov(other.vFov());
     set_hFov(other.hFov());
-    other.set_height(0.0);
-    other.set_centerOffset(0.0);
-    other.set_vDirection(0.0);
-    other.set_vFov(0.0);
-    other.set_hFov(0.0);
     return *this;
 }
 
