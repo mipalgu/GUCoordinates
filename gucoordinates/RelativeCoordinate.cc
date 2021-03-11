@@ -83,6 +83,16 @@ GU::RelativeCoordinate::RelativeCoordinate(const gu_relative_coordinate & other)
     set_distance(other.distance);
 }
 
+#if __cplusplus >= 201103L
+GU::RelativeCoordinate::RelativeCoordinate(RelativeCoordinate&& other) NOEXCEPT
+{
+    set_direction(other.direction());
+    set_distance(other.distance());
+    other.set_direction(0);
+    other.set_distance(0);
+}
+#endif
+
 GU::RelativeCoordinate::~RelativeCoordinate() NOEXCEPT {}
 
 GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(const RelativeCoordinate& other) NOEXCEPT
@@ -106,6 +116,20 @@ GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(const gu_relative_coor
     set_distance(other.distance);
     return *this;
 }
+
+#if __cplusplus >= 201103L
+GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(RelativeCoordinate&& other) NOEXCEPT
+{
+    if (&other == this) {
+        return *this;
+    }
+    set_direction(other.direction());
+    set_distance(other.distance());
+    other.set_direction(0);
+    other.set_distance(0);
+    return *this;
+}
+#endif
 
 GU::CameraCoordinate GU::RelativeCoordinate::cameraCoordinate(const GU::CameraPivot &cameraPivot, const int cameraOffset, const pixels_u resWidth, const pixels_u resHeight) const NOEXCEPT
 {

@@ -199,14 +199,12 @@ namespace CGTEST {
                 Class obj2 = initial();
                 SCOPED_TRACE("Move Constructor");
                 Class obj3 = std::move(obj);
-                obj = empty();
                 nequals(obj3, obj);
                 equals(obj3, obj2);
                 equals(obj, empty());
                 SCOPED_TRACE("Move assignment operator");
                 Class obj4;
                 obj4 = std::move(obj3);
-                obj3 = empty();
                 nequals(obj4, obj3);
                 equals(obj4, obj2);
                 equals(obj3, empty());

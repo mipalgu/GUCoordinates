@@ -83,6 +83,16 @@ GU::FieldCoordinate::FieldCoordinate(const gu_field_coordinate & other) NOEXCEPT
     set_heading(other.heading);
 }
 
+#if __cplusplus >= 201103L
+GU::FieldCoordinate::FieldCoordinate(FieldCoordinate&& other) NOEXCEPT
+{
+    set_position(other.position());
+    set_heading(other.heading());
+    other.set_position(GU::CartesianCoordinate(0, 0));
+    other.set_heading(0);
+}
+#endif
+
 GU::FieldCoordinate::~FieldCoordinate() NOEXCEPT {}
 
 GU::FieldCoordinate& GU::FieldCoordinate::operator=(const FieldCoordinate& other) NOEXCEPT
@@ -106,6 +116,20 @@ GU::FieldCoordinate& GU::FieldCoordinate::operator=(const gu_field_coordinate& o
     set_heading(other.heading);
     return *this;
 }
+
+#if __cplusplus >= 201103L
+GU::FieldCoordinate& GU::FieldCoordinate::operator=(FieldCoordinate&& other) NOEXCEPT
+{
+    if (&other == this) {
+        return *this;
+    }
+    set_position(other.position());
+    set_heading(other.heading());
+    other.set_position(GU::CartesianCoordinate(0, 0));
+    other.set_heading(0);
+    return *this;
+}
+#endif
 
 GU::CartesianCoordinate GU::FieldCoordinate::cartesianCoordinateAt(const GU::CameraCoordinate &target, const GU::CameraPivot &cameraPivot, const int cameraOffset) const NOEXCEPT
 {

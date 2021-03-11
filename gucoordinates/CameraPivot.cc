@@ -90,6 +90,23 @@ GU::CameraPivot::CameraPivot(const gu_camera_pivot& other) NOEXCEPT
     set_numCameras(other.numCameras);
 }
 
+#if __cplusplus >= 201103L
+GU::CameraPivot::CameraPivot(CameraPivot&& other) NOEXCEPT
+{
+    set_pitch(other.pitch());
+    set_yaw(other.yaw());
+    set_height(other.height());
+    set_cameras(other.cameras());
+    set_numCameras(other.numCameras());
+    other.set_pitch(0.0);
+    other.set_yaw(0.0);
+    other.set_height(0.0);
+    static const gu_camera newCameras[GU_CAMERA_PIVOT_NUM_CAMERAS] = {};
+    other.set_cameras(newCameras);
+    other.set_numCameras(0);
+}
+#endif
+
 GU::CameraPivot::~CameraPivot() NOEXCEPT {}
 
 GU::CameraPivot& GU::CameraPivot::operator=(const CameraPivot& other) NOEXCEPT
@@ -119,6 +136,27 @@ GU::CameraPivot& GU::CameraPivot::operator=(const gu_camera_pivot& other) NOEXCE
     set_numCameras(other.numCameras);
     return *this;
 }
+
+#if __cplusplus >= 201103L
+GU::CameraPivot& GU::CameraPivot::operator=(CameraPivot&& other) NOEXCEPT
+{
+    if (&other == this) {
+        return *this;
+    }
+    set_pitch(other.pitch());
+    set_yaw(other.yaw());
+    set_height(other.height());
+    set_cameras(other.cameras());
+    set_numCameras(other.numCameras());
+    other.set_pitch(0.0);
+    other.set_yaw(0.0);
+    other.set_height(0.0);
+    static const gu_camera newCameras[GU_CAMERA_PIVOT_NUM_CAMERAS] = {};
+    other.set_cameras(newCameras);
+    other.set_numCameras(0);
+    return *this;
+}
+#endif
 
 degrees_d GU::CameraPivot::pitch() const NOEXCEPT
 {
