@@ -75,6 +75,7 @@ namespace GU {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
         Camera(Camera&& other) NOEXCEPT;
+        Camera(gu_camera&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
         ~Camera() NOEXCEPT;

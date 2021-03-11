@@ -99,6 +99,15 @@ GU::CameraPivot::CameraPivot(CameraPivot&& other) NOEXCEPT
     set_cameras(other.cameras());
     set_numCameras(other.numCameras());
 }
+
+GU::CameraPivot::CameraPivot(gu_camera_pivot&& other) NOEXCEPT
+{
+    set_pitch(other.pitch);
+    set_yaw(other.yaw);
+    set_height(other.height);
+    set_cameras(other.cameras);
+    set_numCameras(other.numCameras);
+}
 #endif
 
 GU::CameraPivot::~CameraPivot() NOEXCEPT {}
@@ -142,6 +151,19 @@ GU::CameraPivot& GU::CameraPivot::operator=(CameraPivot&& other) NOEXCEPT
     set_height(other.height());
     set_cameras(other.cameras());
     set_numCameras(other.numCameras());
+    return *this;
+}
+
+GU::CameraPivot& GU::CameraPivot::operator=(gu_camera_pivot&& other) NOEXCEPT
+{
+    if (&other == this) {
+        return *this;
+    }
+    set_pitch(other.pitch);
+    set_yaw(other.yaw);
+    set_height(other.height);
+    set_cameras(other.cameras);
+    set_numCameras(other.numCameras);
     return *this;
 }
 #endif

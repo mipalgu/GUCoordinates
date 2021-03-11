@@ -77,6 +77,7 @@ namespace GU {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
         CameraPivot(CameraPivot&& other) NOEXCEPT;
+        CameraPivot(gu_camera_pivot&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
         ~CameraPivot() NOEXCEPT;
@@ -86,6 +87,7 @@ namespace GU {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
         CameraPivot& operator=(CameraPivot&& other) NOEXCEPT;
+        CameraPivot& operator=(gu_camera_pivot&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
 

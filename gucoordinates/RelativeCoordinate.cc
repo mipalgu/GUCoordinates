@@ -89,6 +89,12 @@ GU::RelativeCoordinate::RelativeCoordinate(RelativeCoordinate&& other) NOEXCEPT
     set_direction(other.direction());
     set_distance(other.distance());
 }
+
+GU::RelativeCoordinate::RelativeCoordinate(gu_relative_coordinate&& other) NOEXCEPT
+{
+    set_direction(other.direction);
+    set_distance(other.distance);
+}
 #endif
 
 GU::RelativeCoordinate::~RelativeCoordinate() NOEXCEPT {}
@@ -123,6 +129,16 @@ GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(RelativeCoordinate&& o
     }
     set_direction(other.direction());
     set_distance(other.distance());
+    return *this;
+}
+
+GU::RelativeCoordinate& GU::RelativeCoordinate::operator=(gu_relative_coordinate&& other) NOEXCEPT
+{
+    if (&other == this) {
+        return *this;
+    }
+    set_direction(other.direction);
+    set_distance(other.distance);
     return *this;
 }
 #endif

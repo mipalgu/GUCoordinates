@@ -97,6 +97,14 @@ GU::CameraCoordinate::CameraCoordinate(CameraCoordinate&& other) NOEXCEPT
     set_resWidth(other.resWidth());
     set_resHeight(other.resHeight());
 }
+
+GU::CameraCoordinate::CameraCoordinate(gu_camera_coordinate&& other) NOEXCEPT
+{
+    set_x(other.x);
+    set_y(other.y);
+    set_resWidth(other.res_width);
+    set_resHeight(other.res_height);
+}
 #endif
 
 GU::CameraCoordinate::~CameraCoordinate() NOEXCEPT {}
@@ -137,6 +145,18 @@ GU::CameraCoordinate& GU::CameraCoordinate::operator=(CameraCoordinate&& other) 
     set_y(other.y());
     set_resWidth(other.resWidth());
     set_resHeight(other.resHeight());
+    return *this;
+}
+
+GU::CameraCoordinate& GU::CameraCoordinate::operator=(gu_camera_coordinate&& other) NOEXCEPT
+{
+    if (&other == this) {
+        return *this;
+    }
+    set_x(other.x);
+    set_y(other.y);
+    set_resWidth(other.res_width);
+    set_resHeight(other.res_height);
     return *this;
 }
 #endif

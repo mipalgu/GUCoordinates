@@ -90,6 +90,7 @@ namespace GU {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
         PixelCoordinate(PixelCoordinate&& other) NOEXCEPT;
+        PixelCoordinate(gu_pixel_coordinate&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
         ~PixelCoordinate() NOEXCEPT;
@@ -99,6 +100,7 @@ namespace GU {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
         PixelCoordinate& operator=(PixelCoordinate&& other) NOEXCEPT;
+        PixelCoordinate& operator=(gu_pixel_coordinate&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
 

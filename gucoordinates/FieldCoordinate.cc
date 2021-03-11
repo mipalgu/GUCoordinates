@@ -89,6 +89,12 @@ GU::FieldCoordinate::FieldCoordinate(FieldCoordinate&& other) NOEXCEPT
     set_position(other.position());
     set_heading(other.heading());
 }
+
+GU::FieldCoordinate::FieldCoordinate(gu_field_coordinate&& other) NOEXCEPT
+{
+    set_position(other.position);
+    set_heading(other.heading);
+}
 #endif
 
 GU::FieldCoordinate::~FieldCoordinate() NOEXCEPT {}
@@ -123,6 +129,16 @@ GU::FieldCoordinate& GU::FieldCoordinate::operator=(FieldCoordinate&& other) NOE
     }
     set_position(other.position());
     set_heading(other.heading());
+    return *this;
+}
+
+GU::FieldCoordinate& GU::FieldCoordinate::operator=(gu_field_coordinate&& other) NOEXCEPT
+{
+    if (&other == this) {
+        return *this;
+    }
+    set_position(other.position);
+    set_heading(other.heading);
     return *this;
 }
 #endif

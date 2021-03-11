@@ -246,9 +246,16 @@ namespace CGTEST {
                 this->equals(obj, obj2);
                 this->equals(obj, obj3);
                 this->equals(obj2, obj3);
-                Strct * obj4 = &obj3;
-                obj3 = *obj4;
-                this->equals(obj3, *obj4);
+                Class obj4 = std::move(obj);
+                Strct temp = {};
+                cchange(temp);
+                Class obj5 = Class();
+                obj5 = std::move(temp);
+                this->equals(obj4, obj3);
+                this->equals(obj5, obj3);
+                Strct * obj6 = &obj3;
+                obj3 = *obj6;
+                this->equals(obj3, *obj6);
             }
 
     };

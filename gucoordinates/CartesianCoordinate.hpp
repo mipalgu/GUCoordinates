@@ -100,6 +100,7 @@ namespace GU {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
         CartesianCoordinate(CartesianCoordinate&& other) NOEXCEPT;
+        CartesianCoordinate(gu_cartesian_coordinate&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
         ~CartesianCoordinate() NOEXCEPT;
@@ -109,6 +110,7 @@ namespace GU {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++98-compat"
         CartesianCoordinate& operator=(CartesianCoordinate&& other) NOEXCEPT;
+        CartesianCoordinate& operator=(gu_cartesian_coordinate&& other) NOEXCEPT;
 #pragma clang diagnostic pop
 #endif
 
