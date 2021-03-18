@@ -12,10 +12,13 @@ DOC_HDRS=${ALL_HDRS}
 SPECIFIC_LIBS+=-lm
 SPECIFIC_LIBS+=-lguunits
 
-${MODULE_BASE}_HDRS=${ALL_HDRS}
 PKGCONFIG_NAME=gucoordinates
 PKGCONFIG_VERSION=1.0
 PKGCONFIG_DESCRIPTION=Utilities for converting between coordinate systems.
+
+.include "../../../mk/prefs.mk"
+
+${MODULE_BASE}_HDRS=${ALL_HDRS}
 
 .include "../../../mk/testdir.mk"
 .include "../../../mk/mipal.mk"
