@@ -16,7 +16,7 @@ PKGCONFIG_NAME=gucoordinates
 PKGCONFIG_VERSION=1.0
 PKGCONFIG_DESCRIPTION=Utilities for converting between coordinate systems.
 
-.include "../../../mk/c++20.mk"
+.include "../../../mk/cxxstd.mk"
 .include "../../../mk/prefs.mk"
 
 ${MODULE_BASE}_HDRS=${ALL_HDRS}
