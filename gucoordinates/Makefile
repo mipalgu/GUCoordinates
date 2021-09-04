@@ -4,13 +4,14 @@
 #
 
 ALL_TARGETS?=test host-local atom-local atom1-local geode-local xc doc
+DEPENDS=guunits
 
 C_SRCS!=ls *.c
 CC_SRCS!=ls *.cc
 ALL_HDRS!=ls *.h *.hpp
 DOC_HDRS=${ALL_HDRS}
 SPECIFIC_LIBS+=-lm
-SPECIFIC_LIBS+=-lguunits
+SPECIFIC_LIBS+=-l${DEPENDS}
 
 PKGCONFIG_NAME=gucoordinates
 PKGCONFIG_VERSION=1.0
