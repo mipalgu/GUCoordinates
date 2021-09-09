@@ -4,7 +4,7 @@
 #
 
 ALL_TARGETS?=test host-local atom-local atom1-local geode-local xc doc
-DEPENDS=guunits
+DEPENDS=gu_util guunits
 
 C_SRCS!=ls *.c
 CC_SRCS!=ls *.cc
