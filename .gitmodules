@@ -1,0 +1,3 @@
+[submodule "swift_GUCoordinates"]
+	path = swift_GUCoordinates
+	url = https://github.com/mipalgu/swift_GUCoordinates.git
