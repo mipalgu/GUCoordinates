@@ -43,6 +43,12 @@ jobs:
           ninja
           sudo ninja install
 
+      - name: Clone gucoordinates
+        uses: actions/checkout@v2
+        with:
+          repository: mipalgu/gucoordinates
+          path: gucoordinates
+
       - name: Doxygen
         uses: mattnotmitt/doxygen-action@v1.1.0
         with:
