@@ -52,8 +52,8 @@ jobs:
       - name: Doxygen
         uses: mattnotmitt/doxygen-action@v1.1.0
         with:
-          doxyfile-path: ./Doxyfile
-          working-directory: ${{github.workspace}}/gucoordinates/gucoordinates
+          doxyfile-path: ${{github.workspace}}/gucoordinates/gucoordinates/Doxyfile
+          working-directory: ${{github.workspace}}/gucoordinates
 
       - name: Page Deployment
         uses: peaceiris/actions-gh-pages@v3
