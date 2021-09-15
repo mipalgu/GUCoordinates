@@ -1,0 +1,7 @@
+<map id="rr_coord_to_pct_coord_Fake" name="rr_coord_to_pct_coord_Fake">
+<area shape="rect" id="node1" title=" " alt="" coords="149,447,336,641"/>
+<area shape="rect" id="node2" href="$structgu__relative__coordinate.html" title="A coordinate that is relative to some other coordinate." alt="" coords="5,219,157,311"/>
+<area shape="rect" id="node3" href="$structgu__camera__pivot.html" title="A gu_camera_pivot represents the pivot point which a gu_camera is attached to." alt="" coords="182,204,303,325"/>
+<area shape="rect" id="node4" href="$structgu__camera.html" title=" " alt="" coords="191,5,295,141"/>
+<area shape="rect" id="node5" href="$structgu__percent__coordinate.html" title="A gu_percent_coordinate represents the coordinate of a pixel within an image." alt="" coords="327,219,481,311"/>
+</map>

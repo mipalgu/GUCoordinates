@@ -1,0 +1,12 @@
+<map id="ctests/gucoordinates_tests.hpp" name="ctests/gucoordinates_tests.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="749,5,892,47"/>
+<area shape="rect" id="node2" href="$camera__coordinate__tests_8cc.html" title=" " alt="" coords="5,95,177,136"/>
+<area shape="rect" id="node3" href="$camera__pivot__tests_8cc.html" title=" " alt="" coords="201,95,341,136"/>
+<area shape="rect" id="node4" href="$camera__tests_8cc.html" title=" " alt="" coords="365,102,524,129"/>
+<area shape="rect" id="node5" href="$cartesian__coordinate__tests_8cc.html" title=" " alt="" coords="548,95,731,136"/>
+<area shape="rect" id="node6" href="$conversions__tests_8cc.html" title=" " alt="" coords="755,95,887,136"/>
+<area shape="rect" id="node7" href="$field__coordinate__tests_8cc.html" title=" " alt="" coords="911,95,1063,136"/>
+<area shape="rect" id="node8" href="$percent__coordinate__tests_8cc.html" title=" " alt="" coords="1088,95,1260,136"/>
+<area shape="rect" id="node9" href="$pixel__coordinate__tests_8cc.html" title=" " alt="" coords="1285,95,1439,136"/>
+<area shape="rect" id="node10" href="$relative__coordinate__tests_8cc.html" title=" " alt="" coords="1463,95,1634,136"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="rr_coord_to_cartesian_coord_Fake" name="rr_coord_to_cartesian_coord_Fake">
+<area shape="rect" id="node1" title=" " alt="" coords="92,219,252,399"/>
+<area shape="rect" id="node2" href="$structgu__relative__coordinate.html" title="A coordinate that is relative to some other coordinate." alt="" coords="5,5,157,97"/>
+<area shape="rect" id="node3" href="$structgu__cartesian__coordinate.html" title="A cartesian_coordinate is a general coordinate for representing positions on a tow dimensional plane." alt="" coords="181,5,344,97"/>
+</map>

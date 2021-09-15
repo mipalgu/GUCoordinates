@@ -1,0 +1,5 @@
+<map id="gu_optional_field_coordinate" name="gu_optional_field_coordinate">
+<area shape="rect" id="node1" title=" " alt="" coords="5,300,191,377"/>
+<area shape="rect" id="node2" href="$structgu__field__coordinate.html" title="A field_coordinate is a coordinate for an object that faces a certain direction (such as a robot) on ..." alt="" coords="31,160,165,237"/>
+<area shape="rect" id="node3" href="$structgu__cartesian__coordinate.html" title="A cartesian_coordinate is a general coordinate for representing positions on a tow dimensional plane." alt="" coords="17,5,179,97"/>
+</map>

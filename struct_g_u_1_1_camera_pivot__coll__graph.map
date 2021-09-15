@@ -1,0 +1,5 @@
+<map id="GU::CameraPivot" name="GU::CameraPivot">
+<area shape="rect" id="node1" title=" " alt="" coords="5,375,128,599"/>
+<area shape="rect" id="node2" href="$structgu__camera__pivot.html" title="A gu_camera_pivot represents the pivot point which a gu_camera is attached to." alt="" coords="6,204,127,325"/>
+<area shape="rect" id="node3" href="$structgu__camera.html" title=" " alt="" coords="15,5,119,141"/>
+</map>

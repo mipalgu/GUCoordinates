@@ -1,0 +1,30 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,666,99,693"/>
+<area shape="rect" id="node2" href="$class_c_g_t_e_s_t_1_1_g_u_coordinates_tests.html" title=" " alt="" coords="147,659,349,700"/>
+<area shape="rect" id="node3" href="$class_c_g_t_e_s_t_1_1_g_u_wrapper_tests.html" title=" " alt="" coords="405,5,592,47"/>
+<area shape="rect" id="node5" href="$class_c_g_t_e_s_t_1_1_g_u_wrapper_tests.html" title=" " alt="" coords="408,70,589,126"/>
+<area shape="rect" id="node7" href="$class_c_g_t_e_s_t_1_1_g_u_wrapper_tests.html" title=" " alt="" coords="408,150,589,206"/>
+<area shape="rect" id="node9" href="$class_c_g_t_e_s_t_1_1_g_u_wrapper_tests.html" title=" " alt="" coords="408,230,589,286"/>
+<area shape="rect" id="node11" href="$class_c_g_t_e_s_t_1_1_g_u_wrapper_tests.html" title=" " alt="" coords="408,310,589,366"/>
+<area shape="rect" id="node13" href="$class_c_g_t_e_s_t_1_1_g_u_wrapper_tests.html" title=" " alt="" coords="408,390,589,446"/>
+<area shape="rect" id="node15" href="$class_c_g_t_e_s_t_1_1_g_u_wrapper_tests.html" title=" " alt="" coords="408,470,589,526"/>
+<area shape="rect" id="node17" href="$class_c_g_t_e_s_t_1_1_g_u_wrapper_tests.html" title=" " alt="" coords="408,550,589,606"/>
+<area shape="rect" id="node19" href="$class_c_g_t_e_s_t_1_1_camera_coordinate_tests.html" title=" " alt="" coords="405,629,592,671"/>
+<area shape="rect" id="node20" href="$class_c_g_t_e_s_t_1_1_camera_tests.html" title=" " alt="" coords="419,695,578,722"/>
+<area shape="rect" id="node21" href="$class_c_g_t_e_s_t_1_1_cartesian_coordinate_tests.html" title=" " alt="" coords="400,747,597,788"/>
+<area shape="rect" id="node22" href="$class_c_g_t_e_s_t_1_1_conversions_tests.html" title=" " alt="" coords="406,813,591,839"/>
+<area shape="rect" id="node23" href="$class_c_g_t_e_s_t_1_1_field_coordinate_tests.html" title=" " alt="" coords="397,863,600,890"/>
+<area shape="rect" id="node24" href="$class_c_g_t_e_s_t_1_1_g_u_wrapper_tests.html" title=" " alt="" coords="408,915,589,956"/>
+<area shape="rect" id="node25" href="$class_c_g_t_e_s_t_1_1_percent_coordinate_tests.html" title=" " alt="" coords="405,980,592,1021"/>
+<area shape="rect" id="node26" href="$class_c_g_t_e_s_t_1_1_pixel_coordinate_tests.html" title=" " alt="" coords="397,1046,600,1073"/>
+<area shape="rect" id="node27" href="$class_c_g_t_e_s_t_1_1_relative_coordinate_tests.html" title=" " alt="" coords="404,1097,593,1139"/>
+<area shape="rect" id="node28" href="$class_c_g_t_e_s_t_1_1_robot_tests.html" title=" " alt="" coords="425,1163,572,1190"/>
+<area shape="rect" id="node4" href="$class_c_g_t_e_s_t_1_1_camera_c_p_p_tests.html" title=" " alt="" coords="671,13,856,39"/>
+<area shape="rect" id="node6" href="$class_c_g_t_e_s_t_1_1_camera_coordinate_c_p_p_tests.html" title=" " alt="" coords="670,77,857,119"/>
+<area shape="rect" id="node8" href="$class_c_g_t_e_s_t_1_1_camera_pivot_c_p_p_tests.html" title=" " alt="" coords="656,165,871,191"/>
+<area shape="rect" id="node10" href="$class_c_g_t_e_s_t_1_1_cartesian_coordinate_c_p_p_tests.html" title=" " alt="" coords="665,237,862,279"/>
+<area shape="rect" id="node12" href="$class_c_g_t_e_s_t_1_1_field_coordinate_c_p_p_tests.html" title=" " alt="" coords="648,325,879,351"/>
+<area shape="rect" id="node14" href="$class_c_g_t_e_s_t_1_1_percent_coordinate_c_p_p_tests.html" title=" " alt="" coords="670,397,857,439"/>
+<area shape="rect" id="node16" href="$class_c_g_t_e_s_t_1_1_pixel_coordinate_c_p_p_tests.html" title=" " alt="" coords="648,485,879,511"/>
+<area shape="rect" id="node18" href="$class_c_g_t_e_s_t_1_1_relative_coordinate_c_p_p_tests.html" title=" " alt="" coords="669,557,858,599"/>
+</map>

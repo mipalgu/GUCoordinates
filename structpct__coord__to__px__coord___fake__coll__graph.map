@@ -1,0 +1,5 @@
+<map id="pct_coord_to_px_coord_Fake" name="pct_coord_to_px_coord_Fake">
+<area shape="rect" id="node1" title=" " alt="" coords="70,248,262,472"/>
+<area shape="rect" id="node2" href="$structgu__percent__coordinate.html" title="A gu_percent_coordinate represents the coordinate of a pixel within an image." alt="" coords="5,20,159,112"/>
+<area shape="rect" id="node3" href="$structgu__pixel__coordinate.html" title="A gu_pixel_coordinate represents the coordinate of a pixel within an image." alt="" coords="182,5,318,127"/>
+</map>
