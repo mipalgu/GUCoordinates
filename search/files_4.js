@@ -1,22 +1,4 @@
 var searchData=
 [
-  ['optional_5fcamera_5fcoordinate_2ec_0',['optional_camera_coordinate.c',['../optional__camera__coordinate_8c.html',1,'']]],
-  ['optional_5fcamera_5fcoordinate_2eh_1',['optional_camera_coordinate.h',['../optional__camera__coordinate_8h.html',1,'']]],
-  ['optional_5fcartesian_5fcoordinate_2ec_2',['optional_cartesian_coordinate.c',['../optional__cartesian__coordinate_8c.html',1,'']]],
-  ['optional_5fcartesian_5fcoordinate_2eh_3',['optional_cartesian_coordinate.h',['../optional__cartesian__coordinate_8h.html',1,'']]],
-  ['optional_5ffield_5fcoordinate_2ec_4',['optional_field_coordinate.c',['../optional__field__coordinate_8c.html',1,'']]],
-  ['optional_5ffield_5fcoordinate_2eh_5',['optional_field_coordinate.h',['../optional__field__coordinate_8h.html',1,'']]],
-  ['optional_5fpercent_5fcoordinate_2ec_6',['optional_percent_coordinate.c',['../optional__percent__coordinate_8c.html',1,'']]],
-  ['optional_5fpercent_5fcoordinate_2eh_7',['optional_percent_coordinate.h',['../optional__percent__coordinate_8h.html',1,'']]],
-  ['optional_5fpixel_5fcoordinate_2ec_8',['optional_pixel_coordinate.c',['../optional__pixel__coordinate_8c.html',1,'']]],
-  ['optional_5fpixel_5fcoordinate_2eh_9',['optional_pixel_coordinate.h',['../optional__pixel__coordinate_8h.html',1,'']]],
-  ['optional_5frelative_5fcoordinate_2ec_10',['optional_relative_coordinate.c',['../optional__relative__coordinate_8c.html',1,'']]],
-  ['optional_5frelative_5fcoordinate_2eh_11',['optional_relative_coordinate.h',['../optional__relative__coordinate_8h.html',1,'']]],
-  ['optionalcameracoordinate_2ehpp_12',['OptionalCameraCoordinate.hpp',['../_optional_camera_coordinate_8hpp.html',1,'']]],
-  ['optionalcartesiancoordinate_2ehpp_13',['OptionalCartesianCoordinate.hpp',['../_optional_cartesian_coordinate_8hpp.html',1,'']]],
-  ['optionalcoordinate_2ehpp_14',['OptionalCoordinate.hpp',['../_optional_coordinate_8hpp.html',1,'']]],
-  ['optionalfieldcoordinate_2ehpp_15',['OptionalFieldCoordinate.hpp',['../_optional_field_coordinate_8hpp.html',1,'']]],
-  ['optionalpercentcoordinate_2ehpp_16',['OptionalPercentCoordinate.hpp',['../_optional_percent_coordinate_8hpp.html',1,'']]],
-  ['optionalpixelcoordinate_2ehpp_17',['OptionalPixelCoordinate.hpp',['../_optional_pixel_coordinate_8hpp.html',1,'']]],
-  ['optionalrelativecoordinate_2ehpp_18',['OptionalRelativeCoordinate.hpp',['../_optional_relative_coordinate_8hpp.html',1,'']]]
+  ['mainpage_2emd_0',['mainpage.md',['../mainpage_8md.html',1,'']]]
 ];
